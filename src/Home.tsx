@@ -35,7 +35,7 @@ import {
   Root,
   StyledContainer,
 } from "./styles";
-import { AlertState, toDate } from "./utils";
+import { AlertState } from "./utils";
 
 const Header = styled.div`
   display: flex;
