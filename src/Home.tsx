@@ -19,6 +19,7 @@ import {
 import confetti from "canvas-confetti";
 import Image from "next/image";
 import Link from "next/link";
+import Countdown from "react-countdown";
 
 import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
@@ -121,6 +122,7 @@ export interface HomeProps {
 }
 export type Guards = {
   address: PublicKey;
+  goLiveDate?: Date;
   mintLimit?: {
     settings: MintLimitGuardSettings;
     pda?: Pda;
@@ -299,7 +301,7 @@ const Home = (props: HomeProps) => {
   useEffect(() => {
     (async () => {
       if (!candyMachine) return;
-      if (candyMachine?.candyGuard.address) {
+      if (candyMachine?.candyGuard?.address) {
         const guardsLocal: Guards = {
           address: candyMachine?.candyGuard.address,
         };
@@ -328,6 +330,16 @@ const Home = (props: HomeProps) => {
               guardsLocal.mintLimit.mintCounter = MintCounterBorsh.fromBuffer(
                 guardsLocal.mintLimit.accountInfo.data
               );
+          }
+        }
+        if (candyMachine?.candyGuard?.guards?.startDate) {
+          const date = new Date(
+            candyMachine?.candyGuard?.guards.startDate.date.toNumber() * 1000
+          );
+          if (date.getTime() > Date.now()) {
+            guardsLocal.goLiveDate = date;
+          } else {
+            guardsLocal.goLiveDate = null;
           }
         }
         setGuards(guardsLocal);
@@ -404,20 +416,30 @@ const Home = (props: HomeProps) => {
                 wallet. Free. f00k f00k Mother f00kers.
               </p>
 
-              <MintCount>
-                Total Minted : {itemsRedeemed}/{itemsAvailable}{" "}
-                {guards?.mintLimit?.mintCounter?.count && (
-                  <>
-                    ({guards?.mintLimit?.mintCounter?.count}
-                    {guards?.mintLimit?.settings?.limit && (
-                      <>/{guards?.mintLimit?.settings?.limit} </>
-                    )}
-                    by you)
-                  </>
-                )}
-              </MintCount>
+              {!guards?.goLiveDate && (
+                <MintCount>
+                  Total Minted : {itemsRedeemed}/{itemsAvailable}{" "}
+                  {guards?.mintLimit?.mintCounter?.count && (
+                    <>
+                      ({guards?.mintLimit?.mintCounter?.count}
+                      {guards?.mintLimit?.settings?.limit && (
+                        <>/{guards?.mintLimit?.settings?.limit} </>
+                      )}
+                      by you)
+                    </>
+                  )}
+                </MintCount>
+              )}
 
-              {!wallet?.publicKey ? (
+              {guards?.goLiveDate ? (
+                <Countdown
+                  date={guards?.goLiveDate}
+                  renderer={renderGoLiveDateCounter}
+                  onComplete={() => {
+                    refreshCandyMachineState()
+                  }}
+                />
+              ) : !wallet?.publicKey ? (
                 <ConnectButton>Connect Wallet</ConnectButton>
               ) : !isWLOnly || whitelistTokenBalance > 0 ? (
                 <>
