@@ -300,15 +300,15 @@ const Home = (props: HomeProps) => {
     (async () => {
       if (!candyMachine) return;
       if (candyMachine?.candyGuard.address) {
-        const guards: Guards = {
+        const guardsLocal: Guards = {
           address: candyMachine?.candyGuard.address,
         };
         if (candyMachine.candyGuard.guards.mintLimit) {
-          guards.mintLimit = {
+          guardsLocal.mintLimit = {
             settings: candyMachine.candyGuard.guards.mintLimit,
           };
-          if (wallet?.publicKey)
-            guards.mintLimit.pda = await mx
+          if (wallet?.publicKey && !guardsLocal.mintLimit.pda)
+            guardsLocal.mintLimit.pda = await mx
               .candyMachines()
               .pdas()
               .mintLimitCounter({
@@ -317,23 +317,23 @@ const Home = (props: HomeProps) => {
                 candyMachine: candyMachine.address,
                 user: wallet.publicKey,
               });
-          if (guards.mintLimit.pda) {
-            guards.mintLimit.accountInfo = await connection.getAccountInfo(
-              guards.mintLimit.pda
+          if (guardsLocal.mintLimit.pda) {
+            guardsLocal.mintLimit.accountInfo = await connection.getAccountInfo(
+              guardsLocal.mintLimit.pda
             );
-            if (guards.mintLimit.accountInfo)
-              // [guards.mintLimit.mintCounter] = MintCounter.fromAccountInfo(
-              //   guards.mintLimit.accountInfo
+            if (guardsLocal.mintLimit.accountInfo)
+              // [guardsLocal.mintLimit.mintCounter] = MintCounter.fromAccountInfo(
+              //   guardsLocal.mintLimit.accountInfo
               // );
-              guards.mintLimit.mintCounter = MintCounterBorsh.fromBuffer(
-                guards.mintLimit.accountInfo.data
+              guardsLocal.mintLimit.mintCounter = MintCounterBorsh.fromBuffer(
+                guardsLocal.mintLimit.accountInfo.data
               );
           }
         }
-        setGuards(guards);
+        setGuards(guardsLocal);
       }
     })();
-  }, [wallet, candyMachine, connection]);
+  }, [wallet, candyMachine, balance, connection]);
   useEffect(() => {
     console.log({ guards });
   }, [guards]);
