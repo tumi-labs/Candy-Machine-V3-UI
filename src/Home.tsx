@@ -7,17 +7,14 @@ import {
   Pda,
   walletAdapterIdentity,
 } from "@metaplex-foundation/js";
-import { MintCounter } from "@metaplex-foundation/mpl-candy-guard";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import {
   AccountInfo,
-  Connection,
   LAMPORTS_PER_SOL,
   PublicKey,
 } from "@solana/web3.js";
 import confetti from "canvas-confetti";
-import Image from "next/image";
 import Link from "next/link";
 import Countdown from "react-countdown";
 
@@ -26,7 +23,6 @@ import styled from "styled-components";
 import { MintCounterBorsh } from "./borsh/mintCounter";
 
 import { MintButton } from "./MintButton";
-import { MultiMintButton } from "./MultiMintButton";
 import {
   Heading,
   Hero,
@@ -136,21 +132,22 @@ const Home = (props: HomeProps) => {
   const [candyMachine, setCandyMachine] = useState<CandyMachine>(null);
   const [balance, setBalance] = useState<number>();
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
-  const [isActive, setIsActive] = useState(false); // true when countdown completes or whitelisted
-  const [solanaExplorerLink, setSolanaExplorerLink] = useState<string>("");
   const [itemsAvailable, setItemsAvailable] = useState(0);
   const [itemsRedeemed, setItemsRedeemed] = useState(0);
   const [itemsRemaining, setItemsRemaining] = useState(0);
-  const [isSoldOut, setIsSoldOut] = useState(false);
-  const [payWithSplToken, setPayWithSplToken] = useState(false);
-  const [price, setPrice] = useState(0);
-  const [priceLabel, setPriceLabel] = useState<string>("SOL");
-  const [whitelistPrice, setWhitelistPrice] = useState(0);
-  const [whitelistEnabled, setWhitelistEnabled] = useState(false);
-  const [isBurnToken, setIsBurnToken] = useState(false);
+  // Yet To Implement
+  // const [isActive, setIsActive] = useState(false); // true when countdown completes or whitelisted
+  // const [solanaExplorerLink, setSolanaExplorerLink] = useState<string>("");
+  // const [isSoldOut, setIsSoldOut] = useState(false);
+  // const [payWithSplToken, setPayWithSplToken] = useState(false);
+  // const [price, setPrice] = useState(0);
+  // const [priceLabel, setPriceLabel] = useState<string>("SOL");
+  // const [whitelistPrice, setWhitelistPrice] = useState(0);
+  // const [whitelistEnabled, setWhitelistEnabled] = useState(false);
+  // const [isBurnToken, setIsBurnToken] = useState(false);
+  // const [endDate, setEndDate] = useState<Date>();
   const [whitelistTokenBalance, setWhitelistTokenBalance] = useState(0);
   const [isEnded, setIsEnded] = useState(false);
-  const [endDate, setEndDate] = useState<Date>();
   const [isPresale, setIsPresale] = useState(false);
   const [isWLOnly, setIsWLOnly] = useState(false);
   const [guards, setGuards] = useState<Guards>();
@@ -163,7 +160,6 @@ const Home = (props: HomeProps) => {
 
   const wallet = useWallet();
 
-  const solFeesEstimation = 0.012; // approx of account creation fees
   const mx = useMemo(
     () => connection && Metaplex.make(connection),
     [connection]
@@ -220,7 +216,7 @@ const Home = (props: HomeProps) => {
       guards.mintLimit.mintCounter.count += qty;
     let remaining = itemsRemaining - qty;
     setItemsRemaining(remaining);
-    setIsSoldOut(remaining === 0);
+    // setIsSoldOut(remaining === 0);
 
     setItemsRedeemed(itemsRedeemed + qty);
     connection.getBalance(wallet.publicKey).then((balance) => {
