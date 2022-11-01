@@ -145,7 +145,7 @@ const Home = (props: HomeProps) => {
   const [itemsAvailable, setItemsAvailable] = useState(0);
   const [itemsRedeemed, setItemsRedeemed] = useState(0);
   const [itemsRemaining, setItemsRemaining] = useState(0);
-  const [mintedItems, setMintedItems] = useState<Nft[]>(fake);
+  const [mintedItems, setMintedItems] = useState<Nft[]>();
   // Yet To Implement
   // const [isActive, setIsActive] = useState(false); // true when countdown completes or whitelisted
   // const [solanaExplorerLink, setSolanaExplorerLink] = useState<string>("");
@@ -245,7 +245,7 @@ const Home = (props: HomeProps) => {
       setBalance(balance / LAMPORTS_PER_SOL);
     });
 
-    throwConfetti();
+    // throwConfetti();
   }
   const startMint = async (quantityString: number = 1) => {
     try {
@@ -430,6 +430,9 @@ const Home = (props: HomeProps) => {
     isEnded,
     isPresale,
   ]);
+  useEffect(() => {
+    if (mintedItems?.length === 0) throwConfetti();
+  }, [mintedItems]);
 
   return (
     <main>
@@ -541,7 +544,7 @@ const Home = (props: HomeProps) => {
             </Hero>
             <NftsModal
               openOnSolscan={openOnSolscan}
-              mintedItems={mintedItems}
+              mintedItems={mintedItems || []}
               setMintedItems={setMintedItems}
             />
           </StyledContainer>

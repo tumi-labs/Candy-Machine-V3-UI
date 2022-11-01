@@ -68,13 +68,13 @@ export default function NftsModal({
       maxWidth={"md"}
     >
       <DialogTitle id="alert-dialog-slide-title">
-        Nft's you had just minted!
+        Nfts you had just minted!
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
           <Grid container spacing={1}>
-            {mintedItems.map((nft) => (
-              <Grid item xs={4}>
+            {mintedItems.map((nft, key) => (
+              <Grid item xs={4} key={key}>
                 <Card>
                   <CardActionArea>
                     {nft.json.image && (
