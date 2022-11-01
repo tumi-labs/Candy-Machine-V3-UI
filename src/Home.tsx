@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { Paper, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import {
@@ -6,22 +7,17 @@ import {
   Metaplex,
   mintFromCandyMachineBuilder,
   MintLimitGuardSettings,
+  Nft,
+  NftWithToken,
   Pda,
   SolAmount,
-  SolPaymentGuardSettings,
   SplTokenAmount,
   TransactionBuilder,
   walletAdapterIdentity,
 } from "@metaplex-foundation/js";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import {
-  AccountInfo,
-  LAMPORTS_PER_SOL,
-  PublicKey,
-  sendAndConfirmRawTransaction,
-  sendAndConfirmTransaction,
-} from "@solana/web3.js";
+import { AccountInfo, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import BN from "bn.js";
 import confetti from "canvas-confetti";
 import Link from "next/link";
@@ -30,6 +26,7 @@ import Countdown from "react-countdown";
 import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { MintCounterBorsh } from "./borsh/mintCounter";
+import { network } from "./config";
 
 import { MultiMintButton } from "./MultiMintButton";
 import {
@@ -42,6 +39,8 @@ import {
   StyledContainer,
 } from "./styles";
 import { AlertState } from "./utils";
+import NftsModal from "./NftsModal";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 
 const Header = styled.div`
   display: flex;
@@ -137,7 +136,7 @@ export type Guards = {
     mintCounter?: MintCounterBorsh; //MintCounter;
   };
 };
-
+const fake: NftWithToken[] = [];
 const Home = (props: HomeProps) => {
   const { connection } = useConnection();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>(null);
@@ -146,6 +145,7 @@ const Home = (props: HomeProps) => {
   const [itemsAvailable, setItemsAvailable] = useState(0);
   const [itemsRedeemed, setItemsRedeemed] = useState(0);
   const [itemsRemaining, setItemsRemaining] = useState(0);
+  const [mintedItems, setMintedItems] = useState<Nft[]>(fake);
   // Yet To Implement
   // const [isActive, setIsActive] = useState(false); // true when countdown completes or whitelisted
   // const [solanaExplorerLink, setSolanaExplorerLink] = useState<string>("");
@@ -175,6 +175,17 @@ const Home = (props: HomeProps) => {
     () => connection && Metaplex.make(connection),
     [connection]
   );
+  const openOnSolscan = useCallback((mint) => {
+    window.open(
+      `https://solscan.io/address/${mint}${
+        [WalletAdapterNetwork.Devnet, WalletAdapterNetwork.Testnet].includes(
+          network
+        )
+          ? `?cluster=${network}`
+          : ""
+      }`
+    );
+  }, []);
   useEffect(() => {
     if (!mx || !wallet?.publicKey) return;
     mx.use(walletAdapterIdentity(wallet));
@@ -247,13 +258,11 @@ const Home = (props: HomeProps) => {
           await mintFromCandyMachineBuilder(mx, {
             candyMachine,
             collectionUpdateAuthority: candyMachine.authorityAddress, // mx.candyMachines().pdas().authority({candyMachine: candyMachine.address})
-            // owner: wallet.publicKey,
           })
         );
       }
       const blockhash = await mx.rpc().getLatestBlockhash();
-      // mx.operations().execute
-      // await mx.rpc().sendAndConfirmTransaction
+
       const transactions = transactionBuilders.map((t) =>
         t.toTransaction(blockhash)
       );
@@ -269,40 +278,32 @@ const Home = (props: HomeProps) => {
         });
       });
       let signedTransactions = transactions;
-      for (let signer in signers) {
-        await signers[signer].signAllTransactions(
-          transactions
-        );
-      }
-      // Object.values(signers).forEach((s) => {
-      //   if (s.signAllTransactions) s.signAllTransactions(transactions);
-      // });
-      // const signedTransactions = await mx
-      //   .identity()
-      //   .signAllTransactions(transactions);
-      // transactions = transactionBuilders.map((t, i) =>
-      //   t.toTransaction(blockhash, {
-      //     signatures: signedTransactions[i].signatures,
-      //   })
-      // );
 
-      await Promise.all(
-        signedTransactions.map((tx) => {
-          return mx.rpc().sendAndConfirmTransaction(tx);
-          let txSerialized = tx.serialize();
-          console.log(txSerialized);
-          return sendAndConfirmRawTransaction(
-            connection,
-            txSerialized,
-            { ...blockhash, signature: tx.signature.toString() },
-            {
-              commitment: "processed",
-              skipPreflight: true,
-            }
-          );
+      for (let signer in signers) {
+        await signers[signer].signAllTransactions(transactions);
+      }
+
+      const output = await Promise.all(
+        signedTransactions.map((tx, i) => {
+          return mx
+            .rpc()
+            .sendAndConfirmTransaction(tx, { commitment: "finalized" })
+            .then((tx) => ({
+              ...tx,
+              context: transactionBuilders[i].getContext() as any,
+            }));
         })
       );
-
+      // console.log(output.map(({ context }) => context));
+      const nfts = await Promise.all(
+        output.map(({ context }) =>
+          mx.nfts().findByMint({
+            mintAddress: context.mintSigner.publicKey,
+            tokenAddress: context.tokenAddress,
+          })
+        )
+      );
+      setMintedItems(nfts as any);
       // connection.sendRawTransaction
       // update front-end amounts
       displaySuccess(quantityString);
@@ -538,6 +539,11 @@ const Home = (props: HomeProps) => {
                 <h1>Mint is private.</h1>
               )}
             </Hero>
+            <NftsModal
+              openOnSolscan={openOnSolscan}
+              mintedItems={mintedItems}
+              setMintedItems={setMintedItems}
+            />
           </StyledContainer>
           <NftWrapper>
             <div className="marquee-wrapper">

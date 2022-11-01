@@ -1,5 +1,4 @@
 import { createTheme, ThemeProvider } from "@material-ui/core";
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import {
   ConnectionProvider,
   WalletProvider,
@@ -15,15 +14,12 @@ import {
   SolletWalletAdapter,
   SolongWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
-import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
+
 import { useMemo } from "react";
 
 import Home from "../src/Home";
+import { rpcHost, candyMachineId, network } from "./config";
 
-const network = (process.env.NEXT_PUBLIC_SOLANA_NETWORK ||
-  WalletAdapterNetwork.Devnet) as WalletAdapterNetwork;
-// const network = WalletAdapterNetwork.Devnet;
-const rpcHost = process.env.NEXT_PUBLIC_RPC_HOST || clusterApiUrl(network);
 
 const theme = createTheme({
   palette: {
@@ -50,10 +46,6 @@ const theme = createTheme({
   },
 });
 
-const candyMachineId = new PublicKey(
-  process.env.NEXT_PUBLIC_CANDY_MACHINE_ID ||
-    "DAA8yRLu7acVs3kxaTyCjoEjNWGinLaCKVhDY29ASNua"
-);
 
 const Main = ({}) => {
   // Custom RPC endpoint.
