@@ -21,7 +21,7 @@ import { useMemo } from "react";
 import Home from "../src/Home";
 
 const network = (process.env.NEXT_PUBLIC_SOLANA_NETWORK ||
-  WalletAdapterNetwork.Mainnet) as WalletAdapterNetwork;
+  WalletAdapterNetwork.Devnet) as WalletAdapterNetwork;
 // const network = WalletAdapterNetwork.Devnet;
 const rpcHost = process.env.NEXT_PUBLIC_RPC_HOST || clusterApiUrl(network);
 
@@ -52,7 +52,7 @@ const theme = createTheme({
 
 const candyMachineId = new PublicKey(
   process.env.NEXT_PUBLIC_CANDY_MACHINE_ID ||
-    "Cmty5uyqzvfAzRbEoiMdtTfRJR7dWkbWdXiBkrYKQSn1"
+    "DAA8yRLu7acVs3kxaTyCjoEjNWGinLaCKVhDY29ASNua"
 );
 
 const Main = ({}) => {

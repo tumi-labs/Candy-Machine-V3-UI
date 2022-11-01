@@ -2,9 +2,15 @@ import { Paper, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import {
   CandyMachine,
+  IdentitySigner,
   Metaplex,
+  mintFromCandyMachineBuilder,
   MintLimitGuardSettings,
   Pda,
+  SolAmount,
+  SolPaymentGuardSettings,
+  SplTokenAmount,
+  TransactionBuilder,
   walletAdapterIdentity,
 } from "@metaplex-foundation/js";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
@@ -13,7 +19,10 @@ import {
   AccountInfo,
   LAMPORTS_PER_SOL,
   PublicKey,
+  sendAndConfirmRawTransaction,
+  sendAndConfirmTransaction,
 } from "@solana/web3.js";
+import BN from "bn.js";
 import confetti from "canvas-confetti";
 import Link from "next/link";
 import Countdown from "react-countdown";
@@ -22,7 +31,7 @@ import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { MintCounterBorsh } from "./borsh/mintCounter";
 
-import { MintButton } from "./MintButton";
+import { MultiMintButton } from "./MultiMintButton";
 import {
   Heading,
   Hero,
@@ -119,6 +128,8 @@ export interface HomeProps {
 export type Guards = {
   address: PublicKey;
   goLiveDate?: Date;
+  endTime?: Date;
+  payment?: SplTokenAmount | SolAmount;
   mintLimit?: {
     settings: MintLimitGuardSettings;
     pda?: Pda;
@@ -140,8 +151,8 @@ const Home = (props: HomeProps) => {
   // const [solanaExplorerLink, setSolanaExplorerLink] = useState<string>("");
   // const [isSoldOut, setIsSoldOut] = useState(false);
   // const [payWithSplToken, setPayWithSplToken] = useState(false);
-  // const [price, setPrice] = useState(0);
-  // const [priceLabel, setPriceLabel] = useState<string>("SOL");
+  const [price, setPrice] = useState(0);
+  const [priceLabel, setPriceLabel] = useState<string>();
   // const [whitelistPrice, setWhitelistPrice] = useState(0);
   // const [whitelistEnabled, setWhitelistEnabled] = useState(false);
   // const [isBurnToken, setIsBurnToken] = useState(false);
@@ -230,27 +241,69 @@ const Home = (props: HomeProps) => {
       console.log(quantityString, candyMachine);
       if (!candyMachine) return;
       setIsMinting(true);
-
+      const transactionBuilders: TransactionBuilder[] = [];
       for (let index = 0; index < quantityString; index++) {
-        console.log(candyMachine.authorityAddress.toString());
-        await mx.candyMachines().mint(
-          {
+        transactionBuilders.push(
+          await mintFromCandyMachineBuilder(mx, {
             candyMachine,
-            // group: "public",
             collectionUpdateAuthority: candyMachine.authorityAddress, // mx.candyMachines().pdas().authority({candyMachine: candyMachine.address})
-          },
-          {
-            // confirmOptions: {
-            //   skipPreflight: true,
-            // },
-            commitment: "processed",
-            confirmOptions: {
-              commitment: "processed",
-            },
-          }
+            // owner: wallet.publicKey,
+          })
         );
       }
+      const blockhash = await mx.rpc().getLatestBlockhash();
+      // mx.operations().execute
+      // await mx.rpc().sendAndConfirmTransaction
+      const transactions = transactionBuilders.map((t) =>
+        t.toTransaction(blockhash)
+      );
+      const signers: { [k: string]: IdentitySigner } = {};
+      transactions.forEach((tx, i) => {
+        tx.feePayer = wallet.publicKey;
+        tx.recentBlockhash = blockhash.blockhash;
+        transactionBuilders[i].getSigners().forEach((s) => {
+          if ("signAllTransactions" in s) signers[s.publicKey.toString()] = s;
+          else if ("secretKey" in s) tx.partialSign(s);
+          // @ts-ignore
+          else if ("_signer" in s) tx.partialSign(s._signer);
+        });
+      });
+      let signedTransactions = transactions;
+      for (let signer in signers) {
+        await signers[signer].signAllTransactions(
+          transactions
+        );
+      }
+      // Object.values(signers).forEach((s) => {
+      //   if (s.signAllTransactions) s.signAllTransactions(transactions);
+      // });
+      // const signedTransactions = await mx
+      //   .identity()
+      //   .signAllTransactions(transactions);
+      // transactions = transactionBuilders.map((t, i) =>
+      //   t.toTransaction(blockhash, {
+      //     signatures: signedTransactions[i].signatures,
+      //   })
+      // );
 
+      await Promise.all(
+        signedTransactions.map((tx) => {
+          return mx.rpc().sendAndConfirmTransaction(tx);
+          let txSerialized = tx.serialize();
+          console.log(txSerialized);
+          return sendAndConfirmRawTransaction(
+            connection,
+            txSerialized,
+            { ...blockhash, signature: tx.signature.toString() },
+            {
+              commitment: "processed",
+              skipPreflight: true,
+            }
+          );
+        })
+      );
+
+      // connection.sendRawTransaction
       // update front-end amounts
       displaySuccess(quantityString);
     } catch (error: any) {
@@ -338,6 +391,30 @@ const Home = (props: HomeProps) => {
             guardsLocal.goLiveDate = null;
           }
         }
+        if (candyMachine?.candyGuard?.guards?.endDate) {
+          const date = new Date(
+            candyMachine?.candyGuard?.guards.endDate.date.toNumber() * 1000
+          );
+          guardsLocal.endTime = date;
+        }
+        if (candyMachine?.candyGuard?.guards?.solPayment)
+          guardsLocal.payment =
+            candyMachine?.candyGuard?.guards?.solPayment.amount;
+
+        if (candyMachine?.candyGuard?.guards?.tokenPayment)
+          guardsLocal.payment =
+            candyMachine?.candyGuard?.guards?.tokenPayment.amount;
+
+        if (guardsLocal.payment) {
+          setPrice(
+            guardsLocal.payment.basisPoints
+              .div(
+                new BN(guardsLocal.payment.currency.decimals).pow(new BN(10))
+              )
+              .toNumber()
+          );
+          setPriceLabel(guardsLocal.payment.currency.symbol);
+        }
         setGuards(guardsLocal);
       }
     })();
@@ -415,9 +492,10 @@ const Home = (props: HomeProps) => {
               {!guards?.goLiveDate && (
                 <MintCount>
                   Total Minted : {itemsRedeemed}/{itemsAvailable}{" "}
-                  {guards?.mintLimit?.mintCounter?.count && (
+                  {(guards?.mintLimit?.mintCounter?.count ||
+                    guards?.mintLimit?.settings?.limit) && (
                     <>
-                      ({guards?.mintLimit?.mintCounter?.count}
+                      ({guards?.mintLimit?.mintCounter?.count || "0"}
                       {guards?.mintLimit?.settings?.limit && (
                         <>/{guards?.mintLimit?.settings?.limit} </>
                       )}
@@ -432,30 +510,28 @@ const Home = (props: HomeProps) => {
                   date={guards?.goLiveDate}
                   renderer={renderGoLiveDateCounter}
                   onComplete={() => {
-                    refreshCandyMachineState()
+                    refreshCandyMachineState();
                   }}
                 />
               ) : !wallet?.publicKey ? (
                 <ConnectButton>Connect Wallet</ConnectButton>
               ) : !isWLOnly || whitelistTokenBalance > 0 ? (
                 <>
-                  <MintButton
+                  <MultiMintButton
                     candyMachine={candyMachine}
                     isMinting={isMinting}
                     isActive={!!itemsRemaining}
                     isEnded={isEnded}
                     isSoldOut={!itemsRemaining}
-                    limitReached={
-                      !!(
-                        guards?.mintLimit?.settings?.limit &&
-                        !(
-                          (guards?.mintLimit?.mintCounter?.count || 0) <
-                          guards?.mintLimit?.settings?.limit
-                        )
-                      )
+                    limit={
+                      guards?.mintLimit?.settings?.limit
+                        ? guards?.mintLimit?.settings?.limit -
+                          (guards?.mintLimit?.mintCounter?.count || 0)
+                        : 10
                     }
                     onMint={startMint}
-                    // price={0}
+                    price={price}
+                    priceLabel={priceLabel}
                   />
                 </>
               ) : (

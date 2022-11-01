@@ -88,6 +88,8 @@ export const MultiMintButton = ({
   isActive,
   isSoldOut,
   price,
+  priceLabel,
+  limit,
 }: {
   onMint: (quantityString: number) => Promise<void>;
   candyMachine: CandyMachine | undefined;
@@ -96,6 +98,8 @@ export const MultiMintButton = ({
   isActive: boolean;
   isSoldOut: boolean;
   price: number;
+  priceLabel: string;
+  limit: number;
 }) => {
   const [loading, setLoading] = useState(false);
 
@@ -145,13 +149,16 @@ export const MultiMintButton = ({
     setTotalCost(Math.round(qty * (price + 0.012) * 1000) / 1000); // 0.012 = approx of account creation fees
   }
   const disabled = useMemo(
-    () => loading || isSoldOut || isMinting || isEnded || !isActive,
+    () => loading || isSoldOut || isMinting || isEnded || !isActive || mintCount > limit,
     [loading, isSoldOut, isMinting, isEnded, !isActive]
   );
   return (
     <div>
       <div>
-        <Minus disabled={disabled} onClick={() => decrementValue()}>
+        <Minus
+          disabled={disabled || mintCount <= 1}
+          onClick={() => decrementValue()}
+        >
           <span style={{ marginTop: "-5px !important" }}>-</span>
         </Minus>
         <NumericField
@@ -160,11 +167,14 @@ export const MultiMintButton = ({
           className="mint-qty"
           step={1}
           min={1}
-          max={10}
+          max={Math.min(limit, 10)}
           value={mintCount}
           onChange={(e) => updateMintCount(e.target as any)}
         />
-        <Plus disabled={disabled} onClick={() => incrementValue()}>
+        <Plus
+          disabled={disabled || (limit) <= mintCount}
+          onClick={() => incrementValue()}
+        >
           +
         </Plus>
 
@@ -184,6 +194,9 @@ export const MultiMintButton = ({
           ) : isSoldOut ? (
             "SOLD OUT"
           ) : isActive ? (
+            mintCount > limit ? (
+              "LIMIT REACHED"
+            ) :
             isMinting || loading ? (
               <CircularProgress />
             ) : (
@@ -197,7 +210,7 @@ export const MultiMintButton = ({
         </CTAButton>
       </div>
       {!isSoldOut && isActive && (
-        <h3>Total estimated cost (Solana fees included) : {totalCost} SOL</h3>
+        <h3>Total estimated cost (Solana fees included) : {totalCost} {priceLabel || "SOL"}</h3>
       )}
     </div>
   );
