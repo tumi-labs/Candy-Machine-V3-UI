@@ -1,0 +1,13 @@
+{
+  "name": "cmv3-demo-initialization",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "initialize": "ts-node createCandyMachine.ts"
+  },
+  "dependencies": {
+    "@metaplex-foundation/js": "^0.17.5",
+    "@solana/web3.js": "^1.66.2",
+    "ts-node": "^10.9.1"
+  }
+}
