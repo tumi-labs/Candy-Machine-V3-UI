@@ -21,6 +21,7 @@ import Countdown from "react-countdown";
 import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { MintCounterBorsh } from "./borsh/mintCounter";
+import { GatewayProvider } from "@civic/solana-gateway-react";
 
 import { MintButton } from "./MintButton";
 import {
@@ -353,6 +354,7 @@ const Home = (props: HomeProps) => {
     isPresale,
   ]);
 
+  const gatekeeperNetwork = candyMachine?.candyGuard?.guards?.gatekeeper?.network;
   return (
     <main>
       <>
@@ -439,9 +441,30 @@ const Home = (props: HomeProps) => {
                 <ConnectButton>Connect Wallet</ConnectButton>
               ) : !isWLOnly || whitelistTokenBalance > 0 ? (
                 <>
-                  <MintButton
+
+              <div>
+                {!!itemsRemaining &&
+                candyMachine?.candyGuard?.guards.gatekeeper &&
+                wallet.publicKey &&
+                wallet.signTransaction ? (
+                  <GatewayProvider
+                    wallet={{
+                      publicKey:
+                        wallet.publicKey,
+                      //@ts-ignore
+                      signTransaction: wallet.signTransaction,
+                    }}
+                    gatekeeperNetwork={gatekeeperNetwork}
+                    clusterUrl={connection.rpcEndpoint}
+                    cluster={process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet'}
+                    options={{ autoShowModal: false }}
+                    stage="dev"
+                  >
+                    <MintButton
                     candyMachine={candyMachine}
+                    gatekeeperNetwork={gatekeeperNetwork}
                     isMinting={isMinting}
+                    setIsMinting={setIsMinting}
                     isActive={!!itemsRemaining}
                     isEnded={isEnded}
                     isSoldOut={!itemsRemaining}
@@ -457,6 +480,29 @@ const Home = (props: HomeProps) => {
                     onMint={startMint}
                     // price={0}
                   />
+                  </GatewayProvider>
+                ) : (
+                  <MintButton
+                    candyMachine={candyMachine}
+                    isMinting={isMinting}
+                    setIsMinting={setIsMinting}
+                    isActive={!!itemsRemaining}
+                    isEnded={isEnded}
+                    isSoldOut={!itemsRemaining}
+                    limitReached={
+                      !!(
+                        guards?.mintLimit?.settings?.limit &&
+                        !(
+                          (guards?.mintLimit?.mintCounter?.count || 0) <
+                          guards?.mintLimit?.settings?.limit
+                        )
+                      )
+                    }
+                    onMint={startMint}
+                    // price={0}
+                  />
+                )}
+              </div>
                 </>
               ) : (
                 <h1>Mint is private.</h1>

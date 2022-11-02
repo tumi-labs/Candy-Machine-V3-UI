@@ -24,7 +24,6 @@ const network = (process.env.NEXT_PUBLIC_SOLANA_NETWORK ||
   WalletAdapterNetwork.Mainnet) as WalletAdapterNetwork;
 // const network = WalletAdapterNetwork.Devnet;
 const rpcHost = process.env.NEXT_PUBLIC_RPC_HOST || clusterApiUrl(network);
-
 const theme = createTheme({
   palette: {
     type: "dark",
