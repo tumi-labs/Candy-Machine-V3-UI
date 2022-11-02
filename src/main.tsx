@@ -20,7 +20,6 @@ import { useMemo } from "react";
 import Home from "../src/Home";
 import { rpcHost, candyMachineId, network } from "./config";
 
-
 const theme = createTheme({
   palette: {
     type: "dark",

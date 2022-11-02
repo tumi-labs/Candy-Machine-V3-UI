@@ -1,8 +1,11 @@
 import { CircularProgress } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { CandyMachine } from "@metaplex-foundation/js";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { PublicKey } from "@solana/web3.js";
+import { GatewayStatus, useGateway } from "@civic/solana-gateway-react";
 
 export const CTAButton = styled(Button)`
   display: inline-block !important;
@@ -79,32 +82,69 @@ export const NumericField = styled.input`
     -webkit-appearance: none;
   }
 `;
+function usePrevious<T>(value: T): T | undefined {
+  const ref = useRef<T>();
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
+}
 
 export const MultiMintButton = ({
   onMint,
   candyMachine,
   isMinting,
+  setIsMinting,
   isEnded,
   isActive,
   isSoldOut,
   price,
   priceLabel,
   limit,
+  gatekeeperNetwork
 }: {
   onMint: (quantityString: number) => Promise<void>;
   candyMachine: CandyMachine | undefined;
   isMinting: boolean;
+  setIsMinting: (val: boolean) => void;
   isEnded: boolean;
   isActive: boolean;
   isSoldOut: boolean;
   price: number;
   priceLabel: string;
   limit: number;
+  gatekeeperNetwork?: PublicKey;
 }) => {
   const [loading, setLoading] = useState(false);
 
   const [mintCount, setMintCount] = useState(1);
   const [totalCost, setTotalCost] = useState(mintCount * (price + 0.012));
+  const { requestGatewayToken, gatewayStatus } = useGateway();
+  const [waitForActiveToken, setWaitForActiveToken] = useState(false);
+
+  const previousGatewayStatus = usePrevious(gatewayStatus);
+  useEffect(() => {
+    const fromStates = [
+      GatewayStatus.NOT_REQUESTED,
+      GatewayStatus.REFRESH_TOKEN_REQUIRED,
+    ];
+    const invalidToStates = [...fromStates, GatewayStatus.UNKNOWN];
+    if (
+      fromStates.find((state) => previousGatewayStatus === state) &&
+      !invalidToStates.find((state) => gatewayStatus === state)
+    ) {
+      setIsMinting(true);
+    }
+    console.log("change: ", GatewayStatus[gatewayStatus]);
+  }, [previousGatewayStatus, gatewayStatus, setIsMinting]);
+
+  useEffect(() => {
+    if (waitForActiveToken && gatewayStatus === GatewayStatus.ACTIVE) {
+      console.log("Minting after token active");
+      setWaitForActiveToken(false);
+      onMint(mintCount);
+    }
+  }, [waitForActiveToken, gatewayStatus, onMint, mintCount]);
 
   function incrementValue() {
     var numericField = document.querySelector(".mint-qty") as HTMLInputElement;
@@ -182,10 +222,17 @@ export const MultiMintButton = ({
         <CTAButton
           disabled={disabled}
           onClick={async () => {
-            console.log("Minting...");
-            setLoading(true);
-            await onMint(mintCount);
-            setLoading(false);
+            console.log("isActive gatekeeperNetwork", {isActive, gatekeeperNetwork })
+            if (isActive && gatekeeperNetwork) {
+              if (gatewayStatus === GatewayStatus.ACTIVE) {
+                await onMint(mintCount);
+              } else {
+                setWaitForActiveToken(true);
+                await requestGatewayToken();
+              }
+            } else {
+              await onMint(mintCount);
+            }
           }}
           variant="contained"
         >

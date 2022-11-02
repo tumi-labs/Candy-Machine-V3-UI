@@ -26,6 +26,7 @@ import Countdown from "react-countdown";
 import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { MintCounterBorsh } from "./borsh/mintCounter";
+import { GatewayProvider } from "@civic/solana-gateway-react";
 import { network } from "./config";
 
 import { MultiMintButton } from "./MultiMintButton";
@@ -419,21 +420,16 @@ const Home = (props: HomeProps) => {
         setGuards(guardsLocal);
       }
     })();
-  }, [wallet, candyMachine, balance, connection]);
+  }, [wallet, candyMachine, balance, connection, mx]);
   useEffect(() => {
     console.log({ guards });
   }, [guards]);
-  useEffect(refreshCandyMachineState, [
-    wallet,
-    props.candyMachineId,
-    connection,
-    isEnded,
-    isPresale,
-  ]);
+  useEffect(refreshCandyMachineState, [wallet, props.candyMachineId, connection, isEnded, isPresale, mx]);
   useEffect(() => {
     if (mintedItems?.length === 0) throwConfetti();
   }, [mintedItems]);
 
+  const gatekeeperNetwork = candyMachine?.candyGuard?.guards?.gatekeeper?.network;
   return (
     <main>
       <>
@@ -521,9 +517,29 @@ const Home = (props: HomeProps) => {
                 <ConnectButton>Connect Wallet</ConnectButton>
               ) : !isWLOnly || whitelistTokenBalance > 0 ? (
                 <>
-                  <MultiMintButton
+
+              <>
+                {!!itemsRemaining &&
+                candyMachine?.candyGuard?.guards.gatekeeper &&
+                wallet.publicKey &&
+                wallet.signTransaction ? (
+                  <GatewayProvider
+                    wallet={{
+                      publicKey:
+                        wallet.publicKey,
+                      //@ts-ignore
+                      signTransaction: wallet.signTransaction,
+                    }}
+                    gatekeeperNetwork={gatekeeperNetwork}
+                    clusterUrl={connection.rpcEndpoint}
+                    cluster={process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet'}
+                    options={{ autoShowModal: false }}
+                  >
+                    <MultiMintButton
                     candyMachine={candyMachine}
+                    gatekeeperNetwork={gatekeeperNetwork}
                     isMinting={isMinting}
+                    setIsMinting={setIsMinting}
                     isActive={!!itemsRemaining}
                     isEnded={isEnded}
                     isSoldOut={!itemsRemaining}
@@ -537,6 +553,27 @@ const Home = (props: HomeProps) => {
                     price={price}
                     priceLabel={priceLabel}
                   />
+                  </GatewayProvider>
+                ) : (
+                  <MultiMintButton
+                    candyMachine={candyMachine}
+                    isMinting={isMinting}
+                    setIsMinting={setIsMinting}
+                    isActive={!!itemsRemaining}
+                    isEnded={isEnded}
+                    isSoldOut={!itemsRemaining}
+                    limit={
+                      guards?.mintLimit?.settings?.limit
+                        ? guards?.mintLimit?.settings?.limit -
+                          (guards?.mintLimit?.mintCounter?.count || 0)
+                        : 10
+                    }
+                    onMint={startMint}
+                    price={price}
+                    priceLabel={priceLabel}
+                  />
+                )}
+              </>
                 </>
               ) : (
                 <h1>Mint is private.</h1>
