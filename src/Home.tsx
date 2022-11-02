@@ -1,19 +1,24 @@
+import { useCallback } from "react";
 import { Paper, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import {
   CandyMachine,
+  IdentitySigner,
   Metaplex,
+  mintFromCandyMachineBuilder,
   MintLimitGuardSettings,
+  Nft,
+  NftWithToken,
   Pda,
+  SolAmount,
+  SplTokenAmount,
+  TransactionBuilder,
   walletAdapterIdentity,
 } from "@metaplex-foundation/js";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import {
-  AccountInfo,
-  LAMPORTS_PER_SOL,
-  PublicKey,
-} from "@solana/web3.js";
+import { AccountInfo, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import BN from "bn.js";
 import confetti from "canvas-confetti";
 import Link from "next/link";
 import Countdown from "react-countdown";
@@ -22,8 +27,9 @@ import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { MintCounterBorsh } from "./borsh/mintCounter";
 import { GatewayProvider } from "@civic/solana-gateway-react";
+import { network } from "./config";
 
-import { MintButton } from "./MintButton";
+import { MultiMintButton } from "./MultiMintButton";
 import {
   Heading,
   Hero,
@@ -34,6 +40,8 @@ import {
   StyledContainer,
 } from "./styles";
 import { AlertState } from "./utils";
+import NftsModal from "./NftsModal";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 
 const Header = styled.div`
   display: flex;
@@ -120,6 +128,8 @@ export interface HomeProps {
 export type Guards = {
   address: PublicKey;
   goLiveDate?: Date;
+  endTime?: Date;
+  payment?: SplTokenAmount | SolAmount;
   mintLimit?: {
     settings: MintLimitGuardSettings;
     pda?: Pda;
@@ -127,7 +137,7 @@ export type Guards = {
     mintCounter?: MintCounterBorsh; //MintCounter;
   };
 };
-
+const fake: NftWithToken[] = [];
 const Home = (props: HomeProps) => {
   const { connection } = useConnection();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>(null);
@@ -136,13 +146,14 @@ const Home = (props: HomeProps) => {
   const [itemsAvailable, setItemsAvailable] = useState(0);
   const [itemsRedeemed, setItemsRedeemed] = useState(0);
   const [itemsRemaining, setItemsRemaining] = useState(0);
+  const [mintedItems, setMintedItems] = useState<Nft[]>();
   // Yet To Implement
   // const [isActive, setIsActive] = useState(false); // true when countdown completes or whitelisted
   // const [solanaExplorerLink, setSolanaExplorerLink] = useState<string>("");
   // const [isSoldOut, setIsSoldOut] = useState(false);
   // const [payWithSplToken, setPayWithSplToken] = useState(false);
-  // const [price, setPrice] = useState(0);
-  // const [priceLabel, setPriceLabel] = useState<string>("SOL");
+  const [price, setPrice] = useState(0);
+  const [priceLabel, setPriceLabel] = useState<string>();
   // const [whitelistPrice, setWhitelistPrice] = useState(0);
   // const [whitelistEnabled, setWhitelistEnabled] = useState(false);
   // const [isBurnToken, setIsBurnToken] = useState(false);
@@ -165,6 +176,17 @@ const Home = (props: HomeProps) => {
     () => connection && Metaplex.make(connection),
     [connection]
   );
+  const openOnSolscan = useCallback((mint) => {
+    window.open(
+      `https://solscan.io/address/${mint}${
+        [WalletAdapterNetwork.Devnet, WalletAdapterNetwork.Testnet].includes(
+          network
+        )
+          ? `?cluster=${network}`
+          : ""
+      }`
+    );
+  }, []);
   useEffect(() => {
     if (!mx || !wallet?.publicKey) return;
     mx.use(walletAdapterIdentity(wallet));
@@ -224,34 +246,66 @@ const Home = (props: HomeProps) => {
       setBalance(balance / LAMPORTS_PER_SOL);
     });
 
-    throwConfetti();
+    // throwConfetti();
   }
   const startMint = async (quantityString: number = 1) => {
     try {
       console.log(quantityString, candyMachine);
       if (!candyMachine) return;
       setIsMinting(true);
-
+      const transactionBuilders: TransactionBuilder[] = [];
       for (let index = 0; index < quantityString; index++) {
-        console.log(candyMachine.authorityAddress.toString());
-        await mx.candyMachines().mint(
-          {
+        transactionBuilders.push(
+          await mintFromCandyMachineBuilder(mx, {
             candyMachine,
-            // group: "public",
             collectionUpdateAuthority: candyMachine.authorityAddress, // mx.candyMachines().pdas().authority({candyMachine: candyMachine.address})
-          },
-          {
-            // confirmOptions: {
-            //   skipPreflight: true,
-            // },
-            commitment: "processed",
-            confirmOptions: {
-              commitment: "processed",
-            },
-          }
+          })
         );
       }
+      const blockhash = await mx.rpc().getLatestBlockhash();
 
+      const transactions = transactionBuilders.map((t) =>
+        t.toTransaction(blockhash)
+      );
+      const signers: { [k: string]: IdentitySigner } = {};
+      transactions.forEach((tx, i) => {
+        tx.feePayer = wallet.publicKey;
+        tx.recentBlockhash = blockhash.blockhash;
+        transactionBuilders[i].getSigners().forEach((s) => {
+          if ("signAllTransactions" in s) signers[s.publicKey.toString()] = s;
+          else if ("secretKey" in s) tx.partialSign(s);
+          // @ts-ignore
+          else if ("_signer" in s) tx.partialSign(s._signer);
+        });
+      });
+      let signedTransactions = transactions;
+
+      for (let signer in signers) {
+        await signers[signer].signAllTransactions(transactions);
+      }
+
+      const output = await Promise.all(
+        signedTransactions.map((tx, i) => {
+          return mx
+            .rpc()
+            .sendAndConfirmTransaction(tx, { commitment: "finalized" })
+            .then((tx) => ({
+              ...tx,
+              context: transactionBuilders[i].getContext() as any,
+            }));
+        })
+      );
+      // console.log(output.map(({ context }) => context));
+      const nfts = await Promise.all(
+        output.map(({ context }) =>
+          mx.nfts().findByMint({
+            mintAddress: context.mintSigner.publicKey,
+            tokenAddress: context.tokenAddress,
+          })
+        )
+      );
+      setMintedItems(nfts as any);
+      // connection.sendRawTransaction
       // update front-end amounts
       displaySuccess(quantityString);
     } catch (error: any) {
@@ -339,20 +393,41 @@ const Home = (props: HomeProps) => {
             guardsLocal.goLiveDate = null;
           }
         }
+        if (candyMachine?.candyGuard?.guards?.endDate) {
+          const date = new Date(
+            candyMachine?.candyGuard?.guards.endDate.date.toNumber() * 1000
+          );
+          guardsLocal.endTime = date;
+        }
+        if (candyMachine?.candyGuard?.guards?.solPayment)
+          guardsLocal.payment =
+            candyMachine?.candyGuard?.guards?.solPayment.amount;
+
+        if (candyMachine?.candyGuard?.guards?.tokenPayment)
+          guardsLocal.payment =
+            candyMachine?.candyGuard?.guards?.tokenPayment.amount;
+
+        if (guardsLocal.payment) {
+          setPrice(
+            guardsLocal.payment.basisPoints
+              .div(
+                new BN(guardsLocal.payment.currency.decimals).pow(new BN(10))
+              )
+              .toNumber()
+          );
+          setPriceLabel(guardsLocal.payment.currency.symbol);
+        }
         setGuards(guardsLocal);
       }
     })();
-  }, [wallet, candyMachine, balance, connection]);
+  }, [wallet, candyMachine, balance, connection, mx]);
   useEffect(() => {
     console.log({ guards });
   }, [guards]);
-  useEffect(refreshCandyMachineState, [
-    wallet,
-    props.candyMachineId,
-    connection,
-    isEnded,
-    isPresale,
-  ]);
+  useEffect(refreshCandyMachineState, [wallet, props.candyMachineId, connection, isEnded, isPresale, mx]);
+  useEffect(() => {
+    if (mintedItems?.length === 0) throwConfetti();
+  }, [mintedItems]);
 
   const gatekeeperNetwork = candyMachine?.candyGuard?.guards?.gatekeeper?.network;
   return (
@@ -417,9 +492,10 @@ const Home = (props: HomeProps) => {
               {!guards?.goLiveDate && (
                 <MintCount>
                   Total Minted : {itemsRedeemed}/{itemsAvailable}{" "}
-                  {guards?.mintLimit?.mintCounter?.count && (
+                  {(guards?.mintLimit?.mintCounter?.count ||
+                    guards?.mintLimit?.settings?.limit) && (
                     <>
-                      ({guards?.mintLimit?.mintCounter?.count}
+                      ({guards?.mintLimit?.mintCounter?.count || "0"}
                       {guards?.mintLimit?.settings?.limit && (
                         <>/{guards?.mintLimit?.settings?.limit} </>
                       )}
@@ -434,7 +510,7 @@ const Home = (props: HomeProps) => {
                   date={guards?.goLiveDate}
                   renderer={renderGoLiveDateCounter}
                   onComplete={() => {
-                    refreshCandyMachineState()
+                    refreshCandyMachineState();
                   }}
                 />
               ) : !wallet?.publicKey ? (
@@ -442,7 +518,7 @@ const Home = (props: HomeProps) => {
               ) : !isWLOnly || whitelistTokenBalance > 0 ? (
                 <>
 
-              <div>
+              <>
                 {!!itemsRemaining &&
                 candyMachine?.candyGuard?.guards.gatekeeper &&
                 wallet.publicKey &&
@@ -460,7 +536,7 @@ const Home = (props: HomeProps) => {
                     options={{ autoShowModal: false }}
                     stage="dev"
                   >
-                    <MintButton
+                    <MultiMintButton
                     candyMachine={candyMachine}
                     gatekeeperNetwork={gatekeeperNetwork}
                     isMinting={isMinting}
@@ -468,46 +544,47 @@ const Home = (props: HomeProps) => {
                     isActive={!!itemsRemaining}
                     isEnded={isEnded}
                     isSoldOut={!itemsRemaining}
-                    limitReached={
-                      !!(
-                        guards?.mintLimit?.settings?.limit &&
-                        !(
-                          (guards?.mintLimit?.mintCounter?.count || 0) <
-                          guards?.mintLimit?.settings?.limit
-                        )
-                      )
+                    limit={
+                      guards?.mintLimit?.settings?.limit
+                        ? guards?.mintLimit?.settings?.limit -
+                          (guards?.mintLimit?.mintCounter?.count || 0)
+                        : 10
                     }
                     onMint={startMint}
-                    // price={0}
+                    price={price}
+                    priceLabel={priceLabel}
                   />
                   </GatewayProvider>
                 ) : (
-                  <MintButton
+                  <MultiMintButton
                     candyMachine={candyMachine}
                     isMinting={isMinting}
                     setIsMinting={setIsMinting}
                     isActive={!!itemsRemaining}
                     isEnded={isEnded}
                     isSoldOut={!itemsRemaining}
-                    limitReached={
-                      !!(
-                        guards?.mintLimit?.settings?.limit &&
-                        !(
-                          (guards?.mintLimit?.mintCounter?.count || 0) <
-                          guards?.mintLimit?.settings?.limit
-                        )
-                      )
+                    limit={
+                      guards?.mintLimit?.settings?.limit
+                        ? guards?.mintLimit?.settings?.limit -
+                          (guards?.mintLimit?.mintCounter?.count || 0)
+                        : 10
                     }
                     onMint={startMint}
-                    // price={0}
+                    price={price}
+                    priceLabel={priceLabel}
                   />
                 )}
-              </div>
+              </>
                 </>
               ) : (
                 <h1>Mint is private.</h1>
               )}
             </Hero>
+            <NftsModal
+              openOnSolscan={openOnSolscan}
+              mintedItems={mintedItems || []}
+              setMintedItems={setMintedItems}
+            />
           </StyledContainer>
           <NftWrapper>
             <div className="marquee-wrapper">

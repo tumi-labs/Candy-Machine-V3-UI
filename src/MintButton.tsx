@@ -83,7 +83,6 @@ export const MintButton = ({
             setWaitForActiveToken(true);
             await requestGatewayToken();
           }
-          
         } else {
           await onMint(1);
         }

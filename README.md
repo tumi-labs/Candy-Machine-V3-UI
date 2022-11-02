@@ -1,34 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Candy Machine v3 UI
+Reference UI to implement Metaplex Candy Machine V3 on frontend.
 
-## Getting Started
+### Features/Todo
+- [x] Responsive UI
+- [x] Single Mint UI
+- [x] Multi Mint UI
+- [x] Start Time Countdown
+- [x] Preview Minted NFTs
+- [x] Guards Supported
+  - [x] Start Date
+  - [x] End Date
+  - [x] Sol Payment
+  - [x] Token Payment
+  - [x] Mint Limit
+  - [x] Bot Tax
+  - [ ] Token Burn
+  - [ ] Token Gate
+  - [ ] NFT Payment
+  - [ ] NFT Burn
+  - [ ] NFT Gate
+  - [ ] Redeemed Amount
+  - [ ] Third Party Signer
+  - [ ] Address Gate
+  - [ ] Allow List
+  - [ ] Gatekeeper
+- [ ] Multi Group Functionality
 
-First, run the development server:
+### Env Variables
+*All of them are optional at this moment as we're using default if they are not exists in [config.ts](src/config.ts)*
+- NEXT_PUBLIC_SOLANA_NETWORK=WalletAdapterNetwork
+- NEXT_PUBLIC_RPC_HOST=url
+- NEXT_PUBLIC_CANDY_MACHINE_ID=publickKey
 
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Candy machine v3 Config & Initialization
+*For configuaration and initialization please refer to [official Metaplex docs](https://docs.metaplex.com/programs/candy-machine/overview). You can also use [SugerCLI alpha](https://docs.metaplex.com/developer-tools/sugar/guides/sugar-for-cmv3) for it.*
