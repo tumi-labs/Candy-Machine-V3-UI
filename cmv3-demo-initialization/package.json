@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "initialize": "ts-node createCandyMachine.ts"
+    "initialize": "ts-node createCandyMachine.ts",
+    "postinstall": "git update-index --assume-unchanged cache.json"
   },
   "dependencies": {
     "@metaplex-foundation/js": "^0.17.5",
