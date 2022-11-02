@@ -6,7 +6,7 @@
       "image_link": "https://arweave.net/DY7RZ1MFoPRFhEdSjwWheife_xOqEZGOGHWUm9zOqc8?ext=png",
       "metadata_hash": "2957092f4821af8133358f8697dee6806614b1dc0239d90be4963eddd18af502",
       "metadata_link": "https://arweave.net/UWsMCnsVXY8EtHDpGDQy504j4gRWSb9E8Zjl8-PwKrw",
-      "onChain": true
+      "onChain": false
     },
     "1": {
       "name": "Rejected f00kers #1",
@@ -14,7 +14,7 @@
       "image_link": "https://arweave.net/vU4kEIH6po-XD13rI1lTbGQJL4nmLKMTaJgwcM3aRmQ?ext=png",
       "metadata_hash": "b36362b62d164a210f243c1becb55860aa3d66c097830fd17e565d9efae5bea6",
       "metadata_link": "https://arweave.net/3UJpT8KhIR9OynZIoMy2GOKJus1DyWR93J2mzsHqFBM",
-      "onChain": true
+      "onChain": false
     },
     "2": {
       "name": "Rejected f00kers #2",
@@ -22,7 +22,7 @@
       "image_link": "https://arweave.net/2mcSSLMSBd5T-a1LZSFiCLZLYjbLCeE4Zh27mJJ8Y6I?ext=png",
       "metadata_hash": "a8fa701399714874a4f64bac15a4f61af7066fd35223fdc41916f2ba1cea6020",
       "metadata_link": "https://arweave.net/cpUrPEr4MUbMiBvvpf0_m43EDC1Dfhm9b1EHAxbb-AI",
-      "onChain": true
+      "onChain": false
     },
     "3": {
       "name": "Rejected f00kers #3",
@@ -30,7 +30,7 @@
       "image_link": "https://arweave.net/nQlxXluVeuEgRPL9xUQamid3E6r-hHJogjysKN1Nxz4?ext=png",
       "metadata_hash": "294425fe639fe56ca75f6e6829ade8954d3bd0ea6fe781e3854aa20e55db2db1",
       "metadata_link": "https://arweave.net/37kVVLtOcw_IZIkzdez72Lf2QUvCUvLRVnZkT8ez5fs",
-      "onChain": true
+      "onChain": false
     },
     "4": {
       "name": "Rejected f00kers #4",
@@ -38,7 +38,7 @@
       "image_link": "https://arweave.net/ytCF4SNYeHLwmlSTwlIKueA5G3xM-hG3PTSVR5MFEWw?ext=png",
       "metadata_hash": "32b9700842859f56b89dd963b82a577ded2f9db0f4173b1b286f1db7df878491",
       "metadata_link": "https://arweave.net/uXL7xpK6bfOjFSbfQYd-qMgbGoWEezHPwZKPhgvZ0z0",
-      "onChain": true
+      "onChain": false
     },
     "5": {
       "name": "Rejected f00kers #5",
@@ -46,7 +46,7 @@
       "image_link": "https://arweave.net/-2fvNZ4WDTZEAzc-RBEHJZSZ3CkWhdP5fNFMurAu67s?ext=png",
       "metadata_hash": "0e071f1f385e697d3f71f94d08fd1e27d59e5e6e42496ad7022687d3221f4c12",
       "metadata_link": "https://arweave.net/fGUK_berMTIvVcPskEM7zKuO5Mvqpz2bV_EpTfFUmCQ",
-      "onChain": true
+      "onChain": false
     },
     "6": {
       "name": "Rejected f00kers #6",
@@ -54,7 +54,7 @@
       "image_link": "https://arweave.net/y46a58Gixakpi851eBD8-n6wxzcRxfHFk-Ee6r3atYY?ext=png",
       "metadata_hash": "6c026ad43dc6cc6b72463d0ab97d288f1746a98edd908af352157bb12fb71ddc",
       "metadata_link": "https://arweave.net/GTFBQS-kaYe9Dqn1TEHPM0Tde4oVVO2GoyWdJ35U8Bk",
-      "onChain": true
+      "onChain": false
     },
     "7": {
       "name": "Rejected f00kers #7",
@@ -62,7 +62,7 @@
       "image_link": "https://arweave.net/VYqmaByuNAlqRkLWzpeII0kZ5hImaPxnQLuVk7Tn1p0?ext=png",
       "metadata_hash": "63071c014850161c2c16843e32b007cb5330d755a287f7b28550f5aa994a6b9f",
       "metadata_link": "https://arweave.net/TZAryQcvJNkGqHfG4g9MkRhXgl-IiNAkQxqOe_5QKVQ",
-      "onChain": true
+      "onChain": false
     },
     "8": {
       "name": "Rejected f00kers #8",
@@ -70,7 +70,7 @@
       "image_link": "https://arweave.net/tCYOzqVgs98QEzXtUodbTDCGp3QeOQp4R9IziLsH3bA?ext=png",
       "metadata_hash": "3547f12520fa5d83a01a87e54ac3856d953acfe73b94fbd8eeae4cbc6b247a59",
       "metadata_link": "https://arweave.net/MNH9pJKaasXZ-ivCkWTeBC5W-xvbFNs-9nKu1ch-iyI",
-      "onChain": true
+      "onChain": false
     },
     "9": {
       "name": "Rejected f00kers #9",
@@ -78,7 +78,7 @@
       "image_link": "https://arweave.net/E6EszpvcQpgnJFXLHGnMN6U2JkmUO6GzOP-kXzwHU04?ext=png",
       "metadata_hash": "839df1a94f5fb8a8e543f7c311fc612e1c60afa359bc11cf88befeaa10becd2c",
       "metadata_link": "https://arweave.net/Bha5ILwIXBA5tFxYLtfkfkfn6Z1rNqQl6olB3rD3IRE",
-      "onChain": true
+      "onChain": false
     },
     "10": {
       "name": "Rejected f00kers #10",
@@ -86,7 +86,7 @@
       "image_link": "https://arweave.net/drFn9DZ3rzMoItJwVbijhJVVzwdzdHCgSFKMI9esP9c?ext=png",
       "metadata_hash": "bd00382eaac8998233cef75473abd1e883dfba584cbe64afe11734f70290c542",
       "metadata_link": "https://arweave.net/QFi9o658JemzujpqQupxXIAGVB5LpeePNCv47Yk3aL8",
-      "onChain": true
+      "onChain": false
     },
     "11": {
       "name": "Rejected f00kers #11",
@@ -94,7 +94,7 @@
       "image_link": "https://arweave.net/ozMHmvpOtiFaLwVfG1i7FBRub7FTXLdGjXPduQ7cjc8?ext=png",
       "metadata_hash": "af74755094bf8e636ac856a74c4e09c3de009f68c92ad5ab47fbd0482da6e75c",
       "metadata_link": "https://arweave.net/8AoeO_BrXPT93Jcmh2hqFpaq6CxeyfTjWWNR2DTL_Bc",
-      "onChain": true
+      "onChain": false
     },
     "12": {
       "name": "Rejected f00kers #12",
@@ -102,7 +102,7 @@
       "image_link": "https://arweave.net/LptICfpVo6flIcHNtavwgC2sT2MRHRBYh4K-NgzShKg?ext=png",
       "metadata_hash": "e2ddfb39110705f708a7cfe441ac1578828ef8cae0bb23803718e768e300a8a2",
       "metadata_link": "https://arweave.net/Xl-CJ05gX1MFavza5-HURWV1j0biW7OmpvsDrlZEYN8",
-      "onChain": true
+      "onChain": false
     },
     "13": {
       "name": "Rejected f00kers #13",
@@ -110,7 +110,7 @@
       "image_link": "https://arweave.net/LJOFGpcWNAzjqPklXmhzN7gkUPH46So7K65Kz-l4ARg?ext=png",
       "metadata_hash": "82b7fc0bb68847a2ea6a66b26dab0ab3c35722664c06c5f7704afe8e7b8441df",
       "metadata_link": "https://arweave.net/LTcOgztDmr9jCgPIITfV208R5qxzWPKvkh7Lbo9kdYQ",
-      "onChain": true
+      "onChain": false
     },
     "14": {
       "name": "Rejected f00kers #14",
@@ -118,7 +118,7 @@
       "image_link": "https://arweave.net/hZ7GazcQpZvOb2PjypEXzqbDD1cLR6iw3SfO5wmlkOM?ext=png",
       "metadata_hash": "77d30fd743cee717083ff8f719764210253ddb3ba2474b9befc343df29e48870",
       "metadata_link": "https://arweave.net/kHz9PxomPAhkpzn87emxLSXtmBQnME40WBYrCzuvp0M",
-      "onChain": true
+      "onChain": false
     },
     "15": {
       "name": "Rejected f00kers #15",
@@ -126,7 +126,7 @@
       "image_link": "https://arweave.net/BTpZZG99xA2lXajn38TBZA8TOli-fG-0E3Dy79PLbGg?ext=png",
       "metadata_hash": "89a21b3031b20dbbc7da4acc9ea03704643624cafa18785b3931ef57a84e6e5f",
       "metadata_link": "https://arweave.net/QACfQTYreUemfu2Vps4e_5aYR15Loz7nj7CR2_N1wCA",
-      "onChain": true
+      "onChain": false
     },
     "16": {
       "name": "Rejected f00kers #16",
@@ -134,7 +134,7 @@
       "image_link": "https://arweave.net/_CM2XS0PkjppXJFbvRj-bVWNzQCRkV_VXBqVdfQpXBQ?ext=png",
       "metadata_hash": "afdd2ebb3fc4225ab6542d66777fd91229c68c8a20050fc9976d33a0065aac20",
       "metadata_link": "https://arweave.net/_55HjzfztrO0YyBu_s5nrsdarZWf-DXbqJ8gxCr3XwM",
-      "onChain": true
+      "onChain": false
     },
     "17": {
       "name": "Rejected f00kers #17",
@@ -142,7 +142,7 @@
       "image_link": "https://arweave.net/mJ7rL6Sf7dMozZs00UBZhbLkvo2XaAWATGmsKjY76cA?ext=png",
       "metadata_hash": "164a18c169dd2c33e28bfcbd7a79bde2de7fd6ff82a49286e8cfacda2367ffb7",
       "metadata_link": "https://arweave.net/Vy5tD9_12CjLt0gA_9BCX1Jdr4s8wf5r2_Y7pblxn14",
-      "onChain": true
+      "onChain": false
     },
     "18": {
       "name": "Rejected f00kers #18",
@@ -150,7 +150,7 @@
       "image_link": "https://arweave.net/eF9wenowDvPIF1c9TACr8I45SZe6BAxOhboXaYw2dMM?ext=png",
       "metadata_hash": "9afc2e8a1c1e46f3f7310c2051f9a0bd6b316dc9a978f9b9f9fabfa6d14b624f",
       "metadata_link": "https://arweave.net/cMCsQn8LLO5BJ_4_DE7NrMH9kQve9H5LvgA-HlPW5Yw",
-      "onChain": true
+      "onChain": false
     },
     "19": {
       "name": "Rejected f00kers #19",
@@ -158,7 +158,7 @@
       "image_link": "https://arweave.net/gXEcPxY05obRWg3CXMXcZlJ-m4k0R3cvUTmytgigSpE?ext=png",
       "metadata_hash": "53c4b456357df580b8c2417506957e54f162a6f5a4c9b4b154a57140e6a7f86b",
       "metadata_link": "https://arweave.net/230jgmxKIoIYAKYk8Lw3bT5fBpPG7zjvKAeljin7j1Q",
-      "onChain": true
+      "onChain": false
     },
     "20": {
       "name": "Rejected f00kers #20",
@@ -166,7 +166,7 @@
       "image_link": "https://arweave.net/8MH2-79UaCPHGlmdb5LGR6roO2yIAPjJ7O7hSZWYzgM?ext=png",
       "metadata_hash": "76f5a43724a912c72c844c64ed3bd4e6139ed7bc0a98916e8183e3e5fb807039",
       "metadata_link": "https://arweave.net/sTMpnu6GPExuhJrkPo__fYqE2G2Q5YfF8b-UmPRAsvU",
-      "onChain": true
+      "onChain": false
     },
     "21": {
       "name": "Rejected f00kers #21",
@@ -174,7 +174,7 @@
       "image_link": "https://arweave.net/D1SRzav7AClRblgnNoCgmxWIuXPFKAEAXe1t6_Y8Qgc?ext=png",
       "metadata_hash": "bd8d5a646dbc9e96df9557d7c75f60e161aa7376ae03457bc7b417b5c8f04f24",
       "metadata_link": "https://arweave.net/UvtR5IMitWOIZBvL2j0FbVPRQ-p2Ol5xkruWMGiavzo",
-      "onChain": true
+      "onChain": false
     },
     "22": {
       "name": "Rejected f00kers #22",
@@ -182,7 +182,7 @@
       "image_link": "https://arweave.net/EO4yaOyq8k_A15cIylqciLMecwpL-C9e7o3ZaQ0rcOs?ext=png",
       "metadata_hash": "406fb54587abb5ef48b9e16a404bc3588833c8d392f783d5551d7b26525d6e50",
       "metadata_link": "https://arweave.net/31wPWtuqMNKdnx49PQ0Tz25Uvy4Q_QisLDqKjQm3nh0",
-      "onChain": true
+      "onChain": false
     },
     "23": {
       "name": "Rejected f00kers #23",
@@ -190,7 +190,7 @@
       "image_link": "https://arweave.net/bOUXpxgSRMi-jTi-3BTTuL7jmBZO6hRZ8Oj2cnQuP8g?ext=png",
       "metadata_hash": "dae31cfaddc4f36b10e552872215f66ae6b13420f6c32865233dba8c03279d2f",
       "metadata_link": "https://arweave.net/ud5cECAE9869QGl5Cm3Wi84bm1mzu-9SQBLvHymamkg",
-      "onChain": true
+      "onChain": false
     },
     "24": {
       "name": "Rejected f00kers #24",
@@ -198,7 +198,7 @@
       "image_link": "https://arweave.net/zB9wrqhrdlNJC1ak17qltSmtDLrnCOFzfI0a3-RO6i8?ext=png",
       "metadata_hash": "5f2254d9cb89ae9eec949bffd471f0dde12a6a4b236e87c88a4b9fbaf0ad3e61",
       "metadata_link": "https://arweave.net/3_ffJc7Upgqr8l7UKWjINhkoQdijc-ufTFWuumF3dE4",
-      "onChain": true
+      "onChain": false
     },
     "25": {
       "name": "Rejected f00kers #25",
@@ -206,7 +206,7 @@
       "image_link": "https://arweave.net/scLynEdxcVgMFuvh3g4O3Xz5Wpsr26p5SwWgRooJ6sw?ext=png",
       "metadata_hash": "ba532111f5a9a9e6a859cf71afc1f35016dd528127233573d1e611e65416fe8f",
       "metadata_link": "https://arweave.net/3Ohf5uAAp8sb2l60h-8yplORsSF5Fhhu5iqevDjxvdI",
-      "onChain": true
+      "onChain": false
     },
     "26": {
       "name": "Rejected f00kers #26",
@@ -214,7 +214,7 @@
       "image_link": "https://arweave.net/gC8ixw2xzHaCLb5t8S-ex6b-1hAIC9Y7SuJrtnDyjQA?ext=png",
       "metadata_hash": "55b25980a5779b775bc39d8fc5c04a780b0533b3e53eba3eef4214fb697679a7",
       "metadata_link": "https://arweave.net/nINP1Z9y9VSDewGAtLZOLM6SE82QNuOyJD9ibtMbY2E",
-      "onChain": true
+      "onChain": false
     },
     "27": {
       "name": "Rejected f00kers #27",
@@ -222,7 +222,7 @@
       "image_link": "https://arweave.net/JOWt1ZXJ-86UdlUFmEeXG8o_RhO76gOaSoQPh5f3DXU?ext=png",
       "metadata_hash": "533d92c23cabb2c7cbecfd377a8b84b9f7341b724dba16e3052091f40ee69849",
       "metadata_link": "https://arweave.net/YhZNU_AMBSM40Xf8Mw81svzPY_RFfKwpg-kXyqThdpo",
-      "onChain": true
+      "onChain": false
     },
     "28": {
       "name": "Rejected f00kers #28",
@@ -230,7 +230,7 @@
       "image_link": "https://arweave.net/SgdRFeghxVLumUYm5eQygeQD_BOA9nTwbwpFFW-vQc4?ext=png",
       "metadata_hash": "24f405f3191e83b53a21d2122b83d2069ea5c033290075c28c1714bb8350e1a6",
       "metadata_link": "https://arweave.net/xWnWbeUVN5BfHD-DhYegDKpanXKm3ZeILTEl4Qcu7kg",
-      "onChain": true
+      "onChain": false
     },
     "29": {
       "name": "Rejected f00kers #29",
@@ -238,7 +238,7 @@
       "image_link": "https://arweave.net/PEjaCElXJqeyKvRkmEvJrbvEri2LaFnSn3usnyGUTvc?ext=png",
       "metadata_hash": "524eb4582249e05cd6cfc2ab262a2b73afa79dcc85877febf129995f6ed62e3d",
       "metadata_link": "https://arweave.net/2sCDbmIQ0Eu60V1G3gFhfYSgBcvEtfLXOBfqVAFLHxc",
-      "onChain": true
+      "onChain": false
     },
     "30": {
       "name": "Rejected f00kers #30",
@@ -246,7 +246,7 @@
       "image_link": "https://arweave.net/tIT2jqvbjsInAUW48OAclLc5WmmCjqTkFvabWKWOhxk?ext=png",
       "metadata_hash": "a7e7311d22bfcd130427e5bd7f11dc2d751483631734d9291f7b9ecc3417db20",
       "metadata_link": "https://arweave.net/Si9wWVq_RVqkZrCyVciJBE1arlbAd1AUbWSnqp7V4ew",
-      "onChain": true
+      "onChain": false
     },
     "31": {
       "name": "Rejected f00kers #31",
@@ -254,7 +254,7 @@
       "image_link": "https://arweave.net/og1CadWOeTgMLQbvCJp4qwpmRymRGOVs5_6v_fNDBmc?ext=png",
       "metadata_hash": "af591217b9d989fd2e6d9d9dd53701e468940fd76d7fd2f25b70321bf9f84e1e",
       "metadata_link": "https://arweave.net/itoSSnSvlV50wE1xRhE-xbxQN66EsDMV3IZDkJ-5oaQ",
-      "onChain": true
+      "onChain": false
     },
     "32": {
       "name": "Rejected f00kers #32",
@@ -262,7 +262,7 @@
       "image_link": "https://arweave.net/KMwxAOzNRgVdt4pqPr-TN5_hJP57Hgh-BEcPQ2LMspM?ext=png",
       "metadata_hash": "7de4407d1630a4a8252d820cd12da2bcbf75a11cb4a36564c0041f1954423169",
       "metadata_link": "https://arweave.net/Mflr7VtP9caVpCahliouOMCk4f9NNgSIofewjoytCcc",
-      "onChain": true
+      "onChain": false
     },
     "33": {
       "name": "Rejected f00kers #33",
@@ -270,7 +270,7 @@
       "image_link": "https://arweave.net/TmVi-E1v6i9h_fjNitPMbSGr7RB20iLWBmBDu7MNyic?ext=png",
       "metadata_hash": "2cfcf9d8a409effc0c05f2010f2266cc3f1d8431e826839867f2a459e4bc975f",
       "metadata_link": "https://arweave.net/TLvB-1oOQRLjZGSXW2-IPKxcqv30MK6rHcJanaz_F8g",
-      "onChain": true
+      "onChain": false
     },
     "34": {
       "name": "Rejected f00kers #34",
@@ -278,7 +278,7 @@
       "image_link": "https://arweave.net/HjwpdZ5G9stfKqhIZH4upya0HBa-74hhu8e2tQj0HTk?ext=png",
       "metadata_hash": "8108dff4956a68a95ac2dfff8a13924e4d8cd0a43aa0ea75391bb3b7fc1b6e4f",
       "metadata_link": "https://arweave.net/7PRFte6CeJ0ifua4jmT573l9a97cTWRUrPFXT4YqfZo",
-      "onChain": true
+      "onChain": false
     },
     "35": {
       "name": "Rejected f00kers #35",
@@ -286,7 +286,7 @@
       "image_link": "https://arweave.net/opCkPSRXiD_jQulw6CSGZ_pFNtlJAysAM7aJXpm_ITA?ext=png",
       "metadata_hash": "3401f800ee9a999d1ec2a522a2006be4fa416899b50cc22d65ca0a8e5c42bc34",
       "metadata_link": "https://arweave.net/4uNpgDCJ3ZFRXz-4ywZkwD7d8dHgbwwhgvGX-unP9pU",
-      "onChain": true
+      "onChain": false
     },
     "36": {
       "name": "Rejected f00kers #36",
@@ -294,7 +294,7 @@
       "image_link": "https://arweave.net/xiJ1gIf1lst6e0cUZOdEUVEPy-YG_NwGgE1vl7ogpCA?ext=png",
       "metadata_hash": "68222aec014230314a98fea7d64e947d5edafe5ee5234b8b3505cfcdc1b3c276",
       "metadata_link": "https://arweave.net/E6jLDXHu28YwLnwTRO4ngjX6nuxSD4FL0s2KXFAcALM",
-      "onChain": true
+      "onChain": false
     },
     "37": {
       "name": "Rejected f00kers #37",
@@ -302,7 +302,7 @@
       "image_link": "https://arweave.net/dxCpfrYpY2ukKTP07It36rCIiGoeENsKs3UwkLMaJUU?ext=png",
       "metadata_hash": "52c15f87bb31ad1b54d01c0251f92edb2f590a052c8f341cdece32995ca2d84d",
       "metadata_link": "https://arweave.net/Xf8ScQ1vEox3qWoevVDXkH7LmuzJ3CHda-OJuJ1jwuk",
-      "onChain": true
+      "onChain": false
     },
     "38": {
       "name": "Rejected f00kers #38",
@@ -310,7 +310,7 @@
       "image_link": "https://arweave.net/c4wUFvPA1BBsENQdDgLdHTdUPrbQq977VBp4GyDdTpY?ext=png",
       "metadata_hash": "df64a7ebeb8b025bf42339e233e02bd1c57258e39102b1353273f64aec889f98",
       "metadata_link": "https://arweave.net/BHfORohoiiJONqpdt49AugyXoRgVv7mri_gqPUn0beA",
-      "onChain": true
+      "onChain": false
     },
     "39": {
       "name": "Rejected f00kers #39",
@@ -318,7 +318,7 @@
       "image_link": "https://arweave.net/6hPf_guNQKK7Ia2ybITrbMZjMsedicJXoe2-vdua7EY?ext=png",
       "metadata_hash": "4784641d0e3052701de7d3df9a29064d21e0a1e3fc5eff18e8275160303b1550",
       "metadata_link": "https://arweave.net/zg7qFOScDvVw7fX2rE67PjoZUzo3BqzAM30q59F2Md8",
-      "onChain": true
+      "onChain": false
     },
     "40": {
       "name": "Rejected f00kers #40",
@@ -326,7 +326,7 @@
       "image_link": "https://arweave.net/hcsnkMUfhNGNNiPRt1yLsa9rQnAq5ttnSa4eo79LSyQ?ext=png",
       "metadata_hash": "248d1d18bf3c83966ef1fde24970f3fe2f94a91e04f82103bc137857eed844a0",
       "metadata_link": "https://arweave.net/lzKfkcPUls6_Rmge8rx7ww_H3g96aJRpkgPgYdPUYJ0",
-      "onChain": true
+      "onChain": false
     },
     "41": {
       "name": "Rejected f00kers #41",
@@ -334,7 +334,7 @@
       "image_link": "https://arweave.net/eZ3pJ2kJ6w-0wOO1JxeofRN18nrUv3wTW26AjOUA-NA?ext=png",
       "metadata_hash": "d35515532a0405b11317ad0e2f0f6021d9f3b0db42fd3c94343da927adc305dd",
       "metadata_link": "https://arweave.net/DtVD0yS8R6DOgfYT61WOVq_TZWHPSiAOvDR2s5USLyo",
-      "onChain": true
+      "onChain": false
     },
     "42": {
       "name": "Rejected f00kers #42",
@@ -342,7 +342,7 @@
       "image_link": "https://arweave.net/ga0dXtksIno6d-kHznXru3Ra4ilVbaYpbAsnZsOSpS8?ext=png",
       "metadata_hash": "ade06c1416348f2089699d1425727100a647c87060e6e3cd751d5801849bf461",
       "metadata_link": "https://arweave.net/0Ltvn7y0iz8RLmvHZwNXxE12K_64YsD3nGyrYxcFQz0",
-      "onChain": true
+      "onChain": false
     },
     "43": {
       "name": "Rejected f00kers #43",
@@ -350,7 +350,7 @@
       "image_link": "https://arweave.net/USs58W8ahAyt96F1cAtYSm-hpUyIozjrCX0Rsv6KCfc?ext=png",
       "metadata_hash": "79e673a344c01b2d15f7d83c49bfbb3182f800744ce13a649f016f3ec0245bcf",
       "metadata_link": "https://arweave.net/A16pmG-SFon-YAVBNq7hKAWeUsm-PXTo5nfgImg5BFA",
-      "onChain": true
+      "onChain": false
     },
     "44": {
       "name": "Rejected f00kers #44",
@@ -358,7 +358,7 @@
       "image_link": "https://arweave.net/bEtJUAHpil38WcWuTfvp49xLOMdt5R9JJ6YxZnX9_wI?ext=png",
       "metadata_hash": "172ea299da802bf56b46b903783066f1c28436777918d839d3e6a39e10cda6a4",
       "metadata_link": "https://arweave.net/cNBBf154aeydfeRlB9noFNOHLSpjoDqPRihxkfV3UIE",
-      "onChain": true
+      "onChain": false
     },
     "45": {
       "name": "Rejected f00kers #45",
@@ -366,7 +366,7 @@
       "image_link": "https://arweave.net/oR8Wv7v1TzrNiz90ldgsnnGNda0Qit4nA02jKos7r54?ext=png",
       "metadata_hash": "421392c04a2035dbbc8f4df937062b646684fc7bc33c86f510546772a603fda1",
       "metadata_link": "https://arweave.net/nowJzF5q0W4UrPTXdf-_dy6HTUZjGUw8iRCOhXIa9C8",
-      "onChain": true
+      "onChain": false
     },
     "46": {
       "name": "Rejected f00kers #46",
@@ -374,7 +374,7 @@
       "image_link": "https://arweave.net/Mzv_fRNnQQxi5mb7vquBOLU7hCv04MGScftJy1yrXKM?ext=png",
       "metadata_hash": "1cd5f1b29dff07fa42111c953038ae8c0cd509ae237dd966270ab77f3b117cee",
       "metadata_link": "https://arweave.net/DxalznkSay-B-Q424j8I_7fBe6YdTCxu0BykUfAtxuI",
-      "onChain": true
+      "onChain": false
     },
     "47": {
       "name": "Rejected f00kers #47",
@@ -382,7 +382,7 @@
       "image_link": "https://arweave.net/anpwB2BNhOWeFj9Z0IZPEXAFPMrRTtv11pZ2-aRbEKA?ext=png",
       "metadata_hash": "5de988bdb5e888c5afdd706bf5a47df956313a13eb6fd5e40b5c040561cbb7d8",
       "metadata_link": "https://arweave.net/5ALm63TvHIvGD2EcIke0D5HvGR5SZ2KhZwmjqBycJ5s",
-      "onChain": true
+      "onChain": false
     },
     "48": {
       "name": "Rejected f00kers #48",
@@ -390,7 +390,7 @@
       "image_link": "https://arweave.net/HSqqpqk10M8I4Qwzb3BDT5SpKi4HPiud98Xf40s0wXo?ext=png",
       "metadata_hash": "adb6090cca4fe3d5e7089f74e4d1f378b2d165abefc0a95aa41fb92aad40164c",
       "metadata_link": "https://arweave.net/WukOp3jjMfkoAU3LEUSOMwIvdYH-2hmdEH8b1d9BvOs",
-      "onChain": true
+      "onChain": false
     },
     "49": {
       "name": "Rejected f00kers #49",
@@ -398,7 +398,7 @@
       "image_link": "https://arweave.net/jbk_x_5gHz8yWP9FrWi_eXpVUNG-jLB7lAe8bCjGBb4?ext=png",
       "metadata_hash": "8fbb0a0faa45d4a71233c7155634473f4744a489ba8e84251af900c572ade3ce",
       "metadata_link": "https://arweave.net/6zgnKy23zh0kGTqkEN5l_DfdgfGW5V8sC0mRx_rK_1I",
-      "onChain": true
+      "onChain": false
     },
     "50": {
       "name": "Rejected f00kers #50",
@@ -406,7 +406,7 @@
       "image_link": "https://arweave.net/gHWLGEjoHwqMrPzWPLR8jRKF_1RyWZI3QW6n7lOo0tk?ext=png",
       "metadata_hash": "5cce2e43f6efd83334301fa25cf4e7fec2729a7f0b246e6139d2d16b8af0396f",
       "metadata_link": "https://arweave.net/Y6pXIaydsEolkncPdV9D78yKU-sIVQTXqJJA4qG8P3M",
-      "onChain": true
+      "onChain": false
     },
     "51": {
       "name": "Rejected f00kers #51",
@@ -414,7 +414,7 @@
       "image_link": "https://arweave.net/L0d2oa7CHgnQPu8PFDefLwOmt5HmjtUzxMSyUaEGRNw?ext=png",
       "metadata_hash": "8567af0ad21dfaf9457c5ff2bb0dfe5c027a1b8ce2edb53e250ab9a13b56bc88",
       "metadata_link": "https://arweave.net/AlBu7SCUBu4m1CCgll4y59UHNiI9H7t5KcK5zZN7T74",
-      "onChain": true
+      "onChain": false
     },
     "52": {
       "name": "Rejected f00kers #52",
@@ -422,7 +422,7 @@
       "image_link": "https://arweave.net/7Xj-XaTPKqItlwN2wzZCy8xIOvWA0z5jVSsQ_SfXto0?ext=png",
       "metadata_hash": "0df072d61ba861933409fa98d451443d1cb3691ef6519aff03c2ea7bdd4a488a",
       "metadata_link": "https://arweave.net/VWi_R2qcmXnYrpe2UiqII-mBCFbkDrVhG_t3gm1JDeM",
-      "onChain": true
+      "onChain": false
     },
     "53": {
       "name": "Rejected f00kers #53",
@@ -430,7 +430,7 @@
       "image_link": "https://arweave.net/j02ExgdNikJpiF4LP-Av6-KMg7hLHS654OrBTLfUuME?ext=png",
       "metadata_hash": "edf35973738e0acd5fd34d371b95cf830fde49932f039aa402572646f8e66b4d",
       "metadata_link": "https://arweave.net/d_O1osfRzKSh1Hmo8O5_TBK3REz6nJHOHwcMftSrVnc",
-      "onChain": true
+      "onChain": false
     },
     "54": {
       "name": "Rejected f00kers #54",
@@ -438,7 +438,7 @@
       "image_link": "https://arweave.net/r69MhO18Rs71Mvwdf4l6a99JGalCpZzJWsustmN-Pzs?ext=png",
       "metadata_hash": "026f6d1fa2ff4fa8d3f17abc4e82d3d2ef6bb5143d913a0423abaf2011e1e9f4",
       "metadata_link": "https://arweave.net/Z88GBWVnFe9KSbTArrcuImQ66VCMVx1G4rEMNo22nDU",
-      "onChain": true
+      "onChain": false
     },
     "55": {
       "name": "Rejected f00kers #55",
@@ -446,7 +446,7 @@
       "image_link": "https://arweave.net/xtdLRi55x5yrHhQZkaAWb-ttreLoJZ2cL27WoL4K5Ag?ext=png",
       "metadata_hash": "2142d186a78c25d812b4887cf9f0a89566718c399f7dadb7515a9eb213f2e035",
       "metadata_link": "https://arweave.net/7AfuJoN7HzD4Tpaq98ZS0VJDsKGtF8-4hKBYaqRFf3Y",
-      "onChain": true
+      "onChain": false
     },
     "56": {
       "name": "Rejected f00kers #56",
@@ -454,7 +454,7 @@
       "image_link": "https://arweave.net/1JNbKyJJytkK9l6EfgsDMZ04Zjqz3d_PM3wyUQiNmeQ?ext=png",
       "metadata_hash": "ea0e31a7b42a1af685c311f69a9ee973bba2fca80938424a0d0d2acfe26cf8ba",
       "metadata_link": "https://arweave.net/A7FGY2OVzTX1AGGVTr8H-_gaAeqJNSjOMU3cynywGs0",
-      "onChain": true
+      "onChain": false
     },
     "57": {
       "name": "Rejected f00kers #57",
@@ -462,7 +462,7 @@
       "image_link": "https://arweave.net/kAnwlWlVTgM05O-4hA-2CgX24eeuw4ZR59RO85PgfNo?ext=png",
       "metadata_hash": "f96bd61db7566d136a6f7f8df4246c7e39c1b118c1341e0e8904ba0d61958542",
       "metadata_link": "https://arweave.net/pusxFcLzGK2e88tq0RzpKZDg1QmFMaUIcPvOH2W0b4w",
-      "onChain": true
+      "onChain": false
     },
     "58": {
       "name": "Rejected f00kers #58",
@@ -470,7 +470,7 @@
       "image_link": "https://arweave.net/2ObDXSulFx9mKgHcy4xnPmygQnogOJF1RqOq3xE6pZE?ext=png",
       "metadata_hash": "97dc85dab9dbe820aa07025664eb71ec8ac6a81399803a7626aad60dec78e67c",
       "metadata_link": "https://arweave.net/NKmz1onpymhiO3YlnCFVO5HxhizbI2c8JVlFD_iQTHQ",
-      "onChain": true
+      "onChain": false
     },
     "59": {
       "name": "Rejected f00kers #59",
@@ -478,7 +478,7 @@
       "image_link": "https://arweave.net/eVJBAZsi9ir_JVqIy1qr_FWQLAcCKP5BsOPzLhkbDYE?ext=png",
       "metadata_hash": "5a1c7340d40bdfadd1b45d8eb37b8a821b03f7c503c6e7a375402f2137dfbb5a",
       "metadata_link": "https://arweave.net/0f_2jH6iPAs6MKpOS_42r1U3Vi06wGAdJHtryDLTzpU",
-      "onChain": true
+      "onChain": false
     },
     "60": {
       "name": "Rejected f00kers #60",
@@ -486,7 +486,7 @@
       "image_link": "https://arweave.net/t6zvCSz5E9sS20knTeT9JhqGLt3YL7FNpP7x_OTNfBI?ext=png",
       "metadata_hash": "7e10fa1b7006ace60275f542dbf1c17ae38d38e0a520a7f13340e85de04d5358",
       "metadata_link": "https://arweave.net/-odArOS5vOxs7bVvdI-V2ToOKEMf3DfqjD0WuhM1Cv0",
-      "onChain": true
+      "onChain": false
     },
     "61": {
       "name": "Rejected f00kers #61",
@@ -494,7 +494,7 @@
       "image_link": "https://arweave.net/GA0hQjG8uwMCuZHcPV7tp2TT8_xlMVQWk4gI4L4tiUE?ext=png",
       "metadata_hash": "d64e951bc437b683750078fc8fb10c09fcf081c5000421515ebfada7a137bddf",
       "metadata_link": "https://arweave.net/XbFEvk-INHGzafoTsA-yJ0WVMsclbtf7oLv_hPY6nac",
-      "onChain": true
+      "onChain": false
     },
     "62": {
       "name": "Rejected f00kers #62",
@@ -502,7 +502,7 @@
       "image_link": "https://arweave.net/iX8WOELf5YbNhn7lapg803x6kDOi-iDhaWx7d9LVeJU?ext=png",
       "metadata_hash": "0f43f2fc061285fe93352fe26d1d623da5e55bce969fbd2a01fa33d9ea550417",
       "metadata_link": "https://arweave.net/Lx1greaHliBKWa1L_6EJoyKzKT5OlZUTIAAetuDzMTY",
-      "onChain": true
+      "onChain": false
     },
     "63": {
       "name": "Rejected f00kers #63",
@@ -510,7 +510,7 @@
       "image_link": "https://arweave.net/WJpV0HAanMTeXO5IMr1YILt2aVj8C38Ss-R2SqgKA8U?ext=png",
       "metadata_hash": "3673cf18b52a39939c22357154329346f39e7d605f6ccdbdb52e7fb490ffafeb",
       "metadata_link": "https://arweave.net/PBYDcSpP-UuFlRmyqFD3CBFCk5BEi5CHp6d-C9esVNk",
-      "onChain": true
+      "onChain": false
     },
     "64": {
       "name": "Rejected f00kers #64",
@@ -518,7 +518,7 @@
       "image_link": "https://arweave.net/ahEWyq8VgYFDb3olMQpUky3fHweFfNJuuzvQa-oXc18?ext=png",
       "metadata_hash": "dd3a56ec5b96764bf2fa0f0b43bd0aa4de80738221321b10b8914b4dbac776e8",
       "metadata_link": "https://arweave.net/B3vEI8TO17kpBJwz2zFVAbjCHQ4jtUKgQAzN9JepYK8",
-      "onChain": true
+      "onChain": false
     },
     "65": {
       "name": "Rejected f00kers #65",
@@ -526,7 +526,7 @@
       "image_link": "https://arweave.net/LZSiaKDrSbQ0HjTL9KsVTveRWhN2MEZ8wTpKP7KW0s0?ext=png",
       "metadata_hash": "c2279f641dafc2fdf8694941e3d1604fefb66d164ee4cdc699edd7bb60503e2b",
       "metadata_link": "https://arweave.net/IxyFwNu6POIMEZMmDW7QuGWxVy38Toe2xhXoPC3tMyY",
-      "onChain": true
+      "onChain": false
     },
     "66": {
       "name": "Rejected f00kers #66",
@@ -534,7 +534,7 @@
       "image_link": "https://arweave.net/Jzbi9QS2DgIF7Fx-LFhI634Ulf46OEsPC7mPkd29ass?ext=png",
       "metadata_hash": "2d2b3631d6163d0065cdaef9c6c664856df951c410aaf1319312767cdf2b0d8e",
       "metadata_link": "https://arweave.net/am6Z6jNPVw0pqgsngqZKH3MITant9pkein40StpercY",
-      "onChain": true
+      "onChain": false
     },
     "67": {
       "name": "Rejected f00kers #67",
@@ -542,7 +542,7 @@
       "image_link": "https://arweave.net/tJ7OT46DhrC416b34ZI3LzwA0VLWf_tjAFXLQNRTDRU?ext=png",
       "metadata_hash": "b3972260e018f7289331908f40ba7f03b2b71dc2b11f23c0dcae60198ae0f37a",
       "metadata_link": "https://arweave.net/wHyYpbmsDnm6FvEjASTL2Tj0VKRezuP3gpGLvJo3giQ",
-      "onChain": true
+      "onChain": false
     },
     "68": {
       "name": "Rejected f00kers #68",
@@ -550,7 +550,7 @@
       "image_link": "https://arweave.net/IrGyS5Tji1wF74ecx2cZq7ElzJ0e6b0Ex5KyopRbp7E?ext=png",
       "metadata_hash": "dfe3c87951e3f7ebeb3a065d9a8e52d25da069f76827167900c869c3f4d2343f",
       "metadata_link": "https://arweave.net/jex7qSXv3UhwPZYmKrKe4KOZFeSNIyGNWMwKFaA9BuA",
-      "onChain": true
+      "onChain": false
     },
     "69": {
       "name": "Rejected f00kers #69",
@@ -558,7 +558,7 @@
       "image_link": "https://arweave.net/XMxyBZULIz6q5pDpPuQ0kl3zaZxugIteXaTacR8KX6c?ext=png",
       "metadata_hash": "01da07a869f1cc807ad2ad9cb1289c4635e7488aa63e8bd6bc301b6f613a81bc",
       "metadata_link": "https://arweave.net/62_JsShwLm-5rKegFknDHsE7LYZUVSl88uo-uI_ejNE",
-      "onChain": true
+      "onChain": false
     },
     "70": {
       "name": "Rejected f00kers #70",
@@ -566,7 +566,7 @@
       "image_link": "https://arweave.net/xQyfcnSspKW7depF4ezZLoVM6EKBMICTE3HrcLU3n0E?ext=png",
       "metadata_hash": "908b0fb17079fbad00bc1bdb2e57ab37cbe74555ea5c867a05fb1b777e4425cf",
       "metadata_link": "https://arweave.net/2H0YkVzCNJSQHpHl26ybgIeLU7XeqO-PR2KNwBZd6kU",
-      "onChain": true
+      "onChain": false
     },
     "71": {
       "name": "Rejected f00kers #71",
@@ -574,7 +574,7 @@
       "image_link": "https://arweave.net/tXOkfRbr0CT__jvM0HAGwM5O2--qsm2SjeT7FdHLxk8?ext=png",
       "metadata_hash": "5b18c0f7a6386949ed43a4545e5d50131879e737334665fdbd1c06cce1dfda24",
       "metadata_link": "https://arweave.net/QVum6ar1Urt_DkfiMp4uoRz8r0MNimqywYfLnhpzJQU",
-      "onChain": true
+      "onChain": false
     },
     "72": {
       "name": "Rejected f00kers #72",
@@ -582,7 +582,7 @@
       "image_link": "https://arweave.net/APYXvf09ciHsgH0qlOVFkujHHNLZ72xDO9W6VGOm9O0?ext=png",
       "metadata_hash": "41251b1e13345fcb378308ecacab03d950fc6f10f3a82d2122ec6f0f2fa947cd",
       "metadata_link": "https://arweave.net/_SBhj1UsXcyBZqvOm2xg3-yhkYWLJmwkmtC4trClXXs",
-      "onChain": true
+      "onChain": false
     },
     "73": {
       "name": "Rejected f00kers #73",
@@ -590,7 +590,7 @@
       "image_link": "https://arweave.net/F8HoTeR9ngG2HsOV3Z9U3XJzLEC_fSoRVHjAWuL1IP8?ext=png",
       "metadata_hash": "fb60a651acfdf55e6b686e9537d287c7949d8af4ded49cc846e4b6fe6db57524",
       "metadata_link": "https://arweave.net/soEnW1Q84P4PaYTCOULKsyR3H85J1RC9zWSlz0XXci0",
-      "onChain": true
+      "onChain": false
     },
     "74": {
       "name": "Rejected f00kers #74",
@@ -598,7 +598,7 @@
       "image_link": "https://arweave.net/3liU4lE9KwpBeCpLWKJ-1vwHp-D2JGYz9d8QP5ia-4c?ext=png",
       "metadata_hash": "9e21b7fb7a8d71d3324bf44e0458695571d666c7b837140cbf2e2610582612e2",
       "metadata_link": "https://arweave.net/RrpCTirDSW5RSRwZRGY7aUe3xk0VeOmr5CwK3HKiMTA",
-      "onChain": true
+      "onChain": false
     },
     "75": {
       "name": "Rejected f00kers #75",
@@ -606,7 +606,7 @@
       "image_link": "https://arweave.net/MzWEo0FR4HTbbuzf6mqJ-SEqi8UXATMkZ0cBNh9MQMI?ext=png",
       "metadata_hash": "64ebc1ab85e3ef43e5314d41aa396865fb93f01b34b297cd85336240f4166163",
       "metadata_link": "https://arweave.net/tXhXF8mrZAgRNnEyf_WgKldjbN3hRD1Lg6v2gwsnaT4",
-      "onChain": true
+      "onChain": false
     },
     "76": {
       "name": "Rejected f00kers #76",
@@ -614,7 +614,7 @@
       "image_link": "https://arweave.net/da0AaAeZv7RFe0m8u-jk_udpQWmY8GsEg9T5IVYIQ10?ext=png",
       "metadata_hash": "cf08a8403dce992dcfa78757d5335c9b17c10254c0da1aaf851efc4872ace1fe",
       "metadata_link": "https://arweave.net/LlnAy5pP-zsMoSphHpEgaCT5CTX46b2Dm_7b7kXqIDo",
-      "onChain": true
+      "onChain": false
     },
     "77": {
       "name": "Rejected f00kers #77",
@@ -622,7 +622,7 @@
       "image_link": "https://arweave.net/xxAbd6WTRwJmYQJ5X5crQVJ2mWfISpFaohA6UGJLlgY?ext=png",
       "metadata_hash": "1ad0fa726c93840e996ebe476e71afe948b0d18f9183c800584a3f35ac9a0861",
       "metadata_link": "https://arweave.net/pSNDzYt6bYScnxF-TqrO_oR6gpj-co2cKc8l74J36uo",
-      "onChain": true
+      "onChain": false
     },
     "78": {
       "name": "Rejected f00kers #78",
@@ -630,7 +630,7 @@
       "image_link": "https://arweave.net/Z-ND1x_P5DTrWUUNPprMC-FkKGLm32bQEUc77Ml1G5A?ext=png",
       "metadata_hash": "56cdeb590195bbf455a1638ff5547244ab7d12711ba583e7879d645e8971a16c",
       "metadata_link": "https://arweave.net/CgicPcQ72hpJE03R_70omtbVteNEG5qmG82Hfk0S9_U",
-      "onChain": true
+      "onChain": false
     },
     "79": {
       "name": "Rejected f00kers #79",
@@ -638,7 +638,7 @@
       "image_link": "https://arweave.net/pxRYXh9D1X8RKMUVHv8IflqSJdggYy9S6818uejluy0?ext=png",
       "metadata_hash": "22ee7ae8b27235cfa9181b2f860598ea8472facf05a0f9a15920f73bedece13e",
       "metadata_link": "https://arweave.net/1NTCI988chs9P_H5D-No6mFib558hzb63pz6MSzuZ28",
-      "onChain": true
+      "onChain": false
     },
     "80": {
       "name": "Rejected f00kers #80",
@@ -646,7 +646,7 @@
       "image_link": "https://arweave.net/_9P_UPJ03VtQsQ0EXPP7e-vf7bS0cH-t4hupWui3hK8?ext=png",
       "metadata_hash": "929d5baaccb4c2a3e4b2ea7c9369f627fa192221932df9b096daa40413a6781a",
       "metadata_link": "https://arweave.net/_4PMJrcZpCmCOFDygU2rnOxQCknFLf658vNSWUbIH8o",
-      "onChain": true
+      "onChain": false
     },
     "81": {
       "name": "Rejected f00kers #81",
@@ -654,7 +654,7 @@
       "image_link": "https://arweave.net/G4unOvKwd5EweAfqudyKe_QjE-3RqhS20S6OkwUq6XM?ext=png",
       "metadata_hash": "62bc46a87980c8e97cd3aa0c470cf777ccb8475686e0b2f34e5e4b0231df88e4",
       "metadata_link": "https://arweave.net/c1sGLiFySzPy8WxGh_swaAVv75eVG9d1Z_YAz8SWe5w",
-      "onChain": true
+      "onChain": false
     },
     "82": {
       "name": "Rejected f00kers #82",
@@ -662,7 +662,7 @@
       "image_link": "https://arweave.net/oy_vNmWPAn9gTi1n81ipx-KWzAK8JlMMN9jA5vcEkiw?ext=png",
       "metadata_hash": "148e1e63f39d04442c0d36a004ce57e9fdd5a5d7dd68b12a93f84bbdecfcd574",
       "metadata_link": "https://arweave.net/PAkgoWEaKtc-bHCFstiMlh1sve-yJzEYZIw0copMwDo",
-      "onChain": true
+      "onChain": false
     },
     "83": {
       "name": "Rejected f00kers #83",
@@ -670,7 +670,7 @@
       "image_link": "https://arweave.net/Ed2rAHJAswYda-T6Nrxq2xZMDHLw_Y1Pp-iE5APmvDw?ext=png",
       "metadata_hash": "7b017de2e1ee1e7e5d63b455ef91873490107e0cdb75f780800d96387ea3036c",
       "metadata_link": "https://arweave.net/8oHmiqnmja0olrPKO94JRNuzlmo6fCuGMnwhBme1ZLs",
-      "onChain": true
+      "onChain": false
     },
     "84": {
       "name": "Rejected f00kers #84",
@@ -678,7 +678,7 @@
       "image_link": "https://arweave.net/Nnf640fudzUzxZTfuPE4lQUpQtqja8r0Ml7C_4wxYtQ?ext=png",
       "metadata_hash": "876d99409aa6910565240538537921ac1a0e05dc9753e52103f08738bc0586ce",
       "metadata_link": "https://arweave.net/T1ajCkbKODF2zZFle0RD2fnHywfTpXPPc9wVnC_-Hto",
-      "onChain": true
+      "onChain": false
     },
     "85": {
       "name": "Rejected f00kers #85",
@@ -686,7 +686,7 @@
       "image_link": "https://arweave.net/z1WJUe9I-2PAzPdgW2QhBGtkU1EXKXpVxoQPpqu0Hjg?ext=png",
       "metadata_hash": "9533c218b7bcd4af7d62f5d794802afff4987e80d1d1d45553a1c5f63a9010ff",
       "metadata_link": "https://arweave.net/ue3zaxV3I4cJ6OqtqSuoIQG-d988NT_XWQbR9oSDPjY",
-      "onChain": true
+      "onChain": false
     },
     "86": {
       "name": "Rejected f00kers #86",
@@ -694,7 +694,7 @@
       "image_link": "https://arweave.net/SXWuy0Oyz3riD4vao9DwJZmpCkVH34tjquaogvD3RwU?ext=png",
       "metadata_hash": "96a183327c5d03cfc4a89b33345a57ea784ee4d0113ddcb03e5ed988b05ac564",
       "metadata_link": "https://arweave.net/0SidQDUBjEpuiC9ZE_UKzWHDdPxGo4kRJz1aYtG2aKA",
-      "onChain": true
+      "onChain": false
     },
     "87": {
       "name": "Rejected f00kers #87",
@@ -702,7 +702,7 @@
       "image_link": "https://arweave.net/d1vSn_03-0O_EupjT0nb-qVzQmV0PFU0acjtccAojHs?ext=png",
       "metadata_hash": "6e16230c3f46176b06fe3ee71f47f3116adefc87c5eecaa243862f3c86cef823",
       "metadata_link": "https://arweave.net/XKJjuW1aSDImA38bRc2OX1CqEsRTJwhxc_XmBakDrjA",
-      "onChain": true
+      "onChain": false
     },
     "88": {
       "name": "Rejected f00kers #88",
@@ -710,7 +710,7 @@
       "image_link": "https://arweave.net/X67lR4us0zvvHuYu2zsFv5WZNDarqSuQed7kNn63DHo?ext=png",
       "metadata_hash": "66b6c1faf8bda470d7d174e5f13e51cba01553fa3fe41301d7e63481a3eeb3d0",
       "metadata_link": "https://arweave.net/fWWnkgtdJ91A67u8Mc1Spd1GSvhAWE_OF8Kfq3Grkz4",
-      "onChain": true
+      "onChain": false
     },
     "89": {
       "name": "Rejected f00kers #89",
@@ -718,7 +718,7 @@
       "image_link": "https://arweave.net/ihWdSN-wlRW-swCyQU1p7B5pmKyWPzVm4VjcYO3hygQ?ext=png",
       "metadata_hash": "d3b02dc2fb0ae9a94fedd57045291f335f4e113567f37f41489204a16545c56d",
       "metadata_link": "https://arweave.net/_GrpJlj9Q2V6PlH625NEQiXerm-7PznoH6i-eedWU_0",
-      "onChain": true
+      "onChain": false
     },
     "90": {
       "name": "Rejected f00kers #90",
@@ -726,7 +726,7 @@
       "image_link": "https://arweave.net/mS1p4JKqI10rpq0rEjmOdIAuFI_rYRNa0-_Q274ujLE?ext=png",
       "metadata_hash": "ff0d24064cfb2eab6e480da35aa6128c3565f53c3ddc5d981c042180af04dc5d",
       "metadata_link": "https://arweave.net/KXEnMC0j7zwIpK1K4T7Lpkfx_0121yPQeeb6kM2Bv0s",
-      "onChain": true
+      "onChain": false
     },
     "91": {
       "name": "Rejected f00kers #91",
@@ -734,7 +734,7 @@
       "image_link": "https://arweave.net/DwLNa9PjyAKl2WG_v3MUIB63IEXED4v4_iCxFKUwfo0?ext=png",
       "metadata_hash": "972d9b40779fd28b5727e83fbcd94d006713397889278deecce656f43e872612",
       "metadata_link": "https://arweave.net/oQGO6gCpnTciY3i-T6Tz9GkNdufbsz4jq6gQxSxnaVU",
-      "onChain": true
+      "onChain": false
     },
     "92": {
       "name": "Rejected f00kers #92",
@@ -742,7 +742,7 @@
       "image_link": "https://arweave.net/JjInQKEHusfhgpRU70UtMQLIlIkfdt8iDZUQ3_fLwoc?ext=png",
       "metadata_hash": "765bef16417f046f463dd2968b63a334eb9047b6f3250f8c54c2905f8e03c9ed",
       "metadata_link": "https://arweave.net/oxcj7R5nafvlwyDoebcmRJ6fbgGP649rvP30A1peLxs",
-      "onChain": true
+      "onChain": false
     },
     "93": {
       "name": "Rejected f00kers #93",
@@ -750,7 +750,7 @@
       "image_link": "https://arweave.net/TLBTJm6oT2JjzfRZsxUpDmThJ187obeVr45bVAJBNZM?ext=png",
       "metadata_hash": "375bdc67468470b71457c9d7a58af33c9319addceb4fe5846170edc52fe0c0aa",
       "metadata_link": "https://arweave.net/UI3PPMnGFeGwH4iFDLGv49CoOJc5lAhf3xbm67w9gOo",
-      "onChain": true
+      "onChain": false
     },
     "94": {
       "name": "Rejected f00kers #94",
@@ -758,7 +758,7 @@
       "image_link": "https://arweave.net/JpWU-H0LBr_k8cDtBVxdhxyrjfuz4wDe-xl7yCf0qGc?ext=png",
       "metadata_hash": "9bbbe91bde7788a7ddf751578f06374e34e6b1a4700629d0366b052f7e0a413e",
       "metadata_link": "https://arweave.net/FDZJs-vYkjOeIG5_MGUKnpZKzTrctPQcuK_IVthX_sU",
-      "onChain": true
+      "onChain": false
     },
     "95": {
       "name": "Rejected f00kers #95",
@@ -766,7 +766,7 @@
       "image_link": "https://arweave.net/SEFX2CLdZRHX1cHeUaVjIPmG-AiEt9rm3baFzDlohDc?ext=png",
       "metadata_hash": "f17168c8f83058c8207f7938a0eec2dde03cc0a16d53e4303fe3ba288e752d71",
       "metadata_link": "https://arweave.net/MLZ7Sh8j4LkC6NejF67YIOLumHqG5e_4xhLLROJ49SU",
-      "onChain": true
+      "onChain": false
     },
     "96": {
       "name": "Rejected f00kers #96",
@@ -774,7 +774,7 @@
       "image_link": "https://arweave.net/QvXTM2Jwg-L2eL-kbv_LDw68stP_p-5YiQgYZt4XPHE?ext=png",
       "metadata_hash": "be1637b5dea36b2a1b63da86cdcded555746e984e7c2e1bcac1af72142a9a95d",
       "metadata_link": "https://arweave.net/evetrb51RnnhNbWET4iwvPp33MyY5mWksurUxHf3o3I",
-      "onChain": true
+      "onChain": false
     },
     "97": {
       "name": "Rejected f00kers #97",
@@ -782,7 +782,7 @@
       "image_link": "https://arweave.net/GxKoB0UV_X40TKrfRXi-WOPNPZDso9BShnV_9M82ffs?ext=png",
       "metadata_hash": "437d005beea2594b90a609979d23bf2ab46cb610dcaac6a330afee80e84bdad9",
       "metadata_link": "https://arweave.net/KAMXqAbCBTlhXLik9H8LeKqqrDfGQJKbImX9MaL2q7s",
-      "onChain": true
+      "onChain": false
     },
     "98": {
       "name": "Rejected f00kers #98",
@@ -790,7 +790,7 @@
       "image_link": "https://arweave.net/CQgSF89Gm8VudlMD_ycGpg4m2R4U3BH0Ur05JWxoY9I?ext=png",
       "metadata_hash": "278d78dec15391561d84ec6aad3a38b1abec7db8681d6eea33a2dc37a4fc7a29",
       "metadata_link": "https://arweave.net/TGC45LOSTV6zSoH7OGJalNfUNX1-A8NnKyrK7vUf4lQ",
-      "onChain": true
+      "onChain": false
     },
     "99": {
       "name": "Rejected f00kers #99",
@@ -798,7 +798,7 @@
       "image_link": "https://arweave.net/qzm5c-j8M2dgCDYHGQ9JQRkYnIx7pqiqc2V7dWo6A5I?ext=png",
       "metadata_hash": "f33a91b6cd0797360150d0962543209eb68d345c6bee2960b223ea7af75170a8",
       "metadata_link": "https://arweave.net/HHbSxJpCYT6QkataQctub7PC3mk_u1D5y3VFGwTpEYU",
-      "onChain": true
+      "onChain": false
     },
     "100": {
       "name": "Rejected f00kers #100",
@@ -806,7 +806,7 @@
       "image_link": "https://arweave.net/PsNXtYN_XPHqJx2GWGeMILmrJGQiya9tPteb-5cVnMc?ext=png",
       "metadata_hash": "3816c158e1eb5d13036ffe7de1e0a2fb3a4f0da94a3ef59ddb3ae2e7002659a5",
       "metadata_link": "https://arweave.net/rAfimOuikrihJuVhkHUbS6YOo3o-m2fKcSJxk-Zygyc",
-      "onChain": true
+      "onChain": false
     },
     "101": {
       "name": "Rejected f00kers #101",
@@ -814,7 +814,7 @@
       "image_link": "https://arweave.net/tHHy8QRu1DP6FKdCfWpT3MEKfm-DzcbIVKK66CyErFA?ext=png",
       "metadata_hash": "7c223e3aad78277be40f2614b4e95cdbe8f1d2b5ea3702c3dae40cce7abae372",
       "metadata_link": "https://arweave.net/9XhaOt7KfFIfZf3V2wrybVRZMZcGAB5Goe2gd_AjpWg",
-      "onChain": true
+      "onChain": false
     },
     "102": {
       "name": "Rejected f00kers #102",
@@ -822,7 +822,7 @@
       "image_link": "https://arweave.net/TWGzoxdFVbv-NwSkz5aaLYkScxzFCEUi_RG6781zQJA?ext=png",
       "metadata_hash": "fa8b8f337524d1c5d4bfd3281faa60ee2d69f50b1e9655a60e50fc6f346c6b81",
       "metadata_link": "https://arweave.net/tTr-RGP2uRnZl3UlMrHIeNRseYukk9BCg7gB5VyrNus",
-      "onChain": true
+      "onChain": false
     },
     "103": {
       "name": "Rejected f00kers #103",
@@ -830,7 +830,7 @@
       "image_link": "https://arweave.net/enkf7_di6wtrkSC524Uc1dRzM7p3CUszeeE6KUVPFpk?ext=png",
       "metadata_hash": "959cbea0e9491cd6cc47d187f8a750ef1ef5c1b2c96c54cfe53e7394b60168e4",
       "metadata_link": "https://arweave.net/pRADu14-2qFCfHcOl88N27YMNnLb12YmW9-H8gTrLK8",
-      "onChain": true
+      "onChain": false
     },
     "104": {
       "name": "Rejected f00kers #104",
@@ -838,7 +838,7 @@
       "image_link": "https://arweave.net/gzW1yf8DnO2uBQaiwll3IWiF8nqUczJU05eM0WGcf28?ext=png",
       "metadata_hash": "5fe7ccee7353817e354ca3c530dec2dfc01fbc5dd917f8ee502f8559ae5def50",
       "metadata_link": "https://arweave.net/j7SgKxHgkmRqpcta64jPS4QdwInQbbeJY_iAL-E2Obg",
-      "onChain": true
+      "onChain": false
     },
     "105": {
       "name": "Rejected f00kers #105",
@@ -846,7 +846,7 @@
       "image_link": "https://arweave.net/2AVtCVggXWPx8srW8hRENMdNzEY0QCouz4m2VaFaKo4?ext=png",
       "metadata_hash": "2266232ac2243286f489803f1532c26b881629be4a3a721b0728d8115b8a537b",
       "metadata_link": "https://arweave.net/lHWvDzrKhzJqKbNNlhfTH6lBiB3iDidnO3--aHiksBM",
-      "onChain": true
+      "onChain": false
     },
     "106": {
       "name": "Rejected f00kers #106",
@@ -854,7 +854,7 @@
       "image_link": "https://arweave.net/gJW1ntDsbr7PrK9MOdwAePSUHI0jRQlnGLSq8s5WFx0?ext=png",
       "metadata_hash": "5449e993558a3ac0b16709200ededa108abd8e3bedf3f778dc0d23ed463c71b3",
       "metadata_link": "https://arweave.net/V6M3IQCWv8gAG80GnEL-2vXuYykztscUG_i_4USJN2c",
-      "onChain": true
+      "onChain": false
     },
     "107": {
       "name": "Rejected f00kers #107",
@@ -862,7 +862,7 @@
       "image_link": "https://arweave.net/__AMMrmN9FLaS0VQW6YaYG_M5R-TjeW_l8yvx0L5lrY?ext=png",
       "metadata_hash": "dc9d7ac0ad72109d0e09de7ed467587e49635bfa95f533ab868e3a9ad3dc5690",
       "metadata_link": "https://arweave.net/x60Y6Wpuiq5tT-8jIx2pCA4Licyd1X_4qP7nXI5tmY8",
-      "onChain": true
+      "onChain": false
     },
     "108": {
       "name": "Rejected f00kers #108",
@@ -870,7 +870,7 @@
       "image_link": "https://arweave.net/d2LhDG89FsIPVx4QGIdxuAmHG5IxrffqvI3JBCCySB8?ext=png",
       "metadata_hash": "83517e942cae86157794b7e236123fe85d3f896ef61496cb1cc0f2fd6ae1dc01",
       "metadata_link": "https://arweave.net/3ljc01vDQYXd8aWKAKcZi5prQy35veCyeiZUzdbKHsQ",
-      "onChain": true
+      "onChain": false
     },
     "109": {
       "name": "Rejected f00kers #109",
@@ -878,7 +878,7 @@
       "image_link": "https://arweave.net/yCz-tuEpmciljlfHNpRppG-uPIWbTr7VAmYOhE4Zca4?ext=png",
       "metadata_hash": "c2b9ca5e43ebf5486ecbbaff5b3353b501748bf5c2d5b7e9eb9fa8306a61471a",
       "metadata_link": "https://arweave.net/ivzYJz3q_S5Pk-5kMmi5U4KPyA13h2Pw64pWW5IK07Q",
-      "onChain": true
+      "onChain": false
     },
     "110": {
       "name": "Rejected f00kers #110",
@@ -886,7 +886,7 @@
       "image_link": "https://arweave.net/exdLtDKtUbm-xIZ5xVtLOgI0J-YjzjN8vt3LrGFeIkg?ext=png",
       "metadata_hash": "724c8acee2f29ced1e7a75f74945895c669e6730caaf2e53be74a4e5add0384f",
       "metadata_link": "https://arweave.net/iLSZzJuVk41eV5LAWedBsBwRKYXpp0r_RiPt5p4sYKI",
-      "onChain": true
+      "onChain": false
     },
     "111": {
       "name": "Rejected f00kers #111",
@@ -894,7 +894,7 @@
       "image_link": "https://arweave.net/Zl7wFDifhAj3Jto-hPgMkmbbBmbDPn3KgIB4bKKgNzU?ext=png",
       "metadata_hash": "58d8df93c5c95f1c221fecbf3a70b5c5ab7497499900adb665f26f43d01e8dfb",
       "metadata_link": "https://arweave.net/2of5MDDDGl3bVoyeyjtZvwtIZ-4ZGP_ajSLRQKJfSfA",
-      "onChain": true
+      "onChain": false
     },
     "112": {
       "name": "Rejected f00kers #112",
@@ -902,7 +902,7 @@
       "image_link": "https://arweave.net/gBFiWgHNf_EvaLCTjC2GRp8YnbkAVOcJFjrhcGUZxd8?ext=png",
       "metadata_hash": "db78ca89b095a4f8003a4b47191da18da0304a2b7cd053145d29743946a1ffa9",
       "metadata_link": "https://arweave.net/CLGYoJBejxlrXI8exPz7-h6IyVr0cpqfIEcdMTXPyAE",
-      "onChain": true
+      "onChain": false
     },
     "113": {
       "name": "Rejected f00kers #113",
@@ -910,7 +910,7 @@
       "image_link": "https://arweave.net/ls4UnOKiCbJsZkoCupYxk__cPqkIEwhLTkjmJ2M7ASw?ext=png",
       "metadata_hash": "92b976169362382f134b5802b765153523fa0ff5c9c1df03c5c147d3a007d046",
       "metadata_link": "https://arweave.net/ZZ_7j_VeZGPNT2IKUbIHZSUiMqBOEci_wsmStDWOykA",
-      "onChain": true
+      "onChain": false
     },
     "114": {
       "name": "Rejected f00kers #114",
@@ -918,7 +918,7 @@
       "image_link": "https://arweave.net/aWmub-Sj5TMvXNUFhLFy7lZazjdsymTZ4gS4Nc6CLx8?ext=png",
       "metadata_hash": "ddf8b0f99b5eb9f5c74d7633ab935d784c2b963ec0774d29c32118ed788feaec",
       "metadata_link": "https://arweave.net/VLkB615-6WRhkfCSiV5dPaiYUBNpszkQ7KEzq28jpUY",
-      "onChain": true
+      "onChain": false
     },
     "115": {
       "name": "Rejected f00kers #115",
@@ -926,7 +926,7 @@
       "image_link": "https://arweave.net/eZ7LpWTtsSbHPFcs0ycX1ZKqUfc18UGnxGvyfB0qDiQ?ext=png",
       "metadata_hash": "db1f98e758e221489d9d0ebf1b91317cecb20e5afb787861d86ba3f7a9233f29",
       "metadata_link": "https://arweave.net/n83PQJxnJbEGOZU7MqSX9GguUxHGoW5l85PkBeXkxXk",
-      "onChain": true
+      "onChain": false
     },
     "116": {
       "name": "Rejected f00kers #116",
@@ -934,7 +934,7 @@
       "image_link": "https://arweave.net/OCKuovI9YF08BsmqoYGsA-ljPONRJdBd7HOfTk-zvW4?ext=png",
       "metadata_hash": "efb99a988ffb86f96de09c32c4f7b0469f01fbacd4ceff9f6a9ba15dd4498602",
       "metadata_link": "https://arweave.net/LfrnrHwRN7MEBacZr8v1GUZz8MTzGD5hS8wlx0gkd6U",
-      "onChain": true
+      "onChain": false
     },
     "117": {
       "name": "Rejected f00kers #117",
@@ -942,7 +942,7 @@
       "image_link": "https://arweave.net/mnhPkk3Q3DDKk4BOhK9eQu_4BcRJbKE2gKvSe0Rcdcw?ext=png",
       "metadata_hash": "b3570405e330870fe1aba850cdd5a5c913f99da6de5404dff943db2a983cc670",
       "metadata_link": "https://arweave.net/s1b8R_zy-oOUA7Vy43bs8lAmdY8Q35BcUpr3NLU5fHo",
-      "onChain": true
+      "onChain": false
     },
     "118": {
       "name": "Rejected f00kers #118",
@@ -950,7 +950,7 @@
       "image_link": "https://arweave.net/GOBGje30BBMcyoQwROwGcujLjdQexayCPSPqsHCBQ3o?ext=png",
       "metadata_hash": "574ed2e6eef37ae28668aa2803c88e422ee2197908fc6116dacd6d128183fd57",
       "metadata_link": "https://arweave.net/vLbCpaP9AORkkz2KsJmjvtUCHGVjAjZMhqEBiwMkPVc",
-      "onChain": true
+      "onChain": false
     },
     "119": {
       "name": "Rejected f00kers #119",
@@ -958,7 +958,7 @@
       "image_link": "https://arweave.net/F1Pm23GPGbNTNe_aXIO8PLMj9JZrdQ4nt0TWRSSZtIM?ext=png",
       "metadata_hash": "1f8fc7e495502e64f828b5edab0a46c63197369d87307010681df2e0aac6bef6",
       "metadata_link": "https://arweave.net/LE9D4WlJWWYCqMQeyMm5JxEj3GDDam4qaBXsEDnHvNE",
-      "onChain": true
+      "onChain": false
     },
     "120": {
       "name": "Rejected f00kers #120",
@@ -966,7 +966,7 @@
       "image_link": "https://arweave.net/2XSQmuxRUYoyaS7CzjDzCv4OTUAJc3cANkFla0htsJk?ext=png",
       "metadata_hash": "a1f8a310beef3c7fbf0c739c52fa991f360b16626014df8b1424b6ce471bdb6e",
       "metadata_link": "https://arweave.net/dWlfpKySsXje5nTFdcceXUjZWSjSB2KS2IXeBuGqc3A",
-      "onChain": true
+      "onChain": false
     },
     "121": {
       "name": "Rejected f00kers #121",
@@ -974,7 +974,7 @@
       "image_link": "https://arweave.net/Fdq4S44BLaBgat-eWswU996XkXJ6oISqxx8I_5bJfRI?ext=png",
       "metadata_hash": "4061d2fcfa2b96309399c551c0432bdcf68c74cab02caf686178c9e26568d884",
       "metadata_link": "https://arweave.net/ClXmP-R1sXQnqmPLb5_NldaiG64Y4_pJVUoD0KktZl4",
-      "onChain": true
+      "onChain": false
     },
     "122": {
       "name": "Rejected f00kers #122",
@@ -982,7 +982,7 @@
       "image_link": "https://arweave.net/BCftqZ-nbweS3VdERDcQB-X0cM_0wH2QSvys6ccAJG0?ext=png",
       "metadata_hash": "851da9b3dd8ce28379dcfdd7833595bd24cd8070a2e19344d62134c30ab9d108",
       "metadata_link": "https://arweave.net/mEIXlrCQ5SJDaDlB9mQ66tDxCjXvVQVnxmh0e6IhIBc",
-      "onChain": true
+      "onChain": false
     },
     "123": {
       "name": "Rejected f00kers #123",
@@ -990,7 +990,7 @@
       "image_link": "https://arweave.net/OQtNbSaIN2BPz8d36SZoow0JFYwEbIr2G5n19TxF4GE?ext=png",
       "metadata_hash": "b01acd442be8d0cbe67f2688699543a3294a3090c7629c3311997bd5ab142052",
       "metadata_link": "https://arweave.net/z3qlysMacJHfIsRv4F9DPYuyIP0HVbx7zh5cNA_JSJw",
-      "onChain": true
+      "onChain": false
     },
     "124": {
       "name": "Rejected f00kers #124",
@@ -998,7 +998,7 @@
       "image_link": "https://arweave.net/h44M4t3YNANL0Uk-sP3hGkKXhH-DKWmcLUhCywGc1Ck?ext=png",
       "metadata_hash": "1461d9e5cd559c2203191e67acebbbeb80504df3c976ffb8e1b9dd8f7c9f11fd",
       "metadata_link": "https://arweave.net/OPf3v3A95OTC1B2NH_bbzSRJut-APY_UsLKQiiCFULA",
-      "onChain": true
+      "onChain": false
     },
     "125": {
       "name": "Rejected f00kers #125",
@@ -1006,7 +1006,7 @@
       "image_link": "https://arweave.net/w5e4Mq8XXFs-LvWgsDdHwME29b_LLy1CnrGeV_oB-aw?ext=png",
       "metadata_hash": "fa5309ea290fb8dd68f05b2314eb86a460e16421aec34639668b228ae811af90",
       "metadata_link": "https://arweave.net/md6oEHzc5LcxjvkPAT76ZcG3gepg2npiC0M5AwiHxPM",
-      "onChain": true
+      "onChain": false
     },
     "126": {
       "name": "Rejected f00kers #126",
@@ -1014,7 +1014,7 @@
       "image_link": "https://arweave.net/q4pWhuenkfEYlyR6bXpAZqXkoonRKKonwCFphGy7gnY?ext=png",
       "metadata_hash": "e5ef5c56d532620a94393a54259d2f1ee729ea8a5c92653b83911d131580d0a1",
       "metadata_link": "https://arweave.net/gpXIcleRPVcEd9rMF7A2PyKfaGoDHjkvHFvUxioeJRE",
-      "onChain": true
+      "onChain": false
     },
     "127": {
       "name": "Rejected f00kers #127",
@@ -1022,7 +1022,7 @@
       "image_link": "https://arweave.net/qzcUG0HC33PF2Y6LT7uEFgSLcQCN1nYYfQwl625idmA?ext=png",
       "metadata_hash": "f76d88a55c44c5367bc62c428e5160901d88fa3142417f68869a481819129cbf",
       "metadata_link": "https://arweave.net/7yXUW1rO6pFKnjfo-xQ2lom9Yf9hfx8sLNIqmRNwthA",
-      "onChain": true
+      "onChain": false
     },
     "128": {
       "name": "Rejected f00kers #128",
@@ -1030,7 +1030,7 @@
       "image_link": "https://arweave.net/qOT-UnVQpcdLxgNbBfYjX-56TbmV1YscSTEBU2M9JlI?ext=png",
       "metadata_hash": "c5eff000173a059a20c2eeced0de99f0bf267c6819381e08b36398eb073761d0",
       "metadata_link": "https://arweave.net/l7f8EfcEsQNf3gyUGZ_JeyLJOsHVtElEwxk-JHRtpUg",
-      "onChain": true
+      "onChain": false
     },
     "129": {
       "name": "Rejected f00kers #129",
@@ -1038,7 +1038,7 @@
       "image_link": "https://arweave.net/brLHRgI5KRtno9Z4cpDJAPkO9IX-BHy6ND81nmn1w7I?ext=png",
       "metadata_hash": "9afca0501d756b969a3320876f1622833f276e5903d58049e4c7cdf07c7685b3",
       "metadata_link": "https://arweave.net/luGYBXGkbdP-F6upxa37iKDBrOqfiZu4iEJ0bJYwwSM",
-      "onChain": true
+      "onChain": false
     },
     "130": {
       "name": "Rejected f00kers #130",
@@ -1046,7 +1046,7 @@
       "image_link": "https://arweave.net/88Hq07ggApTJZDumAptHBmU_RpLueSMV52o4G07E5yM?ext=png",
       "metadata_hash": "476c258046305bfc82d257e309d4dbce27f663d30b28ff4f143e79d173613b4a",
       "metadata_link": "https://arweave.net/edFJG2-wuMB0Z_WPFDAC4YMOkMsCWvet_UcV8vRq4d0",
-      "onChain": true
+      "onChain": false
     },
     "131": {
       "name": "Rejected f00kers #131",
@@ -1054,7 +1054,7 @@
       "image_link": "https://arweave.net/yur3EOxfOViOPWS89rwa5mldUdagsQqfprDOPVjEXF0?ext=png",
       "metadata_hash": "269baff992381e883a2efeb6d468a5f339522166a7f16a70f7031bddc6dd55d9",
       "metadata_link": "https://arweave.net/jvNsX8p50qG7reAZrNz0DkaKBSkjQjlzAHqQgRwXAGo",
-      "onChain": true
+      "onChain": false
     },
     "132": {
       "name": "Rejected f00kers #132",
@@ -1062,7 +1062,7 @@
       "image_link": "https://arweave.net/1Fi8Amk5nI6wfU_vsSnYXsFd33ZePCQgjMVjJASgs94?ext=png",
       "metadata_hash": "e300095ff67969d86d4b96e82946862af917e1edf272e0ee43b558a45e2bb940",
       "metadata_link": "https://arweave.net/FeexWqbxpvd-L7hg-_ObZCx40kFfU0X1TRGJjX3OrB4",
-      "onChain": true
+      "onChain": false
     },
     "133": {
       "name": "Rejected f00kers #133",
@@ -1070,7 +1070,7 @@
       "image_link": "https://arweave.net/mkPAayhIivFEuulLbuzCbT9xw3o9ATSZtOLYPHrc_ws?ext=png",
       "metadata_hash": "6a4ef7894d1d325b1581d7f24cb5829bf96108a64edd7c07fac92c85f3cfcf44",
       "metadata_link": "https://arweave.net/0evqneUV-6KNZefg-kb4y0Om0UxzHVPv30fEmwjqhS8",
-      "onChain": true
+      "onChain": false
     },
     "134": {
       "name": "Rejected f00kers #134",
@@ -1078,7 +1078,7 @@
       "image_link": "https://arweave.net/UjYjVWz7qSLP_DR63KG-y3V8t6KgJEMEtczRQZIiOfY?ext=png",
       "metadata_hash": "10f274d606f786f74425fffca54416c521749e77251942c6cf889fd6246051c2",
       "metadata_link": "https://arweave.net/RiasmSuAvrvuFvmbYLGXuzwJGsShMWNsRHzU5s8O0nk",
-      "onChain": true
+      "onChain": false
     },
     "135": {
       "name": "Rejected f00kers #135",
@@ -1086,7 +1086,7 @@
       "image_link": "https://arweave.net/K8Jk2jVe3fBZDE1mKCX6arL6sVFO-uj5pogNzCRyleA?ext=png",
       "metadata_hash": "455e614af5a8090d5112091b42dd5b8e564a727c71e0ec473bda23ce431fa449",
       "metadata_link": "https://arweave.net/yMiBQ0Izd3U12bWEcaQ8f-maRReMgzPBEd6aus4-GdQ",
-      "onChain": true
+      "onChain": false
     },
     "136": {
       "name": "Rejected f00kers #136",
@@ -1094,7 +1094,7 @@
       "image_link": "https://arweave.net/29b56KRiuV667T-UCJMMwPxRN3iE-ia7Dt1ZOCGwcv0?ext=png",
       "metadata_hash": "cf634ce990976a81e45a328c32c0ce304bf02941013eccf0e7358105c13685c8",
       "metadata_link": "https://arweave.net/43Pun7c5gzM_erE99SOjNMQIwuQb2mXXydjs8r171o8",
-      "onChain": true
+      "onChain": false
     },
     "137": {
       "name": "Rejected f00kers #137",
@@ -1102,7 +1102,7 @@
       "image_link": "https://arweave.net/6T_3mm7ayhQxqoxzbYzhQ03vfS8s13Tx989DzZTcYD4?ext=png",
       "metadata_hash": "cc7ff1a79879d5b2a590c06cd4e86c5fddfb30fdb61c32dc943ea14af51db154",
       "metadata_link": "https://arweave.net/RQQ40HtUJRw3c2Zh7kaS1nbc7BdDch5qFR2ljA-60UI",
-      "onChain": true
+      "onChain": false
     },
     "138": {
       "name": "Rejected f00kers #138",
@@ -1110,7 +1110,7 @@
       "image_link": "https://arweave.net/KeEG6sm3YqCLo_tjKF77BiQ4jbGGj_TScuoncEXd5ig?ext=png",
       "metadata_hash": "4b1b4ce3d15c8834792def3eb63e55640c1a4ae73a5fb5b85e0d04851cfccefb",
       "metadata_link": "https://arweave.net/OEXt3_HDrviOA8Wl1of4CbsYSfNc750DOJDmoxAqfDQ",
-      "onChain": true
+      "onChain": false
     },
     "139": {
       "name": "Rejected f00kers #139",
@@ -1118,7 +1118,7 @@
       "image_link": "https://arweave.net/1C4kt2V7-PDxA2DTuaFjrauSSIof1Vyt8r6Ba7Bu11o?ext=png",
       "metadata_hash": "d8266a3f00c15986fcdfac7904b4a0d39bd971e821cb5f4c5097da7678fc9c00",
       "metadata_link": "https://arweave.net/Os7ZOpbZE_Rhz83PUySEA67YPIvHKX-K--WS1G2OSgY",
-      "onChain": true
+      "onChain": false
     },
     "140": {
       "name": "Rejected f00kers #140",
@@ -1126,7 +1126,7 @@
       "image_link": "https://arweave.net/xFMA5lFWKdr-B3B2Hx928O8lXlpvDBhjaVgVelUmscs?ext=png",
       "metadata_hash": "9c75560ec84100c342c2244ae5ecf6511ad8ab0c531ac4a6015e55ccd119fb52",
       "metadata_link": "https://arweave.net/OSK5IPHGC1vmDiWA_aID2lcGPpySzx8sM4EECnHKRWQ",
-      "onChain": true
+      "onChain": false
     },
     "141": {
       "name": "Rejected f00kers #141",
@@ -1134,7 +1134,7 @@
       "image_link": "https://arweave.net/muIgsIeBZDEDagXoNKRmo_skn9RWqEUmtNceRSnNang?ext=png",
       "metadata_hash": "23948017dced5dbda86d7a1962ac533508a1f8ee6370d6b26142ad398c9eeec6",
       "metadata_link": "https://arweave.net/BXNIpARkN-6uCmXPyDsdL8Y0U8w9EhypAbkvUvNoihI",
-      "onChain": true
+      "onChain": false
     },
     "142": {
       "name": "Rejected f00kers #142",
@@ -1142,7 +1142,7 @@
       "image_link": "https://arweave.net/Wb3Xlcdy7xcuOONEoA6o_Uq4s5gv48GUAljg6YEeDrk?ext=png",
       "metadata_hash": "11387e90894afab6be782745cbe93d7616934873cbda6ca8084d3c6a51d2daf6",
       "metadata_link": "https://arweave.net/5OEJNAgN0HV5DO5V_YTNd1EX9bXIRcWNaMrfhSCcMCU",
-      "onChain": true
+      "onChain": false
     },
     "143": {
       "name": "Rejected f00kers #143",
@@ -1150,7 +1150,7 @@
       "image_link": "https://arweave.net/ckdGYlNKIfVFR2YcZBolqGmaljkkRO8_NKi53j5k8pI?ext=png",
       "metadata_hash": "faead64991e80ba0155a6f5ad8d12e699ddf21a7c185530f0f6924ebe645adab",
       "metadata_link": "https://arweave.net/u8NIjEQNq-ei6NodA3WPloYpIQ8qcDn6riFjg6jB7xI",
-      "onChain": true
+      "onChain": false
     },
     "144": {
       "name": "Rejected f00kers #144",
@@ -1158,7 +1158,7 @@
       "image_link": "https://arweave.net/NnUZypV9pxK3346o3AGGdU7ouj3_7QLB9VqwkUjA_BM?ext=png",
       "metadata_hash": "f05f823c96a623115bd6f40871876a2bb06b9a5f29c23c30d28c12956952f38a",
       "metadata_link": "https://arweave.net/IJueLa11OKOEUQ3rjqycQyWnU1TNR1xDipHWxFfuXh8",
-      "onChain": true
+      "onChain": false
     },
     "145": {
       "name": "Rejected f00kers #145",
@@ -1166,7 +1166,7 @@
       "image_link": "https://arweave.net/LXYnhsWfgJFEr8-NzIjWJtG5-C4_ar5qWiMr_LoLMLo?ext=png",
       "metadata_hash": "f452af16715752e6ecbe56e57bc2433a08a4fc1225d94eaffa98ff3df8373d9a",
       "metadata_link": "https://arweave.net/hJGYdvXrMhDQN9M3dGiS0q8fWSoXZ4yWSDsDC6HmszQ",
-      "onChain": true
+      "onChain": false
     },
     "146": {
       "name": "Rejected f00kers #146",
@@ -1174,7 +1174,7 @@
       "image_link": "https://arweave.net/LvrIHhXxhsS_ZUH1lCEHrNe46yxKMxhy-yCIJCToab4?ext=png",
       "metadata_hash": "d73fbb36d691754bbbc894b6bf39dae3481c39932c59439c5b3473514e4959a0",
       "metadata_link": "https://arweave.net/PHZ4mhU2vvQ9chh8mWQb7tXegxNgkuTI4-wG7R9d4M4",
-      "onChain": true
+      "onChain": false
     },
     "147": {
       "name": "Rejected f00kers #147",
@@ -1182,7 +1182,7 @@
       "image_link": "https://arweave.net/KVIqjLUP40EcGg46bocdgefqb1Vnn16yzy3GJIvpoAs?ext=png",
       "metadata_hash": "39b86a0f2c83984d851f0511cdec41ceb635f7b8828b8650449e01d9dc253a1c",
       "metadata_link": "https://arweave.net/BShz6PLY6wmuqiE_uTaErzGidZO53RD00Fyy2yK8-l8",
-      "onChain": true
+      "onChain": false
     },
     "148": {
       "name": "Rejected f00kers #148",
@@ -1190,7 +1190,7 @@
       "image_link": "https://arweave.net/G1ik2bfw62m8hCTaQMhpeCsv43os1wvV6otOqXtJxgU?ext=png",
       "metadata_hash": "0dd967853508118e5d1244086c088a49e50e0aac982322918e2da15089b9fa07",
       "metadata_link": "https://arweave.net/1everM9i3Le3fH2vXYT90-zMMj414_ipdMykK_kn0zY",
-      "onChain": true
+      "onChain": false
     },
     "149": {
       "name": "Rejected f00kers #149",
@@ -1198,7 +1198,7 @@
       "image_link": "https://arweave.net/LWKZLMJDtAu9RFw2TLr_kh7bkFh4HaIcAGG61Ugws3U?ext=png",
       "metadata_hash": "9ba1abe844954afa6d70ae6df4eff0c9ee1906a7e4b85f357ad19ea9c4a1c4cf",
       "metadata_link": "https://arweave.net/Hqq-WmKrVmL9xmEmM_lEvpA3qjIhRYYyGjwYbPOXAlQ",
-      "onChain": true
+      "onChain": false
     },
     "150": {
       "name": "Rejected f00kers #150",
@@ -1206,7 +1206,7 @@
       "image_link": "https://arweave.net/Zb2Mh2_L3F2vhlFtZl3sqRe5EZPekG0PvNiFPtQe7T0?ext=png",
       "metadata_hash": "f8099228426a76da5eb57ed923da93e9b6cf0f63cc7cff966196fd8526666d40",
       "metadata_link": "https://arweave.net/KLX42R66Xr0jr1TCSqmFJSzY3BWSKknnhiRjohcObrU",
-      "onChain": true
+      "onChain": false
     },
     "151": {
       "name": "Rejected f00kers #151",
@@ -1214,7 +1214,7 @@
       "image_link": "https://arweave.net/MzLgvRprCgo7E-_OrS2Ds3MhreLlLatFEORT2R3sC1s?ext=png",
       "metadata_hash": "31f37f9b28e063f79531b9f79f1ae8b2a7645f6b4c32a06e8a92cd5a39f0e51c",
       "metadata_link": "https://arweave.net/L_rhVwNu8NqFbBniMoVD0K4nZCnUcDTJo3wvFEKRrRw",
-      "onChain": true
+      "onChain": false
     },
     "152": {
       "name": "Rejected f00kers #152",
@@ -1222,7 +1222,7 @@
       "image_link": "https://arweave.net/PncvMTyo491G-bC1FCoLBIsKc3og6T0DVGgTrw7kiHk?ext=png",
       "metadata_hash": "139c714826782f5d36d2d6cc40565f4ac57c59efdf666f4dc5e0592d8b5ede84",
       "metadata_link": "https://arweave.net/mJCe_rKK1DviubRhHZi28OmnuWHDDU66GC5SbP-IXSQ",
-      "onChain": true
+      "onChain": false
     },
     "153": {
       "name": "Rejected f00kers #153",
@@ -1230,7 +1230,7 @@
       "image_link": "https://arweave.net/G8shul3DK_1-zKMPdSJmL5u_0O6JbClQUOpcYXc4grM?ext=png",
       "metadata_hash": "90084a09b26b7195092797d757f6ae4ab397d62c81bccc01261d834188592217",
       "metadata_link": "https://arweave.net/jafhIlBH7mE70bg6P0pbg32snSQRIRbWY5QhU0OfU9g",
-      "onChain": true
+      "onChain": false
     },
     "154": {
       "name": "Rejected f00kers #154",
@@ -1238,7 +1238,7 @@
       "image_link": "https://arweave.net/173RXj02bl3_-qBpL9A3WfZ4F6RMqfOYVhP_jZOHeOY?ext=png",
       "metadata_hash": "b070c43d5a336e0e87f538bcfa87ad74d052debd26af0cf4a93383924a4e3953",
       "metadata_link": "https://arweave.net/j3hBO1FAPq_J1vMnqhENXro3HMjbEJIdmKZWu0mfhIw",
-      "onChain": true
+      "onChain": false
     },
     "155": {
       "name": "Rejected f00kers #155",
@@ -1246,7 +1246,7 @@
       "image_link": "https://arweave.net/SCF_BngPp992CqU8fQP3nbSIW07hDWtXedf_Z4ruwYo?ext=png",
       "metadata_hash": "d4e4b4b5059566fe04761e33cfac3f85619b799105bd8ba77d3a60e56c7f5dd6",
       "metadata_link": "https://arweave.net/1T433312f-JcpXzxIIgefmWSrMPJ5HmcZKXHbAcSVBQ",
-      "onChain": true
+      "onChain": false
     },
     "156": {
       "name": "Rejected f00kers #156",
@@ -1254,7 +1254,7 @@
       "image_link": "https://arweave.net/YNti5cjA8Dk-lzGkWO71N7hYYBLeoz2iHDiVa3BOpcM?ext=png",
       "metadata_hash": "eeec610ae723d14e0e44702b79ae32ae5c0daecd19ce954315bddca35ca9fcd5",
       "metadata_link": "https://arweave.net/DGanTleTs1X34zOOu5k_RxRHEWgRzMX8J27F7BHJuMI",
-      "onChain": true
+      "onChain": false
     },
     "157": {
       "name": "Rejected f00kers #157",
@@ -1262,7 +1262,7 @@
       "image_link": "https://arweave.net/H6w0LKJQCMcWEb0bZFnHwDH3ouo38IqX0NLwXDNbeHE?ext=png",
       "metadata_hash": "7334eed5776d460f0c9aa5fa97e3c335d10d86aabf902b24e4963cdedfa05048",
       "metadata_link": "https://arweave.net/PmogkVNT1mLfSIkuGmN0fPku47Bhmg9S119wuPq_kt0",
-      "onChain": true
+      "onChain": false
     },
     "158": {
       "name": "Rejected f00kers #158",
@@ -1270,7 +1270,7 @@
       "image_link": "https://arweave.net/ud6EUvC2fKrvvefgTUAV-9N1Oxm5LAvmdQyrqAtyHZw?ext=png",
       "metadata_hash": "465e4e8db6b7b90b89c64c99b50042a3d7106b406bc0746bb7ef022127fc638d",
       "metadata_link": "https://arweave.net/BREflgcDZlNqsYUDod3Ex6ek-HCWVdwgm75FeFdvO9U",
-      "onChain": true
+      "onChain": false
     },
     "159": {
       "name": "Rejected f00kers #159",
@@ -1278,7 +1278,7 @@
       "image_link": "https://arweave.net/RwuY_wiPV1LdN2LnRsDZIZyD3M5KJDlUmSshmfxc4eM?ext=png",
       "metadata_hash": "7d0e96e5803be5b826a7422fd254ea068fdd120f4211e42b5a0941fc1bb749c8",
       "metadata_link": "https://arweave.net/4WFDWxG_wmGs32opvTYrTex18OA7d4DIQbvdV_ArG3w",
-      "onChain": true
+      "onChain": false
     },
     "160": {
       "name": "Rejected f00kers #160",
@@ -1286,7 +1286,7 @@
       "image_link": "https://arweave.net/wg83WVsvcTqjIZGeNhqOkwqLIepx75fhrVU5CY0b-a4?ext=png",
       "metadata_hash": "4d5e9b2c6c2454c7a36b20b6da0de355a51c3e032d7aa2f226b16588b6aa875d",
       "metadata_link": "https://arweave.net/97tG2M2JXES0VJjZ6oZOm6NSuoq3XWg2upmQhC6i9DM",
-      "onChain": true
+      "onChain": false
     },
     "161": {
       "name": "Rejected f00kers #161",
@@ -1294,7 +1294,7 @@
       "image_link": "https://arweave.net/EH6XKFgsAZWY_oaCiq0H2ASM1I3A_G1v2Am9F1vsgsg?ext=png",
       "metadata_hash": "c04a10c5c7ebc8f7df1e403ac6afc098602ef017d8d9ee52048edba846cbcffa",
       "metadata_link": "https://arweave.net/WokCCb9Wd5eZiD3BlM_p-6WnmwmBT-8u7G3KI1EEbt0",
-      "onChain": true
+      "onChain": false
     },
     "162": {
       "name": "Rejected f00kers #162",
@@ -1302,7 +1302,7 @@
       "image_link": "https://arweave.net/aK7jtnAUUGsaQc-FmaQXYGw5CvyMx4i7jFnWgRMoZp4?ext=png",
       "metadata_hash": "34c2ff0c043fa0e576a53a89562557e1deb11931f1b0df4e38087e47b5a71c2f",
       "metadata_link": "https://arweave.net/H9AgT0QJrMS968a5C2nGto-veYYDvoL8ADPquPuNTQc",
-      "onChain": true
+      "onChain": false
     },
     "163": {
       "name": "Rejected f00kers #163",
@@ -1310,7 +1310,7 @@
       "image_link": "https://arweave.net/D6z5X7N22hfuVHweyqKH3bc5el0ma0dtHbVFRhlowig?ext=png",
       "metadata_hash": "9724493dc06098a084c386a709be31ff70f080215ab410afdad959428332822d",
       "metadata_link": "https://arweave.net/5QCSgNXb38MFNblvNNHK8XlfOrMhw2HTLf1oW38PBE8",
-      "onChain": true
+      "onChain": false
     },
     "164": {
       "name": "Rejected f00kers #164",
@@ -1318,7 +1318,7 @@
       "image_link": "https://arweave.net/B4unW12NBqW_1KdI3RN3qUzciV63ynq2NhyOrzDQxBs?ext=png",
       "metadata_hash": "dfeea6fdb21b15a93c7d832dca5b63a8615bfc2ba6275150cea763e02dfeea83",
       "metadata_link": "https://arweave.net/_Tas0giiOKY_hksiQBY0z4bNbHaPFr-5TjeMb4uP5MM",
-      "onChain": true
+      "onChain": false
     },
     "165": {
       "name": "Rejected f00kers #165",
@@ -1326,7 +1326,7 @@
       "image_link": "https://arweave.net/UQ29XqVzORcLW2qlK4_vOQnDY_eNvnGkYvsn6TXE16c?ext=png",
       "metadata_hash": "3cfb1ab38b1499dcda96d9387ec23207730df4e399f20318794e6476dba81871",
       "metadata_link": "https://arweave.net/BvwCMQzUexj0WlOuRaWRyBHICRywv9DA2TtjFgeBENQ",
-      "onChain": true
+      "onChain": false
     },
     "166": {
       "name": "Rejected f00kers #166",
@@ -1334,7 +1334,7 @@
       "image_link": "https://arweave.net/VkPKe7VgnEbUEPxrFT5aT4Cbo0JfpU4aY2R4nDvXey4?ext=png",
       "metadata_hash": "1ea95b850ef8f91089caa9f7104f5cf48e4b2b6d7921e02a2af88f47758df3f0",
       "metadata_link": "https://arweave.net/rJA6pNMdFkGglp-zi0h1kDQUraIiypZnvAPnql_pU-w",
-      "onChain": true
+      "onChain": false
     },
     "167": {
       "name": "Rejected f00kers #167",
@@ -1342,7 +1342,7 @@
       "image_link": "https://arweave.net/j81zVKUrLYqoLTQ8icbQOq7Wex8rX2bSRoO9N593KDU?ext=png",
       "metadata_hash": "c7e4c5ba07925b4089d3dd1a6a7167c2bb31687102cd641d766aaba6fc905533",
       "metadata_link": "https://arweave.net/cfkvaGY2vKbzh7cUewuRxINsWTuliDVY85rgi9fWZtM",
-      "onChain": true
+      "onChain": false
     },
     "168": {
       "name": "Rejected f00kers #168",
@@ -1350,7 +1350,7 @@
       "image_link": "https://arweave.net/hsoMvXal-79yx1hRkk95knNBFFpYl_sUSa1YqnHxEk8?ext=png",
       "metadata_hash": "3592df2b963a481a12eec954ff7b68264baf4cc0b19960cce0218248157ab6f9",
       "metadata_link": "https://arweave.net/bKwO_rwzLzmR_IakqXUtgmLadrRCxkvg0vj-_WxiyHo",
-      "onChain": true
+      "onChain": false
     },
     "169": {
       "name": "Rejected f00kers #169",
@@ -1358,7 +1358,7 @@
       "image_link": "https://arweave.net/1Yb_9YH1dHn_FirItt5A25N6AXLLKHLPEZ659fa_J4k?ext=png",
       "metadata_hash": "c7b17dba05f30c0e09ae0808e097240fe88dcd5958d36fe12f8406a24850290d",
       "metadata_link": "https://arweave.net/6PExliky6CKBt1dJflHsYhqlHgX6avvIXASlHCfAKlg",
-      "onChain": true
+      "onChain": false
     },
     "170": {
       "name": "Rejected f00kers #170",
@@ -1366,7 +1366,7 @@
       "image_link": "https://arweave.net/rCPIYGQbZUuiqVQvgqcYzOGtkXfNUS91LGE3lzj5yG8?ext=png",
       "metadata_hash": "fcb023d2c288081a32ed47844a474dd80de795c02ccfd89ba18b9a6f9c1e901a",
       "metadata_link": "https://arweave.net/iUDwSEHn28C8bZIESUeZXKLkMOKNs5yVgislgiPFK-I",
-      "onChain": true
+      "onChain": false
     },
     "171": {
       "name": "Rejected f00kers #171",
@@ -1374,7 +1374,7 @@
       "image_link": "https://arweave.net/q-ti6EUsWQAdcnizQsifkqcwH9wwXV93STBtjaLYrbg?ext=png",
       "metadata_hash": "34881cf5498c0efc15d5aabc6754b618539a97321dab2b3c1c6ff0ac3a01a98e",
       "metadata_link": "https://arweave.net/CTEumCKwxL1X8cEy2DE_eC_bAL7eIAxIqLj2Ubr3z6I",
-      "onChain": true
+      "onChain": false
     },
     "172": {
       "name": "Rejected f00kers #172",
@@ -1382,7 +1382,7 @@
       "image_link": "https://arweave.net/nepjGDXjLldJfWT0r0gnLcak-uxEi1guL5_92adBbs4?ext=png",
       "metadata_hash": "0f200afcd6920901c9fc93258b9598b348723dc19935e3e1782ec5da9eaaa5c2",
       "metadata_link": "https://arweave.net/hYDABPAd3uZ5sp3V2l_077ffR8K5BUcchIn7K8-l8MI",
-      "onChain": true
+      "onChain": false
     },
     "173": {
       "name": "Rejected f00kers #173",
@@ -1390,7 +1390,7 @@
       "image_link": "https://arweave.net/DiaLzV7zZ8FCz4E2ZMTf7D7V3Ut6clk2uZ5JgvpsAeI?ext=png",
       "metadata_hash": "628b1c4bca0fe24a93500830e3220bcbaf9edeeb32e1a5378d5a5c605e5d7898",
       "metadata_link": "https://arweave.net/oZNAqKHJ4-tWfxSkL-96uCmNRms4rI_lPa5NXZvEjGs",
-      "onChain": true
+      "onChain": false
     },
     "174": {
       "name": "Rejected f00kers #174",
@@ -1398,7 +1398,7 @@
       "image_link": "https://arweave.net/Dn-sO9MmE4BEml8oFcIAp9saTQnWtKsd5neQXt3jurs?ext=png",
       "metadata_hash": "faa629562983aa802bbb5624f77d9a3833ccc9afd894dabfea2de772932bb41a",
       "metadata_link": "https://arweave.net/NpTXI-Q0Jb0mMtOWAZwb0f-3r5ctlQVTCTwR7agA6Es",
-      "onChain": true
+      "onChain": false
     },
     "175": {
       "name": "Rejected f00kers #175",
@@ -1406,7 +1406,7 @@
       "image_link": "https://arweave.net/8I_ptvrpk7TqFukWBKqizi_YOw2pOrqU8truvRJ_mwQ?ext=png",
       "metadata_hash": "5411b34344843b8446337a33adfd1387c9f22e3cbec9147ac5f8e9c7a64e8d2f",
       "metadata_link": "https://arweave.net/tLBSiicSkkhv-wUFXWfCtCqGX3j1-FaDjiq338I3Ze8",
-      "onChain": true
+      "onChain": false
     },
     "176": {
       "name": "Rejected f00kers #176",
@@ -1414,7 +1414,7 @@
       "image_link": "https://arweave.net/n6oa8iWosSgn7SW7RwqPwntJpYYbv9zgmOoekg3YDxA?ext=png",
       "metadata_hash": "3e9537093ec5215944b802fd264557a274e5358b85eb16470d01edb03d35e9ed",
       "metadata_link": "https://arweave.net/6F_TQSiRZAtSLQ5hWCeC9xRS0EKaPitgaQLHKEoj1Xg",
-      "onChain": true
+      "onChain": false
     },
     "177": {
       "name": "Rejected f00kers #177",
@@ -1422,7 +1422,7 @@
       "image_link": "https://arweave.net/71M05WAoOkj3T06rxsnszhlhjMVoRKlvSBtaGQ5laf4?ext=png",
       "metadata_hash": "28736643ff196b0fa7c17f80e454cba431f64cb2ce62648767d2a5c9219f52a0",
       "metadata_link": "https://arweave.net/LnMUdeUcPpAoHRyzOzfcYxSy9lVCO4Wg-7zgmWswc-0",
-      "onChain": true
+      "onChain": false
     },
     "178": {
       "name": "Rejected f00kers #178",
@@ -1430,7 +1430,7 @@
       "image_link": "https://arweave.net/EIevjAoOx0MVnmgMADyEAgeUiAncJpEk27e3J4DZN1o?ext=png",
       "metadata_hash": "790918fd10b02c765e9fdec6400a25c794e76fdb5c99f7b745c041b406f7d534",
       "metadata_link": "https://arweave.net/gpfMQT0q9rDvf_t4wX5KqNcQmxZ6PZwbxiIQDSj_U1g",
-      "onChain": true
+      "onChain": false
     },
     "179": {
       "name": "Rejected f00kers #179",
@@ -1438,7 +1438,7 @@
       "image_link": "https://arweave.net/Sq6FF-3ECspNuliBw6kP_A3QbT_vBt0F1Lg40Hh47jw?ext=png",
       "metadata_hash": "4d425f18e883093a845bd54bda6e08dd2565a56b9567943e329fdbb563431580",
       "metadata_link": "https://arweave.net/jxBgAhbDwjiptEx0yMlIJq6QlsSpiWkc7e-AwXHK-RU",
-      "onChain": true
+      "onChain": false
     },
     "180": {
       "name": "Rejected f00kers #180",
@@ -1446,7 +1446,7 @@
       "image_link": "https://arweave.net/sjpBTvnIGHsHkWknvYYBdcEgZg-CCSaM7SdAng5VDEY?ext=png",
       "metadata_hash": "5738edad3a67e317f5567ef65365a77c6a05ec29fdcee5f2ec60d8d97787f2ce",
       "metadata_link": "https://arweave.net/sPZvUiXWR9lq5V1UXjDH8tbmSxzkgc6hWSRzMTDkfkk",
-      "onChain": true
+      "onChain": false
     },
     "181": {
       "name": "Rejected f00kers #181",
@@ -1454,7 +1454,7 @@
       "image_link": "https://arweave.net/bQt_ih19ExXo_zMnwc_0bqOHmoZ9hc5bhJGTBSwqa3I?ext=png",
       "metadata_hash": "ec3cdcc1efd3a4f9839379f2bc553b0759b55ea35edd98299d0a989e05c55e4a",
       "metadata_link": "https://arweave.net/3K2frnWngOiuH3pJd_Ma6SgYllH1fOMEFSBCRRPzPbg",
-      "onChain": true
+      "onChain": false
     },
     "182": {
       "name": "Rejected f00kers #182",
@@ -1462,7 +1462,7 @@
       "image_link": "https://arweave.net/lnMqIEe9Uq5HZ-pNF5RxLnFHo6WEY25NT-ujomBPr3Q?ext=png",
       "metadata_hash": "91c2216dff2ae547c6bbfb2ffbb47160cb2c5afdfeb6482c1a5aecfe4244db3d",
       "metadata_link": "https://arweave.net/Rf3uFYLrH-fhB2XQn26T_ndwNJI3pgx92X-HFkc8jBk",
-      "onChain": true
+      "onChain": false
     },
     "183": {
       "name": "Rejected f00kers #183",
@@ -1470,7 +1470,7 @@
       "image_link": "https://arweave.net/qoIqWlMJeF9BEjcPlJ8pUbdzQH4lACYyaDlqRNKwRdo?ext=png",
       "metadata_hash": "f8d700be3cd1b729d801c0d1334d98156ca6d9f94126e9eee324c5d57abe8c53",
       "metadata_link": "https://arweave.net/2aGd7Dr8qHEnbrxkk8HDfhd-RrVU3LRfMJqkCXhKas4",
-      "onChain": true
+      "onChain": false
     },
     "184": {
       "name": "Rejected f00kers #184",
@@ -1478,7 +1478,7 @@
       "image_link": "https://arweave.net/-eGtrH7oQNRuTgUnpFN8Dmn_kA5mFG5YCQtQhRzd4RI?ext=png",
       "metadata_hash": "a3510e1fba0a1dffdff2e99c8992655f89dad141c7f02b261527dfc77e13379d",
       "metadata_link": "https://arweave.net/rR1I3OiNKi3WynJC9gO4-njlWi9L2VTTCBjmzn6AfzE",
-      "onChain": true
+      "onChain": false
     },
     "185": {
       "name": "Rejected f00kers #185",
@@ -1486,7 +1486,7 @@
       "image_link": "https://arweave.net/UCHgghhUJGkq3aLO9dPj7bVnPrOvX-j9DCWGskMVTK4?ext=png",
       "metadata_hash": "48c70dc69a20fc4a9920c80aea0b59a1979a853bff2c3f031cf912dc7e7f9c57",
       "metadata_link": "https://arweave.net/NSDpkunTOpSbWbAWf0KmbS6b1rlbVpKWskwHWIzmssU",
-      "onChain": true
+      "onChain": false
     },
     "186": {
       "name": "Rejected f00kers #186",
@@ -1494,7 +1494,7 @@
       "image_link": "https://arweave.net/Q7DLvV2ial08XTlHhu8qLrL8mpybGOEtLl_1qeKSdXk?ext=png",
       "metadata_hash": "4696477b8517b7fe3bc129faf199a8e1a6ea4ded4d585efca1a1d8096e3b06da",
       "metadata_link": "https://arweave.net/aIA9w9aYBVW8wGdiJO6G6xjT6tJBJqDxM4onm-1qXiU",
-      "onChain": true
+      "onChain": false
     },
     "187": {
       "name": "Rejected f00kers #187",
@@ -1502,7 +1502,7 @@
       "image_link": "https://arweave.net/E6kQHNVpmlIkoJIB09sLk-yqPZswNg4vw8Z5BT6VkMU?ext=png",
       "metadata_hash": "cdb7f004206b4f4bad099a1e7844c0a8ddc81ebc998b365882be3555cd1883af",
       "metadata_link": "https://arweave.net/yuRyjfzWjfAgSzwOlM47pzUvTSYPHTJydASocU5lRDs",
-      "onChain": true
+      "onChain": false
     },
     "188": {
       "name": "Rejected f00kers #188",
@@ -1510,7 +1510,7 @@
       "image_link": "https://arweave.net/YoCUshgaP2tkrl45ny9fL5zD7oIxxHMZrh1MDr4yueA?ext=png",
       "metadata_hash": "e0f3c2defaad0643ba38f717a40cd6095a691efaee495354fda0a12241e4b74e",
       "metadata_link": "https://arweave.net/sKsELTq6C-NZHrxTWCjiliCTKN1isamIcOK4S8BeLJs",
-      "onChain": true
+      "onChain": false
     },
     "189": {
       "name": "Rejected f00kers #189",
@@ -1518,7 +1518,7 @@
       "image_link": "https://arweave.net/PJDA9g0oNkYSy2zEewkRzrfb_-AAG4dHS-aqPV4TTZg?ext=png",
       "metadata_hash": "43a76b8d30b7724ee845d21796051b967ab177f7ee0943f77748feaad04e2183",
       "metadata_link": "https://arweave.net/SKjVnfg9xM57ywW-SXKWGLCufcWsygJf47IksAPR9vo",
-      "onChain": true
+      "onChain": false
     },
     "190": {
       "name": "Rejected f00kers #190",
@@ -1526,7 +1526,7 @@
       "image_link": "https://arweave.net/kR7SUU5A9DX903EcRdcjJxweOY5-hQaAjTOopbDbMnw?ext=png",
       "metadata_hash": "c32bf6679c783e30f45879f69c36b09a1193e46669d286c0cca05dc6903ac984",
       "metadata_link": "https://arweave.net/2Uqicvg1B6-McrnnYumOI2l5QLiLwwc1mWBAvwC9nd8",
-      "onChain": true
+      "onChain": false
     },
     "191": {
       "name": "Rejected f00kers #191",
@@ -1534,7 +1534,7 @@
       "image_link": "https://arweave.net/VMWL11t55ABAw38EGjMe4jUaTlk-0RRXUFMmEo1n9Zw?ext=png",
       "metadata_hash": "64341fe39baf2f271a44e37596c7d245cb73c3c416ff4c525fb7240a153cf44c",
       "metadata_link": "https://arweave.net/bkeW_SVfEVKbsokGZSDWZdTO9TVYj_g7k623ao-XzVo",
-      "onChain": true
+      "onChain": false
     },
     "192": {
       "name": "Rejected f00kers #192",
@@ -1542,7 +1542,7 @@
       "image_link": "https://arweave.net/U4usoR1FigkOpEILCTVoEp_hz5MjJElV4BzRTkzffx8?ext=png",
       "metadata_hash": "55c2ce08372606035accea50169460268193d703605279b095505d39b603db49",
       "metadata_link": "https://arweave.net/CJixXi0pRdM2cZFmDeinL08VOKLVDjiohMi-5AFX1CQ",
-      "onChain": true
+      "onChain": false
     },
     "193": {
       "name": "Rejected f00kers #193",
@@ -1550,7 +1550,7 @@
       "image_link": "https://arweave.net/hj8RBrld1sqXl26mG6jHttE5l6c1XeM0RPnoRU3_zRU?ext=png",
       "metadata_hash": "c4e387865191c5851e483e22dd295560ee4351e6f1c476e3bdf42ed78e73ea88",
       "metadata_link": "https://arweave.net/TUNCmkau6ZK3Zwm6anhwG8kKAMj7dgrGnp6sQ9saLFY",
-      "onChain": true
+      "onChain": false
     },
     "194": {
       "name": "Rejected f00kers #194",
@@ -1558,7 +1558,7 @@
       "image_link": "https://arweave.net/1KDYUCn5RRamptH55KuODOgnaKuov_mZRxwyokuMZ6c?ext=png",
       "metadata_hash": "e116860afa5edb219df524f206f12b15fddcb7a0cd7e43d716b861606aadc2e4",
       "metadata_link": "https://arweave.net/7FnqH0OK_-Gi76iBS2t26iR7HF9ykZb4Hh5dCVpgxBw",
-      "onChain": true
+      "onChain": false
     },
     "195": {
       "name": "Rejected f00kers #195",
@@ -1566,7 +1566,7 @@
       "image_link": "https://arweave.net/Tc6OWpEaeSu0OStDfK2adcEbdHCDkajuasC9wtk5dqg?ext=png",
       "metadata_hash": "e16e0d1740035d0df8a238b764b4779d5a774dc95b469122755075c094b0761a",
       "metadata_link": "https://arweave.net/cpdIl5CFGisT7PAC9znWJesTH25mTE_eAmxVbisOxds",
-      "onChain": true
+      "onChain": false
     },
     "196": {
       "name": "Rejected f00kers #196",
@@ -1574,7 +1574,7 @@
       "image_link": "https://arweave.net/yrPJcRnU-b_T1EqERJSA27nnVjepC_uepOkPBpVff4U?ext=png",
       "metadata_hash": "1c3d01cf2b4ee89655220ed48c4acb3b52347ba5a7c12b3716da14b7ce547821",
       "metadata_link": "https://arweave.net/KfogLDJfRumXXMBhUOvZUeGGGUr4QRKz-SvBxBtG0fY",
-      "onChain": true
+      "onChain": false
     },
     "197": {
       "name": "Rejected f00kers #197",
@@ -1582,7 +1582,7 @@
       "image_link": "https://arweave.net/bt7KjiKraYWbIO3jatYo5rCEjIIkVmsn9753S19AbP8?ext=png",
       "metadata_hash": "83a3b86510f14b3a9744d14506119ca78d06922177943c9a3e10b637c7b8a8fe",
       "metadata_link": "https://arweave.net/cPf4I8sCCZrH0yqCMaB-2tjR8uAourF8kGhodtt138A",
-      "onChain": true
+      "onChain": false
     },
     "198": {
       "name": "Rejected f00kers #198",
@@ -1590,7 +1590,7 @@
       "image_link": "https://arweave.net/s47FMwwmtFwVPbNbI9t9I2KG1CpSg8GljP38GxXpUAw?ext=png",
       "metadata_hash": "a0d0fd8985e79afecfe67952accd5ed142b8565cb845eabaebd4b0af1451b78b",
       "metadata_link": "https://arweave.net/guBRkYWMMDsLi4VXdgkXgSKW9NeE-sjJOkcwKk0LD38",
-      "onChain": true
+      "onChain": false
     },
     "199": {
       "name": "Rejected f00kers #199",
@@ -1598,7 +1598,7 @@
       "image_link": "https://arweave.net/khnQ-I3erRMW1STZHGXLwt3T_MF6NDF0KC7xBCxUaSc?ext=png",
       "metadata_hash": "1aba7856380c37a37a0dccf854843c7756c49280c131f5123085e958aaa4cbe7",
       "metadata_link": "https://arweave.net/P47dTGF7R65ABga1EavBR1lJtwQzdT2CNCmSQiQFMkk",
-      "onChain": true
+      "onChain": false
     },
     "200": {
       "name": "Rejected f00kers #200",
@@ -1606,7 +1606,7 @@
       "image_link": "https://arweave.net/8PSxe3Op5Jhv4-zkQL8Uc7d7RWRT7E7z7MgeV1OkQ-w?ext=png",
       "metadata_hash": "60d562c8f10c8ba52ae49299d829a09bf99c8131d5997eae63d1f54c9fa552cb",
       "metadata_link": "https://arweave.net/-JxXe-MOi0ydbkjpjVZ4Yv9zLjGekgoz69YJRh4OFsw",
-      "onChain": true
+      "onChain": false
     },
     "201": {
       "name": "Rejected f00kers #201",
@@ -1614,7 +1614,7 @@
       "image_link": "https://arweave.net/qtE6ZvH3yVxMGca_rM_Bju-xd1ki9M0EwLnjAQlxTbE?ext=png",
       "metadata_hash": "882ba1c75411704b75ad5c582fe2498d2164e1ee1ab63ba92a0cae408014a562",
       "metadata_link": "https://arweave.net/O35Ylgbzd-YGcLjJyFwVBvzNvKD4wR5gdzt_ykGnKYA",
-      "onChain": true
+      "onChain": false
     },
     "202": {
       "name": "Rejected f00kers #202",
@@ -1622,7 +1622,7 @@
       "image_link": "https://arweave.net/1UvKr34CnMI0ENr7xt3Lb_g9o_NhDjRc2BFylhcXTMY?ext=png",
       "metadata_hash": "a12b838449169d37e5db62c8b56102ff74b79aa012737991098888a8bf83e533",
       "metadata_link": "https://arweave.net/TvhgUkGa-QrE4tox9tNQAIbC6216PGy5dHR_uVpydSg",
-      "onChain": true
+      "onChain": false
     },
     "203": {
       "name": "Rejected f00kers #203",
@@ -1630,7 +1630,7 @@
       "image_link": "https://arweave.net/u7MjmMgngEVGJXtADiNJAvgOiBmD5FJQppL24Jyd1VM?ext=png",
       "metadata_hash": "8e6f6cac3a04d939d252c7f88119a7cc45c0e6117a3ae7611d7f19867c1c64fb",
       "metadata_link": "https://arweave.net/duaTRkLIGRO-RoV4D51UsPrDqbP1owd-hurmka096Ms",
-      "onChain": true
+      "onChain": false
     },
     "204": {
       "name": "Rejected f00kers #204",
@@ -1638,7 +1638,7 @@
       "image_link": "https://arweave.net/spoadvKWEuD4cds97o7nYs-TTSB1IwT2zFB0_JRFDO8?ext=png",
       "metadata_hash": "b6c5fa8b697403b1380b8d1b9663685c72334522b00c658efecc113c38ca6f56",
       "metadata_link": "https://arweave.net/x6wkOM2Hxkw89LrENG2jhEes_63NtXBiGV2-gHruOwU",
-      "onChain": true
+      "onChain": false
     },
     "205": {
       "name": "Rejected f00kers #205",
@@ -1646,7 +1646,7 @@
       "image_link": "https://arweave.net/dyyst-XvafBEcYX9jzezh6TtG51Avvpt6VG5ohWrVvA?ext=png",
       "metadata_hash": "16c0e8e64d17e5b3b89ee481a753a29c3b4383c1fbd787a94817bcf435e1f22a",
       "metadata_link": "https://arweave.net/GWGWP2x-fRAGqFJe-S7PpzJRxU_R9NGc1GMQ0OghxXw",
-      "onChain": true
+      "onChain": false
     },
     "206": {
       "name": "Rejected f00kers #206",
@@ -1654,7 +1654,7 @@
       "image_link": "https://arweave.net/UsFrKzJ4sEj0-XeiDwJNV62qrnW7ObVF_D2AgdwLwM4?ext=png",
       "metadata_hash": "5dfa5dd27d82f63214bc9b34bea33c31474faad600febf8cb0bbdcf42e6f7568",
       "metadata_link": "https://arweave.net/2ljbbRgHlGQZPd5IKfriGyTxL6pZkvfyugWz6LKaa7E",
-      "onChain": true
+      "onChain": false
     },
     "207": {
       "name": "Rejected f00kers #207",
@@ -1662,7 +1662,7 @@
       "image_link": "https://arweave.net/hIO5y4SitGX2OxrNGH3X298t2qzw1ddRVgaLtE3-ksM?ext=png",
       "metadata_hash": "36fc1255f70860a0d6557e5f10afe229b2834664c158852c8a530cb40154fa93",
       "metadata_link": "https://arweave.net/3Fw7ks80pzQLIXCEAoeNx5ZqnsXlQBy_9gByMd5pyEU",
-      "onChain": true
+      "onChain": false
     },
     "208": {
       "name": "Rejected f00kers #208",
@@ -1670,7 +1670,7 @@
       "image_link": "https://arweave.net/pbmKafX48mdN7ntDiE8EFcAuJ-3teDu1L6R74TYC4G4?ext=png",
       "metadata_hash": "abe0aafee361ed01af7b3fcc65aa21108efdf318000f730b6d810086ea26d28b",
       "metadata_link": "https://arweave.net/pg4Nj9_NDZdJMzeaLET45sksQ4KGjvMfHMe_own6BJM",
-      "onChain": true
+      "onChain": false
     },
     "209": {
       "name": "Rejected f00kers #209",
@@ -1678,7 +1678,7 @@
       "image_link": "https://arweave.net/3UBPjksfbtvHcpxgIze3lfMdAy8RpobQ29uloCfwI64?ext=png",
       "metadata_hash": "7d009bd6390bb005d1f47c6bd30c4dbd9ea59e6486cab716c6c8f2e73db8f9d3",
       "metadata_link": "https://arweave.net/VHx6h_UL_x5qAzUph2LFb1uGdwK701kXl5ReQKxbGEE",
-      "onChain": true
+      "onChain": false
     },
     "210": {
       "name": "Rejected f00kers #210",
@@ -1686,7 +1686,7 @@
       "image_link": "https://arweave.net/cPZYcjurvfBMq7mNPtOdvKS5LTbkjheDfFmBnNPotBI?ext=png",
       "metadata_hash": "57dbe6a766d7f7c9303dff3122773d031a91f34ad1e94fe57a6465912c8b6f49",
       "metadata_link": "https://arweave.net/iFR4OonFpACEM2MmWNQip6dYa4CXEo5ydIBKQXGat0k",
-      "onChain": true
+      "onChain": false
     },
     "211": {
       "name": "Rejected f00kers #211",
@@ -1694,7 +1694,7 @@
       "image_link": "https://arweave.net/BDLyzFqhzUZ-jJihMA9iNbnbtMnQXglY95KVTR4ObcY?ext=png",
       "metadata_hash": "e8f917d8d1fc6a4c969fd971c8aed64c6ec8cff1e87e43dfb9c85194bcb8c4c0",
       "metadata_link": "https://arweave.net/vC7-pjZu_V0fWN6LjrYXM7rFVgULJw43qFFzk0210yI",
-      "onChain": true
+      "onChain": false
     },
     "212": {
       "name": "Rejected f00kers #212",
@@ -1702,7 +1702,7 @@
       "image_link": "https://arweave.net/A88MO8-3mQWQKQ56ZJhaGHE5b1X1lOdSJkyBeVC-flU?ext=png",
       "metadata_hash": "1a9d1844a85e23fe963b7523112b13ee34cccbd279856cf64562583ce368099c",
       "metadata_link": "https://arweave.net/ncokBda-MK1X7JRYoOFrEMhnMKLdmIkE5FvdBv5Iz9Y",
-      "onChain": true
+      "onChain": false
     },
     "213": {
       "name": "Rejected f00kers #213",
@@ -1710,7 +1710,7 @@
       "image_link": "https://arweave.net/bbmjjVEvNV7JV1o-n03-qRrBayDm_LbE59jwyogJmgY?ext=png",
       "metadata_hash": "e41e1ed9f9787550a9f5b6a00a7e62271e3a29f8398e62d29cf9dcbf40bf29ae",
       "metadata_link": "https://arweave.net/zEIsREghExdsayFfyKADJhxbhkcsKuhLwCY6vh7h32o",
-      "onChain": true
+      "onChain": false
     },
     "214": {
       "name": "Rejected f00kers #214",
@@ -1718,7 +1718,7 @@
       "image_link": "https://arweave.net/fJG03ElIz2331XImdNw3y4o3WVrPrxrNo9ybU5EGpW4?ext=png",
       "metadata_hash": "42360b2d49097e0f68dd1358eaf35525ef90d690ce07c8ed8269a7869899f7a6",
       "metadata_link": "https://arweave.net/hljf5IToGCrcom_J8e9ez2g3J26HSJLFznuyGhktfJo",
-      "onChain": true
+      "onChain": false
     },
     "215": {
       "name": "Rejected f00kers #215",
@@ -1726,7 +1726,7 @@
       "image_link": "https://arweave.net/tX2Mx-JHKacbbTeR599u7En6OXHgfnrG271PMlnzxZ0?ext=png",
       "metadata_hash": "93c535774383b3c1ac81e7f5623832ac2780ab08fcad9a90a100d90bb9fc2172",
       "metadata_link": "https://arweave.net/n7Y1KSs9BowUo0pg8ADpY3UTwhrkw7-9oKp8qLEZp8o",
-      "onChain": true
+      "onChain": false
     },
     "216": {
       "name": "Rejected f00kers #216",
@@ -1734,7 +1734,7 @@
       "image_link": "https://arweave.net/UeB4tKvWz7N04oT1QxzeKLi5fXV4KHXtA0nhw1E7rJU?ext=png",
       "metadata_hash": "c9e81ebc58b009acff14c2ccff800a8ba91cd3c20a5ec1360b798d1a0ede1ec0",
       "metadata_link": "https://arweave.net/mE-2TFzjI28W96i2isdO5j1tDaBMK1JfuPENzTnhMuE",
-      "onChain": true
+      "onChain": false
     },
     "217": {
       "name": "Rejected f00kers #217",
@@ -1742,7 +1742,7 @@
       "image_link": "https://arweave.net/5EyxqbXHr1b7MZXOSnHhVHGszq9xMGXO4dt3Kq4Rg28?ext=png",
       "metadata_hash": "e00d77747386453edc3a02ffde2f56f037cc567411e7f3fa414faa573a2ce3fc",
       "metadata_link": "https://arweave.net/HbEoQ6RU8ekp7eWy-My2CP6R3cxa_ZbHklwhHKieAgM",
-      "onChain": true
+      "onChain": false
     },
     "218": {
       "name": "Rejected f00kers #218",
@@ -1750,7 +1750,7 @@
       "image_link": "https://arweave.net/y00TDVCzGBFKygG88v19L3S5TfbgEzO4oogZ7-MF8lc?ext=png",
       "metadata_hash": "f2342bbcb2ed77e0e868f745a86dc6144a426fd487a98acdd2ce2118fbc4ebef",
       "metadata_link": "https://arweave.net/YZkYIx1bqgZLm6La481P8RoQkOs5S4ycrQGEVPwE2gc",
-      "onChain": true
+      "onChain": false
     },
     "219": {
       "name": "Rejected f00kers #219",
@@ -1758,7 +1758,7 @@
       "image_link": "https://arweave.net/ynFVRRq2flSem8UYrUGcAGN1PbYOL70QXoqKQDwg6nM?ext=png",
       "metadata_hash": "f4c70bb51e8b6ee4fa4463c17db1cbe99d4f709e4fcf0799ff6efa9431907d6f",
       "metadata_link": "https://arweave.net/K4Gkr-s6cU5voqrj2CN8982HElAr16C78aVgBE9WRdo",
-      "onChain": true
+      "onChain": false
     },
     "220": {
       "name": "Rejected f00kers #220",
@@ -1766,7 +1766,7 @@
       "image_link": "https://arweave.net/QiJKgKc96x6x0tKR-BQL-c3nP_JZKHi84BmdwhlJIZo?ext=png",
       "metadata_hash": "e095105cafc6888b5daad85f1be0f31401b3451d70e7a9b05fe880c03aa2a807",
       "metadata_link": "https://arweave.net/2_uSaB8OUlWBeAxwnJxa4ld5TFLrO3l-bzOcFDHPToo",
-      "onChain": true
+      "onChain": false
     },
     "221": {
       "name": "Rejected f00kers #221",
@@ -1774,7 +1774,7 @@
       "image_link": "https://arweave.net/pvR11bswLBUPLt5IIMIFvpXjK8qu6sVXKefgcXb2ioE?ext=png",
       "metadata_hash": "e93f4e8d781af50215d7e1c7b6fc90317533baad99e84379be17b139d788c314",
       "metadata_link": "https://arweave.net/cwbbZmF_FKYESC1LTGCiJPO2TCRFJqAixPSVqTECfaI",
-      "onChain": true
+      "onChain": false
     },
     "222": {
       "name": "Rejected f00kers #222",
@@ -1782,7 +1782,7 @@
       "image_link": "https://arweave.net/sX7sqXqxH4jNF9fpaSfGa9vrVcRn2Wq48f_wTS9m07c?ext=png",
       "metadata_hash": "fdb63a1e581281eb15b78bd56927526743b73415f554bbc824c30126d39ed8fb",
       "metadata_link": "https://arweave.net/j5qBAOUnqg4jdYu6YeuvhPx4o48qTEUvgISa6VEWDZ8",
-      "onChain": true
+      "onChain": false
     },
     "223": {
       "name": "Rejected f00kers #223",
@@ -1790,7 +1790,7 @@
       "image_link": "https://arweave.net/hQcS_qoCqFYmbElx74g4SE_GdaWKo4s2jcXMkiiwkyk?ext=png",
       "metadata_hash": "baee6444296ef35d789f72989251846776dd03cd7b2368c56df260ea8ff537d0",
       "metadata_link": "https://arweave.net/yqx2IoXJ1wv97o-WWMF_gCaMh8BkW3AFr4qK-Uj_BBM",
-      "onChain": true
+      "onChain": false
     },
     "224": {
       "name": "Rejected f00kers #224",
@@ -1798,7 +1798,7 @@
       "image_link": "https://arweave.net/pudBP__MY2pNMYXzGoTQVLm2eVB6jfZDdmezxEnTtrA?ext=png",
       "metadata_hash": "cb859796fbb9ead767472a304d563d055668f6bd62873b4bd060a5137f73fdef",
       "metadata_link": "https://arweave.net/PYDNIPHlTI67qoQYJF7HtZpPnD2b-KXnGM45T3yzBS0",
-      "onChain": true
+      "onChain": false
     },
     "225": {
       "name": "Rejected f00kers #225",
@@ -1806,7 +1806,7 @@
       "image_link": "https://arweave.net/b2ETnDOUyA2oXjOo4ct34vTHg8MNi6z9o_qZp53ldHk?ext=png",
       "metadata_hash": "b5d36f10d4cf7846a703b300f54d6596695a75a63d6ef8141b436bc486726f07",
       "metadata_link": "https://arweave.net/Pis9TqfLqTyA7mdfmUYqNF86T3iBWm6l1eKqD9c36Ss",
-      "onChain": true
+      "onChain": false
     },
     "226": {
       "name": "Rejected f00kers #226",
@@ -1814,7 +1814,7 @@
       "image_link": "https://arweave.net/nkccppxBRbUS6EZNYFkBccFLvTRfiMsKfpgEFGhEFhY?ext=png",
       "metadata_hash": "2f0d9e22af92fdde9178be0540b05a48fbfb5fd893b963f9c5e12742ad1266af",
       "metadata_link": "https://arweave.net/UI4sv1jbaZKe0XXYXzId_g5SP0arCNrsdVyjzeMRCFo",
-      "onChain": true
+      "onChain": false
     },
     "227": {
       "name": "Rejected f00kers #227",
@@ -1822,7 +1822,7 @@
       "image_link": "https://arweave.net/MGWgIQN9QzEeZYkob8QSlvBG2ApVHN-V-WwfanBBj7k?ext=png",
       "metadata_hash": "bff139beb19bdea88690d3d79c5f269fe2d35b230ed70ddd4f7e4db75f3e0402",
       "metadata_link": "https://arweave.net/S8DvjelySNP3tRPHnlFwAsnyBUysg-OyXO5yimUBDuA",
-      "onChain": true
+      "onChain": false
     },
     "228": {
       "name": "Rejected f00kers #228",
@@ -1830,7 +1830,7 @@
       "image_link": "https://arweave.net/rq0Qg-DsPKJwOKO0JA-Sus3jzZwOfNBz1YyLn5ObUtA?ext=png",
       "metadata_hash": "c01ea8242ea52b195bcc4fd41e9bc518a298169745e5fb671bc36e508a876302",
       "metadata_link": "https://arweave.net/nlsnSSVVmRgNgdb2R4AYmLb36Xm4CibS8UC3j1LIazI",
-      "onChain": true
+      "onChain": false
     },
     "229": {
       "name": "Rejected f00kers #229",
@@ -1838,7 +1838,7 @@
       "image_link": "https://arweave.net/sVRRi0wDYyyJWZyklxhFBEq4DjeHKREqFbbZMGCSpz0?ext=png",
       "metadata_hash": "b6b7ae094a43f2b7a59f989167cbf569c86ce27cfd5e970c0f3a542ba166d100",
       "metadata_link": "https://arweave.net/X7CL9otr3GRXU1qSvWivelo2T3peyAlWgiHx0Ue3Lf8",
-      "onChain": true
+      "onChain": false
     },
     "230": {
       "name": "Rejected f00kers #230",
@@ -1846,7 +1846,7 @@
       "image_link": "https://arweave.net/_J-at6QwZigAEy2w2cUHy3Mk-MI_MwF-shMd2nmNeBg?ext=png",
       "metadata_hash": "f138130b1d84fc2da308ec5b60170dd8b52080be18ac929a760ed7c9f7ae68e1",
       "metadata_link": "https://arweave.net/bhNnkWWSItXgh7DsnUvthmGWVlu-5JjZSkSVVGKxDWw",
-      "onChain": true
+      "onChain": false
     },
     "231": {
       "name": "Rejected f00kers #231",
@@ -1854,7 +1854,7 @@
       "image_link": "https://arweave.net/pqjonhy8L4z-5YchLBW1VdabIZRMYBA4FbnaKsRkRVI?ext=png",
       "metadata_hash": "b04eb82cc0e36ed6b3b1ff9e1bfe76454def970166e78d664409f176bfdbd643",
       "metadata_link": "https://arweave.net/PQ8pS-SuO5IdhhePohtLBk-xjHExu4hvLyPWP3i0gpo",
-      "onChain": true
+      "onChain": false
     },
     "232": {
       "name": "Rejected f00kers #232",
@@ -1862,7 +1862,7 @@
       "image_link": "https://arweave.net/15tt_Y-6OsuWCxC4jKrCrA4Fgr76PN8olY2b2pmJS80?ext=png",
       "metadata_hash": "eabc2b675e661db9963b701bc076e7d473013ac50fed7d2d90a953a34c574077",
       "metadata_link": "https://arweave.net/cA6z2wRHymePZntv6TiIL_eAPfWWlWpf5TaA_qDDm-g",
-      "onChain": true
+      "onChain": false
     },
     "233": {
       "name": "Rejected f00kers #233",
@@ -1870,7 +1870,7 @@
       "image_link": "https://arweave.net/LwIoUDArP3zUN_GRTM_LmzbMhQXu-uwjGapAOEMNYX4?ext=png",
       "metadata_hash": "498a7d69139d311e7465bd540867bd585a38022c58e61c750bf8a1b7d556dce3",
       "metadata_link": "https://arweave.net/J4gYSOqaEj-6h3gej-WvN_9_4iKh3YNUs_qunaFre0g",
-      "onChain": true
+      "onChain": false
     },
     "234": {
       "name": "Rejected f00kers #234",
@@ -1878,7 +1878,7 @@
       "image_link": "https://arweave.net/wrycNrX3US61p1xtoXGPWA2tfaRuIS-29H74Mwkj07k?ext=png",
       "metadata_hash": "834ce9606f23dc07f6f9dfd96132f20d0ce543a33bff1fa3d71c9b868ffc90f7",
       "metadata_link": "https://arweave.net/Q4inXcJWNILphHavw3o9dKdEjs7CecVY7NI32jYmXBo",
-      "onChain": true
+      "onChain": false
     },
     "235": {
       "name": "Rejected f00kers #235",
@@ -1886,7 +1886,7 @@
       "image_link": "https://arweave.net/7UVrWQ3__ezCtrsK_Y_vOokRefRtsdMzGWj96rY-dv8?ext=png",
       "metadata_hash": "85b03ed8c30024ebea26aa040ff3ea5d370142b7533c62a896ce487488912d62",
       "metadata_link": "https://arweave.net/Sds86LCjcrp_5QMEJsdiOmCWU23MwIXl3LX24WGXzHM",
-      "onChain": true
+      "onChain": false
     },
     "236": {
       "name": "Rejected f00kers #236",
@@ -1894,7 +1894,7 @@
       "image_link": "https://arweave.net/hHY87dhabu5hQHIKgdiIrVZkOmQVijZDXQhGmxXZaXg?ext=png",
       "metadata_hash": "039d8a6f0aabbe514268b8d99af73cf92d32d4a1f67b3d9384003aaf92d7fd8b",
       "metadata_link": "https://arweave.net/vIbBcyuDj8ET5qy6PwOxGoZp2jbyjC_vLXcw24O9o6Q",
-      "onChain": true
+      "onChain": false
     },
     "237": {
       "name": "Rejected f00kers #237",
@@ -1902,7 +1902,7 @@
       "image_link": "https://arweave.net/TRowMlwdaVSeoMUxaWYMzYbuHTxvYSv-mkRemjBILqA?ext=png",
       "metadata_hash": "d1b488d917e2348aa8f01fe093275927201ec6f9527e654ac3783e7e5e5409a7",
       "metadata_link": "https://arweave.net/MnJ7HzLv1FUlgIJNCc5SGRU9s5JcchBa9PWhHb7n0To",
-      "onChain": true
+      "onChain": false
     },
     "238": {
       "name": "Rejected f00kers #238",
@@ -1910,7 +1910,7 @@
       "image_link": "https://arweave.net/zNk55t9VPOqxc3A48LFDJi8qeYaZeDbmep-V7d-q7uw?ext=png",
       "metadata_hash": "c40da62aeccb0ebcd9a4541b4eaa30d3cbd3eb195dc3e25d5f84653242dfd3e7",
       "metadata_link": "https://arweave.net/Y9DSVR9dgiVkEUa1Ou5x-beXG6pKZb6lUbBCv4OZHTg",
-      "onChain": true
+      "onChain": false
     },
     "239": {
       "name": "Rejected f00kers #239",
@@ -1918,7 +1918,7 @@
       "image_link": "https://arweave.net/bgj54zfE6KJsbSExS0Fz9mG_ShctkpRnpzYJRlOBMss?ext=png",
       "metadata_hash": "7068b77f819a228f9f5b66accf2e6569cebda866e65f3e78e9d11067500cd82c",
       "metadata_link": "https://arweave.net/oLezoRrbmrzMdaVIIEOy7tJTv7HK2MJEnLDNO8EtLIM",
-      "onChain": true
+      "onChain": false
     },
     "240": {
       "name": "Rejected f00kers #240",
@@ -1926,7 +1926,7 @@
       "image_link": "https://arweave.net/Pyq0jYIH0NFuvK22sYubLFU5g8EN7Hb4i4g730qhvPM?ext=png",
       "metadata_hash": "2963a2192a611b53f0a153eb3e39ff7a72615cdfac659346bfcc6d4f82efea3b",
       "metadata_link": "https://arweave.net/jC9zl8jUzM1dZRFb3RfwlbdQaN3S38E5CW_KcxUKb_4",
-      "onChain": true
+      "onChain": false
     },
     "241": {
       "name": "Rejected f00kers #241",
@@ -1934,7 +1934,7 @@
       "image_link": "https://arweave.net/RKIhbmIwGKLeCvWZSbTeG4ZFVXBfxiOHMV5IxYfj5JQ?ext=png",
       "metadata_hash": "9739abf88a5ee79e75221dbd611ae30a624355030f965bc3f445c022e5ee7be2",
       "metadata_link": "https://arweave.net/j5zdalEtfGdGkVNlMabguIQRSRJjDY6TTSJQtf3Br80",
-      "onChain": true
+      "onChain": false
     },
     "242": {
       "name": "Rejected f00kers #242",
@@ -1942,7 +1942,7 @@
       "image_link": "https://arweave.net/HLuUayixAXsNzIDjG-OgeJger086jHPZjJ_rLhtbx2M?ext=png",
       "metadata_hash": "a4dafdcb040b68ff71597c3a3d593fc182edd3bfdf888e5703efc812a24469d7",
       "metadata_link": "https://arweave.net/UuFR4SAJw036S5hJ_Lq8DlQqAEm3clTRgFnqu6KlnC8",
-      "onChain": true
+      "onChain": false
     },
     "243": {
       "name": "Rejected f00kers #243",
@@ -1950,7 +1950,7 @@
       "image_link": "https://arweave.net/CKMwtBYexnN4y4Eh4IxWLukaAy8XcK_pga4bLCLN5Hk?ext=png",
       "metadata_hash": "9ce0b3440c6210c0f510b34faa2940079b0cfe97433503e2038b7488d0213616",
       "metadata_link": "https://arweave.net/DkWpz3gY65h70V9K2wYlBozx0W22kokOWcTGWNm9Ixs",
-      "onChain": true
+      "onChain": false
     },
     "244": {
       "name": "Rejected f00kers #244",
@@ -1958,7 +1958,7 @@
       "image_link": "https://arweave.net/GgbOFfLCnlUzvKq64Cof-oTlkPEU8ddRwYaXrPMWv_k?ext=png",
       "metadata_hash": "29b340b21efd542e03707cf3c80fa892ef17b425670477e57fa803e219aeede1",
       "metadata_link": "https://arweave.net/zgw8s3I7iGrv39wGNQ3trDhaGOC9xjhu_PexvVWVatE",
-      "onChain": true
+      "onChain": false
     },
     "245": {
       "name": "Rejected f00kers #245",
@@ -1966,7 +1966,7 @@
       "image_link": "https://arweave.net/2_G3ONVLIS7cbL6c-CUd9L62m7sedxCCu-xCkMGWkp8?ext=png",
       "metadata_hash": "7fd4795855e09691b3f2a578decc23a6391b422dc9dc3b923f81e944471f5eda",
       "metadata_link": "https://arweave.net/xyA5o5EZqxwie-90oceDEA3hIGl7eRMgTDgAxZ0mhn0",
-      "onChain": true
+      "onChain": false
     },
     "246": {
       "name": "Rejected f00kers #246",
@@ -1974,7 +1974,7 @@
       "image_link": "https://arweave.net/tAIv_QCGsXqpD91vamlxDpK2704IXzsbCcBJlhMb5Ts?ext=png",
       "metadata_hash": "f189aef726f444812ca2d6ced81a10806000dd1027fc1d63ae3d6b73bf0059cc",
       "metadata_link": "https://arweave.net/OZyqYUeyapUjvFgigpSYcvdlOpKXaILg5PBXGifdono",
-      "onChain": true
+      "onChain": false
     },
     "247": {
       "name": "Rejected f00kers #247",
@@ -1982,7 +1982,7 @@
       "image_link": "https://arweave.net/-H7zswX1HMh4VHHl6zaAFPQb8vdZpDfkzG7CerloOEw?ext=png",
       "metadata_hash": "8d6c555cfe47f1e3f06fd783f5464732f71554107911cab6d688637e367bafd4",
       "metadata_link": "https://arweave.net/XwHWrWnBOK2cisnNHZQcll11_rdo-c7BT6ouCR6QqbI",
-      "onChain": true
+      "onChain": false
     },
     "248": {
       "name": "Rejected f00kers #248",
@@ -1990,7 +1990,7 @@
       "image_link": "https://arweave.net/uVQ_UCJaxQs8btxwsiK8QPvb54PveFNGliAvgAEHVdo?ext=png",
       "metadata_hash": "6567bacfdaf2d56c4d1cd1ee45da262f1647be1ba738ff4bd91486bdec3c5d49",
       "metadata_link": "https://arweave.net/jn-rHliK3ocxNwsSJXqkgsBhv49B5nc9t_es18axNuc",
-      "onChain": true
+      "onChain": false
     },
     "249": {
       "name": "Rejected f00kers #249",
@@ -1998,7 +1998,7 @@
       "image_link": "https://arweave.net/eIh5Sgw-OnkKiMk1dyeonQCx5F8rA1Ga9Gk8ULnneVk?ext=png",
       "metadata_hash": "a2c4ad5ef574c81ed081c1ecc9c66e559f18a1f7a86e3d2b25facfb1165c738c",
       "metadata_link": "https://arweave.net/Z3jYgdlP4lmEpG4iA-l6D4mlPzMzqQVGutwRn1MFXNo",
-      "onChain": true
+      "onChain": false
     },
     "250": {
       "name": "Rejected f00kers #250",
@@ -2006,7 +2006,7 @@
       "image_link": "https://arweave.net/ra2C-ubFOhKz5bQ7Rj1yBLFPZrGTQhuf4BTHhz-GI40?ext=png",
       "metadata_hash": "da91ac62636c7e6dbad78eee63c2f4a77f71424ff6367ead6c0b53dd6f085b76",
       "metadata_link": "https://arweave.net/HA2WTr6dq_jIrvQDVCbjFFB3yQJQnBvYwYCgpk5uYWY",
-      "onChain": true
+      "onChain": false
     },
     "251": {
       "name": "Rejected f00kers #251",
@@ -2014,7 +2014,7 @@
       "image_link": "https://arweave.net/7uNNx6nQxCxVquZCWpdaHcThKWTvR0iFC5BEpYMlNKA?ext=png",
       "metadata_hash": "0969d995460bbe377b87ea1fb813b9f7de56abf5c324b848907890a37ac8f68c",
       "metadata_link": "https://arweave.net/DsnAfXZpV8GYrlpm69KyAOYtD1hL12v8kwz3RwfUxsg",
-      "onChain": true
+      "onChain": false
     },
     "252": {
       "name": "Rejected f00kers #252",
@@ -2022,7 +2022,7 @@
       "image_link": "https://arweave.net/YQZQ0hY6gXv4jzFCC-m9jgUWQSe_ydwDuO304pJ32uE?ext=png",
       "metadata_hash": "728ba0829a86f0e0510b91f4bd0a764aeae845deeae42759e709bee4a7bdaa5a",
       "metadata_link": "https://arweave.net/QFYR-eHp64YYTOthR3TY5XZHhc6DOSqk18583SDq5CA",
-      "onChain": true
+      "onChain": false
     },
     "253": {
       "name": "Rejected f00kers #253",
@@ -2030,7 +2030,7 @@
       "image_link": "https://arweave.net/Zs_hyKroGeyyVLzK2xFOYeU7Wi8NgA6kGpnkGOwof5U?ext=png",
       "metadata_hash": "770519c05f4be90233031f37235bf726cd6bedcc78b5b33f9e7572faf3697e2e",
       "metadata_link": "https://arweave.net/AjoaEIly5E64ybqR1tnbNEuc5iFBbCK7KhVnt4gA-Ko",
-      "onChain": true
+      "onChain": false
     },
     "254": {
       "name": "Rejected f00kers #254",
@@ -2038,7 +2038,7 @@
       "image_link": "https://arweave.net/hPbpYmxmMXHrUkKjjA226ddsxbVlXDkEbzOaIbUAeTs?ext=png",
       "metadata_hash": "3e54d0bf8aa93bb5da2bf667d25e732a5da992c49d1490172e030d1f90ef6d2a",
       "metadata_link": "https://arweave.net/gG2hRR8vB5n_OCeL-AeENVrQ8UqSiwQZL3drsblA2Wo",
-      "onChain": true
+      "onChain": false
     },
     "255": {
       "name": "Rejected f00kers #255",
@@ -2046,7 +2046,7 @@
       "image_link": "https://arweave.net/vYXkq3fhEaHfzv7JKyyxJ2JXN4bbndJDRgpnel4Srnw?ext=png",
       "metadata_hash": "43a238374436c460cb016a4340fe262c8f4eb7b171ebe780ae884f776f14e5a0",
       "metadata_link": "https://arweave.net/u5hoe_vhnPB0F2PPso7fxf7uTfSBKOaGVHdUWioKzFo",
-      "onChain": true
+      "onChain": false
     },
     "256": {
       "name": "Rejected f00kers #256",
@@ -2054,7 +2054,7 @@
       "image_link": "https://arweave.net/4fBTxk-xHYfvVaEjWRU2GEBwml6yry0KSpO-ActUl7E?ext=png",
       "metadata_hash": "565fd751a7a831bf41b979d1237b67fa8e593b1ff9b90ee6cd9bb8f6f1f89af3",
       "metadata_link": "https://arweave.net/Rxbttis4FBEr4MUC4FwbUSqJI4ERdbTmJ5_V9bXyksY",
-      "onChain": true
+      "onChain": false
     },
     "257": {
       "name": "Rejected f00kers #257",
@@ -2062,7 +2062,7 @@
       "image_link": "https://arweave.net/t3IKhwg2av96VCmFkeHTcqAyKomY7b6zoZbC5v5ykvY?ext=png",
       "metadata_hash": "efaf9a5babf056e5be5717658eae9e51080e8ad522ed3df72261000c6b87e279",
       "metadata_link": "https://arweave.net/7pLOTLLk6PZ_-5g911E4IufzDqnPUdXdU_UfpvAlhqg",
-      "onChain": true
+      "onChain": false
     },
     "258": {
       "name": "Rejected f00kers #258",
@@ -2070,7 +2070,7 @@
       "image_link": "https://arweave.net/dRvBUccqhvKUv-u4KQXQnBIEHS3F5phNGx3ezJcQlVM?ext=png",
       "metadata_hash": "c5e37ca9ee5e82c34f6f6cde3d869e41b0ff3606ee0843ea3780186d6693ab5c",
       "metadata_link": "https://arweave.net/lBy6i1jA1lPc3ZV08cPjAUJo4YQAmkeic1_lPbXtLPw",
-      "onChain": true
+      "onChain": false
     },
     "259": {
       "name": "Rejected f00kers #259",
@@ -2078,7 +2078,7 @@
       "image_link": "https://arweave.net/u4JIgxVfzL0QN0Jtbki0B93Wiq-_j2r0Lhe2xFgmCtk?ext=png",
       "metadata_hash": "80f691461b88bc206c03197bca333b62304ef02e038789a3ba31ba045383475f",
       "metadata_link": "https://arweave.net/e8CXt01AzJm1p4qs-H36yp0QzAf6yFiowvUKtkuaw3c",
-      "onChain": true
+      "onChain": false
     },
     "260": {
       "name": "Rejected f00kers #260",
@@ -2086,7 +2086,7 @@
       "image_link": "https://arweave.net/yuoISOxdbc7jSf_d44JY4vlMWQaRlNs0Zd2frhIyX48?ext=png",
       "metadata_hash": "68676287efe39d9abc23c8110bd2b9488da4127b8ace7d56155c950632fccf67",
       "metadata_link": "https://arweave.net/0eG4ZwS210l7todeVni4BaTHsu5dF6ebcu9KnrxWL3g",
-      "onChain": true
+      "onChain": false
     },
     "261": {
       "name": "Rejected f00kers #261",
@@ -2094,7 +2094,7 @@
       "image_link": "https://arweave.net/fK9YPNW6Zqf81YVeS8W03Y4DdIxQaNM_AYUVxzRWl10?ext=png",
       "metadata_hash": "35e9d42cd0dd8b61f16425d66567f509fa82bde5dc94d2cf7aeacc0c419b724d",
       "metadata_link": "https://arweave.net/nwaN5C92EWqIBIB9V55lFvBveIXvgXsQkMifz86Da5c",
-      "onChain": true
+      "onChain": false
     },
     "262": {
       "name": "Rejected f00kers #262",
@@ -2102,7 +2102,7 @@
       "image_link": "https://arweave.net/J7Gc3QqGbtotvcLrtjkTy-pJULk0KF2EVGvCpHRbBwA?ext=png",
       "metadata_hash": "e4770e4b2439907554255f6121bdf0249268e498e1cde696ab6c63314c21ea35",
       "metadata_link": "https://arweave.net/d6Kr9YZFSc4FKdPPBGKDAs1XSuf-lz-oBDLDPAAFsZw",
-      "onChain": true
+      "onChain": false
     },
     "263": {
       "name": "Rejected f00kers #263",
@@ -2110,7 +2110,7 @@
       "image_link": "https://arweave.net/dwKzcwPZLRLq_brNEOpAmyDAwb8Phl96ySjTjLXoxQ4?ext=png",
       "metadata_hash": "5d209388543c9fed5f94df1104dd2f58efc64f97f339a09aa7f9ee2b79675d58",
       "metadata_link": "https://arweave.net/2DeTQEzeR_GDYHnsET8GxKvuXf55DrIeFaZHTiy5G5Q",
-      "onChain": true
+      "onChain": false
     },
     "264": {
       "name": "Rejected f00kers #264",
@@ -2118,7 +2118,7 @@
       "image_link": "https://arweave.net/U1HdHEbzvxxU7j7tbeZXdkQWBNLUuTZrc-ViH2xsLpg?ext=png",
       "metadata_hash": "9f53b94c46ccbbf123ccf16f6dadad2302a78a5c60a3ff042119748a822004c5",
       "metadata_link": "https://arweave.net/GWGJnmvaDkEso4y_8w8HAZQHwmsH7vSl_A25t0UlSdg",
-      "onChain": true
+      "onChain": false
     },
     "265": {
       "name": "Rejected f00kers #265",
@@ -2126,7 +2126,7 @@
       "image_link": "https://arweave.net/XwuT7R5JDSfAmRVh9l8YUWasxDH4G3pd8LHWIAIqyyY?ext=png",
       "metadata_hash": "a8d05cd28934b7f3a6229873f44200e9ee99c8ab71951ea5cdd0daecc4589ea6",
       "metadata_link": "https://arweave.net/gtfRHFu6_G7T7FekVT50eJtnp4syecFqgyvL3mjsch4",
-      "onChain": true
+      "onChain": false
     },
     "266": {
       "name": "Rejected f00kers #266",
@@ -2134,7 +2134,7 @@
       "image_link": "https://arweave.net/iDETWihSv2I7KkuHLMnXbwSHBYPdOL3Xkqz-F1HlZmY?ext=png",
       "metadata_hash": "57b7e1c9a4ff7e5f9d702268e74eda07b2d323f996da71390ac4ef21a051954a",
       "metadata_link": "https://arweave.net/LSkujnQ2UIeBeVSLwoBSYwa1pUJoKoIvTA284JQnTUI",
-      "onChain": true
+      "onChain": false
     },
     "267": {
       "name": "Rejected f00kers #267",
@@ -2142,7 +2142,7 @@
       "image_link": "https://arweave.net/gg9uZsG1RxrJvimyjud5YSDEMt_R6a1HhTrh4u1Cj08?ext=png",
       "metadata_hash": "78288b5d46f58f47b27611d7cf4583e5ff4896f639755a968842eedc3af75f56",
       "metadata_link": "https://arweave.net/9GiHd59MinodE9feI7v_HTcSLRNUegWxZnQcW5IiDbs",
-      "onChain": true
+      "onChain": false
     },
     "268": {
       "name": "Rejected f00kers #268",
@@ -2150,7 +2150,7 @@
       "image_link": "https://arweave.net/K5Gb3gNWG73U7a_uw_firwzxjnBiGsKrmr-jX4bie2I?ext=png",
       "metadata_hash": "aa7dced84a3c1e1849fa1b2592e4fb83c03b03d55d99cfcf9ec93e0227192e86",
       "metadata_link": "https://arweave.net/y5f5QABVnmgZ_eNnNlkL_d1HxBXXYJQvOkSjtCK4exE",
-      "onChain": true
+      "onChain": false
     },
     "269": {
       "name": "Rejected f00kers #269",
@@ -2158,7 +2158,7 @@
       "image_link": "https://arweave.net/2d8XrgIGd0pZXvBWGlqYvHWvSbSMpcMl3MeBs8bCTgo?ext=png",
       "metadata_hash": "bf06042d99f915a143ea3d43bdfdb39e060842cec9843d2aeb34597f573b46f2",
       "metadata_link": "https://arweave.net/EjC-seAWQONYjEGpeUxLX_K5ugpuabTSsbKPVdbBVP0",
-      "onChain": true
+      "onChain": false
     },
     "270": {
       "name": "Rejected f00kers #270",
@@ -2166,7 +2166,7 @@
       "image_link": "https://arweave.net/N6MUykhkdqqer9XrOuCoAfq4WwNo4mW2_-MgYBKifq8?ext=png",
       "metadata_hash": "07af94305629a0b7840995c11368460a5f6b10303a19c04a1f98f66b6e34cafb",
       "metadata_link": "https://arweave.net/ve98BXRDkO92-z-S3CMtS6EpAeGJPlMYSOb-MEF-eJc",
-      "onChain": true
+      "onChain": false
     },
     "271": {
       "name": "Rejected f00kers #271",
@@ -2174,7 +2174,7 @@
       "image_link": "https://arweave.net/sgtNuIoQxcmitjcLKr0kDzz07_vDlV1eeR67UCqwhzE?ext=png",
       "metadata_hash": "4b4393bd889eba30c6c3cb64fe93c2eb97497bcd2eaa3bde95e5c5b52e2abcb5",
       "metadata_link": "https://arweave.net/jTfxdXJJfdaJZklzY04mGfVZyUw_alwF_qCi1XGu4Qk",
-      "onChain": true
+      "onChain": false
     },
     "272": {
       "name": "Rejected f00kers #272",
@@ -2182,7 +2182,7 @@
       "image_link": "https://arweave.net/xxwrZ8a7nPhsGDRnmU7lIqeLrRpBWtFBTOvsKyYgcwM?ext=png",
       "metadata_hash": "290f393c60dc6fb2060fe035088f76f36490de9e437dcb5c91c069b09d833c91",
       "metadata_link": "https://arweave.net/OVO-62ulXszAI8oT0vn3K2JwEmTuLRjqB2ThUNRRZO4",
-      "onChain": true
+      "onChain": false
     },
     "273": {
       "name": "Rejected f00kers #273",
@@ -2190,7 +2190,7 @@
       "image_link": "https://arweave.net/2Za1fGab94guBRrboybuaG8IoegQoXXwfjM60O81Ng8?ext=png",
       "metadata_hash": "31efdbeb4cf7d12529cb9f68a8760b9ec2100fd8ff2bdaccad56788f687c789a",
       "metadata_link": "https://arweave.net/SzS3paN7sz0uJ0dufTCIlcE4MaKbCVzWbv2iQkszwd8",
-      "onChain": true
+      "onChain": false
     },
     "274": {
       "name": "Rejected f00kers #274",
@@ -2198,7 +2198,7 @@
       "image_link": "https://arweave.net/8pH6nmXBYt6ud9cgN8htdpWf0XNbYd892M0cWxGNvFw?ext=png",
       "metadata_hash": "50dc4b76b8fe245971b42fef547fd185af9d5626cab8c9522470458bfd1fa345",
       "metadata_link": "https://arweave.net/uX-hiT1KErN7WjOv625uB5GEei4q5z8dAfz9Zd_hkaY",
-      "onChain": true
+      "onChain": false
     },
     "275": {
       "name": "Rejected f00kers #275",
@@ -2206,7 +2206,7 @@
       "image_link": "https://arweave.net/scP_u8IASttXRqgfjfNtSxehqYMaBmhCIXfCZYpPEas?ext=png",
       "metadata_hash": "b76b8e782fe8b274263cc0ae886bb1c5a5892e2ab34b648584c1bace3048c44c",
       "metadata_link": "https://arweave.net/aFCXhSpaskhF97qUaiQEYoMWCZXcJq7fx0xlhRfgqqM",
-      "onChain": true
+      "onChain": false
     },
     "276": {
       "name": "Rejected f00kers #276",
@@ -2214,7 +2214,7 @@
       "image_link": "https://arweave.net/gO0QR53SmkOxVs-AsyHjgAhWKApAfhIYVa2kwavbZXY?ext=png",
       "metadata_hash": "00b232ec870aa3b08cb172e2f1a0812d84dea6384e38e5f899254da19ecb5227",
       "metadata_link": "https://arweave.net/ovRLDPO6s3mWnL2MeBhv_fY6ztbZ1UK52FqTNggcWJ8",
-      "onChain": true
+      "onChain": false
     },
     "277": {
       "name": "Rejected f00kers #277",
@@ -2222,7 +2222,7 @@
       "image_link": "https://arweave.net/-YoaDBWM00iCtriL5nOXQjNAECa2MQxLuMzbSKzll6U?ext=png",
       "metadata_hash": "880229d60fd95b384eba57b8762dc74507bd07801cbb9782639e24134cba6957",
       "metadata_link": "https://arweave.net/0MYiPC15SYXhauZlAVlz8qlF555zxpWeZkkfzh01k14",
-      "onChain": true
+      "onChain": false
     },
     "278": {
       "name": "Rejected f00kers #278",
@@ -2230,7 +2230,7 @@
       "image_link": "https://arweave.net/XAP_Um0-fuu1gPQ6kGPo0YCIq20nrKr--3XvKqfDURw?ext=png",
       "metadata_hash": "75d84cb19770937bd6870fe0dd54f2946cdcc83bc22c06bf10b3fa95aec28fa6",
       "metadata_link": "https://arweave.net/bKSok6Wth4EZ-AxvehxtBKhOWFvP1bdimdSO1vpnYhc",
-      "onChain": true
+      "onChain": false
     },
     "279": {
       "name": "Rejected f00kers #279",
@@ -2238,7 +2238,7 @@
       "image_link": "https://arweave.net/f2O62i_fpGq7YOvMNqlt0adj9OP2qCmwUNeMvEaT5Qc?ext=png",
       "metadata_hash": "cf8cba95cc3c6c39022b3213387019d8b808ec9bec1592a14b925d78858e729d",
       "metadata_link": "https://arweave.net/BCkf9ru8bb-1KxjK9N94dKB-avJizdpS9TMjOjc8F78",
-      "onChain": true
+      "onChain": false
     },
     "280": {
       "name": "Rejected f00kers #280",
@@ -2246,7 +2246,7 @@
       "image_link": "https://arweave.net/7_ogb4RtvQv2lxblgw9mf9uzdJXhv4aaquGuj5gS85Q?ext=png",
       "metadata_hash": "1cffa5eb236ebe5babffb009211bf126bb492cdca6b0bb609fb1b8ea0fde8495",
       "metadata_link": "https://arweave.net/Cy-6yfI_kZ3JDEx9EKBe_ujv0E5UeRhjLuZ45qRZwgs",
-      "onChain": true
+      "onChain": false
     },
     "281": {
       "name": "Rejected f00kers #281",
@@ -2254,7 +2254,7 @@
       "image_link": "https://arweave.net/oL_Modrf5hKx8xHNCizUKaNdGH5URWAJFvsS8fjx13E?ext=png",
       "metadata_hash": "a87aad84afa14896bc85014abe4069f34c362b3fc04a5695cc6abb984b05c912",
       "metadata_link": "https://arweave.net/7XO-jks6jINSxPHQ_IbNSnymMa5Gyjx-g24btL86SWg",
-      "onChain": true
+      "onChain": false
     },
     "282": {
       "name": "Rejected f00kers #282",
@@ -2262,7 +2262,7 @@
       "image_link": "https://arweave.net/J0XjdpBxfG67zQrc_BKYQr0VU5fMezaDoM1oW8CfPqw?ext=png",
       "metadata_hash": "b42d9f3472acccfe2a4054a1f987639fd02ba6bdc7fe60fabb5eba90cd6fed47",
       "metadata_link": "https://arweave.net/lzi-N6JpIJYNgZKisLNO-fTvT1sVd_x0ZnXisg47kAk",
-      "onChain": true
+      "onChain": false
     },
     "283": {
       "name": "Rejected f00kers #283",
@@ -2270,7 +2270,7 @@
       "image_link": "https://arweave.net/lFB3Uy7Xf85gr2rNQCXdOv0i8ual8jrM6r240lbjTLI?ext=png",
       "metadata_hash": "be03e37ab6828da177d4d00e554eb5759e0104a69c3183f85e7165eec26637f1",
       "metadata_link": "https://arweave.net/O7lyjUwRP5hTRETDGi6kRtG6hpnFS6auUVFZk9MZUSg",
-      "onChain": true
+      "onChain": false
     },
     "284": {
       "name": "Rejected f00kers #284",
@@ -2278,7 +2278,7 @@
       "image_link": "https://arweave.net/MlYnW5jiwHjUmAkUr-dcI9fHBZbUdUs8FFy0rxJ2bNU?ext=png",
       "metadata_hash": "9dd3f331512b848da613684635cc98464da2eb2f3517ea6e4fc694a2ec8bfc53",
       "metadata_link": "https://arweave.net/v1SPN6XPJOyZT57OtTed-tM0PcviOnnn-k8lrjk4WU4",
-      "onChain": true
+      "onChain": false
     },
     "285": {
       "name": "Rejected f00kers #285",
@@ -2286,7 +2286,7 @@
       "image_link": "https://arweave.net/A5wxZnR2TPEW3hDLJ6tL8e7RwaBY2ocVkaWkxPuNhzI?ext=png",
       "metadata_hash": "b6ac0024c3eefecd7a08ab43c1068e2653b288d09117ccf93a7aa5989d0f4fe0",
       "metadata_link": "https://arweave.net/XdUjNCucghIknzAj1_uuZTrq9rnKUG4jr442DJWzKVs",
-      "onChain": true
+      "onChain": false
     },
     "286": {
       "name": "Rejected f00kers #286",
@@ -2294,7 +2294,7 @@
       "image_link": "https://arweave.net/BN8puyhe3ELC9XLUpBvgYqXgO4oNZJc7TU--BpiGAEs?ext=png",
       "metadata_hash": "443bfb80e4e8398ac71d7e48cdb0e3287d0efc633924824b13db078eeeb76db2",
       "metadata_link": "https://arweave.net/Zs8tNJY5mAeSoAM0f9osBJmVws3K2L8I9lFl6hzlrfo",
-      "onChain": true
+      "onChain": false
     },
     "287": {
       "name": "Rejected f00kers #287",
@@ -2302,7 +2302,7 @@
       "image_link": "https://arweave.net/tSLoMVu85Uwp8n5B7fQ2fM36Jn2mXq-bse-QKow2ZF4?ext=png",
       "metadata_hash": "1e389f2dd292f9de9029459b4e5b9a2802fdef11d8476b3e7a77668ba2af7791",
       "metadata_link": "https://arweave.net/fKRAvkPAbkeD_qQ26EAQworEAIDaUIZ70LU1OAeSryQ",
-      "onChain": true
+      "onChain": false
     },
     "288": {
       "name": "Rejected f00kers #288",
@@ -2310,7 +2310,7 @@
       "image_link": "https://arweave.net/hVkfnQpujZzJydzEkNbxYaAPPmq_SoUlriun2-EErmA?ext=png",
       "metadata_hash": "9301a67f5681cafb38ca8fde6b1a7bc197e20f19368d51d37b4d03e84b7e1e95",
       "metadata_link": "https://arweave.net/n90vnITM8qFObHt0BS2TRETqMl_M0wwAJefgINvnNsE",
-      "onChain": true
+      "onChain": false
     },
     "289": {
       "name": "Rejected f00kers #289",
@@ -2318,7 +2318,7 @@
       "image_link": "https://arweave.net/FaFlXIzoXbyZKsSi7uLEW6gyf2m5mIlgH10oEJujWpY?ext=png",
       "metadata_hash": "fa4ea1bcf249706ad95196e4981bd64c60d6e80a52be3c2f1ae74cece2e7e3be",
       "metadata_link": "https://arweave.net/PACr6w4nRG9Clw29hh-79G9Blr3diJrwKRxSbXzblFM",
-      "onChain": true
+      "onChain": false
     },
     "290": {
       "name": "Rejected f00kers #290",
@@ -2326,7 +2326,7 @@
       "image_link": "https://arweave.net/KND_N2_phNPSTyOi_5pZaHPmgaEndV6QgyM2xGb75N8?ext=png",
       "metadata_hash": "923f6564685128653e158f6ec7d846f2733113998513a86fb3f2ce748a64d8f2",
       "metadata_link": "https://arweave.net/qaGljwu9lDjQmDtwK3YCep8Yb-U9MSWe4xiFNB3FO5A",
-      "onChain": true
+      "onChain": false
     },
     "291": {
       "name": "Rejected f00kers #291",
@@ -2334,7 +2334,7 @@
       "image_link": "https://arweave.net/n2Qe3CKbzpwlf9wGqaQpRiL43fNM6rsEufNuRGVsgjc?ext=png",
       "metadata_hash": "1203982ffdd53f3f85ee272666e78c3ad9b8632c6c27a2e08a87f466cfd9cb33",
       "metadata_link": "https://arweave.net/3VlkUllp0lgSt3jYvQtul-JI9mIYeWip2Qgcw_cVa58",
-      "onChain": true
+      "onChain": false
     },
     "292": {
       "name": "Rejected f00kers #292",
@@ -2342,7 +2342,7 @@
       "image_link": "https://arweave.net/9gjMleXtFHG26em3kgYoUw2Qx7qmuc0HOE-k3SfWUvo?ext=png",
       "metadata_hash": "e06305c6398410d16d30b5c214817ed6c3a6b01db89a44863e94a980bf7fe781",
       "metadata_link": "https://arweave.net/ECjlBE8kjQMnaPXFBLiRYCBxuW12xCsAWhDz4Ogzpt8",
-      "onChain": true
+      "onChain": false
     },
     "293": {
       "name": "Rejected f00kers #293",
@@ -2350,7 +2350,7 @@
       "image_link": "https://arweave.net/pyBch1OSSXBY3t7dDpJeGvlzvipWRJAkDWDe-Ydsp8g?ext=png",
       "metadata_hash": "9869486ee62bf901b15e2fa936fed3f01b601652b1a0f049c7357e8273442711",
       "metadata_link": "https://arweave.net/DGzM1TuYark9Upv6pYpRXnI3_NcRdHqnE_iBeh9Umj0",
-      "onChain": true
+      "onChain": false
     },
     "294": {
       "name": "Rejected f00kers #294",
@@ -2358,7 +2358,7 @@
       "image_link": "https://arweave.net/CZEK3c0qMm_SDxcg9_rBlCYKAvyfMSfvjZwRxgbJr6w?ext=png",
       "metadata_hash": "2ee041e0e1af61fbde50e03e6d123530b9710a40c9d52818d62aff0a3f200b61",
       "metadata_link": "https://arweave.net/33p58qxhYw-dBhic-wQcUIt18eG_dLJ-KMlSv-MT9J0",
-      "onChain": true
+      "onChain": false
     },
     "295": {
       "name": "Rejected f00kers #295",
@@ -2366,7 +2366,7 @@
       "image_link": "https://arweave.net/o_VjATjnxQYpEp4jZbqvx0_9rLA6SUayYx2Kq6nmHtc?ext=png",
       "metadata_hash": "d67f766b35fafb73d1c5836d3391cc0ab7de97adb5577cf4cc216daf6ac0aafc",
       "metadata_link": "https://arweave.net/CjvNpJRNBZd1a8eMFzW0KG9rh615986IzslnpwwzAG0",
-      "onChain": true
+      "onChain": false
     },
     "296": {
       "name": "Rejected f00kers #296",
@@ -2374,7 +2374,7 @@
       "image_link": "https://arweave.net/ruRNQ3J1ZqlPM_v6I6f_pUFaf7GnfuQWEzYDf5stUFU?ext=png",
       "metadata_hash": "1849db6cc8036e9ca3b41a1e3a06bf7efcd14d7a2a16d9a348728c8f9c61a4a9",
       "metadata_link": "https://arweave.net/zZwG5Oc-KAbm1OHXGpW9P4-AM2e7GztUtCAcOjUa2ns",
-      "onChain": true
+      "onChain": false
     },
     "297": {
       "name": "Rejected f00kers #297",
@@ -2382,7 +2382,7 @@
       "image_link": "https://arweave.net/MUIxHn3PygFYWiCgOnXRfNVIdnSBv3oWv6kzcZ4BfAM?ext=png",
       "metadata_hash": "9b22f00035d3bf7cdf12b87f5d487c7989b5a8a3632f1316d5a498d8c6dfdefa",
       "metadata_link": "https://arweave.net/sgsjBVh79N-YFE0fCRV2UoLublTfGpPPs1CfiG54Oeg",
-      "onChain": true
+      "onChain": false
     },
     "298": {
       "name": "Rejected f00kers #298",
@@ -2390,7 +2390,7 @@
       "image_link": "https://arweave.net/H9IYufJn2KwC10B1wz_osXQxv46jfb_n390U47R1lQs?ext=png",
       "metadata_hash": "c9869bf56c0b9f5d15801778b9a4d742b108f0df23ec47423abce14df7bcf02b",
       "metadata_link": "https://arweave.net/mBokpF3MUo4UpcvV3yEEM0twN60uJuXb0-uLQJbaBG0",
-      "onChain": true
+      "onChain": false
     },
     "299": {
       "name": "Rejected f00kers #299",
@@ -2398,7 +2398,7 @@
       "image_link": "https://arweave.net/UWEaB9ibIJvBR_Bs5t-VPzZ23EbypJpyy9NNPtB3AaM?ext=png",
       "metadata_hash": "4984d9061411ec68080645e37a12f339108bb56a7cc6098ba9a505261e285faf",
       "metadata_link": "https://arweave.net/XsohHhEM3pYL54LH3Bog2qhNueHNlXp5a-Jl9m-PNRE",
-      "onChain": true
+      "onChain": false
     }
   }
 }
