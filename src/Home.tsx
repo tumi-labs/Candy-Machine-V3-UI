@@ -534,7 +534,6 @@ const Home = (props: HomeProps) => {
                     clusterUrl={connection.rpcEndpoint}
                     cluster={process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet'}
                     options={{ autoShowModal: false }}
-                    stage="dev"
                   >
                     <MultiMintButton
                     candyMachine={candyMachine}
