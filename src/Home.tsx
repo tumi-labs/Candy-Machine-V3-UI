@@ -126,11 +126,20 @@ const Home = (props: HomeProps) => {
     severity: undefined,
   });
 
-  const guards = useMemo(() => candyMachineV3.guards, [candyMachineV3.guards]);
-  const guardStates = useMemo(
-    () => candyMachineV3.guardStates,
-    [candyMachineV3.guardStates]
-  );
+  const { guards, guardStates } = useMemo(() => {
+    console.log("Groups", candyMachineV3.guardGroups);
+    const guardGroup = candyMachineV3.guardGroups.find(
+      (x) => x.label === "tknGte"
+    );
+    return {
+      guards: guardGroup?.guards || candyMachineV3.guards,
+      guardStates: guardGroup?.states || candyMachineV3.guardStates,
+    };
+  }, [
+    candyMachineV3.guardGroups,
+    candyMachineV3.guards,
+    candyMachineV3.guardStates,
+  ]);
 
   const { price, label: priceLabel } = useMemo(
     () => candyMachineV3.getPrice(guards),
