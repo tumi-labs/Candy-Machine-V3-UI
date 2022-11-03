@@ -17,7 +17,7 @@ import {
 
 import { useMemo } from "react";
 
-import Home from "../src/Home";
+import Home from "./Home";
 import { rpcHost, candyMachineId, network } from "./config";
 
 const theme = createTheme({
@@ -44,7 +44,6 @@ const theme = createTheme({
     },
   },
 });
-
 
 const Main = ({}) => {
   // Custom RPC endpoint.
