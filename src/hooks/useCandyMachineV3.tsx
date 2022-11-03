@@ -1,6 +1,9 @@
 import {
+  CandyGuardsMintSettings,
   CandyMachine,
+  DefaultCandyGuardMintSettings,
   DefaultCandyGuardSettings,
+  getMerkleProof,
   IdentitySigner,
   Metadata,
   Metaplex,
@@ -17,6 +20,7 @@ import {
   SftWithToken,
   SolAmount,
   SplTokenAmount,
+  toBigNumber,
   TokenBurnGuardSettings,
   TokenGateGuardSettings,
   TransactionBuilder,
@@ -27,7 +31,6 @@ import { AccountInfo } from "@solana/web3.js";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import React from "react";
 import { MintCounterBorsh } from "../borsh/mintCounter";
-import BN from "bn.js";
 
 export type Token = {
   mint: PublicKey;
@@ -39,15 +42,30 @@ export type GuardGroup = {
   // address: PublicKey;
   startTime?: Date;
   endTime?: Date;
-  payment?: SplTokenAmount | SolAmount;
-  nftPayment?: NftPaymentGuardSettings;
+  payment?: {
+    sol?: {
+      amount: number;
+      decimals: number;
+    };
+    token?: {
+      amount: number;
+      decimals: number;
+    };
+    nfts?: (Nft | Metadata)[];
+  };
   burn?: {
-    token?: TokenBurnGuardSettings;
-    nft?: NftBurnGuardSettings;
+    token?: {
+      amount: number;
+      decimals: number;
+    };
+    nfts?: (Nft | Metadata)[];
   };
   gate?: {
-    token?: TokenGateGuardSettings;
-    nft?: NftGateGuardSettings;
+    token?: {
+      amount: number;
+      decimals: number;
+    };
+    nfts?: (Nft | Metadata)[];
   };
   mintLimit?: {
     settings: MintLimitGuardSettings;
@@ -70,7 +88,12 @@ export type GuardGroupStates = {
   hasGatekeeper: boolean;
 };
 
-export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
+export default function useCandyMachineV3(
+  candyMachineId: PublicKey | string,
+  candyMachineOpts: {
+    whitelistedWallets?: PublicKey[];
+  } = {}
+) {
   const { connection } = useConnection();
   const wallet = useWallet();
 
@@ -108,23 +131,31 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
     [connection]
   );
 
-  const getPrice = React.useCallback(
-    (guards: GuardGroup) => ({
-      price: guards.payment
-        ? guards.payment.basisPoints
-            .div(new BN(10).pow(new BN(guards.payment.currency.decimals)))
-            .toNumber()
-        : guards.nftPayment
-        ? 1
-        : 0,
-      label: guards.payment
-        ? guards.payment.currency.symbol
-        : guards.nftPayment
-        ? "NFT"
-        : "",
-    }),
-    []
-  );
+  const getPrice = React.useCallback((guards: GuardGroup) => {
+    return {
+      price:
+        guards.payment &&
+        (guards.payment.sol || guards.payment.token || guards.payment.nfts)
+          ? guards.payment.sol || guards.payment.token
+            ? (guards.payment.sol?.amount || guards.payment.token.amount || 0) /
+              10 ** (guards.payment.sol || guards.payment.token).decimals
+            : guards.payment.nfts
+            ? 1
+            : 0
+          : 0,
+      label:
+        guards.payment &&
+        (guards.payment.sol || guards.payment.token || guards.payment.nfts)
+          ? guards.payment.sol
+            ? "SOL"
+            : guards.payment.token
+            ? "Token"
+            : guards.payment.nfts
+            ? "Nft"
+            : ""
+          : "",
+    };
+  }, []);
 
   const parseGuardGroup = React.useCallback(
     async (
@@ -183,32 +214,64 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
       // Check for payment guards
 
       if (guards.solPayment) {
-        guardsParsed.payment = guards.solPayment.amount;
+        guardsParsed.payment = {
+          sol: {
+            amount: guards.solPayment.amount.basisPoints.toNumber(),
+            decimals: guards.solPayment.amount.currency.decimals,
+          },
+        };
       }
 
       if (guards.tokenPayment) {
-        guardsParsed.payment = guards.tokenPayment.amount;
+        guardsParsed.payment = {
+          token: {
+            amount: guards.tokenPayment.amount.basisPoints.toNumber(),
+            decimals: guards.tokenPayment.amount.currency.decimals,
+          },
+        };
       }
       if (guards.nftPayment) {
-        guardsParsed.nftPayment = guards.nftPayment;
+        guardsParsed.payment = {
+          nfts: nftHoldings.filter((y) =>
+            y.collection?.address.equals(guards.nftPayment.requiredCollection)
+          ),
+        };
       }
 
       // Check for burn guards
 
       if (guards.tokenBurn) {
-        guardsParsed.burn = { token: guards.tokenBurn };
+        guardsParsed.burn = {
+          token: {
+            amount: guards.tokenBurn.amount.basisPoints.toNumber(),
+            decimals: guards.tokenBurn.amount.currency.decimals,
+          },
+        };
       }
       if (guards.nftBurn) {
-        guardsParsed.burn = { nft: guards.nftBurn };
+        guardsParsed.burn = {
+          nfts: nftHoldings.filter((y) =>
+            y.collection?.address.equals(guards.nftBurn.requiredCollection)
+          ),
+        };
       }
 
       // Check for gates
 
       if (guards.tokenGate) {
-        guardsParsed.gate = { token: guards.tokenGate };
+        guardsParsed.gate = {
+          token: {
+            amount: guards.tokenGate.amount.basisPoints.toNumber(),
+            decimals: guards.tokenGate.amount.currency.decimals,
+          },
+        };
       }
       if (guards.nftGate) {
-        guardsParsed.gate = { nft: guards.nftGate };
+        guardsParsed.gate = {
+          nfts: nftHoldings.filter((y) =>
+            y.collection?.address.equals(guards.nftGate.requiredCollection)
+          ),
+        };
       }
 
       // Check for whitelisted addresses
@@ -299,8 +362,8 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
       // Check for payment guards
 
       if (guards.solPayment) {
-        states.isPaymentAvailable = guards.solPayment.amount.basisPoints.gte(
-          new BN(balance)
+        states.isPaymentAvailable = guards.solPayment.amount.basisPoints.lte(
+          toBigNumber(balance)
         );
       }
 
@@ -311,7 +374,7 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
         states.isPaymentAvailable =
           !!tokenAccount &&
           guards.tokenPayment.amount.basisPoints.lte(
-            new BN(tokenAccount.balance)
+            toBigNumber(tokenAccount.balance)
           );
       }
 
@@ -329,7 +392,9 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
         );
         states.isPaymentAvailable =
           !!tokenAccount &&
-          guards.tokenBurn.amount.basisPoints.lte(new BN(tokenAccount.balance));
+          guards.tokenBurn.amount.basisPoints.lte(
+            toBigNumber(tokenAccount.balance)
+          );
       }
 
       if (guards.nftBurn) {
@@ -346,7 +411,9 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
         );
         states.isPaymentAvailable =
           !!tokenAccount &&
-          guards.tokenGate.amount.basisPoints.lte(new BN(tokenAccount.balance));
+          guards.tokenGate.amount.basisPoints.lte(
+            toBigNumber(tokenAccount.balance)
+          );
       }
 
       if (guards.nftGate) {
@@ -362,8 +429,27 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
 
         if (guards.addressGate) allowed.push(guards.addressGate.address);
 
-        if (guards.allowList) {
-          // push wallet to allowed list if merkle verified
+        if (
+          guards.allowList &&
+          candyMachineOpts.whitelistedWallets &&
+          !!candyMachineOpts.whitelistedWallets.find((x) =>
+            x.equals(walletAddress)
+          )
+        ) {
+          try {
+            mx.candyMachines().callGuardRoute({
+              candyMachine,
+              guard: "allowList",
+              settings: {
+                path: "proof",
+                merkleProof: getMerkleProof(
+                  candyMachineOpts.whitelistedWallets.map((x) => x.toBuffer()),
+                  walletAddress.toBuffer()
+                ),
+              },
+            });
+            allowed.push(walletAddress);
+          } catch {}
         }
         states.isWalletWhitelisted = !!allowed.find((x) =>
           x.equals(walletAddress)
@@ -422,7 +508,6 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
     setStatus((x) => ({ ...x, candyMachine: true }));
     await fetchCandyMachine()
       .then((cndy) => {
-        console.log("cndy", cndy);
         setCandyMachine(cndy);
         setItems({
           available: cndy.itemsAvailable.toNumber(),
@@ -504,7 +589,19 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
   }, [candyMachine, wallet.publicKey, fetchGuardGroups]);
 
   const mint = React.useCallback(
-    async (quantityString: number = 1) => {
+    async (
+      quantityString: number = 1,
+      opts: {
+        groupLabel?: string;
+        guards?: Partial<DefaultCandyGuardMintSettings>;
+      } = {}
+    ) => {
+      if (
+        opts.groupLabel &&
+        !guardGroups.find((x) => x.label == opts.groupLabel)
+      )
+        throw new Error("Unknown guard group label");
+
       let nfts: (Sft | SftWithToken | Nft | NftWithToken)[] = [];
       try {
         if (!candyMachine) throw new Error("Candy Machine not loaded yet!");
@@ -517,6 +614,8 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
             await mintFromCandyMachineBuilder(mx, {
               candyMachine,
               collectionUpdateAuthority: candyMachine.authorityAddress, // mx.candyMachines().pdas().authority({candyMachine: candyMachine.address})
+              group: opts.groupLabel,
+              guards: opts.guards,
             })
           );
         }
@@ -588,13 +687,14 @@ export default function useCandyMachineV3(candyMachineId: PublicKey | string) {
             message = `Minting period hasn't started yet.`;
           }
         }
+        console.error(error);
         throw new Error(message);
       } finally {
         setStatus((x) => ({ ...x, minting: false }));
         return nfts;
       }
     },
-    [candyMachine, guards, mx]
+    [candyMachine, guards, guardGroups, mx]
   );
 
   return {

@@ -126,12 +126,15 @@ const Home = (props: HomeProps) => {
     severity: undefined,
   });
 
-  const { guards, guardStates } = useMemo(() => {
-    console.log("Groups", candyMachineV3.guardGroups);
+  const { guardLabel, guards, guardStates } = useMemo(() => {
+    const guardLabel = "nftGte";
     const guardGroup = candyMachineV3.guardGroups.find(
-      (x) => x.label === "tknGte"
+      (x) => x.label === guardLabel
     );
+    console.log("guardGroups", candyMachineV3.guardGroups);
+    console.log("guardGroup", guardGroup);
     return {
+      guardLabel,
       guards: guardGroup?.guards || candyMachineV3.guards,
       guardStates: guardGroup?.states || candyMachineV3.guardStates,
     };
@@ -181,8 +184,16 @@ const Home = (props: HomeProps) => {
   }, [confetti]);
 
   const startMint = async (quantityString: number = 1) => {
+    // console.log("nfts", guards.payment.nfts);
     candyMachineV3
-      .mint(quantityString)
+      .mint(quantityString, {
+        groupLabel: guardLabel,
+        guards: {
+          nftGate: {
+            mint: guards.gate.nfts[0].address,
+          },
+        },
+      })
       .then((items) => {
         setMintedItems(items as any);
       })
