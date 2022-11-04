@@ -146,7 +146,7 @@ export default function useCandyMachineV3(
           ? guards.payment.sol
             ? "SOL"
             : guards.payment.token
-            ? "Token"
+            ? guards.payment.token.mint?.toString() || "Token"
             : guards.payment.nfts
             ? "Nft"
             : ""

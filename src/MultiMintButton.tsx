@@ -101,7 +101,7 @@ export const MultiMintButton = ({
   price,
   priceLabel,
   limit,
-  gatekeeperNetwork
+  gatekeeperNetwork,
 }: {
   onMint: (quantityString: number) => Promise<void>;
   candyMachine: CandyMachine | undefined;
@@ -118,9 +118,13 @@ export const MultiMintButton = ({
   const [loading, setLoading] = useState(false);
 
   const [mintCount, setMintCount] = useState(1);
-  const [totalCost, setTotalCost] = useState(mintCount * (price + 0.012));
   const { requestGatewayToken, gatewayStatus } = useGateway();
   const [waitForActiveToken, setWaitForActiveToken] = useState(false);
+
+  const totalCost = useMemo(
+    () => mintCount * ((priceLabel === "SOL" ? price : 0) + 0.012),
+    [mintCount, price, priceLabel]
+  );
 
   const previousGatewayStatus = usePrevious(gatewayStatus);
   useEffect(() => {
@@ -186,10 +190,16 @@ export const MultiMintButton = ({
 
   function updateAmounts(qty: number) {
     setMintCount(qty);
-    setTotalCost(Math.round(qty * (price + 0.012) * 1000) / 1000); // 0.012 = approx of account creation fees
+    // setTotalCost(Math.round(qty * (price + 0.012) * 1000) / 1000); // 0.012 = approx of account creation fees
   }
   const disabled = useMemo(
-    () => loading || isSoldOut || isMinting || isEnded || !isActive || mintCount > limit,
+    () =>
+      loading ||
+      isSoldOut ||
+      isMinting ||
+      isEnded ||
+      !isActive ||
+      mintCount > limit,
     [loading, isSoldOut, isMinting, isEnded, !isActive]
   );
   return (
@@ -212,7 +222,7 @@ export const MultiMintButton = ({
           onChange={(e) => updateMintCount(e.target as any)}
         />
         <Plus
-          disabled={disabled || (limit) <= mintCount}
+          disabled={disabled || limit <= mintCount}
           onClick={() => incrementValue()}
         >
           +
@@ -222,7 +232,10 @@ export const MultiMintButton = ({
         <CTAButton
           disabled={disabled}
           onClick={async () => {
-            console.log("isActive gatekeeperNetwork", {isActive, gatekeeperNetwork })
+            console.log("isActive gatekeeperNetwork", {
+              isActive,
+              gatekeeperNetwork,
+            });
             if (isActive && gatekeeperNetwork) {
               if (gatewayStatus === GatewayStatus.ACTIVE) {
                 await onMint(mintCount);
@@ -243,8 +256,7 @@ export const MultiMintButton = ({
           ) : isActive ? (
             mintCount > limit ? (
               "LIMIT REACHED"
-            ) :
-            isMinting || loading ? (
+            ) : isMinting || loading ? (
               <CircularProgress />
             ) : (
               "MINT"
@@ -257,7 +269,12 @@ export const MultiMintButton = ({
         </CTAButton>
       </div>
       {!isSoldOut && isActive && (
-        <h3>Total estimated cost (Solana fees included) : {totalCost} {priceLabel || "SOL"}</h3>
+        <h3>
+          Total estimated cost (Solana fees included) : {totalCost}{" "}
+          {!!priceLabel && priceLabel !== "SOL"
+            ? `SOL + ${price} ${priceLabel}`
+            : "SOL"}
+        </h3>
       )}
     </div>
   );
