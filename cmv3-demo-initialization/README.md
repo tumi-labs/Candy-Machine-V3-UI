@@ -15,7 +15,7 @@ yarn initialize
 ```
 
 Then you need create nfts, I'm using already prepared nft's caches from sugar cli.
-*Make sure to use sugar cli [alpha version](https://github.com/metaplex-foundation/sugar/releases/tag/sugar-cmv3-alpha)*
+*Make sure to use sugar cli [alpha version](https://github.com/metaplex-foundation/sugar/releases)*
 ```bash
 sugar deploy
 ```
