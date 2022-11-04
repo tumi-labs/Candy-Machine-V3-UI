@@ -14,17 +14,20 @@ Reference UI to implement Metaplex Candy Machine V3 on frontend.
   - [x] Token Payment
   - [x] Mint Limit
   - [x] Bot Tax
-  - [ ] Token Burn
-  - [ ] Token Gate
-  - [ ] NFT Payment
-  - [ ] NFT Burn
-  - [ ] NFT Gate
-  - [ ] Redeemed Amount
+  - [x] Token Burn
+  - [x] Token Gate
+  - [ ] NFT Payment // Implemented but not working because of transaction size issue #1
+  - [ ] NFT Burn // Implemented but not working because of transaction size issue #1
+  - [x] NFT Gate
+  - [x] Redeemed Amount
   - [ ] Third Party Signer
   - [ ] Address Gate
   - [ ] Allow List
   - [ ] Gatekeeper
-- [ ] Multi Group Functionality
+- [ ] Multi Group
+  - [x] Functionality
+  - [ ] UI
+
 
 ### Env Variables
 *All of them are optional at this moment as we're using default if they are not exists in [config.ts](src/config.ts)*
