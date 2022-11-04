@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { Paper, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import { Nft } from "@metaplex-foundation/js";
+import { DefaultCandyGuardMintSettings, Nft } from "@metaplex-foundation/js";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
@@ -128,7 +128,12 @@ const Home = (props: HomeProps) => {
 
   const { guardLabel, guards, guardStates } = useMemo(() => {
     const guardLabel = defaultGuardGroup;
-    console.log("Groups", candyMachineV3.guardGroups, candyMachineV3.guards, candyMachineV3.guardStates);
+    console.log(
+      "Groups",
+      candyMachineV3.guardGroups,
+      candyMachineV3.guards,
+      candyMachineV3.guardStates
+    );
     const guardGroup = candyMachineV3.guardGroups.find(
       (x) => x.label === guardLabel
     );
@@ -181,39 +186,50 @@ const Home = (props: HomeProps) => {
     });
   }, [confetti]);
 
-  const startMint = async (quantityString: number = 1) => {
-    candyMachineV3
-      .mint(quantityString, {
-        groupLabel: guardLabel,
-        guards: {
-          nftBurn: guards.burn?.nfts
-            ? {
-                mint: guards.burn.nfts[0].address,
-              }
-            : undefined,
-          nftPayment: guards.payment?.nfts
-            ? {
-                mint: guards.payment.nfts[0].address,
-              }
-            : undefined,
-          nftGate: guards.gate?.nfts
-            ? {
-                mint: guards.gate.nfts[0].address,
-              }
-            : undefined,
-        },
-      })
-      .then((items) => {
-        setMintedItems(items as any);
-      })
-      .catch((e) =>
-        setAlertState({
-          open: true,
-          message: e.message,
-          severity: "error",
+  const startMint = useCallback(
+    async (quantityString: number = 1) => {
+      console.log({ guards });
+      const guardsContext: Partial<DefaultCandyGuardMintSettings> = {
+        nftBurn: guards.burn?.nfts[0]?.mintAddress
+          ? {
+              mint: guards.burn.nfts[0]?.mintAddress,
+            }
+          : undefined,
+        nftPayment: guards.payment?.nfts[0]?.mintAddress
+          ? {
+              mint: guards.payment.nfts[0]?.mintAddress,
+            }
+          : undefined,
+        nftGate: guards.gate?.nfts[0]?.mintAddress
+          ? {
+              mint: guards.gate.nfts[0]?.mintAddress,
+            }
+          : undefined,
+      };
+      console.log({ guardsContext });
+      // debugger;
+      candyMachineV3
+        .mint(quantityString, {
+          groupLabel: guardLabel,
+          guards: guardsContext,
         })
-      );
-  };
+        .then((items) => {
+          setMintedItems(items as any);
+        })
+        .catch((e) =>
+          setAlertState({
+            open: true,
+            message: e.message,
+            severity: "error",
+          })
+        );
+    },
+    [candyMachineV3.mint, guards]
+  );
+
+  useEffect(() => {
+    console.log({ candyMachine: candyMachineV3.candyMachine });
+  }, [candyMachineV3.candyMachine]);
 
   return (
     <main>

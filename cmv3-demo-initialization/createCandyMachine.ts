@@ -115,14 +115,14 @@ import { writeFileSync } from "fs";
             },
           },
         },
-        // {
-        //   label: "owner", // Owner (Address Gate)
-        //   guards: {
-        //     addressGate: {
-        //       address: demoDestination,
-        //     },
-        //   },
-        // },
+        {
+          label: "owner", // Owner (Address Gate)
+          guards: {
+            addressGate: {
+              address: demoDestination,
+            },
+          },
+        },
         {
           label: "waoed", // Whitelist (Allowlist)
           guards: {
@@ -131,16 +131,16 @@ import { writeFileSync } from "fs";
             },
           },
         },
-        // {
-        //   label: "nftBrn", // Breading NFT (NFT Burn)
-        //   guards: {
-        //     nftBurn: {
-        //       requiredCollection: demoNftCollection,
-        //     },
-        //   },
-        // },
         {
-          label: "nftGte", // OGs Mint (NFT Gate)
+          label: "_x", // Breading NFT (NFT Burn)
+          guards: {
+            nftBurn: {
+              requiredCollection: demoNftCollection,
+            },
+          },
+        },
+        {
+          label: "_|", // OGs Mint (NFT Gate)
           guards: {
             nftGate: {
               requiredCollection: demoNftCollection,
@@ -148,7 +148,7 @@ import { writeFileSync } from "fs";
           },
         },
         {
-          label: "nftPmt", // Swap NFT (NFT Payment)
+          label: "_>", // Swap NFT (NFT Payment)
           guards: {
             nftPayment: {
               requiredCollection: demoNftCollection,

@@ -16,8 +16,8 @@ Reference UI to implement Metaplex Candy Machine V3 on frontend.
   - [x] Bot Tax
   - [x] Token Burn
   - [x] Token Gate
-  - [ ] NFT Payment // Implemented but not working because of transaction size issue #1
-  - [ ] NFT Burn // Implemented but not working because of transaction size issue #1
+  - [x] NFT Payment
+  - [x] NFT Burn
   - [x] NFT Gate
   - [x] Redeemed Amount
   - [ ] Third Party Signer

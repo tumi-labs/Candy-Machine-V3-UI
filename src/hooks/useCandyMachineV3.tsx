@@ -44,7 +44,7 @@ export type GuardGroup = {
       amount: number;
       decimals: number;
     };
-    nfts?: (Nft | Metadata)[];
+    nfts?: Metadata[];
   };
   burn?: {
     token?: {
@@ -52,7 +52,7 @@ export type GuardGroup = {
       amount: number;
       decimals: number;
     };
-    nfts?: (Nft | Metadata)[];
+    nfts?: Metadata[];
   };
   gate?: {
     token?: {
@@ -60,7 +60,7 @@ export type GuardGroup = {
       amount: number;
       decimals: number;
     };
-    nfts?: (Nft | Metadata)[];
+    nfts?: Metadata[];
   };
   mintLimit?: {
     settings: MintLimitGuardSettings;
@@ -94,7 +94,7 @@ export default function useCandyMachineV3(
 
   const [balance, setBalance] = React.useState(0);
   const [allTokens, setAllTokens] = React.useState<Token[]>([]);
-  const [nftHoldings, setNftHoldings] = React.useState<(Nft | Metadata)[]>([]);
+  const [nftHoldings, setNftHoldings] = React.useState<Metadata[]>([]);
   const [tokenHoldings, setTokenHoldings] = React.useState<Token[]>([]);
 
   const [candyMachine, setCandyMachine] = React.useState<CandyMachine>(null);
@@ -349,7 +349,7 @@ export default function useCandyMachineV3(
 
       return guardsParsed;
     },
-    []
+    [tokenHoldings, nftHoldings, balance]
   );
 
   const parseGuardStates = React.useCallback(
@@ -633,7 +633,9 @@ export default function useCandyMachineV3(
       .findAllByOwner({
         owner: wallet.publicKey,
       })
-      .then((x) => setNftHoldings(x as any[]))
+      .then((x) =>
+        setNftHoldings(x.filter((a) => a.model == "metadata") as any)
+      )
       .catch((e) => console.error("Failed to fetch wallet nft holdings", e));
 
     (async (walletAddress: PublicKey): Promise<Token[]> => {
