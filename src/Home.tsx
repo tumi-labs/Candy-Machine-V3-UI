@@ -127,12 +127,11 @@ const Home = (props: HomeProps) => {
   });
 
   const { guardLabel, guards, guardStates } = useMemo(() => {
-    const guardLabel = "nftGte";
+    const guardLabel = "tknPmt";
+    console.log("Groups", candyMachineV3.guardGroups);
     const guardGroup = candyMachineV3.guardGroups.find(
       (x) => x.label === guardLabel
     );
-    console.log("guardGroups", candyMachineV3.guardGroups);
-    console.log("guardGroup", guardGroup);
     return {
       guardLabel,
       guards: guardGroup?.guards || candyMachineV3.guards,
@@ -152,7 +151,6 @@ const Home = (props: HomeProps) => {
   useEffect(() => {
     (async () => {
       if (wallet?.publicKey) {
-        console.log(wallet.publicKey.toString());
         const balance = await connection.getBalance(wallet.publicKey);
         setBalance(balance / LAMPORTS_PER_SOL);
       }
@@ -184,14 +182,25 @@ const Home = (props: HomeProps) => {
   }, [confetti]);
 
   const startMint = async (quantityString: number = 1) => {
-    // console.log("nfts", guards.payment.nfts);
     candyMachineV3
       .mint(quantityString, {
         groupLabel: guardLabel,
         guards: {
-          nftGate: {
-            mint: guards.gate.nfts[0].address,
-          },
+          nftBurn: guards.burn?.nfts
+            ? {
+                mint: guards.burn.nfts[0].address,
+              }
+            : undefined,
+          nftPayment: guards.payment?.nfts
+            ? {
+                mint: guards.payment.nfts[0].address,
+              }
+            : undefined,
+          nftGate: guards.gate?.nfts
+            ? {
+                mint: guards.gate.nfts[0].address,
+              }
+            : undefined,
         },
       })
       .then((items) => {

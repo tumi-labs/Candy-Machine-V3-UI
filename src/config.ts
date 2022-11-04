@@ -12,4 +12,6 @@ export const candyMachineId = new PublicKey(
     "3zwFR3spiwbSSMtvVKG2bRT6ttqFoC3MHCafGP8ZrdLz"
 );
 
+// "qasJ6jhgtngKk2QnEPdDjuFH8NMoM58W8TxPBXAChPY"
+// "3zwFR3spiwbSSMtvVKG2bRT6ttqFoC3MHCafGP8ZrdLz"
 // "DAA8yRLu7acVs3kxaTyCjoEjNWGinLaCKVhDY29ASNua"

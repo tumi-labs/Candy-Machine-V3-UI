@@ -23,7 +23,6 @@ import { AccountInfo, Keypair, SystemProgram } from "@solana/web3.js";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import React from "react";
 import { MintCounterBorsh } from "../borsh/mintCounter";
-import useTransactionV0 from "./useTransactionV0";
 
 export type Token = {
   mint: PublicKey;
@@ -92,7 +91,6 @@ export default function useCandyMachineV3(
 ) {
   const { connection } = useConnection();
   const wallet = useWallet();
-  const v0 = useTransactionV0();
 
   const [balance, setBalance] = React.useState(0);
   const [allTokens, setAllTokens] = React.useState<Token[]>([]);
