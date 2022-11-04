@@ -12,7 +12,7 @@ import Countdown from "react-countdown";
 import { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { GatewayProvider } from "@civic/solana-gateway-react";
-import { network } from "./config";
+import { defaultGuardGroup, network } from "./config";
 
 import { MultiMintButton } from "./MultiMintButton";
 import {
@@ -127,8 +127,8 @@ const Home = (props: HomeProps) => {
   });
 
   const { guardLabel, guards, guardStates } = useMemo(() => {
-    const guardLabel = "tknPmt";
-    console.log("Groups", candyMachineV3.guardGroups);
+    const guardLabel = defaultGuardGroup;
+    console.log("Groups", candyMachineV3.guardGroups, candyMachineV3.guards, candyMachineV3.guardStates);
     const guardGroup = candyMachineV3.guardGroups.find(
       (x) => x.label === guardLabel
     );
@@ -145,7 +145,7 @@ const Home = (props: HomeProps) => {
 
   const { price, label: priceLabel } = useMemo(
     () => candyMachineV3.getPrice(guards),
-    [guards, candyMachineV3.getPrice]
+    [guards?.payment, candyMachineV3.getPrice]
   );
 
   useEffect(() => {

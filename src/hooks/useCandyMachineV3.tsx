@@ -559,7 +559,7 @@ export default function useCandyMachineV3(
 
       return states;
     },
-    [tokenHoldings, nftHoldings]
+    [tokenHoldings, nftHoldings, balance]
   );
 
   const fetchCandyMachine = React.useCallback(async () => {
@@ -575,6 +575,7 @@ export default function useCandyMachineV3(
     ): Promise<
       { label: string; guards: GuardGroup; states: GuardGroupStates }[]
     > => {
+      if (!candyMachine) return;
       const groups = await Promise.all(
         candyMachine.candyGuard.groups.map(async (x) => {
           const group = {
@@ -611,14 +612,6 @@ export default function useCandyMachineV3(
           remaining: cndy.itemsRemaining.toNumber(),
           redeemed: cndy.itemsMinted.toNumber(),
         });
-
-        parseGuardGroup(cndy.candyGuard.guards, candyMachine, walletAddress)
-          .then(setGuards)
-          .catch((e) => console.error("Error while fetching default guard", e));
-
-        parseGuardStates(cndy.candyGuard.guards, candyMachine, walletAddress)
-          .then(setGuardStates)
-          .catch((e) => console.error("Error while fetching default guard", e));
 
         return cndy;
       })
@@ -680,10 +673,31 @@ export default function useCandyMachineV3(
 
     setStatus((x) => ({ ...x, guardGroups: true }));
     fetchGuardGroups(candyMachine, wallet.publicKey)
-      .then(setGuardGroups)
+      .then((groups) => setGuardGroups(groups))
       .catch((e) => "Error while fetching gaurd groups")
       .finally(() => setStatus((x) => ({ ...x, guardGroups: false })));
   }, [candyMachine, wallet.publicKey, fetchGuardGroups]);
+
+  React.useEffect(() => {
+    const walletAddress = wallet.publicKey;
+    if (!walletAddress || !candyMachine) return;
+
+    parseGuardStates(
+      candyMachine.candyGuard.guards,
+      candyMachine,
+      walletAddress
+    )
+      .then((guardStates) => setGuardStates(guardStates))
+      .catch((e) => console.error("Error while fetching default guard", e));
+  }, [wallet, candyMachine, parseGuardStates]);
+  React.useEffect(() => {
+    const walletAddress = wallet.publicKey;
+    if (!walletAddress || !candyMachine) return;
+
+    parseGuardGroup(candyMachine.candyGuard.guards, candyMachine, walletAddress)
+      .then((guards) => setGuards(guards))
+      .catch((e) => console.error("Error while fetching default guard", e));
+  }, [wallet, candyMachine, parseGuardGroup]);
 
   const mint = React.useCallback(
     async (
@@ -751,10 +765,13 @@ export default function useCandyMachineV3(
         );
         nfts = await Promise.all(
           output.map(({ context }) =>
-            mx.nfts().findByMint({
-              mintAddress: context.mintSigner.publicKey,
-              tokenAddress: context.tokenAddress,
-            })
+            mx
+              .nfts()
+              .findByMint({
+                mintAddress: context.mintSigner.publicKey,
+                tokenAddress: context.tokenAddress,
+              })
+              .catch((e) => null)
           )
         );
 
@@ -788,7 +805,7 @@ export default function useCandyMachineV3(
       } finally {
         setStatus((x) => ({ ...x, minting: false }));
         refresh();
-        return nfts;
+        return nfts.filter((a) => a);
       }
     },
     [candyMachine, guards, guardGroups, mx, refresh]
