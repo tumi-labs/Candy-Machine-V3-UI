@@ -23,6 +23,7 @@ import { AccountInfo, Keypair, SystemProgram } from "@solana/web3.js";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import React from "react";
 import { MintCounterBorsh } from "../borsh/mintCounter";
+import { MerkleTree } from "../helpers";
 
 export type Token = {
   mint: PublicKey;
@@ -92,16 +93,35 @@ export default function useCandyMachineV3(
   const { connection } = useConnection();
   const wallet = useWallet();
 
+  const whitelistWalletsTree = React.useMemo(() => {
+    return new MerkleTree(candyMachineOpts.whitelistedWallets);
+  }, [candyMachineOpts.whitelistedWallets]);
+
+  const [status, setStatus] = React.useState({
+    candyMachine: false,
+    guardGroups: false,
+    minting: false,
+  });
+
   const [balance, setBalance] = React.useState(0);
   const [allTokens, setAllTokens] = React.useState<Token[]>([]);
   const [nftHoldings, setNftHoldings] = React.useState<Metadata[]>([]);
-  const [tokenHoldings, setTokenHoldings] = React.useState<Token[]>([]);
+
+  const tokenHoldings = React.useMemo<Token[]>(() => {
+    if (!nftHoldings.length || !allTokens.length) return [];
+    return allTokens.filter(
+      (x) => !nftHoldings.find((y) => x.mint.equals(y.address))
+    );
+  }, [nftHoldings, allTokens]);
 
   const [candyMachine, setCandyMachine] = React.useState<CandyMachine>(null);
+  const [items, setItems] = React.useState({
+    available: 0,
+    remaining: 0,
+    redeemed: 0,
+  });
+
   const [guards, setGuards] = React.useState<GuardGroup>({});
-  const [guardGroups, setGuardGroups] = React.useState<
-    { label: string; guards: GuardGroup; states: GuardGroupStates }[]
-  >([]);
   const [guardStates, setGuardStates] = React.useState<GuardGroupStates>({
     isStarted: true,
     isEnded: false,
@@ -110,16 +130,10 @@ export default function useCandyMachineV3(
     isWalletWhitelisted: true,
     hasGatekeeper: false,
   });
-  const [status, setStatus] = React.useState({
-    candyMachine: false,
-    guardGroups: false,
-    minting: false,
-  });
-  const [items, setItems] = React.useState({
-    available: 0,
-    remaining: 0,
-    redeemed: 0,
-  });
+
+  const [guardGroups, setGuardGroups] = React.useState<
+    { label: string; guards: GuardGroup; states: GuardGroupStates }[]
+  >([]);
 
   const mx = React.useMemo(
     () => connection && Metaplex.make(connection),
@@ -154,19 +168,15 @@ export default function useCandyMachineV3(
 
   const parseGuardGroup = React.useCallback(
     async (
-      guards: DefaultCandyGuardSettings,
+      guardsInput: DefaultCandyGuardSettings,
       candyMachine: CandyMachine,
       walletAddress: PublicKey
     ): Promise<GuardGroup> => {
       const guardsParsed: GuardGroup = {};
 
       // Check for start date
-      if (guards.startDate || candyMachine.candyGuard.guards.startDate) {
-        const date = new Date(
-          (
-            guards.startDate || candyMachine.candyGuard.guards.startDate
-          ).date.toNumber() * 1000
-        );
+      if (guardsInput.startDate) {
+        const date = new Date(guardsInput.startDate.date.toNumber() * 1000);
         if (date.getTime() > Date.now()) {
           guardsParsed.startTime = date;
         } else {
@@ -175,19 +185,16 @@ export default function useCandyMachineV3(
       }
 
       // Check for end date
-      if (guards.endDate || candyMachine.candyGuard.guards.endDate) {
+      if (guardsInput.endDate) {
         guardsParsed.endTime = new Date(
-          (
-            guards.endDate || candyMachine.candyGuard.guards.endDate
-          ).date.toNumber() * 1000
+          guardsInput.endDate.date.toNumber() * 1000
         );
       }
 
       // Check for mint limit
-      if (guards.mintLimit || candyMachine.candyGuard.guards.mintLimit) {
+      if (guardsInput.mintLimit) {
         guardsParsed.mintLimit = {
-          settings:
-            guards.mintLimit || candyMachine.candyGuard.guards.mintLimit,
+          settings: guardsInput.mintLimit,
         };
         if (!guardsParsed.mintLimit.pda)
           guardsParsed.mintLimit.pda = await mx
@@ -195,8 +202,7 @@ export default function useCandyMachineV3(
             .pdas()
             .mintLimitCounter({
               candyGuard: candyMachine.candyGuard.address,
-              id: (guards.mintLimit || candyMachine.candyGuard.guards.mintLimit)
-                .id,
+              id: guardsInput.mintLimit.id,
               candyMachine: candyMachine.address,
               user: walletAddress,
             });
@@ -212,51 +218,36 @@ export default function useCandyMachineV3(
       }
 
       // Check for redeemed list
-      if (
-        guards.redeemedAmount ||
-        candyMachine.candyGuard.guards.redeemedAmount
-      ) {
-        guardsParsed.redeemLimit = (
-          guards.redeemedAmount || candyMachine.candyGuard.guards.redeemedAmount
-        ).maximum.toNumber();
+      if (guardsInput.redeemedAmount) {
+        guardsParsed.redeemLimit =
+          guardsInput.redeemedAmount.maximum.toNumber();
       }
 
       // Check for payment guards
 
-      if (guards.solPayment || candyMachine.candyGuard.guards.solPayment) {
+      if (guardsInput.solPayment) {
         guardsParsed.payment = {
           sol: {
-            amount: (
-              guards.solPayment || candyMachine.candyGuard.guards.solPayment
-            ).amount.basisPoints.toNumber(),
-            decimals: (
-              guards.solPayment || candyMachine.candyGuard.guards.solPayment
-            ).amount.currency.decimals,
+            amount: guardsInput.solPayment.amount.basisPoints.toNumber(),
+            decimals: guardsInput.solPayment.amount.currency.decimals,
           },
         };
       }
 
-      if (guards.tokenPayment || candyMachine.candyGuard.guards.tokenPayment) {
+      if (guardsInput.tokenPayment) {
         guardsParsed.payment = {
           token: {
-            mint: (
-              guards.tokenPayment || candyMachine.candyGuard.guards.tokenPayment
-            ).tokenMint,
-            amount: (
-              guards.tokenPayment || candyMachine.candyGuard.guards.tokenPayment
-            ).amount.basisPoints.toNumber(),
-            decimals: (
-              guards.tokenPayment || candyMachine.candyGuard.guards.tokenPayment
-            ).amount.currency.decimals,
+            mint: guardsInput.tokenPayment.tokenMint,
+            amount: guardsInput.tokenPayment.amount.basisPoints.toNumber(),
+            decimals: guardsInput.tokenPayment.amount.currency.decimals,
           },
         };
       }
-      if (guards.nftPayment || candyMachine.candyGuard.guards.nftPayment) {
+      if (guardsInput.nftPayment) {
         guardsParsed.payment = {
           nfts: nftHoldings.filter((y) =>
             y.collection?.address.equals(
-              (guards.nftPayment || candyMachine.candyGuard.guards.nftPayment)
-                .requiredCollection
+              guardsInput.nftPayment.requiredCollection
             )
           ),
         };
@@ -264,92 +255,83 @@ export default function useCandyMachineV3(
 
       // Check for burn guards
 
-      if (guards.tokenBurn || candyMachine.candyGuard.guards.tokenBurn) {
+      if (guardsInput.tokenBurn) {
         guardsParsed.burn = {
           token: {
-            mint: (guards.tokenBurn || candyMachine.candyGuard.guards.tokenBurn)
-              .mint,
-            amount: (
-              guards.tokenBurn || candyMachine.candyGuard.guards.tokenBurn
-            ).amount.basisPoints.toNumber(),
-            decimals: (
-              guards.tokenBurn || candyMachine.candyGuard.guards.tokenBurn
-            ).amount.currency.decimals,
+            mint: guardsInput.tokenBurn.mint,
+            amount: guardsInput.tokenBurn.amount.basisPoints.toNumber(),
+            decimals: guardsInput.tokenBurn.amount.currency.decimals,
           },
         };
       }
-      if (guards.nftBurn || candyMachine.candyGuard.guards.nftBurn) {
+      if (guardsInput.nftBurn) {
         guardsParsed.burn = {
           nfts: nftHoldings.filter((y) =>
-            y.collection?.address.equals(
-              (guards.nftBurn || candyMachine.candyGuard.guards.nftBurn)
-                .requiredCollection
-            )
+            y.collection?.address.equals(guardsInput.nftBurn.requiredCollection)
           ),
         };
       }
 
       // Check for gates
 
-      if (guards.tokenGate || candyMachine.candyGuard.guards.tokenGate) {
+      if (guardsInput.tokenGate) {
         guardsParsed.gate = {
           token: {
-            mint: (guards.tokenGate || candyMachine.candyGuard.guards.tokenGate)
-              .mint,
-            amount: (
-              guards.tokenGate || candyMachine.candyGuard.guards.tokenGate
-            ).amount.basisPoints.toNumber(),
-            decimals: (
-              guards.tokenGate || candyMachine.candyGuard.guards.tokenGate
-            ).amount.currency.decimals,
+            mint: guardsInput.tokenGate.mint,
+            amount: guardsInput.tokenGate.amount.basisPoints.toNumber(),
+            decimals: guardsInput.tokenGate.amount.currency.decimals,
           },
         };
       }
-      if (guards.nftGate || candyMachine.candyGuard.guards.nftGate) {
+      if (guardsInput.nftGate) {
         guardsParsed.gate = {
           nfts: nftHoldings.filter((y) =>
-            y.collection?.address.equals(
-              (guards.nftGate || candyMachine.candyGuard.guards.nftGate)
-                .requiredCollection
-            )
+            y.collection?.address.equals(guardsInput.nftGate.requiredCollection)
           ),
         };
       }
 
       // Check for whitelisted addresses
 
-      if (
-        guards.addressGate ||
-        candyMachine.candyGuard.guards.addressGate ||
-        guards.allowList ||
-        candyMachine.candyGuard.guards.allowList
-      ) {
+      if (guardsInput.addressGate || guardsInput.allowList) {
         let allowed: PublicKey[] = [];
 
-        if (guards.addressGate || candyMachine.candyGuard.guards.addressGate)
-          allowed.push(
-            (guards.addressGate || candyMachine.candyGuard.guards.addressGate)
-              .address
-          );
+        if (guardsInput.addressGate)
+          allowed.push(guardsInput.addressGate.address);
 
-        if (guards.allowList || candyMachine.candyGuard.guards.allowList) {
-          (guards.allowList || candyMachine.candyGuard.guards.allowList)
-            .merkleRoot;
-          // push wallet to allowed list if merkle verified
-        }
+        try {
+          if (!guardsInput.allowList || !candyMachineOpts.whitelistedWallets)
+            throw new Error("");
+
+          const index = candyMachineOpts.whitelistedWallets.findIndex((x) =>
+            x.equals(walletAddress)
+          );
+          if (index === -1) throw new Error("");
+
+          const proof = whitelistWalletsTree.getProofArray(index);
+          const isValid = whitelistWalletsTree.verifyProof(
+            index,
+            proof,
+            Buffer.from(guardsInput.allowList.merkleRoot)
+          );
+          if (!isValid) throw new Error("");
+
+          allowed.push(walletAddress);
+        } catch {}
 
         guardsParsed.allowed = allowed;
       }
 
-      if (guards.gatekeeper || candyMachine.candyGuard.guards.gatekeeper) {
-        guardsParsed.gatekeeperNetwork = (
-          guards.gatekeeper || candyMachine.candyGuard.guards.gatekeeper
-        ).network;
+      if (guardsInput.gatekeeper) {
+        guardsParsed.gatekeeperNetwork = guardsInput.gatekeeper.network;
       }
 
-      return guardsParsed;
+      return {
+        ...guards,
+        ...guardsParsed,
+      };
     },
-    [tokenHoldings, nftHoldings, balance]
+    [tokenHoldings, nftHoldings, balance, guards, whitelistWalletsTree]
   );
 
   const parseGuardStates = React.useCallback(
@@ -368,37 +350,27 @@ export default function useCandyMachineV3(
       };
 
       // Check for start date
-      if (guards.startDate || candyMachine.candyGuard.guards.startDate) {
+      if (guards.startDate) {
         states.isStarted =
-          new Date(
-            (
-              guards.startDate || candyMachine.candyGuard.guards.startDate
-            ).date.toNumber() * 1000
-          ).getTime() < Date.now();
+          new Date(guards.startDate.date.toNumber() * 1000).getTime() <
+          Date.now();
       }
 
       // Check for end date
-      if (guards.endDate || candyMachine.candyGuard.guards.endDate) {
+      if (guards.endDate) {
         states.isEnded =
-          new Date(
-            (
-              guards.endDate || candyMachine.candyGuard.guards.endDate
-            ).date.toNumber() * 1000
-          ).getTime() < Date.now();
+          new Date(guards.endDate.date.toNumber() * 1000).getTime() <
+          Date.now();
       }
 
       // Check for mint limit
-      if (guards.mintLimit || candyMachine.candyGuard.guards.mintLimit) {
-        const mintLimiPda = await mx
-          .candyMachines()
-          .pdas()
-          .mintLimitCounter({
-            candyGuard: candyMachine.candyGuard.address,
-            id: (guards.mintLimit || candyMachine.candyGuard.guards.mintLimit)
-              .id,
-            candyMachine: candyMachine.address,
-            user: walletAddress,
-          });
+      if (guards.mintLimit) {
+        const mintLimiPda = await mx.candyMachines().pdas().mintLimitCounter({
+          candyGuard: candyMachine.candyGuard.address,
+          id: guards.mintLimit.id,
+          candyMachine: candyMachine.address,
+          user: walletAddress,
+        });
 
         let mintCount = 0;
         if (mintLimiPda) {
@@ -411,155 +383,146 @@ export default function useCandyMachineV3(
             ).count;
         }
 
-        states.isLimitReached = (
-          guards.mintLimit || candyMachine.candyGuard.guards.mintLimit
-        )?.limit
-          ? (guards.mintLimit || candyMachine.candyGuard.guards.mintLimit)
-              ?.limit === mintCount
+        states.isLimitReached = guards.mintLimit?.limit
+          ? guards.mintLimit?.limit === mintCount
           : false;
       }
 
       // Check for redeemed list
-      if (
-        guards.redeemedAmount ||
-        candyMachine.candyGuard.guards.redeemedAmount
-      ) {
-        states.isLimitReached = (
-          guards.redeemedAmount || candyMachine.candyGuard.guards.redeemedAmount
-        ).maximum.eq(candyMachine.itemsMinted);
+      if (guards.redeemedAmount) {
+        states.isLimitReached = guards.redeemedAmount.maximum.eq(
+          candyMachine.itemsMinted
+        );
       }
 
       // Check for payment guards
 
-      if (guards.solPayment || candyMachine.candyGuard.guards.solPayment) {
-        states.isPaymentAvailable = (
-          guards.solPayment || candyMachine.candyGuard.guards.solPayment
-        ).amount.basisPoints.lte(toBigNumber(balance));
+      if (guards.solPayment) {
+        states.isPaymentAvailable = guards.solPayment.amount.basisPoints.lte(
+          toBigNumber(balance)
+        );
       }
 
-      if (guards.tokenPayment || candyMachine.candyGuard.guards.tokenPayment) {
+      if (guards.tokenPayment) {
         const tokenAccount = tokenHoldings.find((x) =>
-          x.mint.equals(
-            (guards.tokenPayment || candyMachine.candyGuard.guards.tokenPayment)
-              .tokenMint
-          )
+          x.mint.equals(guards.tokenPayment.tokenMint)
         );
         states.isPaymentAvailable =
           !!tokenAccount &&
-          (
-            guards.tokenPayment || candyMachine.candyGuard.guards.tokenPayment
-          ).amount.basisPoints.lte(toBigNumber(tokenAccount.balance));
+          guards.tokenPayment.amount.basisPoints.lte(
+            toBigNumber(tokenAccount.balance)
+          );
       }
 
-      if (guards.nftPayment || candyMachine.candyGuard.guards.nftPayment) {
+      if (guards.nftPayment) {
         states.isPaymentAvailable = !!nftHoldings.find((y) =>
-          y.collection?.address.equals(
-            (guards.nftPayment || candyMachine.candyGuard.guards.nftPayment)
-              .requiredCollection
-          )
+          y.collection?.address.equals(guards.nftPayment.requiredCollection)
         );
       }
 
       // Check for burn guards
 
-      if (guards.tokenBurn || candyMachine.candyGuard.guards.tokenBurn) {
+      if (guards.tokenBurn) {
         const tokenAccount = tokenHoldings.find(
-          (x) =>
-            x.mint.toString() ===
-            (
-              guards.tokenBurn || candyMachine.candyGuard.guards.tokenBurn
-            ).mint.toString()
+          (x) => x.mint.toString() === guards.tokenBurn.mint.toString()
         );
         states.isPaymentAvailable =
           !!tokenAccount &&
-          (
-            guards.tokenBurn || candyMachine.candyGuard.guards.tokenBurn
-          ).amount.basisPoints.lte(toBigNumber(tokenAccount.balance));
+          guards.tokenBurn.amount.basisPoints.lte(
+            toBigNumber(tokenAccount.balance)
+          );
       }
 
-      if (guards.nftBurn || candyMachine.candyGuard.guards.nftBurn) {
+      if (guards.nftBurn) {
         states.isPaymentAvailable = !!nftHoldings.find((y) =>
-          y.collection?.address.equals(
-            (guards.nftBurn || candyMachine.candyGuard.guards.nftBurn)
-              .requiredCollection
-          )
+          y.collection?.address.equals(guards.nftBurn.requiredCollection)
         );
       }
 
       // Check for gates
 
-      if (guards.tokenGate || candyMachine.candyGuard.guards.tokenGate) {
+      if (guards.tokenGate) {
         const tokenAccount = tokenHoldings.find((x) =>
-          x.mint.equals(
-            (guards.tokenGate || candyMachine.candyGuard.guards.tokenGate).mint
-          )
+          x.mint.equals(guards.tokenGate.mint)
         );
         states.isPaymentAvailable =
           !!tokenAccount &&
-          (
-            guards.tokenGate || candyMachine.candyGuard.guards.tokenGate
-          ).amount.basisPoints.lte(toBigNumber(tokenAccount.balance));
+          guards.tokenGate.amount.basisPoints.lte(
+            toBigNumber(tokenAccount.balance)
+          );
       }
 
-      if (guards.nftGate || candyMachine.candyGuard.guards.nftGate) {
+      if (guards.nftGate) {
         states.isPaymentAvailable = !!nftHoldings.find((y) =>
-          y.collection?.address.equals(
-            (guards.nftGate || candyMachine.candyGuard.guards.nftGate)
-              .requiredCollection
-          )
+          y.collection?.address.equals(guards.nftGate.requiredCollection)
         );
       }
 
       // Check for whitelisted addresses
 
-      if (
-        guards.addressGate ||
-        candyMachine.candyGuard.guards.addressGate ||
-        guards.allowList ||
-        candyMachine.candyGuard.guards.allowList
-      ) {
+      if (guards.addressGate || guards.allowList) {
         let allowed: PublicKey[] = [];
 
-        if (guards.addressGate || candyMachine.candyGuard.guards.addressGate)
-          allowed.push(
-            (guards.addressGate || candyMachine.candyGuard.guards.addressGate)
-              .address
-          );
+        if (guards.addressGate) allowed.push(guards.addressGate.address);
 
-        if (
-          (guards.allowList || candyMachine.candyGuard.guards.allowList) &&
-          candyMachineOpts.whitelistedWallets &&
-          !!candyMachineOpts.whitelistedWallets.find((x) =>
+        try {
+          if (!guards.allowList || !candyMachineOpts.whitelistedWallets)
+            throw new Error("");
+
+          const index = candyMachineOpts.whitelistedWallets.findIndex((x) =>
             x.equals(walletAddress)
-          )
-        ) {
-          try {
-            mx.candyMachines().callGuardRoute({
-              candyMachine,
-              guard: "allowList",
-              settings: {
-                path: "proof",
-                merkleProof: getMerkleProof(
-                  candyMachineOpts.whitelistedWallets.map((x) => x.toBuffer()),
-                  walletAddress.toBuffer()
-                ),
-              },
-            });
-            allowed.push(walletAddress);
-          } catch {}
-        }
+          );
+          if (index === -1) throw new Error("");
+
+          const proof = whitelistWalletsTree.getProofArray(index);
+          const isValid = whitelistWalletsTree.verifyProof(
+            index,
+            proof,
+            Buffer.from(guards.allowList.merkleRoot)
+          );
+          if (!isValid) throw new Error("");
+
+          allowed.push(walletAddress);
+        } catch {}
+
+        // if (
+        //   guards.allowList &&
+        //   candyMachineOpts.whitelistedWallets &&
+        //   !!candyMachineOpts.whitelistedWallets.find((x) =>
+        //     x.equals(walletAddress)
+        //   )
+        // ) {
+        //   try {
+        //     // mx.candyMachines().callGuardRoute({
+        //     //   candyMachine,
+        //     //   guard: "allowList",
+        //     //   settings: {
+        //     //     path: "proof",
+        //     //     merkleProof: getMerkleProof(
+        //     //       candyMachineOpts.whitelistedWallets.map((x) => x.toBuffer()),
+        //     //       walletAddress.toBuffer()
+        //     //     ),
+        //     //   },
+        //     // });
+        //     allowed.push(walletAddress);
+        //   } catch {}
+        // }
+
         states.isWalletWhitelisted = !!allowed.find((x) =>
           x.equals(walletAddress)
         );
       }
 
-      if (guards.gatekeeper || candyMachine.candyGuard.guards.gatekeeper) {
+      if (guards.gatekeeper) {
         states.hasGatekeeper = true;
       }
 
-      return states;
+      return {
+        ...guardStates,
+        ...states,
+      };
     },
-    [tokenHoldings, nftHoldings, balance]
+    [tokenHoldings, nftHoldings, balance, guardStates, whitelistWalletsTree]
   );
 
   const fetchCandyMachine = React.useCallback(async () => {
@@ -601,7 +564,6 @@ export default function useCandyMachineV3(
 
   const refresh = React.useCallback(async () => {
     if (!wallet.publicKey) throw new Error("Wallet not loaded yet!");
-    const walletAddress = wallet.publicKey;
 
     setStatus((x) => ({ ...x, candyMachine: true }));
     await fetchCandyMachine()
@@ -656,15 +618,6 @@ export default function useCandyMachineV3(
   }, [mx, wallet.publicKey]);
 
   React.useEffect(() => {
-    if (!nftHoldings.length || !allTokens.length) return;
-    setTokenHoldings(
-      allTokens.filter(
-        (x) => !nftHoldings.find((y) => x.mint.equals(y.address))
-      )
-    );
-  }, [nftHoldings, allTokens]);
-
-  React.useEffect(() => {
     refresh().catch((e) =>
       console.error("Error while fetching candy machine", e)
     );
@@ -692,13 +645,16 @@ export default function useCandyMachineV3(
       .then((guardStates) => setGuardStates(guardStates))
       .catch((e) => console.error("Error while fetching default guard", e));
   }, [wallet, candyMachine, parseGuardStates]);
+
   React.useEffect(() => {
     const walletAddress = wallet.publicKey;
     if (!walletAddress || !candyMachine) return;
 
     parseGuardGroup(candyMachine.candyGuard.guards, candyMachine, walletAddress)
       .then((guards) => setGuards(guards))
-      .catch((e) => console.error("Error while fetching default guard", e));
+      .catch((e) =>
+        console.error("Error while fetching default guard states", e)
+      );
   }, [wallet, candyMachine, parseGuardGroup]);
 
   const mint = React.useCallback(
