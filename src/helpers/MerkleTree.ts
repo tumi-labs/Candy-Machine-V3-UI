@@ -102,6 +102,14 @@ export class MerkleTree<T = any> {
     return pair.equals(root);
   }
 
+  verifyRoot(idx: number, proof: Buffer[], root: Buffer): boolean {
+    let pair = MerkleTree.nodeHash(this.leafs[idx]);
+    for (const item of proof) {
+      pair = MerkleTree.internalHash(pair, item);
+    }
+    return pair.equals(root);
+  }
+
   verifyClaim(item: T, proof: Buffer[]): boolean {
     let pair = MerkleTree.nodeHash(Buffer.from(item));
     for (const item of proof) {
