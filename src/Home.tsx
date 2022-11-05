@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { Paper, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import { DefaultCandyGuardMintSettings, Nft } from "@metaplex-foundation/js";
+import { DefaultCandyGuardRouteSettings, Nft } from "@metaplex-foundation/js";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
@@ -27,7 +27,9 @@ import {
 import { AlertState } from "./utils";
 import NftsModal from "./NftsModal";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import useCandyMachineV3 from "./hooks/useCandyMachineV3";
+import useCandyMachineV3, {
+  CustomCandyGuardMintSettings,
+} from "./hooks/useCandyMachineV3";
 
 const Header = styled.div`
   display: flex;
@@ -115,7 +117,14 @@ export interface HomeProps {
 const Home = (props: HomeProps) => {
   const { connection } = useConnection();
   const wallet = useWallet();
-  const candyMachineV3 = useCandyMachineV3(props.candyMachineId);
+  const candyMachineV3 = useCandyMachineV3(props.candyMachineId, {
+    allowLists: [
+      {
+        list: require("../cmv3-demo-initialization/allowlist.json"),
+        groupLabel: "waoed",
+      },
+    ],
+  });
 
   const [balance, setBalance] = useState<number>();
   const [mintedItems, setMintedItems] = useState<Nft[]>();
@@ -189,7 +198,7 @@ const Home = (props: HomeProps) => {
   const startMint = useCallback(
     async (quantityString: number = 1) => {
       console.log({ guards });
-      const guardsContext: Partial<DefaultCandyGuardMintSettings> = {
+      const guardsContext: Partial<CustomCandyGuardMintSettings> = {
         nftBurn: guards.burn?.nfts[0]?.mintAddress
           ? {
               mint: guards.burn.nfts[0]?.mintAddress,
@@ -205,6 +214,9 @@ const Home = (props: HomeProps) => {
               mint: guards.gate.nfts[0]?.mintAddress,
             }
           : undefined,
+        allowList: candyMachineV3.merkles[guardLabel] && {
+          proof: candyMachineV3.merkles[guardLabel].proof,
+        },
       };
       console.log({ guardsContext });
       // debugger;

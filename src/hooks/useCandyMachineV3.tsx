@@ -1,8 +1,10 @@
 import {
+  callCandyGuardRouteBuilder,
   CandyMachine,
   DefaultCandyGuardMintSettings,
   DefaultCandyGuardSettings,
   getMerkleProof,
+  getMerkleTree,
   IdentitySigner,
   Metadata,
   Metaplex,
@@ -14,7 +16,6 @@ import {
   PublicKey,
   Sft,
   SftWithToken,
-  toBigNumber,
   TransactionBuilder,
   walletAdapterIdentity,
 } from "@metaplex-foundation/js";
@@ -23,7 +24,8 @@ import { AccountInfo, Keypair, SystemProgram } from "@solana/web3.js";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import React from "react";
 import { MintCounterBorsh } from "../borsh/mintCounter";
-import { MerkleTree } from "../helpers";
+import { MerkleTree } from "merkletreejs";
+import { keccak_256 } from "@noble/hashes/sha3";
 
 export type Token = {
   mint: PublicKey;
@@ -71,7 +73,7 @@ export type GuardGroup = {
   };
   redeemLimit?: number;
   allowed?: PublicKey[];
-  allowListMerkleRoot?: Uint8Array;
+  allowList?: Uint8Array;
   gatekeeperNetwork?: PublicKey;
 };
 
@@ -83,24 +85,28 @@ export type GuardGroupStates = {
   isWalletWhitelisted: boolean;
   hasGatekeeper: boolean;
 };
+export declare type CustomCandyGuardMintSettings = Partial<
+  DefaultCandyGuardMintSettings & {
+    allowList: {
+      proof: Uint8Array[];
+    };
+  }
+>;
 
 export default function useCandyMachineV3(
   candyMachineId: PublicKey | string,
   candyMachineOpts: {
-    whitelistedWallets?: PublicKey[];
+    allowLists?: { groupLabel?: string; list: (string | Uint8Array)[] }[];
   } = {}
 ) {
   const { connection } = useConnection();
   const wallet = useWallet();
 
-  const whitelistWalletsTree = React.useMemo(() => {
-    return new MerkleTree(candyMachineOpts.whitelistedWallets);
-  }, [candyMachineOpts.whitelistedWallets]);
-
   const [status, setStatus] = React.useState({
     candyMachine: false,
     guardGroups: false,
     minting: false,
+    initialFetchGuardGroupsDone: false,
   });
 
   const [balance, setBalance] = React.useState(0);
@@ -108,7 +114,7 @@ export default function useCandyMachineV3(
   const [nftHoldings, setNftHoldings] = React.useState<Metadata[]>([]);
 
   const tokenHoldings = React.useMemo<Token[]>(() => {
-    if (!nftHoldings.length || !allTokens.length) return [];
+    if (!nftHoldings?.length || !allTokens?.length) return [];
     return allTokens.filter(
       (x) => !nftHoldings.find((y) => x.mint.equals(y.address))
     );
@@ -140,6 +146,56 @@ export default function useCandyMachineV3(
     [connection]
   );
 
+  const { verifyProof, merkles } = React.useMemo(() => {
+    if (!candyMachineOpts.allowLists?.length) {
+      return {
+        verifyProof() {
+          return true;
+        },
+      };
+    }
+    if (!wallet.publicKey) {
+      return {
+        verifyProof() {
+          return false;
+        },
+      };
+    }
+    const merkles: { [k: string]: { tree: MerkleTree; proof: Uint8Array[] } } =
+      candyMachineOpts.allowLists.reduce(
+        (prev, { groupLabel, list }) =>
+          Object.assign(prev, {
+            [groupLabel]: {
+              tree: getMerkleTree(list),
+              proof: getMerkleProof(list, wallet.publicKey.toString()),
+            },
+          }),
+        {}
+      );
+    const verifyProof = (
+      merkleRoot: Uint8Array | string,
+      label = "default"
+    ) => {
+      let merkle = merkles[label];
+      console.log({
+        merkle,
+        label,
+      });
+      if (!merkle) return;
+      const verifiedProof = !!merkle.proof;
+      const compareRoot = merkle.tree.getRoot().equals(Buffer.from(merkleRoot));
+      console.log({
+        verifiedProof,
+        compareRoot,
+      });
+      return verifiedProof && compareRoot;
+    };
+    return {
+      merkles,
+      verifyProof,
+    };
+  }, [wallet.publicKey, candyMachineOpts.allowLists]);
+
   const getPrice = React.useCallback((guards: GuardGroup) => {
     return {
       price:
@@ -170,7 +226,9 @@ export default function useCandyMachineV3(
     async (
       guardsInput: DefaultCandyGuardSettings,
       candyMachine: CandyMachine,
-      walletAddress: PublicKey
+      walletAddress: PublicKey,
+      lable: string = "default",
+      mainGuards: any = {}
     ): Promise<GuardGroup> => {
       const guardsParsed: GuardGroup = {};
 
@@ -237,7 +295,7 @@ export default function useCandyMachineV3(
       if (guardsInput.tokenPayment) {
         guardsParsed.payment = {
           token: {
-            mint: guardsInput.tokenPayment.tokenMint,
+            mint: guardsInput.tokenPayment.mint,
             amount: guardsInput.tokenPayment.amount.basisPoints.toNumber(),
             decimals: guardsInput.tokenPayment.amount.currency.decimals,
           },
@@ -295,29 +353,14 @@ export default function useCandyMachineV3(
 
       if (guardsInput.addressGate || guardsInput.allowList) {
         let allowed: PublicKey[] = [];
-
+        console.log({guardsInput, lable})
         if (guardsInput.addressGate)
           allowed.push(guardsInput.addressGate.address);
 
-        try {
-          if (!guardsInput.allowList || !candyMachineOpts.whitelistedWallets)
-            throw new Error("");
-
-          const index = candyMachineOpts.whitelistedWallets.findIndex((x) =>
-            x.equals(walletAddress)
-          );
-          if (index === -1) throw new Error("");
-
-          const proof = whitelistWalletsTree.getProofArray(index);
-          const isValid = whitelistWalletsTree.verifyProof(
-            index,
-            proof,
-            Buffer.from(guardsInput.allowList.merkleRoot)
-          );
-          if (!isValid) throw new Error("");
-
-          allowed.push(walletAddress);
-        } catch {}
+        if (guardsInput.allowList?.merkleRoot) {
+          const isValid = verifyProof(guardsInput.allowList.merkleRoot, lable);
+          if (isValid) allowed.push(walletAddress);
+        }
 
         guardsParsed.allowed = allowed;
       }
@@ -327,19 +370,20 @@ export default function useCandyMachineV3(
       }
 
       return {
-        ...guards,
         ...guardsParsed,
+        ...mainGuards,
       };
     },
-    [tokenHoldings, nftHoldings, balance, guards, whitelistWalletsTree]
+    [tokenHoldings, nftHoldings, balance, candyMachineOpts.allowLists]
   );
 
   const parseGuardStates = React.useCallback(
-    async (
-      guards: DefaultCandyGuardSettings,
+    (
+      guards: GuardGroup,
       candyMachine: CandyMachine,
-      walletAddress: PublicKey
-    ): Promise<GuardGroupStates> => {
+      walletAddress: PublicKey,
+      mainGuardStates: any = {}
+    ): GuardGroupStates => {
       const states: GuardGroupStates = {
         isStarted: true,
         isEnded: false,
@@ -350,179 +394,100 @@ export default function useCandyMachineV3(
       };
 
       // Check for start date
-      if (guards.startDate) {
-        states.isStarted =
-          new Date(guards.startDate.date.toNumber() * 1000).getTime() <
-          Date.now();
+      if (guards.startTime) {
+        states.isStarted = guards.startTime.getTime() < Date.now();
       }
-
-      // Check for end date
-      if (guards.endDate) {
-        states.isEnded =
-          new Date(guards.endDate.date.toNumber() * 1000).getTime() <
-          Date.now();
+      // Check for start date
+      if (guards.endTime) {
+        states.isEnded = guards.endTime.getTime() < Date.now();
       }
 
       // Check for mint limit
       if (guards.mintLimit) {
-        const mintLimiPda = await mx.candyMachines().pdas().mintLimitCounter({
-          candyGuard: candyMachine.candyGuard.address,
-          id: guards.mintLimit.id,
-          candyMachine: candyMachine.address,
-          user: walletAddress,
-        });
-
-        let mintCount = 0;
-        if (mintLimiPda) {
-          const mintLimitAccountInfo = await connection.getAccountInfo(
-            mintLimiPda
-          );
-          if (mintLimitAccountInfo)
-            mintCount = MintCounterBorsh.fromBuffer(
-              mintLimitAccountInfo.data
-            ).count;
-        }
-
-        states.isLimitReached = guards.mintLimit?.limit
-          ? guards.mintLimit?.limit === mintCount
+        states.isLimitReached = guards.mintLimit?.mintCounter?.count
+          ? !(
+              guards.mintLimit?.settings?.limit <
+              guards.mintLimit?.mintCounter?.count
+            )
           : false;
       }
 
       // Check for redeemed list
-      if (guards.redeemedAmount) {
-        states.isLimitReached = guards.redeemedAmount.maximum.eq(
-          candyMachine.itemsMinted
-        );
+      if (guards.redeemLimit) {
+        states.isLimitReached =
+          guards.redeemLimit >= candyMachine.itemsMinted.toNumber();
       }
 
       // Check for payment guards
 
-      if (guards.solPayment) {
-        states.isPaymentAvailable = guards.solPayment.amount.basisPoints.lte(
-          toBigNumber(balance)
-        );
+      if (guards.payment?.sol) {
+        states.isPaymentAvailable =
+          states.isPaymentAvailable && guards.payment?.sol.amount <= balance;
       }
-
-      if (guards.tokenPayment) {
+      if (guards.payment?.token) {
         const tokenAccount = tokenHoldings.find((x) =>
-          x.mint.equals(guards.tokenPayment.tokenMint)
+          x.mint.equals(guards.payment?.token.mint)
         );
         states.isPaymentAvailable =
+          states.isPaymentAvailable &&
           !!tokenAccount &&
-          guards.tokenPayment.amount.basisPoints.lte(
-            toBigNumber(tokenAccount.balance)
-          );
+          guards.payment?.token.amount <= tokenAccount.balance;
       }
 
-      if (guards.nftPayment) {
-        states.isPaymentAvailable = !!nftHoldings.find((y) =>
-          y.collection?.address.equals(guards.nftPayment.requiredCollection)
-        );
+      if (guards.payment?.nfts) {
+        states.isPaymentAvailable =
+          states.isPaymentAvailable && !!guards.payment?.nfts.length;
       }
 
       // Check for burn guards
-
-      if (guards.tokenBurn) {
-        const tokenAccount = tokenHoldings.find(
-          (x) => x.mint.toString() === guards.tokenBurn.mint.toString()
+      if (guards.burn?.token) {
+        const tokenAccount = tokenHoldings.find((x) =>
+          x.mint.equals(guards.burn?.token.mint)
         );
         states.isPaymentAvailable =
+          states.isPaymentAvailable &&
           !!tokenAccount &&
-          guards.tokenBurn.amount.basisPoints.lte(
-            toBigNumber(tokenAccount.balance)
-          );
+          guards.burn?.token.amount <= tokenAccount.balance;
       }
 
-      if (guards.nftBurn) {
-        states.isPaymentAvailable = !!nftHoldings.find((y) =>
-          y.collection?.address.equals(guards.nftBurn.requiredCollection)
-        );
+      if (guards.burn?.nfts) {
+        states.isPaymentAvailable =
+          states.isPaymentAvailable && !!guards.burn?.nfts.length;
       }
 
       // Check for gates
-
-      if (guards.tokenGate) {
+      if (guards.gate?.token) {
         const tokenAccount = tokenHoldings.find((x) =>
-          x.mint.equals(guards.tokenGate.mint)
+          x.mint.equals(guards.gate?.token.mint)
         );
         states.isPaymentAvailable =
+          states.isPaymentAvailable &&
           !!tokenAccount &&
-          guards.tokenGate.amount.basisPoints.lte(
-            toBigNumber(tokenAccount.balance)
-          );
+          guards.gate?.token.amount <= tokenAccount.balance;
       }
 
-      if (guards.nftGate) {
-        states.isPaymentAvailable = !!nftHoldings.find((y) =>
-          y.collection?.address.equals(guards.nftGate.requiredCollection)
-        );
+      if (guards.gate?.nfts) {
+        states.isPaymentAvailable =
+          states.isPaymentAvailable && !!guards.gate?.nfts.length;
       }
 
       // Check for whitelisted addresses
-
-      if (guards.addressGate || guards.allowList) {
-        let allowed: PublicKey[] = [];
-
-        if (guards.addressGate) allowed.push(guards.addressGate.address);
-
-        try {
-          if (!guards.allowList || !candyMachineOpts.whitelistedWallets)
-            throw new Error("");
-
-          const index = candyMachineOpts.whitelistedWallets.findIndex((x) =>
-            x.equals(walletAddress)
-          );
-          if (index === -1) throw new Error("");
-
-          const proof = whitelistWalletsTree.getProofArray(index);
-          const isValid = whitelistWalletsTree.verifyProof(
-            index,
-            proof,
-            Buffer.from(guards.allowList.merkleRoot)
-          );
-          if (!isValid) throw new Error("");
-
-          allowed.push(walletAddress);
-        } catch {}
-
-        // if (
-        //   guards.allowList &&
-        //   candyMachineOpts.whitelistedWallets &&
-        //   !!candyMachineOpts.whitelistedWallets.find((x) =>
-        //     x.equals(walletAddress)
-        //   )
-        // ) {
-        //   try {
-        //     // mx.candyMachines().callGuardRoute({
-        //     //   candyMachine,
-        //     //   guard: "allowList",
-        //     //   settings: {
-        //     //     path: "proof",
-        //     //     merkleProof: getMerkleProof(
-        //     //       candyMachineOpts.whitelistedWallets.map((x) => x.toBuffer()),
-        //     //       walletAddress.toBuffer()
-        //     //     ),
-        //     //   },
-        //     // });
-        //     allowed.push(walletAddress);
-        //   } catch {}
-        // }
-
-        states.isWalletWhitelisted = !!allowed.find((x) =>
+      if (guards.allowed) {
+        states.isWalletWhitelisted = !!guards.allowed.find((x) =>
           x.equals(walletAddress)
         );
       }
 
-      if (guards.gatekeeper) {
+      if (guards.gatekeeperNetwork) {
         states.hasGatekeeper = true;
       }
 
       return {
-        ...guardStates,
+        ...mainGuardStates,
         ...states,
       };
     },
-    [tokenHoldings, nftHoldings, balance, guardStates, whitelistWalletsTree]
+    [tokenHoldings, balance]
   );
 
   const fetchCandyMachine = React.useCallback(async () => {
@@ -534,24 +499,30 @@ export default function useCandyMachineV3(
   const fetchGuardGroups = React.useCallback(
     async (
       candyMachine: CandyMachine,
-      walletAddress: PublicKey
+      walletAddress: PublicKey,
+      guards,
+      guardStates
     ): Promise<
       { label: string; guards: GuardGroup; states: GuardGroupStates }[]
     > => {
       if (!candyMachine) return;
       const groups = await Promise.all(
         candyMachine.candyGuard.groups.map(async (x) => {
+          const parsedGuards = await parseGuardGroup(
+            x.guards,
+            candyMachine,
+            walletAddress,
+            x.label,
+            guards
+          );
           const group = {
             label: x.label,
-            guards: await parseGuardGroup(
-              x.guards,
+            guards: parsedGuards,
+            states: parseGuardStates(
+              parsedGuards,
               candyMachine,
-              walletAddress
-            ),
-            states: await parseGuardStates(
-              x.guards,
-              candyMachine,
-              walletAddress
+              walletAddress,
+              guardStates
             ),
           };
           return group;
@@ -624,45 +595,58 @@ export default function useCandyMachineV3(
   }, [refresh]);
 
   React.useEffect(() => {
-    if (!candyMachine || !wallet.publicKey) return;
+    const walletAddress = wallet.publicKey;
+    if (
+      !walletAddress ||
+      !candyMachine ||
+      status.initialFetchGuardGroupsDone ||
+      status.guardGroups
+    )
+      return;
 
     setStatus((x) => ({ ...x, guardGroups: true }));
-    fetchGuardGroups(candyMachine, wallet.publicKey)
-      .then((groups) => setGuardGroups(groups))
-      .catch((e) => "Error while fetching gaurd groups")
-      .finally(() => setStatus((x) => ({ ...x, guardGroups: false })));
-  }, [candyMachine, wallet.publicKey, fetchGuardGroups]);
-
-  React.useEffect(() => {
-    const walletAddress = wallet.publicKey;
-    if (!walletAddress || !candyMachine) return;
-
-    parseGuardStates(
-      candyMachine.candyGuard.guards,
-      candyMachine,
-      walletAddress
-    )
-      .then((guardStates) => setGuardStates(guardStates))
-      .catch((e) => console.error("Error while fetching default guard", e));
-  }, [wallet, candyMachine, parseGuardStates]);
-
-  React.useEffect(() => {
-    const walletAddress = wallet.publicKey;
-    if (!walletAddress || !candyMachine) return;
-
     parseGuardGroup(candyMachine.candyGuard.guards, candyMachine, walletAddress)
-      .then((guards) => setGuards(guards))
+      .then(async (guards) => {
+        const guardsStats = parseGuardStates(
+          guards,
+          candyMachine,
+          walletAddress
+        );
+        setGuards(guards);
+        setGuardStates(guardsStats);
+        await fetchGuardGroups(
+          candyMachine,
+          wallet.publicKey,
+          guards,
+          guardsStats
+        )
+          .then(setGuardGroups)
+          .catch((e) => "Error while fetching gaurd groups");
+      })
       .catch((e) =>
         console.error("Error while fetching default guard states", e)
+      )
+      .finally(() =>
+        setStatus((x) => ({
+          ...x,
+          initialFetchGuardGroupsDone: true,
+          guardGroups: false,
+        }))
       );
-  }, [wallet, candyMachine, parseGuardGroup]);
+  }, [
+    wallet,
+    candyMachine,
+    parseGuardStates,
+    parseGuardGroup,
+    fetchGuardGroups,
+  ]);
 
   const mint = React.useCallback(
     async (
       quantityString: number = 1,
       opts: {
         groupLabel?: string;
-        guards?: Partial<DefaultCandyGuardMintSettings>;
+        guards?: CustomCandyGuardMintSettings;
       } = {}
     ) => {
       if (
@@ -670,14 +654,33 @@ export default function useCandyMachineV3(
         !guardGroups.find((x) => x.label == opts.groupLabel)
       )
         throw new Error("Unknown guard group label");
-
+      const allowList = opts?.guards?.allowList;
       let nfts: (Sft | SftWithToken | Nft | NftWithToken)[] = [];
       try {
         if (!candyMachine) throw new Error("Candy Machine not loaded yet!");
 
-        setStatus((x) => ({ ...x, minting: true }));
+        setStatus((x) => ({
+          ...x,
+          minting: true,
+        }));
 
         const transactionBuilders: TransactionBuilder[] = [];
+        if (allowList) {
+          if (!merkles[opts.groupLabel || "default"].proof.length)
+            throw new Error("User is not in allowed list");
+
+          transactionBuilders.push(
+            callCandyGuardRouteBuilder(mx, {
+              candyMachine,
+              guard: "allowList",
+              group: opts.groupLabel,
+              settings: {
+                path: "proof",
+                merkleProof: merkles[opts.groupLabel || "default"].proof,
+              },
+            })
+          );
+        }
         for (let index = 0; index < quantityString; index++) {
           transactionBuilders.push(
             await mintFromCandyMachineBuilder(mx, {
@@ -709,7 +712,13 @@ export default function useCandyMachineV3(
         for (let signer in signers) {
           await signers[signer].signAllTransactions(transactions);
         }
-
+        if (allowList) {
+          const allowListCallGuardRouteTx = signedTransactions.shift();
+          const allowListCallGuardRouteTxBuilder = transactionBuilders.shift();
+          await mx.rpc().sendAndConfirmTransaction(allowListCallGuardRouteTx, {
+            commitment: "processed",
+          });
+        }
         const output = await Promise.all(
           signedTransactions.map((tx, i) => {
             return mx
@@ -766,7 +775,7 @@ export default function useCandyMachineV3(
         return nfts.filter((a) => a);
       }
     },
-    [candyMachine, guards, guardGroups, mx, refresh]
+    [candyMachine, guards, guardGroups, mx, wallet?.publicKey, merkles, refresh]
   );
 
   return {
@@ -776,6 +785,7 @@ export default function useCandyMachineV3(
     guardGroups,
     status,
     items,
+    merkles,
     mint,
     refresh,
     getPrice,
