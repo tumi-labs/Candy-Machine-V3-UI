@@ -155,7 +155,7 @@ const Home = (props: HomeProps) => {
           isStarted: true,
           isEnded: false,
           isLimitReached: false,
-          isPaymentAvailable: true,
+          canPayFor: 10,
           isWalletWhitelisted: true,
           hasGatekeeper: false,
         },
@@ -269,7 +269,7 @@ const Home = (props: HomeProps) => {
       isActive={!!candyMachineV3.items.remaining}
       isEnded={guardStates.isEnded}
       isSoldOut={!candyMachineV3.items.remaining}
-      limit={guardToLimitUtil(guards, candyMachineV3.items.remaining)}
+      limit={guardStates.canPayFor}
       onMint={startMint}
       prices={prices}
     />
@@ -361,7 +361,7 @@ const Home = (props: HomeProps) => {
                 />
               ) : !wallet?.publicKey ? (
                 <ConnectButton>Connect Wallet</ConnectButton>
-              ) : !guardStates.isPaymentAvailable ? (
+              ) : !guardStates.canPayFor ? (
                 <h1>You cannot pay for the mint</h1>
               ) : !guardStates.isWalletWhitelisted ? (
                 <h1>Mint is private.</h1>

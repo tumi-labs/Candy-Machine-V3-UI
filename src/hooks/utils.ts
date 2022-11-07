@@ -344,7 +344,7 @@ export const parseGuardStates = ({
     isStarted: true,
     isEnded: false,
     isLimitReached: false,
-    isPaymentAvailable: true,
+    canPayFor: 10,
     isWalletWhitelisted: true,
     hasGatekeeper: false,
   };
@@ -376,23 +376,31 @@ export const parseGuardStates = ({
 
   // Check for payment guards
   if (guards.payment?.sol) {
-    states.isPaymentAvailable =
-      states.isPaymentAvailable && guards.payment?.sol.amount <= balance;
+    states.canPayFor = Math.min(
+      states.canPayFor,
+      Math.floor(
+        balance / (guards.payment?.sol.amount - 0.12 * 10 ** LAMPORTS_PER_SOL)
+      )
+    );
   }
 
   if (guards.payment?.token) {
     const tokenAccount = tokenHoldings.find((x) =>
       x.mint.equals(guards.payment?.token.mint)
     );
-    states.isPaymentAvailable =
-      states.isPaymentAvailable &&
-      !!tokenAccount &&
-      guards.payment?.token.amount <= tokenAccount.balance;
+    states.canPayFor = Math.min(
+      states.canPayFor,
+      tokenAccount
+        ? Math.floor(tokenAccount.balance / guards.payment?.token.amount)
+        : 0
+    );
   }
 
   if (guards.payment?.nfts) {
-    states.isPaymentAvailable =
-      states.isPaymentAvailable && !!guards.payment?.nfts.length;
+    states.canPayFor = Math.min(
+      states.canPayFor,
+      guards.payment?.nfts.length || 0
+    );
   }
 
   // Check for burn guards
@@ -400,15 +408,20 @@ export const parseGuardStates = ({
     const tokenAccount = tokenHoldings.find((x) =>
       x.mint.equals(guards.burn?.token.mint)
     );
-    states.isPaymentAvailable =
-      states.isPaymentAvailable &&
-      !!tokenAccount &&
-      guards.burn?.token.amount <= tokenAccount.balance;
+
+    states.canPayFor = Math.min(
+      states.canPayFor,
+      tokenAccount
+        ? Math.floor(tokenAccount.balance / guards.burn?.token.amount)
+        : 0
+    );
   }
 
   if (guards.burn?.nfts) {
-    states.isPaymentAvailable =
-      states.isPaymentAvailable && !!guards.burn?.nfts.length;
+    states.canPayFor = Math.min(
+      states.canPayFor,
+      guards.burn?.nfts.length || 0
+    );
   }
 
   // Check for gates
@@ -416,15 +429,18 @@ export const parseGuardStates = ({
     const tokenAccount = tokenHoldings.find((x) =>
       x.mint.equals(guards.gate?.token.mint)
     );
-    states.isPaymentAvailable =
-      states.isPaymentAvailable &&
-      !!tokenAccount &&
-      guards.gate?.token.amount <= tokenAccount.balance;
+
+    states.canPayFor = Math.min(
+      states.canPayFor,
+      tokenAccount ? 10 : 0
+    );
   }
 
   if (guards.gate?.nfts) {
-    states.isPaymentAvailable =
-      states.isPaymentAvailable && !!guards.gate?.nfts.length;
+    states.canPayFor = Math.min(
+      states.canPayFor,
+      guards.burn?.nfts.length ? 10 : 0
+    );
   }
 
   // Check for whitelisted addresses

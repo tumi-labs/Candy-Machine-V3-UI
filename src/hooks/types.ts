@@ -83,7 +83,7 @@ export type MintLimitLogics = {
 export type GuardGroupStates = {
   isStarted: boolean;
   isEnded: boolean;
-  isPaymentAvailable: boolean;
+  canPayFor: number;
   isLimitReached: boolean;
   isWalletWhitelisted: boolean;
   hasGatekeeper: boolean;
