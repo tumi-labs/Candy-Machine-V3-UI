@@ -21,9 +21,9 @@ Reference UI to implement Metaplex Candy Machine V3 on frontend.
   - [x] NFT Gate
   - [x] Redeemed Amount
   - [ ] Third Party Signer
-  - [ ] Address Gate
-  - [ ] Allow List
-  - [ ] Gatekeeper
+  - [x] Address Gate
+  - [x] Allow List
+  - [x] Gatekeeper
 - [ ] Multi Group
   - [x] Functionality
   - [ ] UI
