@@ -170,6 +170,8 @@ export const parseGuardGroup = async (
 
   // Check for payment guards
 
+  // guardsParsed.payments = []
+
   if (guardsInput.solPayment) {
     guardsParsed.payment = {
       sol: {
@@ -177,6 +179,13 @@ export const parseGuardGroup = async (
         decimals: guardsInput.solPayment.amount.currency.decimals,
       },
     };
+
+    // guardsParsed.payments.push({
+    //   criteria: 'pay',
+    //   type: 'sol',
+    //   amount: guardsInput.solPayment.amount.basisPoints.toNumber(),
+    //   decimals: guardsInput.solPayment.amount.currency.decimals
+    // })
   }
 
   if (guardsInput.tokenPayment) {
@@ -188,6 +197,14 @@ export const parseGuardGroup = async (
         decimals: guardsInput.tokenPayment.amount.currency.decimals,
       },
     };
+    // guardsParsed.payments.push({
+    //   criteria: 'pay',
+    //   type: 'token',
+    //   mint: guardsInput.tokenPayment.mint,
+    //   symbol: guardsInput.tokenPayment.amount.currency.symbol,
+    //   amount: guardsInput.tokenPayment.amount.basisPoints.toNumber(),
+    //   decimals: guardsInput.tokenPayment.amount.currency.decimals,
+    // })
     await updateTokenSymbolAndDecimalsFromChainAsync(
       mx,
       guardsParsed.payment.token
@@ -199,6 +216,13 @@ export const parseGuardGroup = async (
         y.collection?.address.equals(guardsInput.nftPayment.requiredCollection)
       ),
     };
+    // guardsParsed.payments.push({
+    //   criteria: 'pay',
+    //   type: 'nft',
+    //   nfts: nftHoldings.filter((y) =>
+    //     y.collection?.address.equals(guardsInput.nftPayment.requiredCollection)
+    //   ),
+    // })
   }
 
   // Check for burn guards
@@ -212,6 +236,14 @@ export const parseGuardGroup = async (
         decimals: guardsInput.tokenBurn.amount.currency.decimals,
       },
     };
+    // guardsParsed.payments.push({
+    //   criteria: 'pay',
+    //   type: 'token',
+    //   mint: guardsInput.tokenBurn.mint,
+    //   symbol: guardsInput.tokenBurn.amount.currency.symbol,
+    //   amount: guardsInput.tokenBurn.amount.basisPoints.toNumber(),
+    //   decimals: guardsInput.tokenBurn.amount.currency.decimals,
+    // })
     await updateTokenSymbolAndDecimalsFromChainAsync(
       mx,
       guardsParsed.burn.token
@@ -223,6 +255,13 @@ export const parseGuardGroup = async (
         y.collection?.address.equals(guardsInput.nftBurn.requiredCollection)
       ),
     };
+    // guardsParsed.payments.push({
+    //   criteria: 'pay',
+    //   type: 'nft',
+    //   nfts: nftHoldings.filter((y) =>
+    //     y.collection?.address.equals(guardsInput.nftBurn.requiredCollection)
+    //   )
+    // })
   }
 
   // Check for gates
@@ -236,6 +275,14 @@ export const parseGuardGroup = async (
         decimals: guardsInput.tokenGate.amount.currency.decimals,
       },
     };
+    // guardsParsed.payments.push({
+    //   criteria: 'have',
+    //   type: 'token',
+    //   mint: guardsInput.tokenGate.mint,
+    //     symbol: guardsInput.tokenGate.amount.currency.symbol,
+    //     amount: guardsInput.tokenGate.amount.basisPoints.toNumber(),
+    //     decimals: guardsInput.tokenGate.amount.currency.decimals,
+    // })
     await updateTokenSymbolAndDecimalsFromChainAsync(
       mx,
       guardsParsed.gate.token
@@ -247,6 +294,13 @@ export const parseGuardGroup = async (
         y.collection?.address.equals(guardsInput.nftGate.requiredCollection)
       ),
     };
+    // guardsParsed.payments.push({
+    //   criteria: 'have',
+    //   type: 'nft',
+    //   nfts: nftHoldings.filter((y) =>
+    //     y.collection?.address.equals(guardsInput.nftGate.requiredCollection)
+    //   )
+    // })
   }
 
   // Check for whitelisted addresses
@@ -321,11 +375,11 @@ export const parseGuardStates = ({
   }
 
   // Check for payment guards
-
   if (guards.payment?.sol) {
     states.isPaymentAvailable =
       states.isPaymentAvailable && guards.payment?.sol.amount <= balance;
   }
+
   if (guards.payment?.token) {
     const tokenAccount = tokenHoldings.find((x) =>
       x.mint.equals(guards.payment?.token.mint)

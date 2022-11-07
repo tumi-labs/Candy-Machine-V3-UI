@@ -1,7 +1,6 @@
 import {
   callCandyGuardRouteBuilder,
   CandyMachine,
-  DefaultCandyGuardSettings,
   getMerkleProof,
   getMerkleTree,
   IdentitySigner,
@@ -26,6 +25,7 @@ import {
   CustomCandyGuardMintSettings,
   GuardGroup,
   GuardGroupStates,
+  NftPaymentMintSettings,
   ParsedPricesForUI,
   Token,
 } from "./types";
@@ -152,12 +152,17 @@ export default function useCandyMachineV3(
       quantityString: number = 1,
       opts: {
         groupLabel?: string;
-        guards?: CustomCandyGuardMintSettings;
+        nftGuards?: NftPaymentMintSettings[];
       } = {}
     ) => {
       if (!guardsAndGroups[opts.groupLabel || "default"])
         throw new Error("Unknown guard group label");
-      const allowList = opts?.guards?.allowList;
+
+      const allowList = opts.groupLabel &&
+        proofMemo.merkles[opts.groupLabel] && {
+          proof: proofMemo.merkles[opts.groupLabel].proof,
+        };
+
       let nfts: (Sft | SftWithToken | Nft | NftWithToken)[] = [];
       try {
         if (!candyMachine) throw new Error("Candy Machine not loaded yet!");
@@ -191,7 +196,12 @@ export default function useCandyMachineV3(
               candyMachine,
               collectionUpdateAuthority: candyMachine.authorityAddress, // mx.candyMachines().pdas().authority({candyMachine: candyMachine.address})
               group: opts.groupLabel,
-              guards: opts.guards,
+              guards: {
+                nftBurn: opts.nftGuards && opts.nftGuards[index]?.burn,
+                nftPayment: opts.nftGuards && opts.nftGuards[index]?.payment,
+                nftGate: opts.nftGuards && opts.nftGuards[index]?.gate,
+                allowList,
+              },
             })
           );
         }
@@ -285,7 +295,7 @@ export default function useCandyMachineV3(
 
   React.useEffect(() => {
     if (!mx || !wallet.publicKey) return;
-    console.log('useEffact([mx, wallet.publicKey])')
+    console.log("useEffact([mx, wallet.publicKey])");
     mx.use(walletAdapterIdentity(wallet));
 
     mx.rpc()
@@ -329,7 +339,9 @@ export default function useCandyMachineV3(
   React.useEffect(() => {
     const walletAddress = wallet.publicKey;
     if (!walletAddress || !candyMachine) return;
-    console.log('useEffact([mx, wallet, nftHoldings, proofMemo, candyMachine])');
+    console.log(
+      "useEffact([mx, wallet, nftHoldings, proofMemo, candyMachine])"
+    );
 
     (async () => {
       const guards = {
@@ -359,8 +371,7 @@ export default function useCandyMachineV3(
           );
         })
       );
-      setGuardsAndGroups(guards)
-     
+      setGuardsAndGroups(guards);
     })();
   }, [wallet.publicKey, nftHoldings, proofMemo, candyMachine]);
 
@@ -404,7 +415,6 @@ export default function useCandyMachineV3(
   React.useEffect(() => {
     console.log({ guardsAndGroups, guardStates, prices });
   }, [guardsAndGroups, guardStates, prices]);
-
 
   return {
     candyMachine,

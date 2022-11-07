@@ -28,7 +28,11 @@ import { AlertState } from "./utils";
 import NftsModal from "./NftsModal";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import useCandyMachineV3 from "./hooks/useCandyMachineV3";
-import { CustomCandyGuardMintSettings, ParsedPricesForUI } from "./hooks/types";
+import {
+  CustomCandyGuardMintSettings,
+  NftPaymentMintSettings,
+  ParsedPricesForUI,
+} from "./hooks/types";
 
 const Header = styled.div`
   display: flex;
@@ -119,11 +123,14 @@ const candyMachinOps = {
       groupLabel: "waoed",
     },
   ],
-}
+};
 const Home = (props: HomeProps) => {
   const { connection } = useConnection();
   const wallet = useWallet();
-  const candyMachineV3 = useCandyMachineV3(props.candyMachineId, candyMachinOps);
+  const candyMachineV3 = useCandyMachineV3(
+    props.candyMachineId,
+    candyMachinOps
+  );
 
   const [balance, setBalance] = useState<number>();
   const [mintedItems, setMintedItems] = useState<Nft[]>();
@@ -135,7 +142,7 @@ const Home = (props: HomeProps) => {
   });
 
   const { guardLabel, guards, guardStates, prices } = useMemo(() => {
-    const guardLabel = defaultGuardGroup;
+    const guardLabel = "_>" || defaultGuardGroup;
     return {
       guardLabel,
       guards:
@@ -201,32 +208,34 @@ const Home = (props: HomeProps) => {
 
   const startMint = useCallback(
     async (quantityString: number = 1) => {
-      const guardsContext: Partial<CustomCandyGuardMintSettings> = {
-        nftBurn: guards.burn?.nfts.length
-          ? {
-              mint: guards.burn.nfts[0]?.mintAddress,
-            }
-          : undefined,
-        nftPayment: guards.payment?.nfts.length
-          ? {
-              mint: guards.payment.nfts[0]?.mintAddress,
-            }
-          : undefined,
-        nftGate: guards.gate?.nfts.length
-          ? {
-              mint: guards.gate.nfts[0]?.mintAddress,
-            }
-          : undefined,
-        allowList: candyMachineV3.merkles[guardLabel] && {
-          proof: candyMachineV3.merkles[guardLabel].proof,
-        },
-      };
-      console.log({ guardsContext });
+      const nftGuards: NftPaymentMintSettings[] = Array(quantityString)
+        .fill(undefined)
+        .map((_, i) => {
+          return {
+            burn: guards.burn?.nfts?.length
+              ? {
+                  mint: guards.burn.nfts[i]?.mintAddress,
+                }
+              : undefined,
+            payment: guards.payment?.nfts?.length
+              ? {
+                  mint: guards.payment.nfts[i]?.mintAddress,
+                }
+              : undefined,
+            gate: guards.gate?.nfts?.length
+              ? {
+                  mint: guards.gate.nfts[i]?.mintAddress,
+                }
+              : undefined,
+          };
+        });
+
+      console.log({ nftGuards });
       // debugger;
       candyMachineV3
         .mint(quantityString, {
           groupLabel: guardLabel,
-          guards: guardsContext,
+          nftGuards,
         })
         .then((items) => {
           setMintedItems(items as any);

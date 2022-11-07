@@ -2,6 +2,9 @@ import {
   DefaultCandyGuardMintSettings,
   Metadata,
   MintLimitGuardSettings,
+  NftBurnGuardMintSettings,
+  NftGateGuardMintSettings,
+  NftPaymentGuardMintSettings,
   Pda,
 } from "@metaplex-foundation/js";
 import { AccountInfo, PublicKey } from "@solana/web3.js";
@@ -18,6 +21,30 @@ export type TokenPayment$Gate = {
   symbol?: string;
   decimals: number;
 };
+
+// export type SolPayment = {
+//   type: "sol";
+//   amount: number;
+//   decimals: number;
+// };
+
+// export type TokenPayment = {
+//   type: "token";
+//   mint: PublicKey;
+//   amount: number;
+//   symbol?: string;
+//   decimals: number;
+// };
+
+// export type NftPayment = {
+//   type: "nft";
+//   nfts: Metadata[];
+// };
+
+// export type PaymentGuard = {
+//   criteria: "pay" | "have";
+// } & (SolPayment | TokenPayment | NftPayment);
+
 export type GuardGroup = {
   // address: PublicKey;
   startTime?: Date;
@@ -38,18 +65,21 @@ export type GuardGroup = {
     token?: TokenPayment$Gate;
     nfts?: Metadata[];
   };
+  // payments?: PaymentGuard[];
   mintLimit?: MintLimitLogics;
   redeemLimit?: number;
   allowed?: PublicKey[];
   allowList?: Uint8Array;
   gatekeeperNetwork?: PublicKey;
 };
+
 export type MintLimitLogics = {
   settings: MintLimitGuardSettings;
   pda?: Pda;
   accountInfo?: AccountInfo<Buffer>;
   mintCounter?: MintCounterBorsh; //MintCounter;
 };
+
 export type GuardGroupStates = {
   isStarted: boolean;
   isEnded: boolean;
@@ -84,3 +114,9 @@ export type AllowLists = {
   groupLabel?: string;
   list: (string | Uint8Array)[];
 }[];
+
+export type NftPaymentMintSettings = {
+  payment?: NftPaymentGuardMintSettings;
+  gate?: NftGateGuardMintSettings;
+  burn?: NftBurnGuardMintSettings;
+};
