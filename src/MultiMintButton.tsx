@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 import { GatewayStatus, useGateway } from "@civic/solana-gateway-react";
+import { ParsedPricesForUI, PaymentRequired } from "./hooks/types";
 
 export const CTAButton = styled(Button)`
   display: inline-block !important;
@@ -89,7 +90,8 @@ function usePrevious<T>(value: T): T | undefined {
   }, [value]);
   return ref.current;
 }
-
+const deepClone = (items: PaymentRequired[]) =>
+  items.map((item) => ({ ...item }));
 export const MultiMintButton = ({
   onMint,
   candyMachine,
@@ -98,8 +100,7 @@ export const MultiMintButton = ({
   isEnded,
   isActive,
   isSoldOut,
-  price,
-  priceLabel,
+  prices,
   limit,
   gatekeeperNetwork,
 }: {
@@ -110,8 +111,7 @@ export const MultiMintButton = ({
   isEnded: boolean;
   isActive: boolean;
   isSoldOut: boolean;
-  price: number;
-  priceLabel: string;
+  prices: ParsedPricesForUI;
   limit: number;
   gatekeeperNetwork?: PublicKey;
 }) => {
@@ -121,10 +121,41 @@ export const MultiMintButton = ({
   const { requestGatewayToken, gatewayStatus } = useGateway();
   const [waitForActiveToken, setWaitForActiveToken] = useState(false);
 
-  const totalCost = useMemo(
-    () => mintCount * ((priceLabel === "SOL" ? price : 0) + 0.012),
-    [mintCount, price, priceLabel]
+  const totalSolCost = useMemo(
+    () =>
+      prices
+        ? mintCount *
+          (prices.payment
+            .filter(({ kind }) => kind === "sol")
+            .reduce((a, { price }) => a + price, 0) +
+            0.012)
+        : 0.012,
+    [mintCount, prices]
   );
+  const totalTokenCosts = useMemo((): PaymentRequired[] => {
+    if (!prices) return [];
+    const maxPriceHash: { [k: string]: number } = {};
+    const payment$burn$lenth = prices.payment.length + prices.burn.length;
+    let payments = deepClone(
+      prices.payment.concat(prices.burn).concat(prices.gate)
+    ).filter((price, index) => {
+      if (!["token", "nft"].includes(price.kind)) false;
+      const alreadyFound = !!maxPriceHash[price.mint.toString()];
+      if (index < payment$burn$lenth) price.price *= mintCount;
+      price.price = maxPriceHash[price.mint.toString()] = Math.max(
+        maxPriceHash[price.mint.toString()] || 0,
+        price.price
+      );
+      return !alreadyFound;
+    });
+    return payments;
+  }, [mintCount, prices]);
+  const totalTokenCostsString = useMemo(() => {
+    return totalTokenCosts.reduce(
+      (text, price) => `${text} + ${price.price} ${price.label}`,
+      ""
+    );
+  }, [totalTokenCosts]);
 
   const previousGatewayStatus = usePrevious(gatewayStatus);
   useEffect(() => {
@@ -139,7 +170,7 @@ export const MultiMintButton = ({
     ) {
       setIsMinting(true);
     }
-    console.log("change: ", GatewayStatus[gatewayStatus]);
+    // console.log("change: ", GatewayStatus[gatewayStatus]);
   }, [previousGatewayStatus, gatewayStatus, setIsMinting]);
 
   useEffect(() => {
@@ -270,10 +301,8 @@ export const MultiMintButton = ({
       </div>
       {!isSoldOut && isActive && (
         <h3>
-          Total estimated cost (Solana fees included) : {totalCost}{" "}
-          {!!priceLabel && priceLabel !== "SOL"
-            ? `SOL + ${price} ${priceLabel}`
-            : "SOL"}
+          Total estimated cost (Solana fees included): {totalSolCost} SOL
+          {totalTokenCostsString}
         </h3>
       )}
     </div>

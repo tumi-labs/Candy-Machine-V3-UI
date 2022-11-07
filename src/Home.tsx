@@ -27,9 +27,8 @@ import {
 import { AlertState } from "./utils";
 import NftsModal from "./NftsModal";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import useCandyMachineV3, {
-  CustomCandyGuardMintSettings,
-} from "./hooks/useCandyMachineV3";
+import useCandyMachineV3 from "./hooks/useCandyMachineV3";
+import { CustomCandyGuardMintSettings, ParsedPricesForUI } from "./hooks/types";
 
 const Header = styled.div`
   display: flex;
@@ -113,18 +112,18 @@ const Card = styled(Paper)`
 export interface HomeProps {
   candyMachineId: PublicKey;
 }
-
+const candyMachinOps = {
+  allowLists: [
+    {
+      list: require("../cmv3-demo-initialization/allowlist.json"),
+      groupLabel: "waoed",
+    },
+  ],
+}
 const Home = (props: HomeProps) => {
   const { connection } = useConnection();
   const wallet = useWallet();
-  const candyMachineV3 = useCandyMachineV3(props.candyMachineId, {
-    allowLists: [
-      {
-        list: require("../cmv3-demo-initialization/allowlist.json"),
-        groupLabel: "waoed",
-      },
-    ],
-  });
+  const candyMachineV3 = useCandyMachineV3(props.candyMachineId, candyMachinOps);
 
   const [balance, setBalance] = useState<number>();
   const [mintedItems, setMintedItems] = useState<Nft[]>();
@@ -135,33 +134,38 @@ const Home = (props: HomeProps) => {
     severity: undefined,
   });
 
-  const { guardLabel, guards, guardStates } = useMemo(() => {
+  const { guardLabel, guards, guardStates, prices } = useMemo(() => {
     const guardLabel = defaultGuardGroup;
-    console.log(
-      "Groups",
-      candyMachineV3.guardGroups,
-      candyMachineV3.guards,
-      candyMachineV3.guardStates
-    );
-    const guardGroup = candyMachineV3.guardGroups.find(
-      (x) => x.label === guardLabel
-    );
     return {
       guardLabel,
-      guards: guardGroup?.guards || candyMachineV3.guards,
-      guardStates: guardGroup?.states || candyMachineV3.guardStates,
+      guards:
+        candyMachineV3.guards[guardLabel] ||
+        candyMachineV3.guards.default ||
+        {},
+      guardStates: candyMachineV3.guardStates[guardLabel] ||
+        candyMachineV3.guardStates.default || {
+          isStarted: true,
+          isEnded: false,
+          isLimitReached: false,
+          isPaymentAvailable: true,
+          isWalletWhitelisted: true,
+          hasGatekeeper: false,
+        },
+      prices: candyMachineV3.prices[guardLabel] ||
+        candyMachineV3.prices.default || {
+          payment: [],
+          burn: [],
+          gate: [],
+        },
     };
   }, [
-    candyMachineV3.guardGroups,
     candyMachineV3.guards,
     candyMachineV3.guardStates,
+    candyMachineV3.prices,
   ]);
-
-  const { price, label: priceLabel } = useMemo(
-    () => candyMachineV3.getPrice(guards),
-    [guards?.payment, candyMachineV3.getPrice]
-  );
-
+  useEffect(() => {
+    console.log({ guardLabel, guards, guardStates, prices });
+  }, [guardLabel, guards, guardStates, prices]);
   useEffect(() => {
     (async () => {
       if (wallet?.publicKey) {
@@ -197,19 +201,18 @@ const Home = (props: HomeProps) => {
 
   const startMint = useCallback(
     async (quantityString: number = 1) => {
-      console.log({ guards });
       const guardsContext: Partial<CustomCandyGuardMintSettings> = {
-        nftBurn: guards.burn?.nfts[0]?.mintAddress
+        nftBurn: guards.burn?.nfts.length
           ? {
               mint: guards.burn.nfts[0]?.mintAddress,
             }
           : undefined,
-        nftPayment: guards.payment?.nfts[0]?.mintAddress
+        nftPayment: guards.payment?.nfts.length
           ? {
               mint: guards.payment.nfts[0]?.mintAddress,
             }
           : undefined,
-        nftGate: guards.gate?.nfts[0]?.mintAddress
+        nftGate: guards.gate?.nfts.length
           ? {
               mint: guards.gate.nfts[0]?.mintAddress,
             }
@@ -369,8 +372,7 @@ const Home = (props: HomeProps) => {
                               : 10)
                           }
                           onMint={startMint}
-                          price={price}
-                          priceLabel={priceLabel}
+                          prices={prices}
                         />
                       </GatewayProvider>
                     ) : (
@@ -389,8 +391,7 @@ const Home = (props: HomeProps) => {
                             : 10)
                         }
                         onMint={startMint}
-                        price={price}
-                        priceLabel={priceLabel}
+                        prices={prices}
                       />
                     )}
                   </>
