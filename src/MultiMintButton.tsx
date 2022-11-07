@@ -139,11 +139,12 @@ export const MultiMintButton = ({
     let payments = deepClone(
       prices.payment.concat(prices.burn).concat(prices.gate)
     ).filter((price, index) => {
-      if (!["token", "nft"].includes(price.kind)) false;
-      const alreadyFound = !!maxPriceHash[price.mint.toString()];
+      const cacheKey = price.mint?.toString();
+      if (!(["token", "nft"].includes(price.kind))) return false;
+      const alreadyFound = !!maxPriceHash[cacheKey];
       if (index < payment$burn$lenth) price.price *= mintCount;
-      price.price = maxPriceHash[price.mint.toString()] = Math.max(
-        maxPriceHash[price.mint.toString()] || 0,
+      price.price = maxPriceHash[cacheKey] = Math.max(
+        maxPriceHash[cacheKey] || 0,
         price.price
       );
       return !alreadyFound;

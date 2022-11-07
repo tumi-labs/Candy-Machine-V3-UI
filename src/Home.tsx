@@ -361,8 +361,8 @@ const Home = (props: HomeProps) => {
                 />
               ) : !wallet?.publicKey ? (
                 <ConnectButton>Connect Wallet</ConnectButton>
-              ) : !guardStates.canPayFor ? (
-                <h1>You cannot pay for the mint</h1>
+              // ) : !guardStates.canPayFor ? (
+              //   <h1>You cannot pay for the mint</h1>
               ) : !guardStates.isWalletWhitelisted ? (
                 <h1>Mint is private.</h1>
               ) : (

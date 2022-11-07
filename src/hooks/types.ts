@@ -56,14 +56,17 @@ export type GuardGroup = {
     };
     token?: TokenPayment$Gate;
     nfts?: Metadata[];
+    requiredCollection?: PublicKey;
   };
   burn?: {
     token?: TokenPayment$Gate;
     nfts?: Metadata[];
+    requiredCollection?: PublicKey;
   };
   gate?: {
     token?: TokenPayment$Gate;
     nfts?: Metadata[];
+    requiredCollection?: PublicKey;
   };
   // payments?: PaymentGuard[];
   mintLimit?: MintLimitLogics;

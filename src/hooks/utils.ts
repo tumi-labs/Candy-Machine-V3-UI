@@ -28,7 +28,7 @@ export const guardToPaymentUtil = (guards: GuardGroup): ParsedPricesForUI => {
     if (guards.payment?.sol) {
       paymentsRequired.payment.push({
         label: "SOL",
-        price: guards.payment.sol.amount / 10 ** LAMPORTS_PER_SOL,
+        price: guards.payment.sol.amount / LAMPORTS_PER_SOL,
         kind: "sol",
       });
     }
@@ -47,7 +47,7 @@ export const guardToPaymentUtil = (guards: GuardGroup): ParsedPricesForUI => {
       if (guards[action]?.nfts?.length) {
         paymentsRequired[action].push({
           label: guards[action].nfts[0].symbol || "NFT",
-          mint: guards[action].nfts[0].collection.address,
+          mint: guards[action].requiredCollection,
           price: 1,
           kind: "nft",
         });
@@ -215,6 +215,7 @@ export const parseGuardGroup = async (
       nfts: nftHoldings.filter((y) =>
         y.collection?.address.equals(guardsInput.nftPayment.requiredCollection)
       ),
+      requiredCollection: guardsInput.nftPayment.requiredCollection
     };
     // guardsParsed.payments.push({
     //   criteria: 'pay',
@@ -254,6 +255,7 @@ export const parseGuardGroup = async (
       nfts: nftHoldings.filter((y) =>
         y.collection?.address.equals(guardsInput.nftBurn.requiredCollection)
       ),
+      requiredCollection: guardsInput.nftPayment.requiredCollection,
     };
     // guardsParsed.payments.push({
     //   criteria: 'pay',
@@ -293,6 +295,7 @@ export const parseGuardGroup = async (
       nfts: nftHoldings.filter((y) =>
         y.collection?.address.equals(guardsInput.nftGate.requiredCollection)
       ),
+      requiredCollection: guardsInput.nftPayment.requiredCollection,
     };
     // guardsParsed.payments.push({
     //   criteria: 'have',
