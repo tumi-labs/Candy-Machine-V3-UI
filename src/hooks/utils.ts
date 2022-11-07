@@ -379,7 +379,7 @@ export const parseGuardStates = ({
     states.canPayFor = Math.min(
       states.canPayFor,
       Math.floor(
-        balance / (guards.payment?.sol.amount - 0.12 * 10 ** LAMPORTS_PER_SOL)
+        balance / (guards.payment?.sol.amount + 0.012 * 10 ** LAMPORTS_PER_SOL)
       )
     );
   }
