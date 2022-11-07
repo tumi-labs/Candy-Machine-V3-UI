@@ -464,3 +464,19 @@ export const updateTokenSymbolAndDecimalsFromChainAsync = async (
     token.symbol = res.symbol;
   }
 };
+
+export const guardToLimitUtil = (
+  guards: GuardGroup,
+  defaultLimit: number = 10
+): number =>
+  (guards.payment?.nfts
+    ? guards.payment.nfts.length
+    : guards.burn?.nfts
+    ? guards.burn.nfts.length
+    : guards.gate?.nfts
+    ? guards.gate.nfts.length
+    : guards.redeemLimit) ||
+  (guards.mintLimit?.settings?.limit
+    ? guards.mintLimit?.settings?.limit -
+      (guards.mintLimit?.mintCounter?.count || 0)
+    : defaultLimit);

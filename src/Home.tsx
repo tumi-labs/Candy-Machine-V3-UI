@@ -33,6 +33,7 @@ import {
   NftPaymentMintSettings,
   ParsedPricesForUI,
 } from "./hooks/types";
+import { guardToLimitUtil } from "./hooks/utils";
 
 const Header = styled.div`
   display: flex;
@@ -255,6 +256,25 @@ const Home = (props: HomeProps) => {
     console.log({ candyMachine: candyMachineV3.candyMachine });
   }, [candyMachineV3.candyMachine]);
 
+  const MintButton = ({
+    gatekeeperNetwork,
+  }: {
+    gatekeeperNetwork?: PublicKey;
+  }) => (
+    <MultiMintButton
+      candyMachine={candyMachineV3.candyMachine}
+      gatekeeperNetwork={gatekeeperNetwork}
+      isMinting={candyMachineV3.status.minting}
+      setIsMinting={() => {}}
+      isActive={!!candyMachineV3.items.remaining}
+      isEnded={guardStates.isEnded}
+      isSoldOut={!candyMachineV3.items.remaining}
+      limit={guardToLimitUtil(guards, candyMachineV3.items.remaining)}
+      onMint={startMint}
+      prices={prices}
+    />
+  );
+
   return (
     <main>
       <>
@@ -365,43 +385,12 @@ const Home = (props: HomeProps) => {
                         }
                         options={{ autoShowModal: false }}
                       >
-                        <MultiMintButton
-                          candyMachine={candyMachineV3.candyMachine}
+                        <MintButton
                           gatekeeperNetwork={guards.gatekeeperNetwork}
-                          isMinting={candyMachineV3.status.minting}
-                          setIsMinting={() => {}}
-                          isActive={!!candyMachineV3.items.remaining}
-                          isEnded={guardStates.isEnded}
-                          isSoldOut={!candyMachineV3.items.remaining}
-                          limit={
-                            guards.redeemLimit ||
-                            (guards.mintLimit?.settings?.limit
-                              ? guards.mintLimit?.settings?.limit -
-                                (guards.mintLimit?.mintCounter?.count || 0)
-                              : 10)
-                          }
-                          onMint={startMint}
-                          prices={prices}
                         />
                       </GatewayProvider>
                     ) : (
-                      <MultiMintButton
-                        candyMachine={candyMachineV3.candyMachine}
-                        isMinting={candyMachineV3.status.minting}
-                        setIsMinting={() => {}}
-                        isActive={!!candyMachineV3.items.remaining}
-                        isEnded={guardStates.isEnded}
-                        isSoldOut={!candyMachineV3.items.remaining}
-                        limit={
-                          guards.redeemLimit ||
-                          (guards.mintLimit?.settings?.limit
-                            ? guards.mintLimit?.settings?.limit -
-                              (guards.mintLimit?.mintCounter?.count || 0)
-                            : 10)
-                        }
-                        onMint={startMint}
-                        prices={prices}
-                      />
+                      <MintButton />
                     )}
                   </>
                 </>
