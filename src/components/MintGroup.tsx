@@ -62,10 +62,19 @@ export default function MintGroup({
   const { guards, guardStates, prices } = React.useMemo(
     () => ({
       guards:
-        candyMachineV3.guards[mintGroup.label] || candyMachineV3.guards.default,
-      guardStates:
-        candyMachineV3.guardStates[mintGroup.label] ||
-        candyMachineV3.guardStates.default,
+        candyMachineV3.guards[mintGroup.label] ||
+        candyMachineV3.guards.default ||
+        {},
+      guardStates: candyMachineV3.guardStates[mintGroup.label] ||
+        candyMachineV3.guardStates.default || {
+          isStarted: true,
+          isEnded: false,
+          isLimitReached: false,
+          canPayFor: 10,
+          messages: [],
+          isWalletWhitelisted: true,
+          hasGatekeeper: false,
+        },
       prices: candyMachineV3.prices[mintGroup.label] ||
         candyMachineV3.prices.default || {
           payment: [],
