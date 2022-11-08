@@ -102,6 +102,7 @@ export const MultiMintButton = ({
   isSoldOut,
   prices,
   limit,
+  messages,
   gatekeeperNetwork,
 }: {
   onMint: (quantityString: number) => Promise<void>;
@@ -113,6 +114,7 @@ export const MultiMintButton = ({
   isSoldOut: boolean;
   prices: ParsedPricesForUI;
   limit: number;
+  messages: string[];
   gatekeeperNetwork?: PublicKey;
 }) => {
   const [loading, setLoading] = useState(false);
@@ -140,7 +142,7 @@ export const MultiMintButton = ({
       prices.payment.concat(prices.burn).concat(prices.gate)
     ).filter((price, index) => {
       const cacheKey = price.mint?.toString();
-      if (!(["token", "nft"].includes(price.kind))) return false;
+      if (!["token", "nft"].includes(price.kind)) return false;
       const alreadyFound = !!maxPriceHash[cacheKey];
       if (index < payment$burn$lenth) price.price *= mintCount;
       price.price = maxPriceHash[cacheKey] = Math.max(
@@ -306,6 +308,11 @@ export const MultiMintButton = ({
           {totalTokenCostsString}
         </h3>
       )}
+      <ul>
+        {messages?.map((m, i) => (
+          <li key={i}>{m}</li>
+        ))}
+      </ul>
     </div>
   );
 };

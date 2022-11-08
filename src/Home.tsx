@@ -156,6 +156,7 @@ const Home = (props: HomeProps) => {
           isEnded: false,
           isLimitReached: false,
           canPayFor: 10,
+          messages: [],
           isWalletWhitelisted: true,
           hasGatekeeper: false,
         },
@@ -270,6 +271,7 @@ const Home = (props: HomeProps) => {
       isEnded={guardStates.isEnded}
       isSoldOut={!candyMachineV3.items.remaining}
       limit={guardStates.canPayFor}
+      messages={guardStates.messages}
       onMint={startMint}
       prices={prices}
     />

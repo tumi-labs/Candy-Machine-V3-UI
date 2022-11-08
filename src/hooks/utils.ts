@@ -14,7 +14,7 @@ import {
   Metadata,
   SplTokenCurrency,
 } from "@metaplex-foundation/js";
-let i = 0;
+
 export const guardToPaymentUtil = (guards: GuardGroup): ParsedPricesForUI => {
   const paymentsRequired: ParsedPricesForUI = {
     payment: [],
@@ -215,7 +215,7 @@ export const parseGuardGroup = async (
       nfts: nftHoldings.filter((y) =>
         y.collection?.address.equals(guardsInput.nftPayment.requiredCollection)
       ),
-      requiredCollection: guardsInput.nftPayment.requiredCollection
+      requiredCollection: guardsInput.nftPayment.requiredCollection,
     };
     // guardsParsed.payments.push({
     //   criteria: 'pay',
@@ -348,6 +348,7 @@ export const parseGuardStates = ({
     isEnded: false,
     isLimitReached: false,
     canPayFor: 10,
+    messages: [],
     isWalletWhitelisted: true,
     hasGatekeeper: false,
   };
@@ -379,31 +380,33 @@ export const parseGuardStates = ({
 
   // Check for payment guards
   if (guards.payment?.sol) {
-    states.canPayFor = Math.min(
-      states.canPayFor,
-      Math.floor(
-        balance / (guards.payment?.sol.amount + 0.012 * 10 ** LAMPORTS_PER_SOL)
-      )
+    let canPayFor = Math.floor(
+      balance / (guards.payment?.sol.amount + 0.012 * LAMPORTS_PER_SOL)
     );
+    if (!canPayFor) states.messages.push("Don't have enough sol to pay");
+    states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
   if (guards.payment?.token) {
     const tokenAccount = tokenHoldings.find((x) =>
       x.mint.equals(guards.payment?.token.mint)
     );
-    states.canPayFor = Math.min(
-      states.canPayFor,
-      tokenAccount
-        ? Math.floor(tokenAccount.balance / guards.payment?.token.amount)
-        : 0
-    );
+    let canPayFor = tokenAccount
+      ? Math.floor(tokenAccount.balance / guards.payment?.token.amount)
+      : 0;
+
+    if (!canPayFor)
+      states.messages.push(
+        `Don't have enough ${guards.payment?.token.symbol || "Token"} to pay.`
+      );
+
+    states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
   if (guards.payment?.nfts) {
-    states.canPayFor = Math.min(
-      states.canPayFor,
-      guards.payment?.nfts.length || 0
-    );
+    let canPayFor = guards.payment?.nfts.length || 0;
+    if (!canPayFor) states.messages.push(`Don't have enough nfts to pay.`);
+    states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
   // Check for burn guards
@@ -411,20 +414,23 @@ export const parseGuardStates = ({
     const tokenAccount = tokenHoldings.find((x) =>
       x.mint.equals(guards.burn?.token.mint)
     );
+    let canPayFor = tokenAccount
+      ? Math.floor(tokenAccount.balance / guards.burn?.token.amount)
+      : 0;
 
-    states.canPayFor = Math.min(
-      states.canPayFor,
-      tokenAccount
-        ? Math.floor(tokenAccount.balance / guards.burn?.token.amount)
-        : 0
-    );
+    if (!canPayFor)
+      states.messages.push(
+        `Don't have enough ${guards.burn?.token.symbol || "Token"} to burn.`
+      );
+
+    states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
   if (guards.burn?.nfts) {
-    states.canPayFor = Math.min(
-      states.canPayFor,
-      guards.burn?.nfts.length || 0
-    );
+    let canPayFor = guards.burn?.nfts.length || 0;
+    if (!canPayFor) states.messages.push(`Don't have enough nfts to burn.`);
+
+    states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
   // Check for gates
@@ -432,18 +438,21 @@ export const parseGuardStates = ({
     const tokenAccount = tokenHoldings.find((x) =>
       x.mint.equals(guards.gate?.token.mint)
     );
-
-    states.canPayFor = Math.min(
-      states.canPayFor,
-      tokenAccount ? 10 : 0
-    );
+    let canPayFor = tokenAccount.balance > guards.gate?.token.amount ? 10 : 0;
+    if (!canPayFor)
+      states.messages.push(
+        `Don't have enough ${
+          guards.gate?.token.symbol || "Token"
+        } to pass gate.`
+      );
+    states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
   if (guards.gate?.nfts) {
-    states.canPayFor = Math.min(
-      states.canPayFor,
-      guards.burn?.nfts.length ? 10 : 0
-    );
+    let canPayFor = guards.burn?.nfts.length ? 10 : 0;
+    if (!canPayFor)
+      states.messages.push(`Don't have enough nfts to pass gate.`);
+    states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
   // Check for whitelisted addresses
@@ -451,6 +460,8 @@ export const parseGuardStates = ({
     states.isWalletWhitelisted = !!guards.allowed.find((x) =>
       x.equals(walletAddress)
     );
+    if (states.isWalletWhitelisted)
+      states.messages.push(`Not allowed to mint.`);
   }
 
   if (guards.gatekeeperNetwork) {
