@@ -255,7 +255,7 @@ export const parseGuardGroup = async (
       nfts: nftHoldings.filter((y) =>
         y.collection?.address.equals(guardsInput.nftBurn.requiredCollection)
       ),
-      requiredCollection: guardsInput.nftPayment.requiredCollection,
+      requiredCollection: guardsInput.nftBurn.requiredCollection,
     };
     // guardsParsed.payments.push({
     //   criteria: 'pay',
@@ -295,7 +295,7 @@ export const parseGuardGroup = async (
       nfts: nftHoldings.filter((y) =>
         y.collection?.address.equals(guardsInput.nftGate.requiredCollection)
       ),
-      requiredCollection: guardsInput.nftPayment.requiredCollection,
+      requiredCollection: guardsInput.nftGate.requiredCollection,
     };
     // guardsParsed.payments.push({
     //   criteria: 'have',
