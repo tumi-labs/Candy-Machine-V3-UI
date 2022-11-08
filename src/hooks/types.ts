@@ -87,6 +87,7 @@ export type GuardGroupStates = {
   isStarted: boolean;
   isEnded: boolean;
   canPayFor: number;
+  messages: string[];
   isLimitReached: boolean;
   isWalletWhitelisted: boolean;
   hasGatekeeper: boolean;

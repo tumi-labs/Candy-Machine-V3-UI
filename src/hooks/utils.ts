@@ -364,18 +364,26 @@ export const parseGuardStates = ({
 
   // Check for mint limit
   if (guards.mintLimit) {
-    states.isLimitReached = guards.mintLimit?.mintCounter?.count
-      ? !(
-          guards.mintLimit?.settings?.limit <
-          guards.mintLimit?.mintCounter?.count
-        )
-      : false;
+    let canPayFor =
+      typeof guards.mintLimit?.settings?.limit == "number"
+        ? guards.mintLimit.settings.limit -
+          (guards.mintLimit?.mintCounter?.count || 0)
+        : 10;
+    states.isLimitReached = !canPayFor;
+    if (!canPayFor)
+      states.messages.push("Mint limit for each user has reached.");
+    states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
   // Check for redeemed list
-  if (guards.redeemLimit) {
-    states.isLimitReached =
-      guards.redeemLimit >= candyMachine.itemsMinted.toNumber();
+  if (typeof guards.redeemLimit == "number") {
+    let canPayFor = Math.max(
+      guards.redeemLimit - candyMachine.itemsMinted.toNumber(),
+      0
+    );
+    states.isLimitReached = !canPayFor;
+    if (!canPayFor) states.messages.push("Readeem limit has reached.");
+    states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
   // Check for payment guards
