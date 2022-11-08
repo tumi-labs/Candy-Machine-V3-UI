@@ -148,15 +148,9 @@ export default function MintGroup({
   );
 
   return (
-    <div
-      style={{
-        padding: "10px",
-        borderRadius: "10px",
-        backgroundColor: "rgba(255,255,255,0.5)",
-      }}
-    >
-      <h2>{mintGroup.title}</h2>
-      <p>{mintGroup.description}</p>
+    <div style={{ borderTop: "1px solid black", paddingTop: "5px" }}>
+      {mintGroup.title ? <h3>{mintGroup.title}</h3> : null}
+      {mintGroup.description ? <p>{mintGroup.description}</p> : null}
 
       {!guardStates.isStarted ? (
         <Countdown

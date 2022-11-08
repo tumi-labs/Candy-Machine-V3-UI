@@ -322,7 +322,19 @@ const Home = (props: HomeProps) => {
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
               {mintGroups.map((x) => (
-                <MintGroup mintGroup={x} candyMachineV3={candyMachineV3} />
+                <div
+                  style={{
+                    padding: "10px",
+                    borderRadius: "10px",
+                    backgroundColor: "rgba(255,255,255,0.5)",
+                  }}
+                >
+                  {x.title ? <h2>{x.title}</h2> : null}
+                  {x.description ? <p>{x.description}</p> : null}
+                  {x.groups.map((y) => (
+                    <MintGroup mintGroup={y} candyMachineV3={candyMachineV3} />
+                  ))}
+                </div>
               ))}
             </div>
 
