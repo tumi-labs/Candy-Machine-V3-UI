@@ -446,7 +446,8 @@ export const parseGuardStates = ({
     const tokenAccount = tokenHoldings.find((x) =>
       x.mint.equals(guards.gate?.token.mint)
     );
-    let canPayFor = tokenAccount.balance > guards.gate?.token.amount ? 10 : 0;
+    let canPayFor =
+      tokenAccount && tokenAccount.balance > guards.gate?.token.amount ? 10 : 0;
     if (!canPayFor)
       states.messages.push(
         `Don't have enough ${
