@@ -47,7 +47,7 @@ export const guardToPaymentUtil = (guards: GuardGroup): ParsedPricesForUI => {
       if (guards[action]?.nfts?.length) {
         paymentsRequired[action].push({
           label: guards[action].nfts[0].symbol || "NFT",
-          mint: guards[action]?.requiredCollection,
+          mint: guards[action].requiredCollection,
           price: 1,
           kind: "nft",
         });
@@ -310,8 +310,7 @@ export const parseGuardGroup = async (
 
   if (guardsInput.addressGate || guardsInput.allowList) {
     let allowed: PublicKey[] = [];
-    if (guardsInput.addressGate?.address)
-      allowed.push(guardsInput.addressGate.address);
+    if (guardsInput.addressGate) allowed.push(guardsInput.addressGate.address);
 
     if (guardsInput.allowList?.merkleRoot) {
       const isValid = verifyProof(
