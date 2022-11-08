@@ -24,10 +24,9 @@ Reference UI to implement Metaplex Candy Machine V3 on frontend.
   - [x] Address Gate
   - [x] Allow List
   - [x] Gatekeeper
-- [ ] Multi Group
-  - [x] Functionality
-  - [ ] UI
 
+### Multi Group 
+*For Multi-group functionality use [restructure/multi-group](https://github.com/Solana-Studio/Candy-Machine-V3-UI/tree/restructure/multi-group) branch*
 
 ### Env Variables
 *All of them are optional at this moment as we're using default if they are not exists in [config.ts](src/config.ts)*
