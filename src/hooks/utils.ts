@@ -36,7 +36,7 @@ export const guardToPaymentUtil = (guards: GuardGroup): ParsedPricesForUI => {
     for (let action of actions) {
       if (guards[action]?.token) {
         paymentsRequired[action].push({
-          label: guards[action].token.symbol || "Token",
+          label: guards[action].token.symbol || "token",
           price:
             guards[action].token.amount / 10 ** guards[action].token.decimals,
           decimals: guards[action].token.decimals,
@@ -405,7 +405,7 @@ export const parseGuardStates = ({
 
     if (!canPayFor)
       states.messages.push(
-        `Don't have enough ${guards.payment?.token.symbol || "Token"} to pay.`
+        `Don't have enough ${guards.payment?.token.symbol || "token"} to pay.`
       );
 
     states.canPayFor = Math.min(states.canPayFor, canPayFor);
@@ -428,7 +428,7 @@ export const parseGuardStates = ({
 
     if (!canPayFor)
       states.messages.push(
-        `Don't have enough ${guards.burn?.token.symbol || "Token"} to burn.`
+        `Don't have enough ${guards.burn?.token.symbol || "token"} to burn.`
       );
 
     states.canPayFor = Math.min(states.canPayFor, canPayFor);
@@ -450,7 +450,7 @@ export const parseGuardStates = ({
     if (!canPayFor)
       states.messages.push(
         `Don't have enough ${
-          guards.gate?.token.symbol || "Token"
+          guards.gate?.token.symbol || "token"
         } to pass gate.`
       );
     states.canPayFor = Math.min(states.canPayFor, canPayFor);

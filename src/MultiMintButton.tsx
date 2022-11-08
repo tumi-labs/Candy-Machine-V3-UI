@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 import { GatewayStatus, useGateway } from "@civic/solana-gateway-react";
-import { ParsedPricesForUI, PaymentRequired } from "./hooks/types";
+import { GuardGroupStates, ParsedPricesForUI, PaymentRequired } from "./hooks/types";
 
 export const CTAButton = styled(Button)`
   display: inline-block !important;
@@ -101,8 +101,7 @@ export const MultiMintButton = ({
   isActive,
   isSoldOut,
   prices,
-  limit,
-  messages,
+  guardStates,
   gatekeeperNetwork,
 }: {
   onMint: (quantityString: number) => Promise<void>;
@@ -113,8 +112,7 @@ export const MultiMintButton = ({
   isActive: boolean;
   isSoldOut: boolean;
   prices: ParsedPricesForUI;
-  limit: number;
-  messages: string[];
+  guardStates: GuardGroupStates;
   gatekeeperNetwork?: PublicKey;
 }) => {
   const [loading, setLoading] = useState(false);
@@ -122,6 +120,7 @@ export const MultiMintButton = ({
   const [mintCount, setMintCount] = useState(1);
   const { requestGatewayToken, gatewayStatus } = useGateway();
   const [waitForActiveToken, setWaitForActiveToken] = useState(false);
+  const limit = useMemo(() => guardStates.canPayFor, [guardStates]);
 
   const totalSolCost = useMemo(
     () =>
@@ -287,7 +286,7 @@ export const MultiMintButton = ({
             "CONNECTING..."
           ) : isSoldOut ? (
             "SOLD OUT"
-          ) : isActive ? (
+          ) : isActive ? guardStates.messages.length ? (guardStates.messages[0]) : (
             mintCount > limit ? (
               "LIMIT REACHED"
             ) : isMinting || loading ? (
@@ -308,11 +307,9 @@ export const MultiMintButton = ({
           {totalTokenCostsString}
         </h3>
       )}
-      <ul>
-        {messages?.map((m, i) => (
-          <li key={i}>{m}</li>
+        {guardStates.messages?.map((m, i) => (
+          <p key={i}>{m}</p>
         ))}
-      </ul>
     </div>
   );
 };

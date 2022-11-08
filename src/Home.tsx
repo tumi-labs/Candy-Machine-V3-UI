@@ -270,8 +270,7 @@ const Home = (props: HomeProps) => {
       isActive={!!candyMachineV3.items.remaining}
       isEnded={guardStates.isEnded}
       isSoldOut={!candyMachineV3.items.remaining}
-      limit={guardStates.canPayFor}
-      messages={guardStates.messages}
+      guardStates={guardStates}
       onMint={startMint}
       prices={prices}
     />
