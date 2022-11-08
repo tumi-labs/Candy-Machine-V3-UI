@@ -1,12 +1,16 @@
 import { CircularProgress } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { CandyMachine } from "@metaplex-foundation/js";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 import { GatewayStatus, useGateway } from "@civic/solana-gateway-react";
-import { GuardGroupStates, ParsedPricesForUI, PaymentRequired } from "./hooks/types";
+import {
+  GuardGroupStates,
+  ParsedPricesForUI,
+  PaymentRequired,
+} from "./hooks/types";
 
 export const CTAButton = styled(Button)`
   display: inline-block !important;
@@ -183,48 +187,25 @@ export const MultiMintButton = ({
     }
   }, [waitForActiveToken, gatewayStatus, onMint, mintCount]);
 
-  function incrementValue() {
-    var numericField = document.querySelector(".mint-qty") as HTMLInputElement;
-    if (numericField) {
-      var value = parseInt(numericField.value);
-      if (!isNaN(value) && value < 10) {
-        value++;
-        numericField.value = "" + value;
-        updateAmounts(value);
-      }
-    }
-  }
+  const incrementValue = useCallback(() => {
+    setMintCount((value) => {
+      // if (value < 10) return value + 1;
+      return Math.min(value + 1, limit);
+    });
+  }, [limit]);
 
-  function decrementValue() {
-    var numericField = document.querySelector(".mint-qty") as HTMLInputElement;
-    if (numericField) {
-      var value = parseInt(numericField.value);
-      if (!isNaN(value) && value > 1) {
-        value--;
-        numericField.value = "" + value;
-        updateAmounts(value);
-      }
-    }
-  }
+  const decrementValue = useCallback(() => {
+    setMintCount((value) => {
+      if (value > 1) return value - 1;
+      return value;
+    });
+  }, []);
 
-  function updateMintCount(target: any) {
-    var value = parseInt(target.value);
-    if (!isNaN(value)) {
-      if (value > 10) {
-        value = 10;
-        target.value = "" + value;
-      } else if (value < 1) {
-        value = 1;
-        target.value = "" + value;
-      }
-      updateAmounts(value);
-    }
-  }
+  const updateMintCount = useCallback((event: any) => {
+    var value = parseInt(event.target.value) || 0;
+    setMintCount(Math.max(Math.min(value, limit), 1));
+  }, [limit]);
 
-  function updateAmounts(qty: number) {
-    setMintCount(qty);
-    // setTotalCost(Math.round(qty * (price + 0.012) * 1000) / 1000); // 0.012 = approx of account creation fees
-  }
   const disabled = useMemo(
     () =>
       loading ||
@@ -240,7 +221,7 @@ export const MultiMintButton = ({
       <div>
         <Minus
           disabled={disabled || mintCount <= 1}
-          onClick={() => decrementValue()}
+          onClick={decrementValue}
         >
           <span style={{ marginTop: "-5px !important" }}>-</span>
         </Minus>
@@ -252,11 +233,11 @@ export const MultiMintButton = ({
           min={1}
           max={Math.min(limit, 10)}
           value={mintCount}
-          onChange={(e) => updateMintCount(e.target as any)}
+          onChange={updateMintCount}
         />
         <Plus
           disabled={disabled || limit <= mintCount}
-          onClick={() => incrementValue()}
+          onClick={incrementValue}
         >
           +
         </Plus>
@@ -286,8 +267,10 @@ export const MultiMintButton = ({
             "CONNECTING..."
           ) : isSoldOut ? (
             "SOLD OUT"
-          ) : isActive ? guardStates.messages.length ? (guardStates.messages[0]) : (
-            mintCount > limit ? (
+          ) : isActive ? (
+            guardStates.messages.length ? (
+              guardStates.messages[0]
+            ) : mintCount > limit ? (
               "LIMIT REACHED"
             ) : isMinting || loading ? (
               <CircularProgress />
@@ -307,9 +290,9 @@ export const MultiMintButton = ({
           {totalTokenCostsString}
         </h3>
       )}
-        {guardStates.messages?.map((m, i) => (
-          <p key={i}>{m}</p>
-        ))}
+      {guardStates.messages?.map((m, i) => (
+        <p key={i}>{m}</p>
+      ))}
     </div>
   );
 };

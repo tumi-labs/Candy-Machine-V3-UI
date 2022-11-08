@@ -321,8 +321,9 @@ const Home = (props: HomeProps) => {
             <div
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
-              {mintGroups.map((x) => (
+              {mintGroups.map((x, key) => (
                 <div
+                  key={key}
                   style={{
                     padding: "10px",
                     borderRadius: "10px",
@@ -331,8 +332,12 @@ const Home = (props: HomeProps) => {
                 >
                   {x.title ? <h2>{x.title}</h2> : null}
                   {x.description ? <p>{x.description}</p> : null}
-                  {x.groups.map((y) => (
-                    <MintGroup mintGroup={y} candyMachineV3={candyMachineV3} />
+                  {x.groups.map((y, k) => (
+                    <MintGroup
+                      mintGroup={y}
+                      key={k}
+                      candyMachineV3={candyMachineV3}
+                    />
                   ))}
                 </div>
               ))}
