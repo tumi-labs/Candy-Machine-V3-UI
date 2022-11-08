@@ -34,6 +34,8 @@ import {
   ParsedPricesForUI,
 } from "./hooks/types";
 import { guardToLimitUtil } from "./hooks/utils";
+import MintGroup from "./components/MintGroup";
+import mintGroups from "./constants/mintGroups.json";
 
 const Header = styled.div`
   display: flex;
@@ -316,7 +318,15 @@ const Home = (props: HomeProps) => {
           <StyledContainer>
             {/* <MintNavigation /> */}
 
-            <Hero>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+            >
+              {mintGroups.map((x) => (
+                <MintGroup mintGroup={x} candyMachineV3={candyMachineV3} />
+              ))}
+            </div>
+
+            {/* <Hero>
               <Heading>
                 <Link href="/">
                   <img
@@ -362,9 +372,9 @@ const Home = (props: HomeProps) => {
                 />
               ) : !wallet?.publicKey ? (
                 <ConnectButton>Connect Wallet</ConnectButton>
-              // ) : !guardStates.canPayFor ? (
+              ) : // ) : !guardStates.canPayFor ? (
               //   <h1>You cannot pay for the mint</h1>
-              ) : !guardStates.isWalletWhitelisted ? (
+              !guardStates.isWalletWhitelisted ? (
                 <h1>Mint is private.</h1>
               ) : (
                 <>
@@ -396,14 +406,15 @@ const Home = (props: HomeProps) => {
                   </>
                 </>
               )}
-            </Hero>
+            </Hero> */}
+
             <NftsModal
               openOnSolscan={openOnSolscan}
               mintedItems={mintedItems || []}
               setMintedItems={setMintedItems}
             />
           </StyledContainer>
-          <NftWrapper>
+          {/* <NftWrapper>
             <div className="marquee-wrapper">
               <div className="marquee">
                 {[...Array(21)].map((item, index) => (
@@ -432,7 +443,7 @@ const Home = (props: HomeProps) => {
                 ))}
               </div>
             </div>
-          </NftWrapper2>
+          </NftWrapper2> */}
         </Root>
       </>
       <Snackbar

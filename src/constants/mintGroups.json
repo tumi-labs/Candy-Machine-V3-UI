@@ -1,0 +1,12 @@
+[
+  {
+    "label": "public",
+    "title": "Public Mint",
+    "description": "Available for all"
+  },
+  {
+    "label": "tknPmt",
+    "title": "Pay Tokens",
+    "description": "You can only mint buy paying the specific token"
+  }
+]
