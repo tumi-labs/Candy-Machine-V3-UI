@@ -94,6 +94,8 @@ const mintingWallet = metaplex.identity().publicKey;
     await signers[signer].signAllTransactions(transactions);
   }
   const allowListCallGuardRouteTx = signedTransactions.shift();
+  transactionBuilders.shift();
+  transactions.shift();
   await metaplex.rpc().sendAndConfirmTransaction(allowListCallGuardRouteTx, {
     commitment: "processed",
   });
