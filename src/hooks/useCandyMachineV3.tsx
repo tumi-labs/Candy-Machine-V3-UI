@@ -83,6 +83,7 @@ export default function useCandyMachineV3(
   const proofMemo = React.useMemo(() => {
     if (!candyMachineOpts.allowLists?.length) {
       return {
+        merkles: {},
         verifyProof() {
           return true;
         },
@@ -90,6 +91,7 @@ export default function useCandyMachineV3(
     }
     if (!wallet.publicKey) {
       return {
+        merkles: {},
         verifyProof() {
           return false;
         },
