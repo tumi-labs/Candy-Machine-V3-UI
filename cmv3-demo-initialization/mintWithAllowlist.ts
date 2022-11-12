@@ -50,11 +50,11 @@ const mintingWallet = metaplex.identity().publicKey;
   //   });
 
   //   return;
-  const group = "waoed";
+  const group = "WL";
   const transactionBuilders: TransactionBuilder[] = [
     callCandyGuardRouteBuilder(metaplex, {
       candyMachine,
-      guard: "allowList",
+      guard: "allowlist",
       group,
       settings: {
         path: "proof",

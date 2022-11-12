@@ -1,12 +1,12 @@
 {
-  "number": 300,
-  "symbol": "F00K",
+  "number": 777,
+  "symbol": "RZOM",
   "sellerFeeBasisPoints": 500,
   "isMutable": true,
   "isSequential": false,
   "creators": [
     {
-      "address": "5PCFZP3pNXxYwWrr84qxm9UMpbmVq7Mi8PM5QKBeQxKQ",
+      "address": "CM1h4zABFNvZs5vt3SiNghHBjaf2cVbZAR6pZzXZNUT7",
       "share": 100
     }
   ],
