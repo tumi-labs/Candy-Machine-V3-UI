@@ -261,11 +261,11 @@ export default function useCandyMachineV3(
           if (guards.mintLimit?.mintCounter)
             guards.mintLimit.mintCounter.count += nfts.length;
         });
-        // setItems((x) => ({
-        //   ...x,
-        //   remaining: x.remaining - nfts.length,
-        //   redeemed: x.redeemed + nfts.length,
-        // }));
+        setItems((x) => ({
+           ...x,
+           remaining: x.remaining - nfts.length,
+           redeemed: x.redeemed + nfts.length,
+         }));
       } catch (error: any) {
         let message = error.msg || "Minting failed! Please try again!";
         if (!error.msg) {

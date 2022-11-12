@@ -1,14 +1,24 @@
 [
   {
+<<<<<<< Updated upstream
     "title": "Wave 1",
     "description": "Only whitelisted",
     "groups": [
       {
         "label": "waoed"
+=======
+    "title": "Whitelist",
+    "description": "Whitelisted Only",
+    "groups": [
+      {
+        "label": "WL",
+        "description": "Price: .29 SOL"
+>>>>>>> Stashed changes
       }
     ]
   },
   {
+<<<<<<< Updated upstream
     "title": "Wave 2",
     "description": "Pay to mint",
     "groups": [
@@ -19,15 +29,32 @@
       {
         "label": "nftPmt",
         "description": "You can only mint buy paying the specific nft"
+=======
+    "title": "Apollo",
+    "description": "RealGod Holders Only",
+    "groups": [
+      {
+        "label": "Apollo",
+        "description": "Price: .39 SOL"
+>>>>>>> Stashed changes
       }
     ]
   },
   {
+<<<<<<< Updated upstream
     "title": "Wave 3",
     "description": "Available for all",
     "groups": [
       {
         "label": "public"
+=======
+    "title": "Public",
+    "description": "Available for Public",
+    "groups": [
+      {
+        "label": "Public",
+        "description": "Price: .59 SOL"
+>>>>>>> Stashed changes
       }
     ]
   }

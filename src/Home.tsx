@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { Key, useCallback } from "react";
 import { Paper, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { DefaultCandyGuardRouteSettings, Nft } from "@metaplex-foundation/js";
@@ -36,6 +36,10 @@ import {
 import { guardToLimitUtil } from "./hooks/utils";
 import MintGroup from "./components/MintGroup";
 import mintGroups from "./constants/mintGroups.json";
+<<<<<<< Updated upstream
+=======
+import { MintGroupMetadata } from "./components/types";
+>>>>>>> Stashed changes
 
 const Header = styled.div`
   display: flex;
@@ -123,7 +127,7 @@ const candyMachinOps = {
   allowLists: [
     {
       list: require("../cmv3-demo-initialization/allowlist.json"),
-      groupLabel: "waoed",
+      groupLabel: "WL",
     },
   ],
 };
@@ -137,6 +141,7 @@ const Home = (props: HomeProps) => {
 
   const [balance, setBalance] = useState<number>();
   const [mintedItems, setMintedItems] = useState<Nft[]>();
+  
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
@@ -157,7 +162,7 @@ const Home = (props: HomeProps) => {
           isStarted: true,
           isEnded: false,
           isLimitReached: false,
-          canPayFor: 10,
+          canPayFor: 1,
           messages: [],
           isWalletWhitelisted: true,
           hasGatekeeper: false,
@@ -186,11 +191,15 @@ const Home = (props: HomeProps) => {
     })();
   }, [wallet, connection]);
 
+ 
+
+
   useEffect(() => {
     if (mintedItems?.length === 0) throwConfetti();
-  }, [mintedItems]);
+    // eslint-disable-next-line
+  }, [mintedItems],);
 
-  const openOnSolscan = useCallback((mint) => {
+  const openOnSolscan = useCallback((mint: any) => {
     window.open(
       `https://solscan.io/address/${mint}${
         [WalletAdapterNetwork.Devnet, WalletAdapterNetwork.Testnet].includes(
@@ -208,7 +217,15 @@ const Home = (props: HomeProps) => {
       spread: 70,
       origin: { y: 0.6 },
     });
+    // eslint-disable-next-line
   }, [confetti]);
+
+
+
+
+
+
+
 
   const startMint = useCallback(
     async (quantityString: number = 1) => {
@@ -281,19 +298,9 @@ const Home = (props: HomeProps) => {
   return (
     <main>
       <>
+    
         <Header>
-          {/* <Link href='/'>
-            <img
-              style={{
-                filter: 'invert(1)',
-                maxWidth: '200px',
-                marginLeft: 30,
-                marginTop: 10,
-              }}
-              src='/logo.png'
-              alt='logo'
-            />
-          </Link> */}
+        
           <WalletContainer>
             <Wallet>
               {wallet ? (
@@ -307,17 +314,8 @@ const Home = (props: HomeProps) => {
             </Wallet>
           </WalletContainer>
         </Header>
-        <Root>
-          <div className="cloud-content">
-            {[...Array(7)].map((cloud, index) => (
-              <div key={index} className={`cloud-${index + 1} cloud-block`}>
-                <div className="cloud"></div>
-              </div>
-            ))}
-          </div>
-          <StyledContainer>
-            {/* <MintNavigation /> */}
 
+<<<<<<< Updated upstream
             <div
               style={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
@@ -344,12 +342,16 @@ const Home = (props: HomeProps) => {
             </div>
 
             {/* <Hero>
+=======
+        { <Hero>
+>>>>>>> Stashed changes
               <Heading>
                 <Link href="/">
                   <img
                     style={{
-                      filter: "invert(1)",
-                      maxWidth: "350px",
+              
+                      maxWidth: "100%",
+                      maxHeight: "100%"
                     }}
                     src="/logo.png"
                     alt="logo"
@@ -358,9 +360,8 @@ const Home = (props: HomeProps) => {
               </Heading>
 
               <p>
-                6942 Rejected f00kers here to f00k shit up. 3 mints max per
-                wallet. Free. f00k f00k Mother f00kers.
-              </p>
+              777 Ai generated Real Zombies infecting Solana. Ai pfp artwork by Real Labs
+              </p> 
 
               {guardStates.isStarted && (
                 <MintCount>
@@ -379,7 +380,7 @@ const Home = (props: HomeProps) => {
                 </MintCount>
               )}
 
-              {!guardStates.isStarted ? (
+{!guardStates.isStarted ? (
                 <Countdown
                   date={guards.startTime}
                   renderer={renderGoLiveDateCounter}
@@ -389,78 +390,116 @@ const Home = (props: HomeProps) => {
                 />
               ) : !wallet?.publicKey ? (
                 <ConnectButton>Connect Wallet</ConnectButton>
+<<<<<<< Updated upstream
               ) : // ) : !guardStates.canPayFor ? (
               //   <h1>You cannot pay for the mint</h1>
               !guardStates.isWalletWhitelisted ? (
+=======
+         
+              ) : !guardStates.isWalletWhitelisted ? (
+>>>>>>> Stashed changes
                 <h1>Mint is private.</h1>
               ) : (
                 <>
                   <>
-                    {!!candyMachineV3.items.remaining &&
-                    guardStates.hasGatekeeper &&
-                    wallet.publicKey &&
-                    wallet.signTransaction ? (
-                      <GatewayProvider
-                        wallet={{
-                          publicKey: wallet.publicKey,
-                          //@ts-ignore
-                          signTransaction: wallet.signTransaction,
-                        }}
-                        gatekeeperNetwork={guards.gatekeeperNetwork}
-                        clusterUrl={connection.rpcEndpoint}
-                        cluster={
-                          process.env.NEXT_PUBLIC_SOLANA_NETWORK || "devnet"
-                        }
-                        options={{ autoShowModal: false }}
-                      >
-                        <MintButton
-                          gatekeeperNetwork={guards.gatekeeperNetwork}
-                        />
-                      </GatewayProvider>
-                    ) : (
-                      <MintButton />
-                    )}
+                 
+          
                   </>
                 </>
               )}
+<<<<<<< Updated upstream
             </Hero> */}
 
             <NftsModal
+=======
+       <NftsModal
+>>>>>>> Stashed changes
               openOnSolscan={openOnSolscan}
               mintedItems={mintedItems || []}
               setMintedItems={setMintedItems}
             />
+<<<<<<< Updated upstream
           </StyledContainer>
           {/* <NftWrapper>
+=======
+
+            </Hero> }
+            
+
+             {<><NftWrapper>
+>>>>>>> Stashed changes
             <div className="marquee-wrapper">
               <div className="marquee">
-                {[...Array(21)].map((item, index) => (
+                {[...Array(21)].map((_item, index) => (
                   <img
                     key={index}
-                    src={`/nfts/${index + 1}.jpeg`}
+                    src={`/nfts/${index + 1}.png`}
                     height="200px"
                     width="200px"
-                    alt=""
-                  />
+                    alt="" />
                 ))}
               </div>
             </div>
-          </NftWrapper>
-          <NftWrapper2>
-            <div className="marquee-wrapper second">
-              <div className="marquee">
-                {[...Array(21)].map((item, index) => (
-                  <img
-                    key={index}
-                    src={`/nfts/${index + 1}.jpeg`}
-                    height="200px"
-                    width="200px"
-                    alt=""
-                  />
-                ))}
+          </NftWrapper><NftWrapper2>
+              <div className="marquee-wrapper second">
+                <div className="marquee">
+                  {[...Array(21)].map((_item, index) => (
+                    <img
+                      key={index}
+                      src={`/nfts/${index + 1}.png`}
+                      height="200px"
+                      width="200px"
+                      alt="" />
+                  ))}
+                </div>
               </div>
+            </NftWrapper2></>}
+
+        <Root>
+          <div className="cloud-content">
+            {[...Array(7)].map((cloud, index) => (
+              <div key={index} className={`cloud-${index + 1} cloud-block`}>
+                <div className="cloud"></div>
+              </div>
+            ))}
+          </div>
+          <StyledContainer>
+            {/* <MintNavigation /> */}
+
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+            >
+              {mintGroups.map((x, key) => (
+                <div
+                  key={key}
+                  style={{
+                    padding: "10px",
+                    borderRadius: "10px",
+                    backgroundColor: "rgba(255,255,255,0.5)",
+                  }}
+                >
+                  {x.title ? <h2>{x.title}</h2> : null}
+                  {x.description ? <p>{x.description}</p> : null}
+                  {x.groups.map((y: MintGroupMetadata, k: Key) => (
+                    <MintGroup
+                      mintGroup={y}
+                      key={k}
+                      candyMachineV3={candyMachineV3}
+                    />
+                  ))}
+                </div>
+              ))}
             </div>
+<<<<<<< Updated upstream
           </NftWrapper2> */}
+=======
+
+      
+
+     
+          </StyledContainer>
+         
+>>>>>>> Stashed changes
         </Root>
       </>
       <Snackbar

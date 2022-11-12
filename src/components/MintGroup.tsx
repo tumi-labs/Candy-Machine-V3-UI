@@ -1,6 +1,10 @@
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
+<<<<<<< Updated upstream
 import React from "react";
+=======
+import React, { useState } from "react";
+>>>>>>> Stashed changes
 import Countdown from "react-countdown";
 import { CandyMachineV3, NftPaymentMintSettings } from "../hooks/types";
 import { MultiMintButton } from "../MultiMintButton";
@@ -9,6 +13,10 @@ import styled from "styled-components";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { Paper } from "@material-ui/core";
 import { GatewayProvider } from "@civic/solana-gateway-react";
+<<<<<<< Updated upstream
+=======
+import { Nft } from "@metaplex-foundation/js";
+>>>>>>> Stashed changes
 
 const ConnectButton = styled(WalletMultiButton)`
   border-radius: 5px !important;
@@ -49,6 +57,12 @@ const renderGoLiveDateCounter = ({ days, hours, minutes, seconds }: any) => {
   );
 };
 
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
 export default function MintGroup({
   mintGroup,
   candyMachineV3,
@@ -90,6 +104,11 @@ export default function MintGroup({
     ]
   );
 
+<<<<<<< Updated upstream
+=======
+  const [mintedItems, setMintedItems] = useState<Nft[]>();
+
+>>>>>>> Stashed changes
   const startMint = React.useCallback(
     async (quantityString: number = 1) => {
       const nftGuards: NftPaymentMintSettings[] = Array(quantityString)
@@ -122,7 +141,11 @@ export default function MintGroup({
           nftGuards,
         })
         .then((items) => {
+<<<<<<< Updated upstream
           // setMintedItems(items as any);
+=======
+          setMintedItems(items as any);
+>>>>>>> Stashed changes
           console.log("minted", items);
         })
         .catch(
@@ -156,6 +179,11 @@ export default function MintGroup({
     />
   );
 
+<<<<<<< Updated upstream
+=======
+  
+
+>>>>>>> Stashed changes
   return (
     <div style={{ borderTop: "1px solid black", paddingTop: "5px" }}>
       {mintGroup.title ? <h3>{mintGroup.title}</h3> : null}
@@ -171,11 +199,20 @@ export default function MintGroup({
         />
       ) : !wallet?.publicKey ? (
         <ConnectButton>Connect Wallet</ConnectButton>
+<<<<<<< Updated upstream
       ) : // ) : !guardStates.canPayFor ? (
       //   <h1>You cannot pay for the mint</h1>
       !guardStates.isWalletWhitelisted ? (
         <h1>Mint is private.</h1>
       ) : (
+=======
+    //  ) :  ) : !guardStates.canPayFor ? (
+      //   <h1>You cannot pay for the mint</h1>
+    ) : !guardStates.isWalletWhitelisted ? (
+      <h1>Mint is private.</h1>
+     ) :
+       (
+>>>>>>> Stashed changes
         <>
           <>
             {!!candyMachineV3.items.remaining &&
@@ -201,6 +238,10 @@ export default function MintGroup({
           </>
         </>
       )}
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
     </div>
   );
 }

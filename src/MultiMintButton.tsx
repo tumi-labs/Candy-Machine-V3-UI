@@ -189,7 +189,11 @@ export const MultiMintButton = ({
 
   const incrementValue = useCallback(() => {
     setMintCount((value) => {
+<<<<<<< Updated upstream
       // if (value < 10) return value + 1;
+=======
+      //if (value < 10) return value + 1;
+>>>>>>> Stashed changes
       return Math.min(value + 1, limit);
     });
   }, [limit]);
@@ -246,20 +250,10 @@ export const MultiMintButton = ({
         <CTAButton
           disabled={disabled}
           onClick={async () => {
-            console.log("isActive gatekeeperNetwork", {
-              isActive,
-              gatekeeperNetwork,
-            });
-            if (isActive && gatekeeperNetwork) {
-              if (gatewayStatus === GatewayStatus.ACTIVE) {
-                await onMint(mintCount);
-              } else {
-                setWaitForActiveToken(true);
-                await requestGatewayToken();
-              }
-            } else {
-              await onMint(mintCount);
-            }
+            console.log("Minting...");
+            setLoading(true);
+            await onMint(mintCount);
+            setLoading(false);
           }}
           variant="contained"
         >
@@ -296,3 +290,4 @@ export const MultiMintButton = ({
     </div>
   );
 };
+

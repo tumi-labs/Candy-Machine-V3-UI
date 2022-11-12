@@ -2,6 +2,7 @@ import { CandyMachine, Metaplex } from "@metaplex-foundation/js";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import { MintCounterBorsh } from "../borsh/mintCounter";
 import {
+  AllowLists,
   GuardGroup,
   GuardGroupStates,
   MintLimitLogics,
@@ -127,7 +128,7 @@ export const parseGuardGroup = async (
     candyMachine: CandyMachine;
     walletAddress: PublicKey;
     label?: string;
-    // allowLists: AllowLists;
+    // allowed: AllowLists;
     // tokenHoldings: Token[];
     nftHoldings: Metadata[];
     verifyProof: (merkleRoot: Uint8Array | string, label?: string) => boolean;
@@ -308,20 +309,22 @@ export const parseGuardGroup = async (
 
   // Check for whitelisted addresses
 
-  if (guardsInput.addressGate || guardsInput.allowList) {
-    let allowed: PublicKey[] = [];
-    if (guardsInput.addressGate) allowed.push(guardsInput.addressGate.address);
+ // Check for whitelisted addresses
 
-    if (guardsInput.allowList?.merkleRoot) {
-      const isValid = verifyProof(
-        guardsInput.allowList.merkleRoot,
-        label || "default"
-      );
-      if (isValid) allowed.push(walletAddress);
-    }
+ if (guardsInput.addressGate || guardsInput.allowList) {
+  let allowed: PublicKey[] = [];
+  if (guardsInput.addressGate) allowed.push(guardsInput.addressGate.address);
 
-    guardsParsed.allowed = allowed;
+  if (guardsInput.allowList?.merkleRoot) {
+    const isValid = verifyProof(
+      guardsInput.allowList.merkleRoot,
+      label || "WL"
+    );
+    if (isValid) allowed.push(walletAddress);
   }
+
+  guardsParsed.allowed = allowed;
+}
 
   if (guardsInput.gatekeeper) {
     guardsParsed.gatekeeperNetwork = guardsInput.gatekeeper.network;
@@ -360,6 +363,8 @@ export const parseGuardStates = ({
   // Check for start date
   if (guards.endTime) {
     states.isEnded = guards.endTime.getTime() < Date.now();
+  
+    if (states.isEnded) states.messages.push("ENDED");
   }
 
   // Check for mint limit
@@ -371,7 +376,7 @@ export const parseGuardStates = ({
         : 10;
     states.isLimitReached = !canPayFor;
     if (!canPayFor)
-      states.messages.push("Mint limit for each user has reached.");
+      states.messages.push("LIMIT REACHED");
     states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
@@ -391,7 +396,7 @@ export const parseGuardStates = ({
     let canPayFor = Math.floor(
       balance / (guards.payment?.sol.amount + 0.012 * LAMPORTS_PER_SOL)
     );
-    if (!canPayFor) states.messages.push("Don't have enough sol to pay");
+    if (!canPayFor) states.messages.push("NOT ENOUGH SOL");
     states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
@@ -405,7 +410,7 @@ export const parseGuardStates = ({
 
     if (!canPayFor)
       states.messages.push(
-        `Don't have enough ${guards.payment?.token.symbol || "token"} to pay.`
+        `Don't have enough ${guards.payment?.token.symbol || "token"}.`
       );
 
     states.canPayFor = Math.min(states.canPayFor, canPayFor);
@@ -442,36 +447,42 @@ export const parseGuardStates = ({
   }
 
   // Check for gates
+
+  //Check for Token Gate
   if (guards.gate?.token) {
     const tokenAccount = tokenHoldings.find((x) =>
       x.mint.equals(guards.gate?.token.mint)
     );
     let canPayFor =
-      tokenAccount && tokenAccount.balance > guards.gate?.token.amount ? 10 : 0;
+      tokenAccount && tokenAccount.balance > guards.gate?.token.amount ? 10 : 10;
     if (!canPayFor)
       states.messages.push(
         `Don't have enough ${
           guards.gate?.token.symbol || "token"
-        } to pass gate.`
+        }.`
       );
     states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
+
+  //Check for NFT Gate
   if (guards.gate?.nfts) {
-    let canPayFor = guards.burn?.nfts.length ? 10 : 0;
+    let canPayFor = guards.gate?.nfts.length ? 10 : 0;
     if (!canPayFor)
-      states.messages.push(`Don't have enough nfts to pass gate.`);
+      states.messages.push(`NO REAL GODS`);
     states.canPayFor = Math.min(states.canPayFor, canPayFor);
   }
 
-  // Check for whitelisted addresses
-  if (guards.allowed) {
-    states.isWalletWhitelisted = !!guards.allowed.find((x) =>
-      x.equals(walletAddress)
-    );
-    if (states.isWalletWhitelisted)
-      states.messages.push(`Not allowed to mint.`);
-  }
+    // Check for whitelisted addresses
+    if (guards.allowed) {
+      states.isWalletWhitelisted = !!guards.allowed.find((x) =>
+        x.equals(walletAddress));
+
+      if (!states.isWalletWhitelisted)
+        states.messages.push(`NOT WHITELISTED`);
+    }
+
+  // Check for GateKeeper
 
   if (guards.gatekeeperNetwork) {
     states.hasGatekeeper = true;
@@ -479,6 +490,7 @@ export const parseGuardStates = ({
 
   return states;
 };
+
 export const tokenSymbolCaches: {
   [k: string]: Promise<void | SplTokenCurrency>;
 } = {};
