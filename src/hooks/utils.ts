@@ -469,7 +469,7 @@ export const parseGuardStates = ({
     states.isWalletWhitelisted = !!guards.allowed.find((x) =>
       x.equals(walletAddress)
     );
-    if (states.isWalletWhitelisted)
+    if (!states.isWalletWhitelisted)
       states.messages.push(`Not allowed to mint.`);
   }
 

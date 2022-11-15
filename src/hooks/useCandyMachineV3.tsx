@@ -114,7 +114,7 @@ export default function useCandyMachineV3(
     ) => {
       let merkle = merkles[label];
       if (!merkle) return;
-      const verifiedProof = !!merkle.proof;
+      const verifiedProof = !!merkle.proof.length;
       const compareRoot = merkle.tree.getRoot().equals(Buffer.from(merkleRoot));
       return verifiedProof && compareRoot;
     };
