@@ -174,6 +174,8 @@ const Home = (props: HomeProps) => {
   ]);
   useEffect(() => {
     console.log({ guardLabel, guards, guardStates, prices });
+    console.log('TEST',guards);
+    
   }, [guardLabel, guards, guardStates, prices]);
   useEffect(() => {
     (async () => {
@@ -236,7 +238,6 @@ const Home = (props: HomeProps) => {
       // debugger;
       candyMachineV3
         .mint(quantityString, {
-          groupLabel: guardLabel,
           nftGuards,
         })
         .then((items) => {
@@ -337,6 +338,7 @@ const Home = (props: HomeProps) => {
 
               {guardStates.isStarted && (
                 <MintCount>
+                  
                   Total Minted : {candyMachineV3.items.redeemed}/
                   {candyMachineV3.items.available}{" "}
                   {(guards?.mintLimit?.mintCounter?.count ||

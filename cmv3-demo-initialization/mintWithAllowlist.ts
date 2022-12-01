@@ -29,7 +29,7 @@ const mintingWallet = metaplex.identity().publicKey;
   if (!program)
     return console.log("Program not found in your cache, exiting...");
   const candyMachine = await metaplex.candyMachines().findByAddress({
-    address: new PublicKey(program.candyMachine),
+    address: new PublicKey('43CrRZaEHbkCVdBSikbBFz7Jbrth5uTpsavNNW3FoQVT'),
   });
   const merkleProof = getMerkleProof(allowList, mintingWallet.toBase58());
   console.log(
@@ -50,12 +50,12 @@ const mintingWallet = metaplex.identity().publicKey;
   //   });
 
   //   return;
-  const group = "waoed";
+  //const group = "waoed";
   const transactionBuilders: TransactionBuilder[] = [
     callCandyGuardRouteBuilder(metaplex, {
       candyMachine,
       guard: "allowList",
-      group,
+      //group,
       settings: {
         path: "proof",
         merkleProof,
@@ -67,7 +67,7 @@ const mintingWallet = metaplex.identity().publicKey;
       await mintFromCandyMachineBuilder(metaplex, {
         candyMachine,
         collectionUpdateAuthority: candyMachine.authorityAddress, // metaplex.candyMachines().pdas().authority({candyMachine: candyMachine.address})
-        group,
+        //group,
         guards: {},
       })
     );

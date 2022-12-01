@@ -36,6 +36,7 @@ import {
   parseGuardGroup,
   parseGuardStates,
 } from "./utils";
+import { whitelistedWallets } from "../config";
 
 export default function useCandyMachineV3(
   candyMachineId: PublicKey | string,
@@ -101,7 +102,7 @@ export default function useCandyMachineV3(
       candyMachineOpts.allowLists.reduce(
         (prev, { groupLabel, list }) =>
           Object.assign(prev, {
-            [groupLabel]: {
+            ['default']: {
               tree: getMerkleTree(list),
               proof: getMerkleProof(list, wallet.publicKey.toString()),
             },
@@ -179,25 +180,23 @@ export default function useCandyMachineV3(
           if (!proofMemo.merkles[opts.groupLabel || "default"].proof.length)
             throw new Error("User is not in allowed list");
 
-          transactionBuilders.push(
+/*           transactionBuilders.push(
             callCandyGuardRouteBuilder(mx, {
               candyMachine,
               guard: "allowList",
-              group: opts.groupLabel,
               settings: {
                 path: "proof",
                 merkleProof:
-                  proofMemo.merkles[opts.groupLabel || "default"].proof,
+                  getMerkleProof(whitelistedWallets,wallet.publicKey.toString())
               },
             })
-          );
+          ); */
         }
         for (let index = 0; index < quantityString; index++) {
           transactionBuilders.push(
             await mintFromCandyMachineBuilder(mx, {
               candyMachine,
               collectionUpdateAuthority: candyMachine.authorityAddress, // mx.candyMachines().pdas().authority({candyMachine: candyMachine.address})
-              group: opts.groupLabel,
               guards: {
                 nftBurn: opts.nftGuards && opts.nftGuards[index]?.burn,
                 nftPayment: opts.nftGuards && opts.nftGuards[index]?.payment,
@@ -207,6 +206,14 @@ export default function useCandyMachineV3(
             })
           );
         }
+        await mx.candyMachines().callGuardRoute({
+          candyMachine,
+          guard: "allowList",
+          settings: {
+            path: "proof",
+            merkleProof: getMerkleProof(whitelistedWallets, wallet.publicKey.toString()),
+          },
+        });
         const blockhash = await mx.rpc().getLatestBlockhash();
 
         const transactions = transactionBuilders.map((t) =>
@@ -344,6 +351,7 @@ export default function useCandyMachineV3(
     console.log(
       "useEffact([mx, wallet, nftHoldings, proofMemo, candyMachine])"
     );
+    console.log(proofMemo);
 
     (async () => {
       const guards = {
