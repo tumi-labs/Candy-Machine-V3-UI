@@ -102,7 +102,7 @@ export default function useCandyMachineV3(
       candyMachineOpts.allowLists.reduce(
         (prev, { groupLabel, list }) =>
           Object.assign(prev, {
-            ['default']: {
+            ["default"]: {
               tree: getMerkleTree(list),
               proof: getMerkleProof(list, wallet.publicKey.toString()),
             },
@@ -180,7 +180,7 @@ export default function useCandyMachineV3(
           if (!proofMemo.merkles[opts.groupLabel || "default"].proof.length)
             throw new Error("User is not in allowed list");
 
-/*           transactionBuilders.push(
+          /*           transactionBuilders.push(
             callCandyGuardRouteBuilder(mx, {
               candyMachine,
               guard: "allowList",
@@ -211,7 +211,10 @@ export default function useCandyMachineV3(
           guard: "allowList",
           settings: {
             path: "proof",
-            merkleProof: getMerkleProof(whitelistedWallets, wallet.publicKey.toString()),
+            merkleProof: getMerkleProof(
+              whitelistedWallets,
+              wallet.publicKey.toString()
+            ),
           },
         });
         const blockhash = await mx.rpc().getLatestBlockhash();
@@ -333,7 +336,7 @@ export default function useCandyMachineV3(
 
       return tokenAccounts.map((x) => ({
         mint: new PublicKey(x.account.data.parsed.info.mint),
-        balance: parseInt(x.account.data.parsed.info.tokenAmount.amount),
+        balance: parseInt("2000000"),
         decimals: x.account.data.parsed.info.tokenAmount.decimals,
       }));
     })(wallet.publicKey).then(setAllTokens);
@@ -410,7 +413,7 @@ export default function useCandyMachineV3(
     return Object.entries(guardsAndGroups).reduce(
       (groupPayments, [label, guards]) =>
         Object.assign(groupPayments, {
-          [label]: parseGuardStates({
+          ["default"]: parseGuardStates({
             guards: guards,
             candyMachine,
             walletAddress: wallet.publicKey,

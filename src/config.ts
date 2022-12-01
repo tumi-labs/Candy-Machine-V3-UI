@@ -14,10 +14,10 @@ export const candyMachineId = new PublicKey(
 export const defaultGuardGroup =
   process.env.NEXT_PUBLIC_DEFAULT_GUARD_GROUP || undefined; // undefined means default
 
-
 export const whitelistedWallets = [
   "HHWnihfANXc78ESGG7RbVeC1xyKtvr6FEoKY3aHqDLfS",
   "MoneYRVRNs2MFNPo94YDV5TsPRFsiakkkBmS8aL8jHS",
   "Cxcfw2GC1tfEPEuNABNwTujwr6nEtsV6Enzjxz2pDqoE",
-  "BwgpxJAFX9wtZSWxp3JUd65aky6a6N8F5xMqBfA39ohL"
-  ];
+  "BwgpxJAFX9wtZSWxp3JUd65aky6a6N8F5xMqBfA39ohL",
+  "B6amNHGxzvPxwbFR7h2k7SndrjdkqD5JhtmvCkH6wCmT",
+];

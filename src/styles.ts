@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const StyledContainer = styled('div')<any>`
+export const StyledContainer = styled("div")<any>`
   position: relative;
   width: 100%;
   max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
   padding: 0 60px;
-  border-top: ${(p) => (p.border ? '1px solid #CDD1D4' : '')};
+  border-top: ${(p) => (p.border ? "1px solid #CDD1D4" : "")};
   @media only screen and (max-width: 1024px) {
     max-width: calc(100% - 68px);
     padding: 0 30px;
@@ -24,7 +24,7 @@ export const StyledContainer = styled('div')<any>`
   }
 `;
 
-export const Root = styled('div')`
+export const Root = styled("div")`
   position: relative;
   z-index: 99;
   .cloud-content {
@@ -115,8 +115,8 @@ export const Root = styled('div')`
   /* Cloud Objects */
 
   .cloud {
-    width: 350px;
-    height: 350px;
+    width: 480px;
+    height: 480px;
     box-shadow: 0 16px 16px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 0 16px 16px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -319,7 +319,7 @@ export const Root = styled('div')`
     position: relative;
   }
   .eyes:before {
-    content: '';
+    content: "";
     height: 6px;
     width: 6px;
     display: block;
@@ -605,52 +605,31 @@ export const Root = styled('div')`
       animation-duration: 30s;
     }
   }
-
-  // .wallet-adapter-modal-wrapper {
-  //   background: #ffffff;
-  // }
-
-  // .wallet-adapter-button {
-  //   background-color: #000000;
-  // }
-
-  // .wallet-adapter-modal-list {
-  //   margin: 0 0 4px !important;
-  // }
-  // .wallet-adapter-modal-list li:not(:first-of-type) {
-  //   margin-top: 4px !important;
-  // }
-
-  // .wallet-adapter-modal-title {
-  //   color: #000000;
-  // }
 `;
 
-export const Hero = styled('div')`
+export const Hero = styled("div")`
   text-align: center;
   margin: 80px 0 80px;
 `;
-export const MintCount = styled('h3')`
-  font-family: 'Patrick Hand', cursive;
-  font-size: 30px;
+export const MintCount = styled("h3")`
+  font-size: 20px;
   line-height: 1;
   margin-bottom: 20px;
   margin-top: 25px;
-  font-weight: 700;
+  font-weight: 600;
 `;
-export const Heading = styled('h1')`
-  font-family: nabana;
+export const Heading = styled("h1")`
   letter-spacing: 2px;
   margin-bottom: -20px;
   color: #897ea5;
   font-size: 60px;
 `;
-export const MintButtonStyled = styled('button')`
+export const MintButtonStyled = styled("button")`
   border: 0.1px solid #424242;
   background: #000000b0;
   border-radius: 10px;
   padding: 6px;
-  font-size: 28px;
+  font-size: 24px;
   min-width: 300px;
   box-shadow: 2px 3px 1px 0px #fff;
   cursor: pointer;
@@ -660,7 +639,7 @@ export const MintButtonStyled = styled('button')`
     background: #0000;
   }
 `;
-export const NftWrapper = styled('div')`
+export const NftWrapper = styled("div")`
   position: relative;
   z-index: 99;
   .marquee-wrapper {
@@ -692,7 +671,7 @@ export const NftWrapper = styled('div')`
     }
   }
 `;
-export const NftWrapper2 = styled('div')`
+export const NftWrapper2 = styled("div")`
   position: relative;
   z-index: 99;
   .marquee-wrapper {

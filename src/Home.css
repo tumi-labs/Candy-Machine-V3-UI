@@ -6,34 +6,24 @@
   --main-text-color: #f7f6f4;
   --title-text-color: #d8b08c;
 }
-@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;900&display=swap');
 
 @font-face {
-  font-family: 'Catamaran';
-  src: url('./fonts/Catamaran-Regular.ttf') format('truetype');
-  font-style: normal;
-}
-@font-face {
-  font-family: 'nabana';
-  src: url('./fonts/nabana.shadow-bold.ttf') format('truetype');
-  font-style: normal;
-}
-@font-face {
-  font-family: 'LuckiestGuy';
-  src: url('./fonts/LuckiestGuy-Regular.ttf') format('truetype');
+  font-family: "PlusJakartaSans";
+  src: url("./fonts/PlusJakartaText-Regular.ttf") format("truetype");
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Catamaran';
-  src: url('./fonts/Catamaran-ExtraBold.ttf') format('truetype');
+  font-family: "PlusJakartaSans";
+  src: url("./fonts/PlusJakartaText-Bold.ttf") format("truetype");
   font-style: normal;
 }
+
 body {
   /* background-color: var(--main-background-color); */
   background-color: #000;
   background-size: cover;
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Patrick Hand", cursive;
   font-size: 1.1em;
 }
 

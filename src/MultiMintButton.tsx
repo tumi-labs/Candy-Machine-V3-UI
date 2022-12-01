@@ -6,7 +6,11 @@ import styled from "styled-components";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 import { GatewayStatus, useGateway } from "@civic/solana-gateway-react";
-import { GuardGroupStates, ParsedPricesForUI, PaymentRequired } from "./hooks/types";
+import {
+  GuardGroupStates,
+  ParsedPricesForUI,
+  PaymentRequired,
+} from "./hooks/types";
 
 export const CTAButton = styled(Button)`
   display: inline-block !important;
@@ -31,7 +35,6 @@ export const Minus = styled.button`
   border: 0;
   border-radius: 5px;
   box-sizing: border-box;
-  font-family: "Patrick Hand", cursive;
   vertical-align: middle;
   transition: all linear 0.3s;
 
@@ -54,14 +57,13 @@ export const Plus = styled(Minus)`
 `;
 
 export const NumericField = styled.input`
-  font-size: 2em !important;
-  padding: 0;
+  font-size: 24px;
+  padding: 10px;
   vertical-align: middle;
   background-color: var(--main-text-color);
   box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
     0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
   box-sizing: border-box;
-  font-family: "Patrick Hand", cursive;
   font-weight: 500;
   line-height: 1px;
   border: none;
@@ -286,8 +288,10 @@ export const MultiMintButton = ({
             "CONNECTING..."
           ) : isSoldOut ? (
             "SOLD OUT"
-          ) : isActive ? guardStates.messages.length ? (guardStates.messages[0]) : (
-            mintCount > limit ? (
+          ) : isActive ? (
+            guardStates.messages.length ? (
+              guardStates.messages[0]
+            ) : mintCount > limit ? (
               "LIMIT REACHED"
             ) : isMinting || loading ? (
               <CircularProgress />
@@ -302,14 +306,14 @@ export const MultiMintButton = ({
         </CTAButton>
       </div>
       {!isSoldOut && isActive && (
-        <h3>
+        <p style={{ fontSize: "15px", color: "lightgrey" }}>
           Total estimated cost (Solana fees included): {totalSolCost} SOL
           {totalTokenCostsString}
-        </h3>
+        </p>
       )}
-        {guardStates.messages?.map((m, i) => (
-          <p key={i}>{m}</p>
-        ))}
+      {guardStates.messages?.map((m, i) => (
+        <p key={i}>{m}</p>
+      ))}
     </div>
   );
 };

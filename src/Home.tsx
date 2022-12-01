@@ -48,16 +48,6 @@ const WalletContainer = styled.div`
   margin: 30px;
   z-index: 999;
   position: relative;
-
-  .wallet-adapter-dropdown-list {
-    background: #ffffff;
-  }
-  .wallet-adapter-dropdown-list-item {
-    background: #000000;
-  }
-  .wallet-adapter-dropdown-list {
-    grid-row-gap: 5px;
-  }
 `;
 
 const WalletAmount = styled.div`
@@ -67,7 +57,6 @@ const WalletAmount = styled.div`
   min-width: 48px;
   min-height: auto;
   border-radius: 5px;
-  background-color: #85b1e2;
   box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
     0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
   box-sizing: border-box;
@@ -105,7 +94,6 @@ const ConnectButton = styled(WalletMultiButton)`
 
 const Card = styled(Paper)`
   display: inline-block;
-  background-color: var(--countdown-background-color) !important;
   margin: 5px;
   min-width: 40px;
   padding: 24px;
@@ -150,12 +138,12 @@ const Home = (props: HomeProps) => {
         candyMachineV3.guards[guardLabel] ||
         candyMachineV3.guards.default ||
         {},
-      guardStates: candyMachineV3.guardStates[guardLabel] ||
+      guardStates: candyMachineV3.guardStates["default"] ||
         candyMachineV3.guardStates.default || {
           isStarted: true,
           isEnded: false,
           isLimitReached: false,
-          canPayFor: 10,
+          canPayFor: 2,
           messages: [],
           isWalletWhitelisted: true,
           hasGatekeeper: false,
@@ -174,8 +162,7 @@ const Home = (props: HomeProps) => {
   ]);
   useEffect(() => {
     console.log({ guardLabel, guards, guardStates, prices });
-    console.log('TEST',guards);
-    
+    console.log("TEST", guards);
   }, [guardLabel, guards, guardStates, prices]);
   useEffect(() => {
     (async () => {
@@ -322,8 +309,7 @@ const Home = (props: HomeProps) => {
                 <Link href="/">
                   <img
                     style={{
-                      filter: "invert(1)",
-                      maxWidth: "350px",
+                      maxWidth: "500px",
                     }}
                     src="/logo.png"
                     alt="logo"
@@ -331,14 +317,12 @@ const Home = (props: HomeProps) => {
                 </Link>
               </Heading>
 
-              <p>
-                6942 Rejected f00kers here to f00k shit up. 3 mints max per
-                wallet. Free. f00k f00k Mother f00kers.
+              <p style={{ margin: 2, fontSize: "20px" }}>
+                2222 MysteryMansions that can be used to claim MoneyMansions
               </p>
 
               {guardStates.isStarted && (
                 <MintCount>
-                  
                   Total Minted : {candyMachineV3.items.redeemed}/
                   {candyMachineV3.items.available}{" "}
                   {(guards?.mintLimit?.mintCounter?.count ||
@@ -364,9 +348,9 @@ const Home = (props: HomeProps) => {
                 />
               ) : !wallet?.publicKey ? (
                 <ConnectButton>Connect Wallet</ConnectButton>
-              // ) : !guardStates.canPayFor ? (
+              ) : // ) : !guardStates.canPayFor ? (
               //   <h1>You cannot pay for the mint</h1>
-              ) : !guardStates.isWalletWhitelisted ? (
+              !guardStates.isWalletWhitelisted ? (
                 <h1>Mint is private.</h1>
               ) : (
                 <>
@@ -405,36 +389,6 @@ const Home = (props: HomeProps) => {
               setMintedItems={setMintedItems}
             />
           </StyledContainer>
-          <NftWrapper>
-            <div className="marquee-wrapper">
-              <div className="marquee">
-                {[...Array(21)].map((item, index) => (
-                  <img
-                    key={index}
-                    src={`/nfts/${index + 1}.jpeg`}
-                    height="200px"
-                    width="200px"
-                    alt=""
-                  />
-                ))}
-              </div>
-            </div>
-          </NftWrapper>
-          <NftWrapper2>
-            <div className="marquee-wrapper second">
-              <div className="marquee">
-                {[...Array(21)].map((item, index) => (
-                  <img
-                    key={index}
-                    src={`/nfts/${index + 1}.jpeg`}
-                    height="200px"
-                    width="200px"
-                    alt=""
-                  />
-                ))}
-              </div>
-            </div>
-          </NftWrapper2>
         </Root>
       </>
       <Snackbar

@@ -364,11 +364,7 @@ export const parseGuardStates = ({
 
   // Check for mint limit
   if (guards.mintLimit) {
-    let canPayFor =
-      typeof guards.mintLimit?.settings?.limit == "number"
-        ? guards.mintLimit.settings.limit -
-          (guards.mintLimit?.mintCounter?.count || 0)
-        : 10;
+    let canPayFor = 2;
     states.isLimitReached = !canPayFor;
     if (!canPayFor)
       states.messages.push("Mint limit for each user has reached.");
@@ -401,7 +397,7 @@ export const parseGuardStates = ({
     );
     let canPayFor = tokenAccount
       ? Math.floor(tokenAccount.balance / guards.payment?.token.amount)
-      : 0;
+      : 1;
 
     if (!canPayFor)
       states.messages.push(

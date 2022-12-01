@@ -17,9 +17,8 @@ import styled from "styled-components";
 
 import { Nft, NftWithToken } from "@metaplex-foundation/js";
 export const Action = styled.button`
-  font-size: 1.2em;
+  font-size: 18px;
   padding: 15px 20px;
-  font-weight: bold;
   line-height: 0.5px;
   color: #000;
   background: #fff;
@@ -28,7 +27,6 @@ export const Action = styled.button`
   border: 0;
   border-radius: 5px;
   box-sizing: border-box;
-  font-family: "Patrick Hand", cursive;
   vertical-align: middle;
   transition: all linear 0.3s;
 
@@ -48,11 +46,11 @@ export const Action = styled.button`
 export default function NftsModal({
   mintedItems,
   setMintedItems,
-  openOnSolscan
+  openOnSolscan,
 }: {
   mintedItems: (Nft | NftWithToken)[];
   setMintedItems: any;
-  openOnSolscan: (key: string) => void
+  openOnSolscan: (key: string) => void;
 }) {
   const handleClose = () => {
     setMintedItems([]);
@@ -67,15 +65,16 @@ export default function NftsModal({
       aria-describedby="alert-dialog-slide-description"
       maxWidth={"md"}
     >
-      <DialogTitle id="alert-dialog-slide-title">
-        Nfts you had just minted!
-      </DialogTitle>
-      <DialogContent>
+      <DialogContent style={{ backgroundColor: "#363535" }}>
+        <p style={{ color: "white", fontWeight: "bold", fontSize: "20px" }}>
+          {" "}
+          Mint Success 🤝{" "}
+        </p>
         <DialogContentText id="alert-dialog-slide-description">
           <Grid container spacing={1}>
             {mintedItems.map((nft, key) => (
               <Grid item xs={4} key={key}>
-                <Card>
+                <Card style={{ boxShadow: " " }}>
                   <CardActionArea>
                     {nft.json.image && (
                       <CardMedia
@@ -88,7 +87,12 @@ export default function NftsModal({
                     )}
                     <CardContent>
                       {nft.json.name && (
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          style={{ fontWeight: "bold" }}
+                          component="h2"
+                        >
                           {nft.json.name}
                         </Typography>
                       )}
@@ -108,13 +112,18 @@ export default function NftsModal({
                           label={`${trait_type}: ${value}`}
                           variant="outlined"
                           key={trait_type}
-                          style={{margin: 2}}
+                          style={{ margin: 2 }}
                         />
                       ))}
                     </CardContent>
                   </CardActionArea>
-                  <CardActions >
-                    <Action style={{width: "100%"}} onClick={() => openOnSolscan(nft.address.toString())}>View on solscan</Action>
+                  <CardActions>
+                    <Action
+                      style={{ width: "100%", backgroundColor: "#81FFA8" }}
+                      onClick={() => openOnSolscan(nft.address.toString())}
+                    >
+                      View on solscan
+                    </Action>
                   </CardActions>
                 </Card>
               </Grid>
@@ -122,8 +131,10 @@ export default function NftsModal({
           </Grid>
         </DialogContentText>
       </DialogContent>
-      <DialogActions>
-        <Action onClick={handleClose}>Close</Action>
+      <DialogActions style={{ backgroundColor: "#363535" }}>
+        <Action style={{ backgroundColor: "#81FFA8" }} onClick={handleClose}>
+          Close
+        </Action>
       </DialogActions>
     </Dialog>
   );
