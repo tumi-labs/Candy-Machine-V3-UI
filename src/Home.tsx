@@ -407,7 +407,7 @@ const Home = (props: HomeProps) => {
                           signTransaction: wallet.signTransaction,
                         }}
                         gatekeeperNetwork={guards.gatekeeperNetwork}
-                        clusterUrl={connection.rpcEndpoint}
+                        connection={connection}
                         cluster={
                           process.env.NEXT_PUBLIC_SOLANA_NETWORK || "devnet"
                         }
