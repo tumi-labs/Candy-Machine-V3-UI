@@ -331,8 +331,7 @@ const Home = (props: HomeProps) => {
               </Heading>
 
               <p>
-                6942 Rejected f00kers here to f00k shit up. 3 mints max per
-                wallet. Free. f00k f00k Mother f00kers.
+                Pixel Planets is a NFT collection of all the bests planets from galaxys scattered accross the solana blockchain. You can mint as many as you want to. But please be reasonable.
               </p>
 
               {guardStates.isStarted && (
