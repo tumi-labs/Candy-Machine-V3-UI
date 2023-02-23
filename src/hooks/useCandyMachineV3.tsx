@@ -223,7 +223,10 @@ export default function useCandyMachineV3(
             else if ("_signer" in s) tx.partialSign(s._signer);
           });
         });
+        console.log(allowList);
         let signedTransactions = transactions;
+        console.log(signedTransactions);
+        console.log(signers);
 
         for (let signer in signers) {
           await signers[signer].signAllTransactions(transactions);

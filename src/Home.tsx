@@ -132,6 +132,7 @@ const Home = (props: HomeProps) => {
     props.candyMachineId,
     candyMachinOps
   );
+  console.log(candyMachineV3);
 
   const [balance, setBalance] = useState<number>();
   const [mintedItems, setMintedItems] = useState<Nft[]>();
@@ -362,9 +363,9 @@ const Home = (props: HomeProps) => {
                 />
               ) : !wallet?.publicKey ? (
                 <ConnectButton>Connect Wallet</ConnectButton>
-              // ) : !guardStates.canPayFor ? (
+              ) : // ) : !guardStates.canPayFor ? (
               //   <h1>You cannot pay for the mint</h1>
-              ) : !guardStates.isWalletWhitelisted ? (
+              !guardStates.isWalletWhitelisted ? (
                 <h1>Mint is private.</h1>
               ) : (
                 <>
